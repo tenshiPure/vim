@@ -1,0 +1,31 @@
+		
+		
+		
+		
+if ($URI === '/') {
+	hoge
+	fuga
+	piyo
+} else {
+	hoge
+	fuga
+	piyo
+}
+
+
+
+if ($URI === '/')
+{
+	hoge
+	fuga
+	piyo
+}
+else
+{
+	hoge
+	fuga
+	piyo
+}
+
+if ($URI === '/'){ ... }
+else{ ... }
