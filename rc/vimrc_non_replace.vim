@@ -91,10 +91,10 @@ let $share = 'D:/Dropbox/share'         --win
 let $share = '/Users/ryo/Dropbox/share' --mac
 
 "vimrc_non_replace.vim
-let $rc = $share . '/vim/vimrc_non_replace.vim'
+let $rc = $gitvim . '/rc/vimrc_non_replace.vim'
 
 "vimrc_replaced.vim
-let $rc_replaced = $share . '/vim/vimrc_replaced.vim'
+let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 
 "myScripts
 "let $myScripts  = $share . '/vim/myScripts'

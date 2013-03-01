@@ -57,16 +57,16 @@ function! MakeDispatcher(file_type, command)
 
 	"使用makefile のパス指定
 	if a:file_type == 'java'
-		let makefile_path = $share . '/vim/MakeFile/MakeFile_' . a:file_type
+		let makefile_path = $gitvim . '/MakeFile/MakeFile_' . a:file_type
 
 	elseif a:file_type == 'php.SeLF'
-		let makefile_path = $share . '/vim/MakeFile/MakeFile_SeLF'
+		let makefile_path = $gitvim . '/MakeFile/MakeFile_SeLF'
 
 	elseif a:file_type == 'php.meisai'
-		let makefile_path = $share . '/vim/MakeFile/MakeFile_meisai'
+		let makefile_path = $gitvim . '/MakeFile/MakeFile_meisai'
 
 	elseif a:file_type == 'php.botch'
-		let makefile_path = $share . '/vim/MakeFile/MakeFile_botch'
+		let makefile_path = $gitvim . '/MakeFile/MakeFile_botch'
 
 	endif
 
