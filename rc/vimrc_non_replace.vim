@@ -51,32 +51,7 @@ set clipboard=unnamed
 set textwidth=0
 
 "文字コードの設定
-"set fileencoding=utf-8 --win
-
-autocmd BufNew * set fileencoding=utf8--win
-
-"この辺はスクリプト内かしら
-"view ファイルの作成場所
-"set viewdir=D:\Dropbox\share\vim\view--win
-"set viewdir=/Users/ryo/Dropbox/share/vim/view--mac
-
-"view に保存するオプションの変更（folds,options,cursor）
-"set viewoptions=folds
-
-"折り畳んだときに表示する１行を作成する関数
-"set foldtext=MyFoldText()
-
-"行数の左に、折り畳みの階層を表示
-"set foldcolumn=5
-"set foldcolumn=0
-
-"最終文字からエディタの物理端までを埋める文字を消去
-"set fillchars=vert:\|
-
-"折り畳みを示す色
-"hi Folded gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey30 guifg=Grey80
-"折り畳みガイドバー色
-"hi FoldColumn gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue
+autocmd BufNew * set fileencoding=utf8 --win
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -130,6 +105,10 @@ let $dir88 = $share . '/../projects/dir88'
 let $bomber = 'D:/MyDocument/Program/bomberman' --win
 let $bomber = '/Users/ryo/Documents/projects/bomberman' --mac
 
+"colors
+let $colors = 'D:/MyDocument/Program/colors' --win
+let $colors = '/Users/ryo/Documents/projects/colors' --mac
+
 "slf
 let $slf = '/Users/ryo/Documents/projects/slf'
 
@@ -164,13 +143,6 @@ vnoremap <S-h> 10<LEFT>
 
 nnoremap <S-l> 10<RIGHT>
 vnoremap <S-l> 10<RIGHT>
-
-"mac だと 4 とかになっちゃう
-"Ctrl 追加でウィンドウ移動
-nmap <C-k> <C-w>k
-nmap <C-j> <C-w>j
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
 
 "行の先頭へ移動
 nmap <C-S-h> ^--mac
@@ -354,22 +326,9 @@ source $myScripts/CodeFormater/CodeFormater.vim --win
 "SetFileType
 source $myScripts/common/SetFileType.vim
 
-
-
-
-
-"source $myScripts/MoveRepeater/MoveRepeater.vim
-"nnoremap <F9> :call MoveRepeater("")<LEFT><LEFT>
-
-
-
-
-set tags=/Users/ryo/Documents/projects/slf/tags
-"nnoremap <F6> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
-nnoremap <F6> :<C-u>tab stj <C-R>=expand('<cword>')
-"nnoremap <F6> :stag <C-R>=expand('<cword>')
-
+"TagController
 source $myScripts/TagController/TagController.vim
+set tags=/Users/ryo/Documents/projects/slf/tags
 command! Tv :execute ':normal *' | call TagController('v')
 command! Ts :execute ':normal *' | call TagController('s')
 command! Tt :execute ':normal *' | call TagController('t')

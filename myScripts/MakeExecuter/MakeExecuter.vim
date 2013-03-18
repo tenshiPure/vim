@@ -40,6 +40,7 @@ function! MakeExecuter(file_type, command)
 	"filetype から使用するmakefile を判断し、make コマンドを作成する
 	let exec_cmd = MakeDispatcher(file_type, a:command)
 
+	echo exec_cmd
 	"make系コマンド実行
 	execute ":silent r !" . exec_cmd
 
@@ -67,6 +68,9 @@ function! MakeDispatcher(file_type, command)
 
 	elseif a:file_type == 'php.botch'
 		let makefile_path = $gitvim . '/MakeFile/MakeFile_botch'
+
+	elseif a:file_type == 'ts'
+		let makefile_path = $gitvim . '/MakeFile/MakeFile_ts'
 
 	endif
 

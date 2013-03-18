@@ -61,7 +61,7 @@ if os == 'win'
 endif
 
 if os == 'win'
-	autocmd BufNew * set fileencoding=utf8
+	autocmd BufNew * set fileencoding=utf8 
 endif
 
 "この辺はスクリプト内かしら
@@ -163,6 +163,11 @@ if os == 'win'
 endif
 if os == 'mac'
 	let $bomber = '/Users/ryo/Documents/projects/bomberman' 
+endif
+
+"colors
+if os == 'win'
+	let $colors = 'D:/MyDocument/Program/colors' 
 endif
 
 "slf
@@ -530,3 +535,15 @@ endfunction
 
 
 command! Tmptest :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/
+
+
+if os == 'win'
+	let $PATH=$PATH . ";C:/Program\ Files/nodejs" 
+endif
+if os == 'win'
+	let $PATH=$PATH . ";C:/Users/Administrator/AppData/Roaming/npm" 
+endif
+
+
+
+command! Log : execute ':normal oconsole.log();' | execute ':normal h'
