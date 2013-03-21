@@ -60,6 +60,7 @@ autocmd BufNew * set fileencoding=utf8 --win
 " ----------------------------------------------------------------------------------------------------
 "gitvim
 let $gitvim = $vim . '/gitvim' --win
+let $gitvim = '/Users/ryo/Documents/gitvim' --mac
 
 "share
 let $share = 'D:/Dropbox/share'         --win
@@ -72,7 +73,6 @@ let $rc = $gitvim . '/rc/vimrc_non_replace.vim'
 let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 
 "myScripts
-"let $myScripts  = $share . '/vim/myScripts'
 let $myScripts  = $gitvim . '/myScripts'
 
 "AutoHotkeys
@@ -82,7 +82,6 @@ let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk" --win
 "account
 let $account = "D:/MyDocument/account" --win
 
-"KeyRemap4MacBook の設定ファイルのパス
 let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml" --mac
 
 "tmp
