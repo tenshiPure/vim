@@ -173,6 +173,9 @@ nnoremap <D-Space> :call TabCloser(expand("%:p"), '')<CR> --mac
 " * コマンドで移動しない
 nnoremap * *N
 
+" cc -> bcw
+nnoremap cc bcw
+
 "redo
 nmap <S-u> <C-r>
 
