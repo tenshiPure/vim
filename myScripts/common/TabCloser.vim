@@ -1,37 +1,37 @@
 "TabCloser.vim
 
 "TabCloser.vim
-"ƒ^ƒu‚Æƒoƒbƒtƒ@‚ğ“¯‚É•Â‚¶A¶‚Ìƒ^ƒu‚ğƒAƒNƒeƒBƒu‚É‚·‚é
+"ã‚¿ãƒ–ã¨ãƒãƒƒãƒ•ã‚¡ã‚’åŒæ™‚ã«é–‰ã˜ã€å·¦ã®ã‚¿ãƒ–ã‚’ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ã™ã‚‹
 
 function! TabCloser(buf_name, flag)
 
 	let flag = a:flag
 
-	"•Â‚¶‚éƒoƒbƒtƒ@‚ÌŠg’£q
+	"é–‰ã˜ã‚‹ãƒãƒƒãƒ•ã‚¡ã®æ‹¡å¼µå­
 	let extension = matchstr(a:buf_name, '\..\+$')
 
-	"”CˆÓ‚Ìƒtƒ@ƒCƒ‹‚ÍA‹­§ƒtƒ‰ƒO‚ğ‚½‚Ä‚é
+	"ä»»æ„ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€å¼·åˆ¶ãƒ•ãƒ©ã‚°ã‚’ãŸã¦ã‚‹
 	if extension == '.fe' || extension == '.me'
 		let flag = '!'
 	endif
 
-	"•Â‚¶‚éƒoƒbƒtƒ@‚Ìƒ^ƒu”Ô†
+	"é–‰ã˜ã‚‹ãƒãƒƒãƒ•ã‚¡ã®ã‚¿ãƒ–ç•ªå·
 	let delete_buf_num = tabpagenr()
 
-	"ƒoƒbƒtƒ@‚ğ•Â‚¶‚é
+	"ãƒãƒƒãƒ•ã‚¡ã‚’é–‰ã˜ã‚‹
 	if flag == '!'
 		execute 'bdelete! ' . a:buf_name
 	else
 		execute 'bdelete ' . a:buf_name
 	endif
 
-	"”»’èF•Â‚¶‚½ƒoƒbƒtƒ@‚ª¶’[‚Å‚Í‚È‚¢
+	"åˆ¤å®šï¼šé–‰ã˜ãŸãƒãƒƒãƒ•ã‚¡ãŒå·¦ç«¯ã§ã¯ãªã„
 	if delete_buf_num != 1
 
-		"ƒJƒŒƒ“ƒgƒ^ƒu‚Ì”Ô†
+		"ã‚«ãƒ¬ãƒ³ãƒˆã‚¿ãƒ–ã®ç•ªå·
 		let current_buf_num = tabpagenr()
 
-		"•Â‚¶‚½ƒoƒbƒtƒ@‚Ìˆê‚Â¶‚É‚È‚é‚Ü‚ÅAƒ^ƒu‚ğØ‚è‘Ö‚¦‚é
+		"é–‰ã˜ãŸãƒãƒƒãƒ•ã‚¡ã®ä¸€ã¤å·¦ã«ãªã‚‹ã¾ã§ã€ã‚¿ãƒ–ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 		while current_buf_num != delete_buf_num - 1
 			execute ':normal gt'
 			let current_buf_num = tabpagenr()

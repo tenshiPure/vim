@@ -229,10 +229,10 @@ endif
 
 "タブ（バッファ）を閉じ�~K
 if os == 'win'
-	nnoremap <C-Space> :call TabCloser(expand("%:p"), '')<CR> 
+	nnoremap <C-Space> :call TabCloser2_Controller()<CR> 
 endif
 if os == 'mac'
-	nnoremap <D-Space> :call TabCloser(expand("%:p"), '')<CR> 
+	nnoremap <D-Space> :call TabCloser2_Controller()<CR> 
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ endif
 " * コマンドで移動しな�~D
 nnoremap * *N
 
-"cc -> bcw
+" cc -> bcw
 nnoremap cc bcw
 
 "redo
@@ -451,6 +451,7 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
 "TabCloser
 source $myScripts/common/TabCloser.vim
+source $myScripts/common/TabCloser2_Controller.vim
 
 "MakeExecuter
 source $myScripts/MakeExecuter/MakeExecuter.vim
@@ -458,11 +459,6 @@ source $myScripts/MakeExecuter/MakeExecuter.vim
 "FlexibleFolding
 if os == 'win'
 	source $myScripts/FlexibleFolding/FlexibleFolding.vim 
-endif
-
-"CodeFormater
-if os == 'win'
-	source $myScripts/CodeFormater/CodeFormater.vim 
 endif
 
 "SetFileType
@@ -509,3 +505,5 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
+
+

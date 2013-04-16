@@ -163,8 +163,8 @@ nnoremap <M-Space> :tabedit --win
 nnoremap <C-Space> :tabedit --mac
 
 "タブ（バッファ）を閉じる
-nnoremap <C-Space> :call TabCloser(expand("%:p"), '')<CR> --win
-nnoremap <D-Space> :call TabCloser(expand("%:p"), '')<CR> --mac
+nnoremap <C-Space> :call TabCloser2_Controller()<CR> --win
+nnoremap <D-Space> :call TabCloser2_Controller()<CR> --mac
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -316,15 +316,13 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
 "TabCloser
 source $myScripts/common/TabCloser.vim
+source $myScripts/common/TabCloser2_Controller.vim
 
 "MakeExecuter
 source $myScripts/MakeExecuter/MakeExecuter.vim
 
 "FlexibleFolding
 source $myScripts/FlexibleFolding/FlexibleFolding.vim --win
-
-"CodeFormater
-source $myScripts/CodeFormater/CodeFormater.vim --win
 
 "SetFileType
 source $myScripts/common/SetFileType.vim
@@ -370,3 +368,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
+
+
+
