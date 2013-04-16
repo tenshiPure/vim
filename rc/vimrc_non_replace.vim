@@ -97,6 +97,7 @@ let $java = $share . '/../projects/JAVA'
 
 "mado
 let $dir84 = $share . '/../projects/dir84'
+let $mado = $share . '/../projects/mado'
 
 "botch
 let $dir88 = $share . '/../projects/dir88'
@@ -349,4 +350,21 @@ function! DeleteDirectoryParser()
 endfunction
 
 
-command! Tmptest :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/
+source $myScripts/VimIM/VimIMController.vim
+command! IM :call VimIMController()
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 自動コマンド
+"
+" ----------------------------------------------------------------------------------------------------
+autocmd QuickFixCmdPost *grep* cwindow
+
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 環境変数の追記
+"
+" ----------------------------------------------------------------------------------------------------
+"python
+let $path .= ';C:\Python27'
