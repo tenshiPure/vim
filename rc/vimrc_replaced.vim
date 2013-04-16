@@ -69,6 +69,9 @@ endif
 if os == 'win'
 	let $gitvim = $vim . '/gitvim' 
 endif
+if os == 'mac'
+	let $gitvim = '/Users/ryo/Documents/gitvim' 
+endif
 
 "share
 if os == 'win'
@@ -85,7 +88,6 @@ let $rc = $gitvim . '/rc/vimrc_non_replace.vim'
 let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 
 "myScripts
-"let $myScripts  = $share . '/vim/myScripts'
 let $myScripts  = $gitvim . '/myScripts'
 
 "AutoHotkeys
@@ -101,7 +103,6 @@ if os == 'win'
 	let $account = "D:/MyDocument/account" 
 endif
 
-"KeyRemap4MacBook の設定ファイルのパス
 if os == 'mac'
 	let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml" 
 endif
@@ -241,6 +242,9 @@ endif
 " ----------------------------------------------------------------------------------------------------
 " * コマンドで移動しな�~D
 nnoremap * *N
+
+"cc -> bcw
+nnoremap cc bcw
 
 "redo
 nmap <S-u> <C-r>
