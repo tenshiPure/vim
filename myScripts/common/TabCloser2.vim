@@ -15,7 +15,7 @@ class TabCloser2:
 		self.switchTab()
 
 	def isForce(self):
-		if self.target_buf_name is 'None':
+		if self.target_buf_name is None:
 			return False
 		else:
 			return self.target_buf_name.find("Working_Text") != -1
