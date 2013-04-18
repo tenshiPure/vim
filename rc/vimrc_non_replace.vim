@@ -207,12 +207,13 @@ nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
 "コメント操作
-nnoremap <M-/> :call FlexibleComment("Add")<CR>    --win
-vnoremap <M-/> :call FlexibleComment("Add")<CR>    --win
-nnoremap ?     :call FlexibleComment("Delete")<CR> --win
-vnoremap ?     :call FlexibleComment("Delete")<CR> --win
-nnoremap <M-?> :call FlexibleComment("Switch")<CR> --win
-vnoremap <M-?> :call FlexibleComment("Switch")<CR> --win
+
+nnoremap <M-/> :call FlexibleCommentController2('add')<CR>    --win
+vnoremap <M-/> :call FlexibleCommentController2('add')<CR>    --win
+nnoremap ?     :call FlexibleCommentController2('delete')<CR> --win
+vnoremap ?     :call FlexibleCommentController2('delete')<CR> --win
+nnoremap <M-?> :call FlexibleCommentController2('switch')<CR> --win
+vnoremap <M-?> :call FlexibleCommentController2('switch')<CR> --win
 
 nnoremap <C-F6> :call FlexibleComment("Add")<CR>    --mac
 vnoremap <C-F6> :call FlexibleComment("Add")<CR>    --mac
@@ -304,6 +305,7 @@ set viminfo=
 " ----------------------------------------------------------------------------------------------------
 "FlexibleComment
 source $myScripts/FlexibleComment/FlexibleComment.vim
+source $myScripts/FlexibleComment2/FlexibleCommentController2.vim --win
 
 "FreelyExplorer
 source $myScripts/FreelyExplorer/FreelyExplorer.vim
@@ -368,6 +370,3 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
-
-
-

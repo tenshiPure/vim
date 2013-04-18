@@ -290,23 +290,24 @@ if os == 'mac'
 endif
 
 "コメント操�~\
+
 if os == 'win'
-	nnoremap <M-/> :call FlexibleComment("Add")<CR>    
+	nnoremap <M-/> :call FlexibleCommentController2('add')<CR>    
 endif
 if os == 'win'
-	vnoremap <M-/> :call FlexibleComment("Add")<CR>    
+	vnoremap <M-/> :call FlexibleCommentController2('add')<CR>    
 endif
 if os == 'win'
-	nnoremap ?     :call FlexibleComment("Delete")<CR> 
+	nnoremap ?     :call FlexibleCommentController2('delete')<CR> 
 endif
 if os == 'win'
-	vnoremap ?     :call FlexibleComment("Delete")<CR> 
+	vnoremap ?     :call FlexibleCommentController2('delete')<CR> 
 endif
 if os == 'win'
-	nnoremap <M-?> :call FlexibleComment("Switch")<CR> 
+	nnoremap <M-?> :call FlexibleCommentController2('switch')<CR> 
 endif
 if os == 'win'
-	vnoremap <M-?> :call FlexibleComment("Switch")<CR> 
+	vnoremap <M-?> :call FlexibleCommentController2('switch')<CR> 
 endif
 
 if os == 'mac'
@@ -439,6 +440,9 @@ set viminfo=
 " ----------------------------------------------------------------------------------------------------
 "FlexibleComment
 source $myScripts/FlexibleComment/FlexibleComment.vim
+if os == 'win'
+	source $myScripts/FlexibleComment2/FlexibleCommentController2.vim 
+endif
 
 "FreelyExplorer
 source $myScripts/FreelyExplorer/FreelyExplorer.vim
@@ -505,5 +509,3 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
-
-
