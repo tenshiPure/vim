@@ -229,10 +229,10 @@ endif
 
 "タブ（バッファ）を閉じ�~K
 if os == 'win'
-	nnoremap <C-Space> :call TabCloser2_Controller()<CR> 
+	nnoremap <C-Space> :call TabCloserController()<CR> 
 endif
 if os == 'mac'
-	nnoremap <D-Space> :call TabCloser2_Controller()<CR> 
+	nnoremap <D-Space> :call TabCloserController()<CR> 
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -292,41 +292,41 @@ endif
 "コメント操�~\
 
 if os == 'win'
-	nnoremap <M-/> :call FlexibleCommentController2('add')<CR>    
+	nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
 endif
 if os == 'win'
-	vnoremap <M-/> :call FlexibleCommentController2('add')<CR>    
+	vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
 endif
 if os == 'win'
-	nnoremap ?     :call FlexibleCommentController2('delete')<CR> 
+	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
 endif
 if os == 'win'
-	vnoremap ?     :call FlexibleCommentController2('delete')<CR> 
+	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
 endif
 if os == 'win'
-	nnoremap <M-?> :call FlexibleCommentController2('switch')<CR> 
+	nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
 endif
 if os == 'win'
-	vnoremap <M-?> :call FlexibleCommentController2('switch')<CR> 
+	vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
 endif
 
 if os == 'mac'
-	nnoremap <C-F6> :call FlexibleComment("Add")<CR>    
+	nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
 endif
 if os == 'mac'
-	vnoremap <C-F6> :call FlexibleComment("Add")<CR>    
+	vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
 endif
 if os == 'mac'
-	nnoremap ?      :call FlexibleComment("Delete")<CR> 
+	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
 endif
 if os == 'mac'
-	vnoremap ?      :call FlexibleComment("Delete")<CR> 
+	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
 endif
 if os == 'mac'
-	nnoremap <C-F7> :call FlexibleComment("Switch")<CR> 
+	nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
 endif
 if os == 'mac'
-	vnoremap <C-F7> :call FlexibleComment("Switch")<CR> 
+	vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
 endif
 
 "make コマンドの実行と結果の出�~[
@@ -439,10 +439,7 @@ set viminfo=
 "
 " ----------------------------------------------------------------------------------------------------
 "FlexibleComment
-source $myScripts/FlexibleComment/FlexibleComment.vim
-if os == 'win'
-	source $myScripts/FlexibleComment2/FlexibleCommentController2.vim 
-endif
+source $myScripts/FlexibleComment/FlexibleCommentController.vim
 
 "FreelyExplorer
 source $myScripts/FreelyExplorer/FreelyExplorer.vim
@@ -454,8 +451,7 @@ source $myScripts/common/WordYank.vim
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
 "TabCloser
-source $myScripts/common/TabCloser.vim
-source $myScripts/common/TabCloser2_Controller.vim
+source $myScripts/TabCloser/TabCloserController.vim
 
 "MakeExecuter
 source $myScripts/MakeExecuter/MakeExecuter.vim

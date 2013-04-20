@@ -2,7 +2,7 @@ python <<EOM
 import vim
 import re
 
-class FlexibleComment2:
+class FlexibleComment:
 
 	extension = ''
 	mode = ''

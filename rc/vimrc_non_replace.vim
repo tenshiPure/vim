@@ -163,8 +163,8 @@ nnoremap <M-Space> :tabedit --win
 nnoremap <C-Space> :tabedit --mac
 
 "タブ（バッファ）を閉じる
-nnoremap <C-Space> :call TabCloser2_Controller()<CR> --win
-nnoremap <D-Space> :call TabCloser2_Controller()<CR> --mac
+nnoremap <C-Space> :call TabCloserController()<CR> --win
+nnoremap <D-Space> :call TabCloserController()<CR> --mac
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -208,19 +208,19 @@ nmap '      <sid>(command-line-enter) --mac
 
 "コメント操作
 
-nnoremap <M-/> :call FlexibleCommentController2('add')<CR>    --win
-vnoremap <M-/> :call FlexibleCommentController2('add')<CR>    --win
-nnoremap ?     :call FlexibleCommentController2('delete')<CR> --win
-vnoremap ?     :call FlexibleCommentController2('delete')<CR> --win
-nnoremap <M-?> :call FlexibleCommentController2('switch')<CR> --win
-vnoremap <M-?> :call FlexibleCommentController2('switch')<CR> --win
+nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
+vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
+nnoremap ?      :call FlexibleCommentController('delete')<CR> --win
+vnoremap ?      :call FlexibleCommentController('delete')<CR> --win
+nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
+vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
 
-nnoremap <C-F6> :call FlexibleComment("Add")<CR>    --mac
-vnoremap <C-F6> :call FlexibleComment("Add")<CR>    --mac
-nnoremap ?      :call FlexibleComment("Delete")<CR> --mac
-vnoremap ?      :call FlexibleComment("Delete")<CR> --mac
-nnoremap <C-F7> :call FlexibleComment("Switch")<CR> --mac
-vnoremap <C-F7> :call FlexibleComment("Switch")<CR> --mac
+nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
+vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
+nnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
+vnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
+nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
+vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
 "make コマンドの実行と結果の出力
 command! Mk :call MakeExecuter(&filetype, 'Make')
@@ -304,8 +304,7 @@ set viminfo=
 "
 " ----------------------------------------------------------------------------------------------------
 "FlexibleComment
-source $myScripts/FlexibleComment/FlexibleComment.vim
-source $myScripts/FlexibleComment2/FlexibleCommentController2.vim --win
+source $myScripts/FlexibleComment/FlexibleCommentController.vim
 
 "FreelyExplorer
 source $myScripts/FreelyExplorer/FreelyExplorer.vim
@@ -317,8 +316,7 @@ source $myScripts/common/WordYank.vim
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
 "TabCloser
-source $myScripts/common/TabCloser.vim
-source $myScripts/common/TabCloser2_Controller.vim
+source $myScripts/TabCloser/TabCloserController.vim
 
 "MakeExecuter
 source $myScripts/MakeExecuter/MakeExecuter.vim

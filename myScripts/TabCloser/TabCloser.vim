@@ -1,7 +1,7 @@
 python <<EOM
 import vim
 
-class TabCloser2:
+class TabCloser:
 
 	target_buf_num  = 0
 	target_buf_name = ''

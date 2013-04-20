@@ -1,9 +1,9 @@
 "FlexibleCommentController
 
-source $myScripts/FlexibleComment2/FlexibleComment2.vim
-source $myScripts/FlexibleComment2/CommentStyle.vim
+source $myScripts/FlexibleComment/FlexibleComment.vim
+source $myScripts/FlexibleComment/CommentStyle.vim
 
-function! FlexibleCommentController2(mode) range
+function! FlexibleCommentController(mode) range
 
 python <<EOM
 import vim
@@ -14,7 +14,7 @@ mode = vim.eval('a:mode')
 first_line = vim.eval('a:firstline')
 last_line = vim.eval('a:lastline')
 
-FlexibleComment2(extension, mode, first_line, last_line).execute()
+FlexibleComment(extension, mode, first_line, last_line).execute()
 
 EOM
 
