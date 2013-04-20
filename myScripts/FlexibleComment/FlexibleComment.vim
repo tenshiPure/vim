@@ -25,7 +25,7 @@ class FlexibleComment:
 		for line_num in range(self.first_line, self.last_line + 1):
 			line = vim.current.buffer[line_num]
 
-			if self.isBlankLine(line):
+			if myString.isBlankLine(line):
 				continue
 
 			comment_style = self.getCommentStyle(line)
@@ -68,22 +68,13 @@ class FlexibleComment:
 			self.add(line_num, line, top, tail)
 	
 	#
-	# 空行判定
-	#
-	def isBlankLine(self, line):
-		if re.search('[^\ \t]', line) is None:
-			return True
-		else:
-			return False
-
-	#
 	# コメントの形式を得る
 	#
 	def getCommentStyle(self, line):
-		if self.extension != '.vim':
+		if self.extension != 'vim':
 			return self.extension
 		else:
-			return '.py'
+			return 'py'
 
 	#
 	# コメント状態の行か判定する

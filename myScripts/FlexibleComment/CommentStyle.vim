@@ -3,65 +3,65 @@ python <<EOM
 class CommentStyle:
 	
 	def getTop(comment_style):
-		if comment_style == '.java':
+		if comment_style == 'java':
 			return '//'
 
-		if comment_style == '.php':
+		if comment_style == 'php':
 			return '//'
 
-		if comment_style == '.js':
+		if comment_style == 'js':
 			return '//'
 
-		if comment_style == '.css':
+		if comment_style == 'css':
 			return '//'
 
-		if comment_style == '.ahk':
+		if comment_style == 'ahk':
 			return ';'
 
-		if comment_style == '.vim':
+		if comment_style == 'vim':
 			return '"'
 
-		if comment_style == '.py':
+		if comment_style == 'py':
 			return '#'
 
-		if comment_style == '.sh':
+		if comment_style == 'sh':
 			return '#'
 
-		if comment_style == '.html':
+		if comment_style == 'html':
 			return '<!--'
 
-		if comment_style == '.tpl':
+		if comment_style == 'tpl':
 			return '<!--'
 
 	def getTail(comment_style):
-		if comment_style == '.java':
+		if comment_style == 'java':
 			return ''
 
-		if comment_style == '.php':
+		if comment_style == 'php':
 			return ''
 
-		if comment_style == '.js':
+		if comment_style == 'js':
 			return ''
 
-		if comment_style == '.css':
+		if comment_style == 'css':
 			return ''
 
-		if comment_style == '.ahk':
+		if comment_style == 'ahk':
 			return ''
 
-		if comment_style == '.vim':
+		if comment_style == 'vim':
 			return ''
 
-		if comment_style == '.py':
+		if comment_style == 'py':
 			return ''
 
-		if comment_style == '.sh':
+		if comment_style == 'sh':
 			return ''
 
-		if comment_style == '.html':
+		if comment_style == 'html':
 			return '-->'
 
-		if comment_style == '.tpl':
+		if comment_style == 'tpl':
 			return '-->'
 
 	getTop = staticmethod(getTop)
