@@ -446,6 +446,8 @@ source $myScripts/FreelyExplorer/FreelyExplorer.vim
 
 "WordYank
 source $myScripts/common/WordYank.vim
+source $myScripts/WordYank/WordYankController.vim
+nnoremap <F8> :call WordYankController()<CR>
 
 "ReloadVimrc
 source $myScripts/ReloadVimrc/ReloadVimrc.vim

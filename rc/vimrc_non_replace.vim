@@ -187,7 +187,7 @@ nmap <silent><ESC><ESC> :noh<CR>
 vnoremap , <ESC>ggVG
 
 "単語をコピー
-nnoremap yy :call WordYank()<CR>
+nnoremap yy :call WordYankController()<CR>
 
 "単語を置換ペースト
 nnoremap yp ciw<C-r>0<ESC>
@@ -310,7 +310,7 @@ source $myScripts/FlexibleComment/FlexibleCommentController.vim
 source $myScripts/FreelyExplorer/FreelyExplorer.vim
 
 "WordYank
-source $myScripts/common/WordYank.vim
+source $myScripts/WordYank/WordYankController.vim
 
 "ReloadVimrc
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
