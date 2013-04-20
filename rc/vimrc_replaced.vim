@@ -453,43 +453,6 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 "TabCloser
 source $myScripts/TabCloser/TabCloserController.vim
 
-"MakeExecuter
-source $myScripts/MakeExecuter/MakeExecuter.vim
-
-"FlexibleFolding
-if os == 'win'
-	source $myScripts/FlexibleFolding/FlexibleFolding.vim 
-endif
-
-"SetFileType
-"source $myScripts/common/SetFileType.vim
-
-"TagController
-source $myScripts/TagController/TagController.vim
-set tags=/Users/ryo/Documents/projects/slf/tags
-command! Tv :execute ':normal *' | call TagController('v')
-command! Ts :execute ':normal *' | call TagController('s')
-command! Tt :execute ':normal *' | call TagController('t')
-
-
-cnoremap <S-BS> <ESC>:call DeleteDirectoryParser()<CR>
-
-function! DeleteDirectoryParser()
-
-	echo 'hoge'
-	return
-
-	let current_line = getline(".")
-	let delete_string = matchstr(current_line, '[^/]\+$')
-	let new_line = substitute(current_line, delete_string, '', 'g')
-	call setline(".", new_line)
-
-endfunction
-
-
-source $myScripts/VimIM/VimIMController.vim
-command! IM :call VimIMController()
-
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマン�~I
