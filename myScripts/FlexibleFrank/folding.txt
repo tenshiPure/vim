@@ -1,0 +1,81 @@
+・サンプル
+./
+
+../
+
+dir1
+
+dir2
+	hoge.txt
+
+dir3
+	dir4
+		fuga.txt
+	dir5
+		piyo.txt
+		dir6
+			doka.txt
+	dir7
+		saku.txt
+
+teto.txt
+
+・最低階層例
+
+./
+
+../
+
+dir1
+
+dir2
+	++ 0 / 1 ++
+
+dir3
+	dir4
+		++ 0 / 1 ++
+	dir5
+		piyo.txt
+		dir6
+			++ 0 / 1 ++
+	dir7
+		++ 0 / 1 ++
+
+teto.txt
+
+・複数階層例
+
+./
+
+../
+
+dir1
+
+dir2
+	++ 0 / 1 ++
+
+dir3
+	dir4
+		++ 0 / 1 ++
+	dir5
+		++ 1 / 2 ++
+	dir7
+		++ 0 / 1 ++
+
+teto.txt
+
+・複数階層例
+
+./
+
+../
+
+dir1
+
+dir2
+	++ 0 / 1 ++
+
+dir3
+	++ 4 / 4 ++
+
+teto.txt

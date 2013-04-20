@@ -1,0 +1,26 @@
+・表示内容
+
+----------------------------------------------------------------------
+          C:\Program Files (x86)\vim\gitvim\myScripts\FreelyExplorer2
+----------------------------------------------------------------------
+
+./
+
+../
+
+dir1
+
+dir2
+	hoge.txt
+
+dir3
+	dir4
+		fuga.txt
+	dir5
+		piyo.txt
+		dir6
+			doka.txt
+	dir7
+		saku.txt
+
+teto.txt
