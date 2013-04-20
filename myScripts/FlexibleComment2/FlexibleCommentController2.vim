@@ -1,9 +1,9 @@
 "FlexibleCommentController
 
-function! FlexibleCommentController2(mode) range
+source $myScripts/FlexibleComment2/FlexibleComment2.vim
+source $myScripts/FlexibleComment2/CommentStyle.vim
 
-source ./FlexibleComment2.vim
-source ./CommentStyle.vim
+function! FlexibleCommentController2(mode) range
 
 python <<EOM
 import vim

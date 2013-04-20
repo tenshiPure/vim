@@ -466,7 +466,7 @@ if os == 'win'
 endif
 
 "SetFileType
-source $myScripts/common/SetFileType.vim
+"source $myScripts/common/SetFileType.vim
 
 "TagController
 source $myScripts/TagController/TagController.vim

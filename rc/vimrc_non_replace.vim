@@ -327,7 +327,7 @@ source $myScripts/MakeExecuter/MakeExecuter.vim
 source $myScripts/FlexibleFolding/FlexibleFolding.vim --win
 
 "SetFileType
-source $myScripts/common/SetFileType.vim
+"source $myScripts/common/SetFileType.vim
 
 "TagController
 source $myScripts/TagController/TagController.vim

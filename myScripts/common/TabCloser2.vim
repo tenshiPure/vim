@@ -7,21 +7,21 @@ class TabCloser2:
 	target_buf_name = ''
 
 	#
-	# ‹[—ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	# æ“¬ä¼¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	#
 	def __init__(self):
 		self.target_buf_num  = int(vim.eval('tabpagenr()'))
 		self.target_buf_name = vim.current.buffer.name
 
 	#
-	# ƒRƒ“ƒgƒ[ƒ‰‚©‚çŒÄ‚Î‚ê‚éƒƒ\ƒbƒh
+	# ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‹ã‚‰å‘¼ã°ã‚Œã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	#
 	def execute(self):
 		self.close()
 		self.switchTab()
 
 	#
-	# ‹­§“I‚É•Â‚¶‚éì‹Æƒtƒ@ƒCƒ‹‚©‚ğ”»’è
+	# å¼·åˆ¶çš„ã«é–‰ã˜ã‚‹ä½œæ¥­ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚’åˆ¤å®š
 	#
 	def isForce(self):
 		if self.target_buf_name is None:
@@ -30,7 +30,7 @@ class TabCloser2:
 			return self.target_buf_name.find("Working_Text") != -1
 		
 	#
-	# •Â‚¶‚éÀs
+	# é–‰ã˜ã‚‹å®Ÿè¡Œ
 	#
 	def close(self):
 		if self.isForce():
@@ -39,7 +39,7 @@ class TabCloser2:
 			vim.command('execute "bdelete"')
 	
 	#
-	# ¶‚Ìƒ^ƒu‚ÖˆÚ‚é
+	# å·¦ã®ã‚¿ãƒ–ã¸ç§»ã‚‹
 	#
 	def switchTab(self):
 		if int(vim.eval('tabpagenr()')) != self.target_buf_num - 1:
