@@ -1,4 +1,0 @@
-Make: 
-	javac -encoding UTF-8 -d ../class *.java
-Run:
-	java -cp ../class Main
