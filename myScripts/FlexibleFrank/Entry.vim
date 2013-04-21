@@ -58,11 +58,6 @@ class Entry:
 	# 出力フォーマット
 	#
 	def createFormated(self):
-		depth = ''
-		for i in range(self.depth):
-			depth += '	'
-
-		result = depth + self.entryName
-		return result
+		return '\t' * self.depth + self.entryName
 
 EOM

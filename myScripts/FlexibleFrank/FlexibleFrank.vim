@@ -20,6 +20,7 @@ class FlexibleFrank:
 		myTab.openWorkingText('$myScripts/FlexibleFrank/WorkingText.frank')
 		myTab.clearCurrentBuffer()
 		self.getEntries('./')
+		self.outputHeaders()
 		self.outputEntries()
 		
 	#
@@ -40,15 +41,30 @@ class FlexibleFrank:
 				self.entries.append(Entry(cwd + full.replace('./', '\\')))
 
 	#
+	# エントリ前のヘッダ部等を出力
+	#
+	def outputHeaders(self):
+		buf = vim.current.buffer
+		cwd = os.getcwd()
+
+		buf.append('-' * len(cwd) + '--------')
+		buf.append('\t' + cwd)
+		buf.append('-' * len(cwd) + '--------')
+		buf.append('')
+		buf.append('\t./')
+		buf.append('')
+		buf.append('\t../')
+		buf.append('')
+
+	#
 	# エントリを出力
 	#
 	def outputEntries(self):
 		buf = vim.current.buffer
 
-		line = 0
+		line = len(buf) + 1
 		for entry in self.entries:
-			buf.append('')
-			buf[line] = entry.formated
+			buf.append(entry.formated)
 			self.linedEntries[line] = entry
 			line += 1
 
