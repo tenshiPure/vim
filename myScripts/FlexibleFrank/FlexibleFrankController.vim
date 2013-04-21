@@ -38,25 +38,9 @@ class FlexibleFrankController:
 	#
 	def execute(self, mode):
 
-		mode = 'hoge'
 		if mode == 'new':
 			FlexibleFrank().newFrank()
 		elif mode == 'close':
 			myTab.closeWorkingText()
-
-		self.reprDirInfo('./')
-
-	def reprDirInfo(self, dirpath):
-		cwd = os.getcwd()
-		print cwd + dirpath.replace('./', '\\')
-
-		for path in os.listdir(dirpath):
-
-			full = os.path.join(dirpath,path)
-
-			if os.path.isdir(full):
-				self.reprDirInfo(full)
-			elif os.path.isfile(full):
-				print cwd + full.replace('./', '\\')
 
 EOM

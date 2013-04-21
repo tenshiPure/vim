@@ -12,6 +12,7 @@ class Entry:
 	isDir = False
 	depth = 0
 	pointed = False
+	formated = ''
 
 	#
 	# 擬似コンストラクタ
@@ -23,6 +24,7 @@ class Entry:
 		self.isDir = self.isDirectory()
 		self.depth = self.getDepth()
 		self.pointed = False
+		self.formated = self.createFormated()
 
 	#
 	# エントリ名を取得
@@ -42,6 +44,7 @@ class Entry:
 	#
 	def isDirectory(self):
 		return os.path.isdir(self.fullPath)
+
 	#
 	# 階層深度を取得
 	#
@@ -50,5 +53,16 @@ class Entry:
 		cwdDepth = cwd.count(os.sep)
 		fullDepth = self.fullPath.count(os.sep)
 		return fullDepth - cwdDepth
+
+	#
+	# 出力フォーマット
+	#
+	def createFormated(self):
+		depth = ''
+		for i in range(self.depth):
+			depth += '	'
+
+		result = depth + self.entryName
+		return result
 
 EOM

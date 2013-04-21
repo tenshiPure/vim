@@ -3,12 +3,14 @@ import vim
 
 class FlexibleFrank:
 
+	entries = []
 	linedEntries = {}
 
 	#
 	# 擬似コンストラクタ
 	#
 	def __init__(self):
+		self.entries = []
 		self.linedEntries = {}
 
 	#
@@ -17,48 +19,25 @@ class FlexibleFrank:
 	def newFrank(self):
 		myTab.openWorkingText('$myScripts/FlexibleFrank/WorkingText.frank')
 		myTab.clearCurrentBuffer()
-		tmpEntries = self.getEntries()
-		sortedEntries = self.sortEntries(tmpEntries)
-		self.createLinedEntries(sortedEntries)
+		self.getEntries('./')
 		self.outputEntries()
 		
 	#
 	# エントリを生成
 	#
-	def getEntries(self):
-		result = []
+	def getEntries(self, dirpath):
+		cwd = os.getcwd()
 
-		for headPath, dirs, files in os.walk(os.getcwd()):
-			for dir in dirs:
-				result.append(Entry(headPath + os.sep + dir))
-			for file in files:
-				result.append(Entry(headPath + os.sep + file))
+		if dirpath != './':
+			self.entries.append(Entry(cwd + dirpath.replace('./', '\\')))
 
-		return result
+		for path in os.listdir(dirpath):
+			full = os.path.join(dirpath, path)
 
-	#
-	# エントリをソート
-	#
-	def sortEntries(self, target):
-		tmpSorted = {}
-		result = []
-		for entry in target:
-			tmpSorted[entry.underCurrentDepth] = entry
-
-		for key in sorted(tmpSorted.keys()):
-			result.append(tmpSorted[key])
-
-		return result
-
-	#
-	# エントリを行数に紐付ける
-	#
-	def createLinedEntries(self, target):
-
-		index = 0
-		for entry in target:
-			self.linedEntries[index] = entry
-			index += 1
+			if os.path.isdir(full):
+				self.getEntries(full)
+			elif os.path.isfile(full):
+				self.entries.append(Entry(cwd + full.replace('./', '\\')))
 
 	#
 	# エントリを出力
@@ -66,10 +45,11 @@ class FlexibleFrank:
 	def outputEntries(self):
 		buf = vim.current.buffer
 
-		for index in range(len(self.linedEntries)):
+		line = 0
+		for entry in self.entries:
 			buf.append('')
-
-		for index in range(len(self.linedEntries)):
-			buf[index] = self.linedEntries[index].entryName
+			buf[line] = entry.formated
+			self.linedEntries[line] = entry
+			line += 1
 
 EOM
