@@ -11,36 +11,26 @@ autocmd TabLeave *.frank :call FlexibleFrankController('close')
 autocmd BufRead,BufNewFile *.frank set filetype=frank
 
 function! FlexibleFrankController(mode)
-python <<EOM
-FlexibleFrankController().execute(vim.eval('a:mode'))
-EOM
-endfunction
-
-
-
-
 
 python <<EOM
+
 import vim
-import os
-import glob
 
-class FlexibleFrankController:
+mode = vim.eval('a:mode')
 
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self):
-		pass
+if mode == 'new':
+	frank = FlexibleFrank()
+	frank.newFrank()
 
-	#
-	# コントローラから呼ばれる、処理振り分けメソッド
-	#
-	def execute(self, mode):
+elif mode == 'close':
+	myTab.closeWorkingText()
 
-		if mode == 'new':
-			FlexibleFrank().newFrank()
-		elif mode == 'close':
-			myTab.closeWorkingText()
+elif mode == 'enter':
+	frank.commandEnter()
+
+elif mode == 'decEnter':
+	frank.commandDecEnter()
 
 EOM
+
+endfunction

@@ -336,3 +336,5 @@ let $path .= ';C:\Python27'
 
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 nnoremap <F8> :call FlexibleFrankController('new')<CR>
+nnoremap <F9> :call FlexibleFrankController('enter')<CR>
+nnoremap <M-F9> :call FlexibleFrankController('decEnter')<CR>
