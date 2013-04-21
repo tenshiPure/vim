@@ -1,6 +1,6 @@
 python <<EOM
 import vim
-import sys
+import os
 
 class FlexibleFrank:
 
@@ -77,6 +77,18 @@ class FlexibleFrank:
 			line += 1
 
 	#
+	# コマンド　ディレクトリを開く
+	#
+	def commandOpen(self):
+		if not(self.isWorkingText()):
+			return
+
+		currentLine = int(myCursor().getCursolLine())
+		target = self.linedEntries[currentLine].underCurrentDepth
+
+		if self.linedEntries[currentLine].isDir:
+			self.openDir(target)
+	#
 	# コマンド　エンター
 	#
 	def commandEnter(self):
@@ -90,8 +102,33 @@ class FlexibleFrank:
 
 		targetFullPath = self.linedEntries[currentLine].fullPath
 
+		if self.linedEntries[currentLine].isDir:
+			self.changeDir(targetFullPath)
+		else:
+			self.editTarget(targetFullPath)
+
+	#
+	# cdする
+	#
+	def changeDir(self, targetFullPath):
+		vim.command('cd ' + targetFullPath)
+		self.reloadFrank()
+
+	#
+	# 対象を開く
+	#
+	def editTarget(self, targetFullPath):
 		myTab.closeWorkingText()
 		vim.command('tabedit ' + targetFullPath)
+
+	#
+	# ディレクトリを開く
+	#
+	def openDir(self, target):
+		if os.name == 'nt':
+			vim.command('silent !explorer ' + target)
+		else:
+			vim.command('execute silent !open ' + target)
 
 	#
 	# 作業バッファかチェック

@@ -195,11 +195,6 @@ nnoremap yp ciw<C-r>0<ESC>
 "ビジュアル矩形モードの物理キー配置をmac と揃える
 nnoremap <M-S-v> <C-S-v> --win
 
-"レジスタへ格納（フルパス）
-command! RegP :let @*=expand('%:p') --win
-"レジスタへ格納（ファイル名＋拡張子）
-command! RegT :let @*=expand('%:t') --win
-
 "コマンドラインモードへ移行
 nnoremap <sid>(command-line-enter) q: --win
 nnoremap <sid>(command-line-enter) q: --mac
@@ -207,7 +202,6 @@ nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
 "コメント操作
-
 nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
 vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
 nnoremap ?      :call FlexibleCommentController('delete')<CR> --win
@@ -222,27 +216,11 @@ vnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
 nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
-"make コマンドの実行と結果の出力
-command! Mk :call MakeExecuter(&filetype, 'Make')
-command! Rn :call MakeExecuter(&filetype, 'Run')
-command! Ts :call MakeExecuter(&filetype, 'Test')
-nnoremap <M-UP> :call MakeExecuter(&filetype, 'Re!')<CR> --win
-nnoremap <C-UP> :call MakeExecuter(&filetype, 'Re!')<CR> --mac
-
-"作業ファイルか、装飾キーがあるか、取得したパスはディレクトリか、で実行コマンド振り分ける。
-"FreelyExplorer
-"edit
-"tabedit
-"move
-"move_back
-"os_explorer
-"none
-nnoremap <M-CR> :call ExecuteDispatcher('none')<CR> --win
-nnoremap <C-CR> :call ExecuteDispatcher('none')<CR> --mac
-nnoremap <S-M-CR> :call ExecuteDispatcher('attribute')<CR> --win
-nnoremap <S-C-CR> :call ExecuteDispatcher('attribute')<CR> --mac
-command! Fetop /^[^\t./-]\+$
-command! Feall /^[^./-]\+$
+"フランク
+nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>
+nnoremap <M-CR>   :call FlexibleFrankController('enter')<CR>
+nnoremap )        :call FlexibleFrankController('open')<CR>
+nnoremap <F5>     :call FlexibleFrankController('reload')<CR>
 
 "補完操作のマッピング
 inoremap <M-CR>   <C-p>--win
@@ -261,22 +239,6 @@ inoremap <F1> <ESC>
 
 "vimrc の置換と読み込み
 nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
-
-"明細のログ出力文
-"inoremap <F2> $this->debugLog(__LINE__, 'output_all ... ' . print_r($, true));<ESC>9<LEFT>a--mac
-
-"SeLFのログ出力文
-inoremap <F2> AppLog::debug('output ... ' . print_r($, true));<ESC>9<LEFT>a--mac
-		
-"全消去して保存
-nnoremap <F5> ggdG:w<ENTER> --mac
-
-"ぼっちのログ出力文
-nnoremap <F10> iecho '<pre>';<ENTER>var_dump($);<ENTER>echo '</pre>';<ESC><UP><LEFT>i
-inoremap <F10>  echo '<pre>';<ENTER>var_dump($);<ENTER>echo '</pre>';<ESC><UP><LEFT>i
-
-"ログ出力の検索
-nnoremap <S-F5> /output<ENTER> --mac
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -306,8 +268,8 @@ set viminfo=
 "FlexibleComment
 source $myScripts/FlexibleComment/FlexibleCommentController.vim
 
-"FreelyExplorer
-source $myScripts/FreelyExplorer/FreelyExplorer.vim
+"FlexibleFrank
+source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
 "WordYank
 source $myScripts/WordYank/WordYankController.vim
@@ -333,8 +295,3 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
-
-source $myScripts/FlexibleFrank/FlexibleFrankController.vim
-nnoremap <F8> :call FlexibleFrankController('new')<CR>
-nnoremap <F9> :call FlexibleFrankController('enter')<CR>
-nnoremap <S-M-F9> :call FlexibleFrankController('reload')<CR>
