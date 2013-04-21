@@ -22,6 +22,16 @@ class FlexibleFrank:
 		self.getEntries('./')
 		self.outputHeaders()
 		self.outputEntries()
+	
+	#
+	# 更新
+	#
+	def reloadFrank(self):
+		self.entries = []
+		self.linedEntries = {}
+		self.getEntries('./')
+		self.outputHeaders()
+		self.outputEntries()
 		
 	#
 	# エントリを生成

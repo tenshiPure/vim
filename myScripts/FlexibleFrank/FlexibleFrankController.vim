@@ -32,8 +32,8 @@ elif mode == 'close':
 elif mode == 'enter':
 	frank.commandEnter()
 
-elif mode == 'decEnter':
-	frank.commandDecEnter()
+elif mode == 'reload':
+	frank.reloadFrank()
 
 EOM
 
