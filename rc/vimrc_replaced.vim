@@ -468,3 +468,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
+
+source $myScripts/FlexibleFrank/FlexibleFrankController.vim
+nnoremap <F8> :call FlexibleFrankController('new')<CR>

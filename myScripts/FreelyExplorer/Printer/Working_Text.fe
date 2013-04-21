@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-          C:\Program Files (x86)\vim\gitvim\myScripts
+          C:\Program Files (x86)\vim\gitvim\myScripts\FreelyExplorer
 ----------------------------------------------------------------------
 
 ./
@@ -8,104 +8,28 @@
 
 -
 
+FreelyExplorer.vim
 
-common
-	MakeEncoding_win.vim
-	SetFileType.vim
-	TabCloser.vim
-	TabFocus.vim
-	WordYank.vim
+Analyzer
+	GetFilename.vim
+	GetFullpath.vim
+	GetHeadAndFilename.vim
+	GetHeadpath.vim
+	GetTabCount.vim
+	ListToString.vim
 
-FlexibleComment
-	FlexibleComment.vim
-	IsBlankLine.vim
-	extensions
-		ahk
-			Add_ahk.vim
-			Delete_ahk.vim
-			Switch_ahk.vim
-			TestText.ahk
-		html
-			Add_html.vim
-			Delete_html.vim
-			Switch_html.vim
-			TestText.html
-		java
-			Add_java.vim
-			Delete_java.vim
-			Switch_java.vim
-			TestText.java
-		js
-			Add_js.vim
-			Delete_js.vim
-			Switch_js.vim
-			TestText.js
-		php
-			Add_php.vim
-			Delete_php.vim
-			Switch_php.vim
-			TestText.php
-		sh
-			Add_sh.vim
-			Delete_sh.vim
-			Switch_sh.vim
-			TestText.sh
-		tpl
-			Add_tpl.vim
-			Delete_tpl.vim
-			Switch_tpl.vim
-			TestText.tpl
-		vim
-			Add_vim.vim
-			Delete_vim.vim
-			Switch_vim.vim
-			TestText.vim
+Executer
+	DirectoryMove.vim
+	ExecuteDispatcher.vim
+	FileOpen.vim
+	OsExplorer.vim
+	PreExecute.vim
+	PreExecute.vimbup
 
-FlexibleFolding
-	FlexibleFolding.vim
-	memo.txt
-	risou.txt
-	sample.php
-
-FreelyExplorer
-	FreelyExplorer.vim
-	Analyzer
-		GetFilename.vim
-		GetFullpath.vim
-		GetHeadAndFilename.vim
-		GetHeadpath.vim
-		GetTabCount.vim
-		ListToString.vim
-	Executer
-		DirectoryMove.vim
-		ExecuteDispatcher.vim
-		FileOpen.vim
-		OsExplorer.vim
-		PreExecute.vim
-		PreExecute.vimbup
-	Printer
-		EchoEntries.vim
-		GetAllDirectries.vim
-		MakeFileDict.vim
-		PickOutEntries.vim
-		Working_Text.fe
-
-MakeExecuter
-	EchoFooter.vim
-	EchoHeader.vim
-	MakeExecuter.vim
-	Working_Text.me
-
-python
-	hoge.vim
-
-ReloadVimrc
-	EnvMarkReplace.vim
-	ReloadVimrc.vim
-
-TagController
-	TagController.vim
-
-VimIM
-	VimIMController.vim
+Printer
+	EchoEntries.vim
+	GetAllDirectries.vim
+	MakeFileDict.vim
+	PickOutEntries.vim
+	Working_Text.fe
 
