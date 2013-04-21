@@ -32,6 +32,7 @@ class myTab:
 
 		if isWorkingText:
 			vim.command('bdelete!')
+
 	#
 	# カレントバッファを空にする
 	#

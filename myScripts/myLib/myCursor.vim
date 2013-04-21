@@ -37,4 +37,11 @@ class myCursor:
 	#
 	def movePos(self, lnum, col, off):
 		vim.command('call cursor(' + lnum + ',' + col + ',' + off + ')')
+
+	#
+	# カーソルが何行目にあるか取得
+	#
+	def getCursolLine(self):
+		self.storePos()
+		return self.lnum
 EOM

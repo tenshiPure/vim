@@ -1,14 +1,18 @@
 "FlexibleFrank.vim
 
+source $myScripts/myLib/myCursor.vim
 source $myScripts/myLib/myTab.vim
 
 source $myScripts/FlexibleFrank/Entry.vim
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
 
-autocmd FocusLost *.frank :call FlexibleFrankController('close')
-autocmd TabLeave *.frank :call FlexibleFrankController('close')
+augroup autoCmdFrank
+	autocmd!
+augroup END
 
-autocmd BufRead,BufNewFile *.frank set filetype=frank
+"autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
+"autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
+autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 
 function! FlexibleFrankController(mode)
 

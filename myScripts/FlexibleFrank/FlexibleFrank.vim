@@ -1,5 +1,6 @@
 python <<EOM
 import vim
+import sys
 
 class FlexibleFrank:
 
@@ -52,10 +53,6 @@ class FlexibleFrank:
 		buf.append('    ' + cwd)
 		buf.append('-' * len(cwd) + '--------')
 		buf.append('')
-		buf.append('\t./')
-		buf.append('')
-		buf.append('\t../')
-		buf.append('')
 
 	#
 	# エントリを出力
@@ -73,19 +70,23 @@ class FlexibleFrank:
 	# コマンド　エンター
 	#
 	def commandEnter(self):
-		if self.isWorkingText():
-			print 'enter'
+		if not(self.isWorkingText()):
+			return
+
+		currentLine = int(myCursor().getCursolLine())
+
+		if currentLine < 5:
+			return
+
+		targetFullPath = self.linedEntries[currentLine].fullPath
+
+		myTab.closeWorkingText()
+		vim.command('tabedit ' + targetFullPath)
 
 	#
-	# コマンド　修飾エンター
-	#
-	def commandDecEnter(self):
-		if self.isWorkingText():
-			print 'decEnter'
-
-	#
-	# コマンド実行前のチェック
+	# 作業バッファかチェック
 	#
 	def isWorkingText(self):
 		return vim.current.buffer.name.find('WorkingText.frank') != -1
+
 EOM
