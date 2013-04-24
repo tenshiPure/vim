@@ -6,10 +6,10 @@ import os.path
 class myFile:
 
 	#
-	# ƒJƒŒƒ“ƒgƒoƒbƒtƒ@‚ÌŠg’£qæ“¾
+	# ã‚«ãƒ¬ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ã®æ‹¡å¼µå­å–å¾—
 	#
 	def getExtension():
-		tmp_root, extension = os.path.splitext(vim.current.buffer.name)
+		tmpRoot, extension = os.path.splitext(vim.current.buffer.name)
 		return extension[1:]
 
 	getExtension = staticmethod(getExtension)

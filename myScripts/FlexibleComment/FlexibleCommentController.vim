@@ -13,10 +13,10 @@ import vim
 
 extension = myFile.getExtension()
 mode = vim.eval('a:mode')
-first_line = vim.eval('a:firstline')
-last_line = vim.eval('a:lastline')
+firstLine = vim.eval('a:firstline')
+lastLine = vim.eval('a:lastline')
 
-FlexibleComment(extension, mode, first_line, last_line).execute()
+FlexibleComment(extension, mode, firstLine, lastLine).execute()
 
 EOM
 

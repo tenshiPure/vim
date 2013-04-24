@@ -3,15 +3,15 @@ import vim
 
 class TabCloser:
 
-	target_buf_num  = 0
-	target_buf_name = ''
+	targetBufNum  = 0
+	targetBufName = ''
 
 	#
 	# 擬似コンストラクタ
 	#
 	def __init__(self):
-		self.target_buf_num  = int(vim.eval('tabpagenr()'))
-		self.target_buf_name = vim.current.buffer.name
+		self.targetBufNum  = int(vim.eval('tabpagenr()'))
+		self.targetBufName = vim.current.buffer.name
 
 	#
 	# コントローラから呼ばれるメソッド
@@ -24,10 +24,10 @@ class TabCloser:
 	# 強制的に閉じるタブか判定
 	#
 	def isForce(self):
-		if self.target_buf_name is None:
+		if self.targetBufName is None:
 			return False
 		else:
-			return self.target_buf_name.find("WorkingText") != -1
+			return self.targetBufName.find("WorkingText") != -1
 		
 	#
 	# タブを閉じる
@@ -42,6 +42,6 @@ class TabCloser:
 	# 左のタブへ移る
 	#
 	def moveLeftTab(self):
-		if int(vim.eval('tabpagenr()')) != self.target_buf_num - 1:
+		if int(vim.eval('tabpagenr()')) != self.targetBufNum - 1:
 			vim.command('execute ":normal gT"')
 EOM

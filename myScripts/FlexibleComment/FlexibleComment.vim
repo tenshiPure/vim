@@ -6,66 +6,66 @@ class FlexibleComment:
 
 	extension = ''
 	mode = ''
-	first_line = 0
-	last_line = 0
+	firstLine = 0
+	lastLine = 0
 
 	#
 	# 擬似コンストラクタ
 	#
-	def __init__(self, extension, mode, first_line, last_line):
+	def __init__(self, extension, mode, firstLine, lastLine):
 		self.extension = extension
 		self.mode = mode
-		self.first_line = int(first_line) - 1
-		self.last_line = int(last_line) - 1
+		self.firstLine = int(firstLine) - 1
+		self.lastLine = int(lastLine) - 1
 
 	#
 	# コントローラから呼ばれるメソッド
 	#
 	def execute(self):
-		for line_num in range(self.first_line, self.last_line + 1):
-			line = vim.current.buffer[line_num]
+		for lineNum in range(self.firstLine, self.lastLine + 1):
+			line = vim.current.buffer[lineNum]
 
 			if myString.isBlankLine(line):
 				continue
 
-			comment_style = self.getCommentStyle(line)
+			commentStyle = self.getCommentStyle(line)
 
-			top = CommentStyle.getTop(comment_style)
-			tail = CommentStyle.getTail(comment_style)
+			top = CommentStyle.getTop(commentStyle)
+			tail = CommentStyle.getTail(commentStyle)
 
 			if mode == 'add':
-				self.add(line_num, line, top, tail)
+				self.add(lineNum, line, top, tail)
 
 			elif mode == 'delete':
-				self.delete(line_num, line, top, tail)
+				self.delete(lineNum, line, top, tail)
 
 			elif mode == 'switch':
-				self.switch(line_num, line, top, tail)
+				self.switch(lineNum, line, top, tail)
 
 		return
 
 	#
 	# コメント状態にする
 	#
-	def add(self, line_num, line, top, tail):
-		vim.current.buffer[line_num] = top + line + tail
+	def add(self, lineNum, line, top, tail):
+		vim.current.buffer[lineNum] = top + line + tail
 
 	#
 	# コメント状態を解除する
 	#
-	def delete(self, line_num, line, top, tail):
-		cut_top = line.replace(top, '', 1)
-		cut_top_tail = cut_top.replace(tail, '', 1)
-		vim.current.buffer[line_num] = cut_top_tail
+	def delete(self, lineNum, line, top, tail):
+		cutTop = line.replace(top, '', 1)
+		cutTopTail = cutTop.replace(tail, '', 1)
+		vim.current.buffer[lineNum] = cutTopTail
 
 	#
 	# コメント状態を逆転する
 	#
-	def switch(self, line_num, line, top, tail):
+	def switch(self, lineNum, line, top, tail):
 		if self.isCommentedLine(line, top):
-			self.delete(line_num, line, top, tail)
+			self.delete(lineNum, line, top, tail)
 		else:
-			self.add(line_num, line, top, tail)
+			self.add(lineNum, line, top, tail)
 	
 	#
 	# コメントの形式を得る
