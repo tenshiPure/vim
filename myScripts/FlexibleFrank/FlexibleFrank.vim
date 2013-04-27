@@ -19,6 +19,7 @@ class FlexibleFrank:
 	#
 	def newFrank(self):
 		myTab.openWorkingText('$myScripts/FlexibleFrank/WorkingText.frank')
+		myTab.mapBufferLocal()
 		self.getEntries('./')
 		self.outputHeaders()
 		self.outputEntries()
@@ -36,14 +37,14 @@ class FlexibleFrank:
 	#
 	# エントリを生成
 	#
-	def getEntries(self, dirpath):
+	def getEntries(self, dirPath):
 		cwd = os.getcwd()
 
-		if dirpath != './':
-			self.entries.append(Entry(cwd + dirpath.replace('./', '\\')))
+		if dirPath != './':
+			self.entries.append(Entry(cwd + dirPath.replace('./', '\\')))
 
-		for path in os.listdir(dirpath):
-			full = os.path.join(dirpath, path)
+		for path in os.listdir(dirPath):
+			full = os.path.join(dirPath, path)
 
 			if os.path.isdir(full):
 				self.getEntries(full)
@@ -72,40 +73,28 @@ class FlexibleFrank:
 
 		line = len(buf) + 1
 		for entry in self.entries:
-			buf.append(entry.formated)
+			buf.append(entry.formatedForOutput)
 			self.linedEntries[line] = entry
 			line += 1
 
-	#
-	# コマンド　ディレクトリを開く
-	#
-	def commandOpen(self):
-		if not(self.isWorkingText()):
-			return
+#	#
+#	# コマンド　エンター
+#	#
+#	def commandEnter(self):
+#		if not(self.isWorkingText()):
+#			return
 
-		currentLine = int(myCursor().getCursolLine())
-		target = self.linedEntries[currentLine].underCurrentDepth
+#		currentLine = int(myCursor().getCursolLine())
 
-		if self.linedEntries[currentLine].isDir:
-			self.openDir(target)
-	#
-	# コマンド　エンター
-	#
-	def commandEnter(self):
-		if not(self.isWorkingText()):
-			return
+#		if currentLine < 5:
+#			return
 
-		currentLine = int(myCursor().getCursolLine())
+#		targetFullPath = self.linedEntries[currentLine].fullPath
 
-		if currentLine < 5:
-			return
-
-		targetFullPath = self.linedEntries[currentLine].fullPath
-
-		if self.linedEntries[currentLine].isDir:
-			self.changeDir(targetFullPath)
-		else:
-			self.editTarget(targetFullPath)
+#		if self.linedEntries[currentLine].isDir:
+#			self.changeDir(targetFullPath)
+#		else:
+#			self.editTarget(targetFullPath)
 
 	#
 	# cdする
@@ -120,20 +109,5 @@ class FlexibleFrank:
 	def editTarget(self, targetFullPath):
 		myTab.closeWorkingText()
 		vim.command('tabedit ' + targetFullPath)
-
-	#
-	# ディレクトリを開く
-	#
-	def openDir(self, target):
-		if os.name == 'nt':
-			vim.command('silent !explorer ' + target)
-		else:
-			vim.command('execute silent !open ' + target)
-
-	#
-	# 作業バッファかチェック
-	#
-	def isWorkingText(self):
-		return vim.current.buffer.name.find('WorkingText.frank') != -1
 
 EOM

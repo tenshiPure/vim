@@ -3,8 +3,9 @@
 source $myScripts/myLib/myCursor.vim
 source $myScripts/myLib/myTab.vim
 
-source $myScripts/FlexibleFrank/Entry.vim
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
+source $myScripts/FlexibleFrank/Entry.vim
+source $myScripts/FlexibleFrank/commandOpen.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -33,7 +34,7 @@ elif mode == 'enter':
 	frank.commandEnter()
 
 elif mode == 'open':
-	frank.commandOpen()
+	commandOpen.commandOpen(frank)
 
 elif mode == 'reload':
 	frank.reloadFrank()

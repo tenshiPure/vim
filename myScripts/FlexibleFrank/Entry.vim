@@ -12,7 +12,7 @@ class Entry:
 	isDir = False
 	depth = 0
 	pointed = False
-	formated = ''
+	formatedForOutput = ''
 
 	#
 	# 擬似コンストラクタ
@@ -21,10 +21,10 @@ class Entry:
 		self.fullPath = fullPath
 		self.entryName = self.getEntryName()
 		self.underCurrentDepth = self.getUnderCurrentDepth()
-		self.isDir = self.isDirectory()
+		self.isDir = self.getIsDir()
 		self.depth = self.getDepth()
 		self.pointed = False
-		self.formated = self.createFormated()
+		self.formatedForOutput = self.createFormatedForOutput()
 
 	#
 	# エントリ名を取得
@@ -42,7 +42,7 @@ class Entry:
 	#
 	# ディレクトリかどうかを判定
 	#
-	def isDirectory(self):
+	def getIsDir(self):
 		return os.path.isdir(self.fullPath)
 
 	#
@@ -57,7 +57,7 @@ class Entry:
 	#
 	# 出力フォーマット
 	#
-	def createFormated(self):
+	def createFormatedForOutput(self):
 		return '\t' * self.depth + self.entryName
 
 EOM

@@ -47,9 +47,6 @@ set columns=250 --mac
 "クリップボードかな
 set clipboard=unnamed
 
-"長い行でも自動改行しない
-set textwidth=0
-
 "文字コードの設定
 autocmd BufNew * set fileencoding=utf8 --win
 
@@ -171,6 +168,9 @@ nnoremap <D-Space> :call TabCloserController()<CR> --mac
 " その他操作のマッピングだよ
 "
 " ----------------------------------------------------------------------------------------------------
+" 入力中 C-zC-z で zz 処理
+inoremap <silent> <C-z><C-z> <ESC>zza
+
 " * コマンドで移動しない
 nnoremap * *N
 
@@ -289,7 +289,6 @@ source $myScripts/TabCloser/TabCloserController.vim
 " ----------------------------------------------------------------------------------------------------
 autocmd QuickFixCmdPost *grep* cwindow
 
-
 " ----------------------------------------------------------------------------------------------------
 " 
 " 環境変数の追記
@@ -297,3 +296,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ----------------------------------------------------------------------------------------------------
 "python
 let $path .= ';C:\Python27'
+
+"nose
+let $path .= 'C:\Python27\Scripts'
