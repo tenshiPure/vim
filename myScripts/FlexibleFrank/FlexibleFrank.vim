@@ -24,6 +24,15 @@ class FlexibleFrank:
 		self.outputEntries()
 	
 	#
+	# ２つめのフランクを開く
+	#
+	def moreFrank(self):
+		myTab.openMoreWorkingText('$myScripts/FlexibleFrank/MoreWorkingText.frank')
+		self.getEntries('./')
+		self.outputHeaders()
+		self.outputEntries()
+		
+	#
 	# 更新
 	#
 	def reloadFrank(self):

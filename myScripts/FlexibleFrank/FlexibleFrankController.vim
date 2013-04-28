@@ -64,6 +64,9 @@ elif mode == 'upperDir':
 elif mode == 'lastDir':
 	Move.lastDir()
 
+elif mode == 'tab':
+	frank.moreFrank()
+
 EOM
 
 endfunction
@@ -80,4 +83,5 @@ function! SetBufLocalMapping()
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	nnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 	vnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
+	nnoremap <buffer> <Tab> :call FlexibleFrankController('tab')<CR>
 endfunction

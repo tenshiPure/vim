@@ -14,6 +14,13 @@ class myTab:
 			vim.command('tabedit ' + path)
 		
 	#
+	# ２つめの作業バッファを開く
+	#
+	def openMoreWorkingText(path):
+		vim.command('set splitbelow')
+		vim.command('split ' + path)
+		
+	#
 	# 無題のタブか判定
 	#
 	def isBlankTab():
@@ -40,6 +47,7 @@ class myTab:
 		vim.current.buffer[:] = None
 		
 	openWorkingText = staticmethod(openWorkingText)
+	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
 	closeWorkingText = staticmethod(closeWorkingText)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
