@@ -6,8 +6,9 @@ source $myScripts/myLib/myTab.vim
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
 source $myScripts/FlexibleFrank/Entry.vim
 
-source $myScripts/FlexibleFrank/command/helper.vim
-source $myScripts/FlexibleFrank/command/open.vim
+source $myScripts/FlexibleFrank/command/Helper.vim
+source $myScripts/FlexibleFrank/command/Open.vim
+source $myScripts/FlexibleFrank/command/Move.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -32,14 +33,14 @@ if mode == 'new':
 elif mode == 'close':
 	myTab.closeWorkingText()
 
-elif mode == 'enter':
-	frank.commandEnter()
+elif mode == 'reload':
+	frank.reloadFrank()
+
+elif mode == 'move':
+	Move.execute(frank)
 
 elif mode == 'open':
 	Open.execute(frank)
-
-elif mode == 'reload':
-	frank.reloadFrank()
 
 EOM
 

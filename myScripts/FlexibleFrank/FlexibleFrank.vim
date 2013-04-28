@@ -97,13 +97,6 @@ class FlexibleFrank:
 #			self.editTarget(targetFullPath)
 
 	#
-	# cdする
-	#
-	def changeDir(self, targetFullPath):
-		vim.command('cd ' + targetFullPath)
-		self.reloadFrank()
-
-	#
 	# 対象を開く
 	#
 	def editTarget(self, targetFullPath):

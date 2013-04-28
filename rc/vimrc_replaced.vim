@@ -323,14 +323,8 @@ endif
 if os == 'win'
 	nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>   
 endif
-if os == 'mac'
-	nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR>   
-endif
 if os == 'win'
-	nnoremap <M-CR>   :call FlexibleFrankController('enter')<CR> 
-endif
-if os == 'mac'
-	nnoremap <C-CR>   :call FlexibleFrankController('enter')<CR> 
+	nnoremap !        :call FlexibleFrankController('move')<CR> 
 endif
 nnoremap )        :call FlexibleFrankController('open')<CR>
 nnoremap <F5>     :call FlexibleFrankController('reload')<CR>

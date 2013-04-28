@@ -1,10 +1,10 @@
 python <<EOM
 import vim
 
-class Open:
+class Move:
 
 	#
-	# ディレクトリを開く
+	# ディレクトリを変更する
 	#
 	def execute(frank):
 		if not(Helper.isWorkingText()):
@@ -15,10 +15,8 @@ class Open:
 		if targetEntry.isDir == False:
 			return
 
-		if os.name == 'nt':
-			vim.command('silent !explorer ' + targetEntry.underCurrentDepth)
-		else:
-			vim.command('execute silent !open ' + targetEntry.underCurrentDepth)
+		vim.command('cd ' + targetEntry.fullPath)
+		frank.reloadFrank()
 
 	execute = staticmethod(execute)
 EOM
