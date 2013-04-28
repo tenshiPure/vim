@@ -5,6 +5,7 @@ source $myScripts/myLib/myTab.vim
 
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
 source $myScripts/FlexibleFrank/Entry.vim
+source $myScripts/FlexibleFrank/executableHelper.vim
 source $myScripts/FlexibleFrank/commandOpen.vim
 
 augroup autoCmdFrank
@@ -34,7 +35,7 @@ elif mode == 'enter':
 	frank.commandEnter()
 
 elif mode == 'open':
-	commandOpen.commandOpen(frank)
+	executableHelper.commandDispatch(frank, 'open')
 
 elif mode == 'reload':
 	frank.reloadFrank()
