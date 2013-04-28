@@ -15,7 +15,7 @@ class Move:
 		if not(targetEntry.isDir):
 			return
 
-		vim.command('cd ' + targetEntry.fullPath)
+		vim.command('lcd ' + targetEntry.fullPath)
 		frank.reloadFrank()
 
 	#
@@ -25,7 +25,7 @@ class Move:
 		if not(Helper.isWorkingText()):
 			return
 
-		vim.command('cd ../')
+		vim.command('lcd ../')
 		frank.reloadFrank()
 
 	#
@@ -35,7 +35,7 @@ class Move:
 		if not(Helper.isWorkingText()):
 			return
 
-		vim.command('cd -')
+		vim.command('lcd -')
 		frank.reloadFrank()
 
 	move = staticmethod(move)
