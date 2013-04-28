@@ -12,7 +12,7 @@ class Open:
 
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
-		if targetEntry.isDir == False:
+		if not(targetEntry.isDir):
 			return
 
 		if os.name == 'nt':

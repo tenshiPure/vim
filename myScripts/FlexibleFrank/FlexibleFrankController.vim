@@ -41,11 +41,17 @@ elif mode == 'reload':
 elif mode == 'edit':
 	Edit.execute(frank)
 
-elif mode == 'move':
-	Move.execute(frank)
-
 elif mode == 'open':
 	Open.execute(frank)
+
+elif mode == 'move':
+	Move.move(frank)
+
+elif mode == 'upperDir':
+	Move.upperDir()
+
+elif mode == 'lastDir':
+	Move.lastDir()
 
 EOM
 
@@ -55,5 +61,7 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> e    :call FlexibleFrankController('edit')<CR>
 	nnoremap <buffer> m    :call FlexibleFrankController('move')<CR>
 	nnoremap <buffer> o    :call FlexibleFrankController('open')<CR>
+	nnoremap <buffer> h    :call FlexibleFrankController('upperDir')<CR>
+	nnoremap <buffer> l    :call FlexibleFrankController('lastDir')<CR>
 	nnoremap <buffer> <F5> :call FlexibleFrankController('reload')<CR>
 endfunction
