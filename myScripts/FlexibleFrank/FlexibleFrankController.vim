@@ -20,13 +20,15 @@ augroup END
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 autocmd autoCmdFrank BufEnter *.frank call SetBufLocalMapping()
 
-function! FlexibleFrankController(mode)
+function! FlexibleFrankController(mode) range
 
 python <<EOM
 
 import vim
 
 mode = vim.eval('a:mode')
+firstLine = vim.eval('a:firstline')
+lastLine = vim.eval('a:lastline')
 
 if mode == 'new':
 	frank = FlexibleFrank()
@@ -39,10 +41,10 @@ elif mode == 'reload':
 	frank.reloadFrank()
 
 elif mode == 'pointOn':
-	frank.pointOn()
+	frank.pointOn(int(firstLine), int(lastLine))
 
 elif mode == 'pointOff':
-	frank.pointOff()
+	frank.pointOff(int(firstLine), int(lastLine))
 
 elif mode == 'edit':
 	Edit.execute(frank)
@@ -75,5 +77,7 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
+	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	nnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
+	vnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 endfunction

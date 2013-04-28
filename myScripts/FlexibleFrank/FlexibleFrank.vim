@@ -79,12 +79,12 @@ class FlexibleFrank:
 	#
 	# ポイントをオンにする
 	#
-	def pointOn(self):
+	def pointOn(self, firstLine, lastLine):
 		cursor = myCursor()
 		cursor.storePos()
 
-		currentLine = int(myCursor().getCursolLineNum())
-		self.linedEntries[currentLine].pointOn()
+		for index in range(firstLine, lastLine + 1):
+			self.linedEntries[index].pointOn()
 
 		self.outputHeaders()
 		self.outputEntries()
@@ -94,12 +94,12 @@ class FlexibleFrank:
 	#
 	# ポイントをオフにする
 	#
-	def pointOff(self):
+	def pointOff(self, firstLine, lastLine):
 		cursor = myCursor()
 		cursor.storePos()
 
-		currentLine = int(myCursor().getCursolLineNum())
-		self.linedEntries[currentLine].pointOff()
+		for index in range(firstLine, lastLine + 1):
+			self.linedEntries[index].pointOff()
 
 		self.outputHeaders()
 		self.outputEntries()
