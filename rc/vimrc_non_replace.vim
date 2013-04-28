@@ -218,6 +218,7 @@ vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
 "フランク
 nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>   --win
+nnoremap e        :call FlexibleFrankController('edit')<CR> --win
 nnoremap !        :call FlexibleFrankController('move')<CR> --win
 nnoremap )        :call FlexibleFrankController('open')<CR>
 nnoremap <F5>     :call FlexibleFrankController('reload')<CR>

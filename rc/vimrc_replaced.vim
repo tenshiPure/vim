@@ -324,6 +324,9 @@ if os == 'win'
 	nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>   
 endif
 if os == 'win'
+	nnoremap e        :call FlexibleFrankController('edit')<CR> 
+endif
+if os == 'win'
 	nnoremap !        :call FlexibleFrankController('move')<CR> 
 endif
 nnoremap )        :call FlexibleFrankController('open')<CR>

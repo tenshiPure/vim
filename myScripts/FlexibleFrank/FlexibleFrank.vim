@@ -77,30 +77,4 @@ class FlexibleFrank:
 			self.linedEntries[line] = entry
 			line += 1
 
-#	#
-#	# コマンド　エンター
-#	#
-#	def commandEnter(self):
-#		if not(self.isWorkingText()):
-#			return
-
-#		currentLine = int(myCursor().getCursolLine())
-
-#		if currentLine < 5:
-#			return
-
-#		targetFullPath = self.linedEntries[currentLine].fullPath
-
-#		if self.linedEntries[currentLine].isDir:
-#			self.changeDir(targetFullPath)
-#		else:
-#			self.editTarget(targetFullPath)
-
-	#
-	# 対象を開く
-	#
-	def editTarget(self, targetFullPath):
-		myTab.closeWorkingText()
-		vim.command('tabedit ' + targetFullPath)
-
 EOM

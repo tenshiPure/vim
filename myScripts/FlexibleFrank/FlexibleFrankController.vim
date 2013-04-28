@@ -7,8 +7,9 @@ source $myScripts/FlexibleFrank/FlexibleFrank.vim
 source $myScripts/FlexibleFrank/Entry.vim
 
 source $myScripts/FlexibleFrank/command/Helper.vim
-source $myScripts/FlexibleFrank/command/Open.vim
+source $myScripts/FlexibleFrank/command/Edit.vim
 source $myScripts/FlexibleFrank/command/Move.vim
+source $myScripts/FlexibleFrank/command/Open.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -35,6 +36,9 @@ elif mode == 'close':
 
 elif mode == 'reload':
 	frank.reloadFrank()
+
+elif mode == 'edit':
+	Edit.execute(frank)
 
 elif mode == 'move':
 	Move.execute(frank)
