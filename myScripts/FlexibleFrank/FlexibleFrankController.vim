@@ -38,6 +38,12 @@ elif mode == 'close':
 elif mode == 'reload':
 	frank.reloadFrank()
 
+elif mode == 'pointOn':
+	frank.pointOn()
+
+elif mode == 'pointOff':
+	frank.pointOff()
+
 elif mode == 'edit':
 	Edit.execute(frank)
 
@@ -61,11 +67,13 @@ EOM
 endfunction
 
 function! SetBufLocalMapping()
-	nnoremap <buffer> e    :call FlexibleFrankController('edit')<CR>
-	nnoremap <buffer> m    :call FlexibleFrankController('move')<CR>
-	nnoremap <buffer> o    :call FlexibleFrankController('openDir')<CR>
-	nnoremap <buffer> a    :call FlexibleFrankController('openByApp')<CR>
-	nnoremap <buffer> h    :call FlexibleFrankController('upperDir')<CR>
-	nnoremap <buffer> l    :call FlexibleFrankController('lastDir')<CR>
-	nnoremap <buffer> <F5> :call FlexibleFrankController('reload')<CR>
+	nnoremap <buffer> e         :call FlexibleFrankController('edit')<CR>
+	nnoremap <buffer> m         :call FlexibleFrankController('move')<CR>
+	nnoremap <buffer> o         :call FlexibleFrankController('openDir')<CR>
+	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
+	nnoremap <buffer> h         :call FlexibleFrankController('upperDir')<CR>
+	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
+	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
+	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
+	nnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 endfunction

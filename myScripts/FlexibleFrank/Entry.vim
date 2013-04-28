@@ -58,6 +58,23 @@ class Entry:
 	# 出力フォーマット
 	#
 	def createFormatedForOutput(self):
-		return '\t' * self.depth + self.entryName
+		point = '*' if self.pointed else ''
+		tab = '\t' * self.depth
+
+		return point + tab + self.entryName
+
+	#
+	# ポイントをオンにして出力内容を再作成する
+	#
+	def pointOn(self):
+		self.pointed = True
+		self.formatedForOutput = self.createFormatedForOutput()
+
+	#
+	# ポイントをオフにして出力内容を再作成する
+	#
+	def pointOff(self):
+		self.pointed = False
+		self.formatedForOutput = self.createFormatedForOutput()
 
 EOM

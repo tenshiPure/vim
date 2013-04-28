@@ -76,4 +76,33 @@ class FlexibleFrank:
 			self.linedEntries[line] = entry
 			line += 1
 
+	#
+	# ポイントをオンにする
+	#
+	def pointOn(self):
+		cursor = myCursor()
+		cursor.storePos()
+
+		currentLine = int(myCursor().getCursolLineNum())
+		self.linedEntries[currentLine].pointOn()
+
+		self.outputHeaders()
+		self.outputEntries()
+
+		cursor.setPosAtStored()
+
+	#
+	# ポイントをオフにする
+	#
+	def pointOff(self):
+		cursor = myCursor()
+		cursor.storePos()
+
+		currentLine = int(myCursor().getCursolLineNum())
+		self.linedEntries[currentLine].pointOff()
+
+		self.outputHeaders()
+		self.outputEntries()
+
+		cursor.setPosAtStored()
 EOM
