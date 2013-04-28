@@ -1,19 +1,7 @@
 python <<EOM
 import vim
 
-class executableHelper:
-
-	#
-	#
-	#
-	def commandDispatch(frank, command):
-		if not(executableHelper.isWorkingText()):
-			return
-
-		targetEntry = executableHelper.getUnderCursorEntry(frank)
-
-		if targetEntry.isDir:
-			commandOpen.openDir(targetEntry.underCurrentDepth)
+class Helper:
 
 	#
 	# 作業バッファかチェック
@@ -25,10 +13,9 @@ class executableHelper:
 	# カーソル下のエントリを取得する
 	#
 	def getUnderCursorEntry(frank):
-		currentLine = int(myCursor().getCursolLine())
+		currentLine = int(myCursor().getCursolLineNum())
 		return frank.linedEntries[currentLine]
 
-	commandDispatch = staticmethod(commandDispatch)
 	isWorkingText = staticmethod(isWorkingText)
 	getUnderCursorEntry = staticmethod(getUnderCursorEntry)
 EOM
