@@ -10,13 +10,15 @@ class Edit:
 		if not(Helper.isWorkingText()):
 			return
 
-		targetEntry = Helper.getUnderCursorEntry(frank)
-
-		if targetEntry.isDir:
-			return
+		targetEntries = Helper.getTargetEntries(frank)
 
 		myTab.closeWorkingText()
-		vim.command('tabedit ' + targetEntry.fullPath)
+		for targetEntry in targetEntries:
+
+			if targetEntry.isDir:
+				continue
+
+			vim.command('tabedit ' + targetEntry.fullPath)
 
 	execute = staticmethod(execute)
 EOM

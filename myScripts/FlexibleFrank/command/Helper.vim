@@ -16,6 +16,21 @@ class Helper:
 		currentLine = int(myCursor().getCursolLineNum())
 		return frank.linedEntries[currentLine]
 
+	#
+	# ポイントエントリもしくはカーソル下エントリを取得する
+	#
+	def getTargetEntries(frank):
+		result = []
+		for entry in frank.linedEntries.itervalues():
+			if entry.pointed:
+				result.append(entry)
+
+		if len(result) == 0:
+			result.append(Helper.getUnderCursorEntry(frank))
+
+		return result
+
 	isWorkingText = staticmethod(isWorkingText)
 	getUnderCursorEntry = staticmethod(getUnderCursorEntry)
+	getTargetEntries = staticmethod(getTargetEntries)
 EOM
