@@ -3,6 +3,7 @@
 -----------------------------------------------------------------
 
 	command
+		Edit.vim
 		Helper.vim
 		Move.vim
 		Open.vim

@@ -320,17 +320,7 @@ if os == 'mac'
 endif
 
 "フランク
-if os == 'win'
-	nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>   
-endif
-if os == 'win'
-	nnoremap e        :call FlexibleFrankController('edit')<CR> 
-endif
-if os == 'win'
-	nnoremap !        :call FlexibleFrankController('move')<CR> 
-endif
-nnoremap )        :call FlexibleFrankController('open')<CR>
-nnoremap <F5>     :call FlexibleFrankController('reload')<CR>
+nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>
 
 "補完操作のマッピング
 if os == 'win'

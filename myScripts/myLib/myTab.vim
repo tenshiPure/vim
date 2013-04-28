@@ -39,17 +39,8 @@ class myTab:
 	def clearCurrentBuffer():
 		vim.current.buffer[:] = None
 		
-	#
-	# バッファローカルなキーマップを設定
-	#
-	def mapBufferLocal():
-		vim.command('nnoremap <buffer><F9> :call buffer()<CR>')
-
-
 	openWorkingText = staticmethod(openWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
 	closeWorkingText = staticmethod(closeWorkingText)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
-	mapBufferLocal = staticmethod(mapBufferLocal)
-
 EOM

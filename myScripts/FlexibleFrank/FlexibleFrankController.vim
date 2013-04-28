@@ -18,6 +18,7 @@ augroup END
 "autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
 "autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
+autocmd autoCmdFrank BufEnter *.frank call SetBufLocalMapping()
 
 function! FlexibleFrankController(mode)
 
@@ -48,4 +49,11 @@ elif mode == 'open':
 
 EOM
 
+endfunction
+
+function! SetBufLocalMapping()
+	nnoremap <buffer> e    :call FlexibleFrankController('edit')<CR>
+	nnoremap <buffer> m    :call FlexibleFrankController('move')<CR>
+	nnoremap <buffer> o    :call FlexibleFrankController('open')<CR>
+	nnoremap <buffer> <F5> :call FlexibleFrankController('reload')<CR>
 endfunction

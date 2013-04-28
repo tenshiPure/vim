@@ -19,7 +19,6 @@ class FlexibleFrank:
 	#
 	def newFrank(self):
 		myTab.openWorkingText('$myScripts/FlexibleFrank/WorkingText.frank')
-		myTab.mapBufferLocal()
 		self.getEntries('./')
 		self.outputHeaders()
 		self.outputEntries()
