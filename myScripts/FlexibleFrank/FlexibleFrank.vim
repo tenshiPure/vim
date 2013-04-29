@@ -6,6 +6,7 @@ class FlexibleFrank:
 
 	entries = []
 	linedEntries = {}
+	single = True
 
 	#
 	# 擬似コンストラクタ
@@ -28,6 +29,7 @@ class FlexibleFrank:
 	#
 	def moreFrank(self):
 		myTab.openMoreWorkingText('$myScripts/FlexibleFrank/MoreWorkingText.frank')
+		self.single = False
 		self.getEntries('./')
 		self.outputHeaders()
 		self.outputEntries()

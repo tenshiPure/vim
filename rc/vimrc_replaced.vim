@@ -232,6 +232,8 @@ if os == 'mac'
 	nnoremap <D-Space> :call TabCloserController()<CR> 
 endif
 
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
 " ----------------------------------------------------------------------------------------------------
 " 
 " その他操作のマッピングだ�~H

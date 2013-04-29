@@ -65,7 +65,10 @@ elif mode == 'lastDir':
 	Move.lastDir()
 
 elif mode == 'tab':
-	frank.moreFrank()
+	if frank.single:
+		frank.moreFrank()
+	else:
+		myTab.changeWindow()
 
 EOM
 
@@ -84,4 +87,5 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 	vnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 	nnoremap <buffer> <Tab> :call FlexibleFrankController('tab')<CR>
+	nnoremap <buffer> gw <C-w>w
 endfunction

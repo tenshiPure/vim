@@ -163,6 +163,8 @@ nnoremap <C-Space> :tabedit --mac
 nnoremap <C-Space> :call TabCloserController()<CR> --win
 nnoremap <D-Space> :call TabCloserController()<CR> --mac
 
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
 " ----------------------------------------------------------------------------------------------------
 " 
 " その他操作のマッピングだよ

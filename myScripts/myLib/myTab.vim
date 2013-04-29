@@ -46,9 +46,16 @@ class myTab:
 	def clearCurrentBuffer():
 		vim.current.buffer[:] = None
 		
+	#
+	# ウィンドウを切り替える
+	#
+	def changeWindow():
+		vim.command('execute ":normal gw"')
+
 	openWorkingText = staticmethod(openWorkingText)
 	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
 	closeWorkingText = staticmethod(closeWorkingText)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
+	changeWindow = staticmethod(changeWindow)
 EOM
