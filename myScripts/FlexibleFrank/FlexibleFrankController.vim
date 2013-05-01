@@ -35,7 +35,7 @@ if mode == 'new':
 	frank.newFrank()
 
 elif mode == 'close':
-	myTab.closeWorkingText()
+	myTab.closeWorkingTexts()
 
 elif mode == 'reload':
 	frank.reloadFrank()

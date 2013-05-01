@@ -17,7 +17,7 @@ class Edit:
 			if targetEntry.isDir:
 				continue
 
-			myTab.closeWorkingText()
+			myTab.closeWorkingTexts()
 			vim.command('tabedit ' + targetEntry.fullPath)
 
 	execute = staticmethod(execute)

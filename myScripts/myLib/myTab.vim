@@ -34,11 +34,19 @@ class myTab:
 	#
 	# 作業バッファを閉じる
 	#
-	def closeWorkingText():
-		isWorkingText = vim.current.buffer.name.find('WorkingText.frank') != -1
+	def closeWorkingTexts():
+		frank1 = r'C:\Program\ Files\ (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
+		frank2 = r'C:\Program\ Files\ (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
 
-		if isWorkingText:
-			vim.command('bdelete!')
+		try:
+			vim.command('silent bdelete! ' + frank1)
+		except vim.error:
+			pass
+
+		try:
+			vim.command('silent bdelete! ' + frank2)
+		except vim.error:
+			pass
 
 	#
 	# カレントバッファを空にする
@@ -55,7 +63,7 @@ class myTab:
 	openWorkingText = staticmethod(openWorkingText)
 	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
-	closeWorkingText = staticmethod(closeWorkingText)
+	closeWorkingTexts = staticmethod(closeWorkingTexts)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
 	changeWindow = staticmethod(changeWindow)
 EOM
