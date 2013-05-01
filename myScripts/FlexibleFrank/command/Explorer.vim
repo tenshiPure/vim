@@ -7,9 +7,6 @@ class Explorer:
 	# ディレクトリを開く
 	#
 	def openDir(frank):
-		if not(Helper.isWorkingText()):
-			return
-
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if not(targetEntry.isDir):
@@ -24,9 +21,6 @@ class Explorer:
 	# 指定ファイルをアプリケーションで開く
 	#
 	def openByApp(frank):
-		if not(Helper.isWorkingText()):
-			return
-
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if targetEntry.isDir:

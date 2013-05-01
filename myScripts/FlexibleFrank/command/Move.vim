@@ -7,9 +7,6 @@ class Move:
 	# 指定したディレクトリに移動する
 	#
 	def move(frank):
-		if not(Helper.isWorkingText()):
-			return
-
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if not(targetEntry.isDir):
@@ -22,9 +19,6 @@ class Move:
 	# 一つ上のディレクトリに移動する
 	#
 	def upperDir():
-		if not(Helper.isWorkingText()):
-			return
-
 		vim.command('lcd ../')
 		frank.reloadFrank()
 
@@ -32,9 +26,6 @@ class Move:
 	# 一つ前のディレクトリに移動する
 	#
 	def lastDir():
-		if not(Helper.isWorkingText()):
-			return
-
 		vim.command('lcd -')
 		frank.reloadFrank()
 

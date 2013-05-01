@@ -4,12 +4,6 @@ import vim
 class Helper:
 
 	#
-	# 作業バッファかチェック
-	#
-	def isWorkingText():
-		return vim.current.buffer.name.find('WorkingText.frank') != -1
-
-	#
 	# カーソル下のエントリを取得する
 	#
 	def getUnderCursorEntry(frank):
@@ -30,7 +24,6 @@ class Helper:
 
 		return result
 
-	isWorkingText = staticmethod(isWorkingText)
 	getUnderCursorEntry = staticmethod(getUnderCursorEntry)
 	getTargetEntries = staticmethod(getTargetEntries)
 EOM

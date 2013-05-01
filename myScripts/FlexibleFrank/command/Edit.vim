@@ -7,9 +7,6 @@ class Edit:
 	# 対象ファイルをタブで開く
 	#
 	def execute(frank):
-		if not(Helper.isWorkingText()):
-			return
-
 		targetEntries = Helper.getTargetEntries(frank)
 
 		myTab.closeWorkingTexts()
