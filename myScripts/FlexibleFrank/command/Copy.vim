@@ -10,14 +10,17 @@ class Copy:
 		if myTab.isFrank1():
 			return
 
-		toFullPath = Helper.getToFullPath(frank)
+		toEntry = Helper.getUnderCursorEntry(frank)
+		if not(toEntry.isDir):
+			return
+
 		targetEntries = Helper.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:
 			if os.name == 'nt':
-				vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+				vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
 			else:
-				vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+				vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
 
 	execute = staticmethod(execute)
 EOM
