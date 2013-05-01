@@ -42,6 +42,14 @@ class TabCloser:
 	# 左のタブへ移る
 	#
 	def moveLeftTab(self):
+		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
+		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+
+		if vim.current.buffer.name == frank1:
+			self.close()
+		elif vim.current.buffer.name == frank2:
+			self.close()
+
 		if int(vim.eval('tabpagenr()')) != self.targetBufNum - 1:
 			vim.command('execute ":normal gT"')
 EOM

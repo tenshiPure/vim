@@ -35,18 +35,18 @@ class myTab:
 	# 作業バッファを閉じる
 	#
 	def closeWorkingTexts():
-		frank1 = r'C:\Program\ Files\ (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
-		frank2 = r'C:\Program\ Files\ (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
+		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
 
-		try:
-			vim.command('silent bdelete! ' + frank1)
-		except vim.error:
-			pass
+		if vim.current.buffer.name == frank1:
+			vim.command('bdelete!')
+		elif vim.current.buffer.name == frank2:
+			vim.command('bdelete!')
 
-		try:
-			vim.command('silent bdelete! ' + frank2)
-		except vim.error:
-			pass
+		if vim.current.buffer.name == frank1:
+			vim.command('bdelete!')
+		elif vim.current.buffer.name == frank2:
+			vim.command('bdelete!')
 
 	#
 	# カレントバッファを空にする

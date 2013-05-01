@@ -12,12 +12,12 @@ class Edit:
 
 		targetEntries = Helper.getTargetEntries(frank)
 
+		myTab.closeWorkingTexts()
 		for targetEntry in targetEntries:
 
 			if targetEntry.isDir:
 				continue
 
-			myTab.closeWorkingTexts()
 			vim.command('tabedit ' + targetEntry.fullPath)
 
 	execute = staticmethod(execute)
