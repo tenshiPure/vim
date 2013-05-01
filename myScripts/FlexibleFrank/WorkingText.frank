@@ -3,6 +3,7 @@
 -----------------------------------------------------------------
 
 	command
+		Copy.vim
 		Edit.vim
 		Explorer.vim
 		Helper.vim

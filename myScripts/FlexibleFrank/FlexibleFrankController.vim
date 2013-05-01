@@ -10,6 +10,7 @@ source $myScripts/FlexibleFrank/command/Helper.vim
 source $myScripts/FlexibleFrank/command/Edit.vim
 source $myScripts/FlexibleFrank/command/Move.vim
 source $myScripts/FlexibleFrank/command/Explorer.vim
+source $myScripts/FlexibleFrank/command/Copy.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -70,6 +71,8 @@ elif mode == 'tab':
 	else:
 		myTab.changeWindow()
 
+elif mode == 'copy':
+	Copy.execute(frank)
 EOM
 
 endfunction
@@ -81,6 +84,7 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
 	nnoremap <buffer> h         :call FlexibleFrankController('upperDir')<CR>
 	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
+	nnoremap <buffer> C         :call FlexibleFrankController('copy')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
