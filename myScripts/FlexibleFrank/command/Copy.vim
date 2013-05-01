@@ -14,13 +14,23 @@ class Copy:
 		if not(toEntry.isDir):
 			return
 
+		toFullPath = toEntry.fullPath
 		targetEntries = Helper.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:
-			if os.name == 'nt':
-				vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
-			else:
-				vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
+			if not(targetEntry.isDir):
+				if os.name == 'nt':
+					vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+				else:
+					vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+
+			if targetEntry.isDir:
+				if os.name == 'nt':
+					toMadeDir = toFullPath + '\\' + targetEntry.entryName
+					vim.command('silent !mkdir "' + toMadeDir + '"')
+					vim.command('silent !xcopy /e "' + targetEntry.fullPath + '" "' + toMadeDir + '"')
+				else:
+					vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
 
 	execute = staticmethod(execute)
 EOM

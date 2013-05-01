@@ -3,6 +3,7 @@
 -----------------------------------------------------------------
 
 	command
+		ChangeDir.vim
 		Copy.vim
 		Edit.vim
 		Explorer.vim
@@ -13,12 +14,13 @@
 		FlexibleFrank.asta.bak
 		folding.txt
 		logic.txt
+		tmp
 		usecase.txt
 		view.txt
 	Entry.vim
 	FlexibleFrank.vim
 	FlexibleFrankController.vim
-	hoge
+*	hoge
 		fuga
 			empty
 			fuga.txt
