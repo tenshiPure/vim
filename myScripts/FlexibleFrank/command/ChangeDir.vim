@@ -6,30 +6,42 @@ class ChangeDir:
 	#
 	# 指定したディレクトリに移動する
 	#
-	def cd(frank):
+	def cd(frank, local = ''):
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if not(targetEntry.isDir):
 			return
 
-		vim.command('lcd ' + targetEntry.fullPath)
+		if local == 'local':
+			vim.command('lcd ' + targetEntry.fullPath)
+		else:
+			vim.command('cd ' + targetEntry.fullPath)
+
 		frank.reloadFrank()
 
 	#
 	# 一つ上のディレクトリに移動する
 	#
-	def upperDir():
-		vim.command('lcd ../')
+	def cdUpper(local = ''):
+		if local == 'local':
+			vim.command('lcd ../')
+		else:
+			vim.command('cd ../')
+
 		frank.reloadFrank()
 
 	#
 	# 一つ前のディレクトリに移動する
 	#
-	def lastDir():
-		vim.command('lcd -')
+	def cdLast(local = ''):
+		if local == 'local':
+			vim.command('lcd -')
+		else:
+			vim.command('cd -')
+
 		frank.reloadFrank()
 
 	cd = staticmethod(cd)
-	upperDir = staticmethod(upperDir)
-	lastDir = staticmethod(lastDir)
+	cdUpper = staticmethod(cdUpper)
+	cdLast = staticmethod(cdLast)
 EOM

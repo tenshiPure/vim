@@ -19,8 +19,8 @@ augroup autoCmdFrank
 	autocmd!
 augroup END
 
-"autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
-"autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
+autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
+autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 autocmd autoCmdFrank BufEnter *.frank call SetBufLocalMapping()
 
@@ -59,14 +59,23 @@ elif mode == 'openDir':
 elif mode == 'openByApp':
 	Explorer.openByApp(frank)
 
+elif mode == 'lcd':
+	ChangeDir.cd(frank, 'local')
+
 elif mode == 'cd':
 	ChangeDir.cd(frank)
 
-elif mode == 'upperDir':
-	ChangeDir.upperDir()
+elif mode == 'lcdUpper':
+	ChangeDir.cdUpper('local')
 
-elif mode == 'lastDir':
-	ChangeDir.lastDir()
+elif mode == 'cdUpper':
+	ChangeDir.cdUpper()
+
+elif mode == 'lcdLast':
+	ChangeDir.cdLast('local')
+
+elif mode == 'cdLast':
+	ChangeDir.cdLast()
 
 elif mode == 'tab':
 	if frank.single:
@@ -89,11 +98,14 @@ endfunction
 
 function! SetBufLocalMapping()
 	nnoremap <buffer> e         :call FlexibleFrankController('edit')<CR>
-	nnoremap <buffer> m         :call FlexibleFrankController('cd')<CR>
+	nnoremap <buffer> m         :call FlexibleFrankController('lcd')<CR>
+	nnoremap <buffer> M         :call FlexibleFrankController('cd')<CR>
+	nnoremap <buffer> h         :call FlexibleFrankController('lcdUpper')<CR>
+	nnoremap <buffer> H         :call FlexibleFrankController('cdUpper')<CR>
+	nnoremap <buffer> l         :call FlexibleFrankController('lcdLast')<CR>
+	nnoremap <buffer> L         :call FlexibleFrankController('cdLast')<CR>
 	nnoremap <buffer> o         :call FlexibleFrankController('openDir')<CR>
 	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
-	nnoremap <buffer> h         :call FlexibleFrankController('upperDir')<CR>
-	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
 	nnoremap <buffer> cp        :call FlexibleFrankController('copy')<CR>
 	nnoremap <buffer> mv        :call FlexibleFrankController('move')<CR>
 	nnoremap <buffer> rm        :call FlexibleFrankController('delete')<CR>

@@ -28,10 +28,15 @@ class FlexibleFrank:
 	# ２つめのフランクを開く
 	#
 	def moreFrank(self):
+		cursor = myCursor()
+		cursor.storePos()
+
 		myTab.openMoreWorkingText('$myScripts/FlexibleFrank/MoreWorkingText.frank')
 		self.single = False
 		self.outputHeaders()
 		self.outputEntries()
+
+		cursor.setPosAtStored()
 		
 	#
 	# 更新
