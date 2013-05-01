@@ -9,6 +9,7 @@ class Entry:
 	fullPath = ''
 	entryName = ''
 	underCurrentDepth = ''
+	putDir = ''
 	isDir = False
 	depth = 0
 	pointed = False
@@ -21,6 +22,7 @@ class Entry:
 		self.fullPath = fullPath
 		self.entryName = self.getEntryName()
 		self.underCurrentDepth = self.getUnderCurrentDepth()
+		self.putDir = self.getPutDir()
 		self.isDir = self.getIsDir()
 		self.depth = self.getDepth()
 		self.pointed = False
@@ -38,6 +40,12 @@ class Entry:
 	def getUnderCurrentDepth(self):
 		cwd = os.getcwd()
 		return self.fullPath.replace(cwd + os.sep, '')
+
+	#
+	# ファイルの置き場パスを取得
+	#
+	def getPutDir(self):
+		return self.fullPath.replace('\\' + self.entryName, '')
 
 	#
 	# ディレクトリかどうかを判定

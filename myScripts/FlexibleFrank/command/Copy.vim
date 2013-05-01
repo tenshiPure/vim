@@ -20,17 +20,20 @@ class Copy:
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):
 				if os.name == 'nt':
-					vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+					if targetEntry.putDir == toFullPath:
+						vim.command('silent !copy "' + targetEntry.fullPath + '" "' + targetEntry.fullPath + '_copy"')
+					else:
+						vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toFullPath + '"')
 				else:
 					vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
 
-			if targetEntry.isDir:
-				if os.name == 'nt':
-					toMadeDir = toFullPath + '\\' + targetEntry.entryName
-					vim.command('silent !mkdir "' + toMadeDir + '"')
-					vim.command('silent !xcopy /e "' + targetEntry.fullPath + '" "' + toMadeDir + '"')
-				else:
-					vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+				if targetEntry.isDir:
+					if os.name == 'nt':
+						toMadeDir = toFullPath + '\\' + targetEntry.entryName
+						vim.command('!mkdir "' + toMadeDir + '"')
+						vim.command('silent !xcopy /e "' + targetEntry.fullPath + '" "' + toMadeDir + '"')
+					else:
+						vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
 
 	execute = staticmethod(execute)
 EOM
