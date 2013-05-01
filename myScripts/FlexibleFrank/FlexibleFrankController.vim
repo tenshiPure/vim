@@ -12,6 +12,7 @@ source $myScripts/FlexibleFrank/command/ChangeDir.vim
 source $myScripts/FlexibleFrank/command/Explorer.vim
 source $myScripts/FlexibleFrank/command/Copy.vim
 source $myScripts/FlexibleFrank/command/Move.vim
+source $myScripts/FlexibleFrank/command/Delete.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -78,6 +79,9 @@ elif mode == 'copy':
 elif mode == 'move':
 	Move.execute(frank)
 
+elif mode == 'delete':
+	Delete.execute(frank)
+
 EOM
 
 endfunction
@@ -91,6 +95,7 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
 	nnoremap <buffer> C         :call FlexibleFrankController('copy')<CR>
 	nnoremap <buffer> M         :call FlexibleFrankController('move')<CR>
+	nnoremap <buffer> D         :call FlexibleFrankController('delete')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
