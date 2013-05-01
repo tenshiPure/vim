@@ -2,6 +2,7 @@
 
 source $myScripts/myLib/myCursor.vim
 source $myScripts/myLib/myTab.vim
+source $myScripts/myLib/myString.vim
 
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
 source $myScripts/FlexibleFrank/Entry.vim

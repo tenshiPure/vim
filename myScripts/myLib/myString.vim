@@ -11,6 +11,12 @@ class myString:
 		else:
 			return False
 
-	isBlankLine = staticmethod(isBlankLine)
+	#
+	#
+	#
+	def surround(targetString, surroundString):
+		return surroundString + targetString + surroundString
 
+	isBlankLine = staticmethod(isBlankLine)
+	surround = staticmethod(surround)
 EOM

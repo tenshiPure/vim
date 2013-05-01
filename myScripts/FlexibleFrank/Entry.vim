@@ -7,6 +7,7 @@ import re
 class Entry:
 
 	fullPath = ''
+	fullPathDQ = ''
 	entryName = ''
 	underCurrentDepth = ''
 	putDir = ''
@@ -20,6 +21,7 @@ class Entry:
 	#
 	def __init__(self, fullPath):
 		self.fullPath = fullPath
+		self.fullPathDQ = myString.surround(fullPath, '"')
 		self.entryName = self.getEntryName()
 		self.underCurrentDepth = self.getUnderCurrentDepth()
 		self.putDir = self.getPutDir()

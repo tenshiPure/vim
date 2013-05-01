@@ -14,55 +14,55 @@ class Copy:
 		if not(toEntry.isDir):
 			return
 
-		toFullPath = toEntry.fullPath
+		toFullPathDQ = toEntry.fullPathDQ
 		targetEntries = Helper.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):
 				if os.name == 'nt':
-					Copy.winFileCopy(targetEntry, toFullPath)
+					Copy.winFileCopy(targetEntry, toFullPathDQ)
 				else:
-					Copy.macFileCopy(targetEntry, toFullPath)
+					Copy.macFileCopy(targetEntry, toFullPathDQ)
 
 			if targetEntry.isDir:
 				if os.name == 'nt':
-					Copy.winDirCopy(targetEntry, toFullPath)
+					Copy.winDirCopy(targetEntry, toFullPathDQ)
 				else:
-					Copy.macDirCopy(targetEntry, toFullPath)
+					Copy.macDirCopy(targetEntry, toFullPathDQ)
 
 	#
 	# ファイルコピー : win
 	#
-	def winFileCopy(targetEntry, toFullPath):
-		if targetEntry.putDir == toFullPath:
-			vim.command('silent !copy "' + targetEntry.fullPath + '" "' + targetEntry.fullPath + '_copy"')
+	def winFileCopy(targetEntry, toFullPathDQ):
+		if myString.surround(targetEntry.putDir, '"') == toFullPathDQ:
+			vim.command('silent !copy ' + targetEntry.fullPathDQ + ' ' + targetEntry.fullPathDQ + '_copy')
 		else:
-			vim.command('silent !copy "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+			vim.command('silent !copy ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 	#
 	# ファイルコピー : mac
 	#
-	def macFileCopy(targetEntry, toFullPath):
-		vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+	def macFileCopy(targetEntry, toFullPathDQ):
+		vim.command('silent !cp ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 	#
 	# ディレクトリコピー : win
 	#
-	def winDirCopy(targetEntry, toFullPath):
-		if targetEntry.putDir == toFullPath:
-			toMadeDir = toFullPath + '\\' + targetEntry.entryName + '_copy'
-			vim.command('silent !mkdir "' + toMadeDir + '"')
-			vim.command('silent !xcopy /e "' + targetEntry.fullPath + '" "' + toMadeDir + '"')
+	def winDirCopy(targetEntry, toFullPathDQ):
+		if myString.surround(targetEntry.putDir, '"') == toFullPathDQ:
+			toMadeDir = toFullPathDQ + '\\' + targetEntry.entryName + '_copy'
+			vim.command('silent !mkdir ' + toMadeDir)
+			vim.command('silent !xcopy /e ' + targetEntry.fullPathDQ + ' ' + toMadeDir)
 		else:
-			toMadeDir = toFullPath + '\\' + targetEntry.entryName
-			vim.command('!mkdir "' + toMadeDir + '"')
-			vim.command('silent !xcopy /e "' + targetEntry.fullPath + '" "' + toMadeDir + '"')
+			toMadeDir = toFullPathDQ + '\\' + targetEntry.entryName
+			vim.command('silent !mkdir ' + toMadeDir)
+			vim.command('silent !xcopy /e ' + targetEntry.fullPathDQ + ' ' + toMadeDir)
 
 	#
 	# ディレクトリコピー : mac
 	#
-	def macDirCopy(targetEntry, toFullPath):
-		vim.command('silent !cp "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+	def macDirCopy(targetEntry, toFullPathDQ):
+		vim.command('silent !cp ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 	execute = staticmethod(execute)
 	winFileCopy = staticmethod(winFileCopy)
