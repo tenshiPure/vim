@@ -4,32 +4,20 @@ import vim
 class Move:
 
 	#
-	# 指定したディレクトリに移動する
+	# �Ώۂ��ړ�����
 	#
-	def move(frank):
-		targetEntry = Helper.getUnderCursorEntry(frank)
-
-		if not(targetEntry.isDir):
+	def execute(frank):
+		if myTab.isFrank1():
 			return
 
-		vim.command('lcd ' + targetEntry.fullPath)
-		frank.reloadFrank()
+		toFullPath = Helper.getToFullPath(frank)
+		targetEntries = Helper.getTargetEntries(frank)
 
-	#
-	# 一つ上のディレクトリに移動する
-	#
-	def upperDir():
-		vim.command('lcd ../')
-		frank.reloadFrank()
+		for targetEntry in targetEntries:
+			if os.name == 'nt':
+				vim.command('silent !move "' + targetEntry.fullPath + '" "' + toFullPath + '"')
+			else:
+				vim.command('silent !mv "' + targetEntry.fullPath + '" "' + toFullPath + '"')
 
-	#
-	# 一つ前のディレクトリに移動する
-	#
-	def lastDir():
-		vim.command('lcd -')
-		frank.reloadFrank()
-
-	move = staticmethod(move)
-	upperDir = staticmethod(upperDir)
-	lastDir = staticmethod(lastDir)
+	execute = staticmethod(execute)
 EOM

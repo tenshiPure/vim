@@ -8,9 +8,10 @@ source $myScripts/FlexibleFrank/Entry.vim
 
 source $myScripts/FlexibleFrank/command/Helper.vim
 source $myScripts/FlexibleFrank/command/Edit.vim
-source $myScripts/FlexibleFrank/command/Move.vim
+source $myScripts/FlexibleFrank/command/ChangeDir.vim
 source $myScripts/FlexibleFrank/command/Explorer.vim
 source $myScripts/FlexibleFrank/command/Copy.vim
+source $myScripts/FlexibleFrank/command/Move.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -56,14 +57,14 @@ elif mode == 'openDir':
 elif mode == 'openByApp':
 	Explorer.openByApp(frank)
 
-elif mode == 'move':
-	Move.move(frank)
+elif mode == 'cd':
+	ChangeDir.cd(frank)
 
 elif mode == 'upperDir':
-	Move.upperDir()
+	ChangeDir.upperDir()
 
 elif mode == 'lastDir':
-	Move.lastDir()
+	ChangeDir.lastDir()
 
 elif mode == 'tab':
 	if frank.single:
@@ -73,18 +74,23 @@ elif mode == 'tab':
 
 elif mode == 'copy':
 	Copy.execute(frank)
+
+elif mode == 'move':
+	Move.execute(frank)
+
 EOM
 
 endfunction
 
 function! SetBufLocalMapping()
 	nnoremap <buffer> e         :call FlexibleFrankController('edit')<CR>
-	nnoremap <buffer> m         :call FlexibleFrankController('move')<CR>
+	nnoremap <buffer> m         :call FlexibleFrankController('cd')<CR>
 	nnoremap <buffer> o         :call FlexibleFrankController('openDir')<CR>
 	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
 	nnoremap <buffer> h         :call FlexibleFrankController('upperDir')<CR>
 	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
 	nnoremap <buffer> C         :call FlexibleFrankController('copy')<CR>
+	nnoremap <buffer> M         :call FlexibleFrankController('move')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
