@@ -60,10 +60,32 @@ class myTab:
 	def changeWindow():
 		vim.command('execute ":normal gw"')
 
+	#
+	# フランク１か判定する
+	#
+	def isFrank1():
+		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
+		if vim.current.buffer.name == frank1:
+			return True
+
+		return False
+
+	#
+	# フランク２か判定する
+	#
+	def isFrank2():
+		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+		if vim.current.buffer.name == frank2:
+			return True
+
+		return False
+
 	openWorkingText = staticmethod(openWorkingText)
 	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
 	closeWorkingTexts = staticmethod(closeWorkingTexts)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
 	changeWindow = staticmethod(changeWindow)
+	isFrank1 = staticmethod(isFrank1)
+	isFrank2 = staticmethod(isFrank2)
 EOM

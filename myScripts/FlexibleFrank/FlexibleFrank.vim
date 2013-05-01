@@ -91,6 +91,9 @@ class FlexibleFrank:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
+		if myTab.isFrank2():
+			return
+
 		cursor = myCursor()
 		cursor.storePos()
 
@@ -106,6 +109,9 @@ class FlexibleFrank:
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
+		if myTab.isFrank2():
+			return
+
 		cursor = myCursor()
 		cursor.storePos()
 
