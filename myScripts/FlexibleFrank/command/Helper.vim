@@ -13,14 +13,15 @@ class Helper:
 	#
 	# ポイントエントリもしくはカーソル下エントリを取得する
 	#
-	def getTargetEntries(frank):
+	def getTargetEntries(frank, under = ''):
 		result = []
 		for entry in frank.linedEntries.itervalues():
 			if entry.pointed:
 				result.append(entry)
 
-		if len(result) == 0:
-			result.append(Helper.getUnderCursorEntry(frank))
+		if under == 'under':
+			if len(result) == 0:
+				result.append(Helper.getUnderCursorEntry(frank))
 
 		return result
 

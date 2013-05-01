@@ -93,9 +93,9 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
 	nnoremap <buffer> h         :call FlexibleFrankController('upperDir')<CR>
 	nnoremap <buffer> l         :call FlexibleFrankController('lastDir')<CR>
-	nnoremap <buffer> C         :call FlexibleFrankController('copy')<CR>
-	nnoremap <buffer> M         :call FlexibleFrankController('move')<CR>
-	nnoremap <buffer> D         :call FlexibleFrankController('delete')<CR>
+	nnoremap <buffer> cp        :call FlexibleFrankController('copy')<CR>
+	nnoremap <buffer> mv        :call FlexibleFrankController('move')<CR>
+	nnoremap <buffer> rm        :call FlexibleFrankController('delete')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>

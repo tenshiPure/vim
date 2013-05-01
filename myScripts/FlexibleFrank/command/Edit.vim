@@ -10,7 +10,7 @@ class Edit:
 		if myTab.isFrank2():
 			return
 
-		targetEntries = Helper.getTargetEntries(frank)
+		targetEntries = Helper.getTargetEntries(frank, 'under')
 
 		myTab.closeWorkingTexts()
 		for targetEntry in targetEntries:

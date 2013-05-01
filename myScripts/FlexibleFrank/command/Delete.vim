@@ -7,7 +7,7 @@ class Delete:
 	# 対象を削除する
 	#
 	def execute(frank):
-		if myTab.isFrank2():
+		if myTab.isFrank1():
 			return
 
 		targetEntries = Helper.getTargetEntries(frank)
@@ -15,15 +15,15 @@ class Delete:
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):
 				if os.name == 'nt':
-					vim.command('!del "' + targetEntry.fullPath + '"')
+					vim.command('silent !del "' + targetEntry.fullPath + '"')
 				else:
-					vim.command('!rm "' + targetEntry.fullPath + '"')
+					vim.command('silent !rm "' + targetEntry.fullPath + '"')
 
 			if targetEntry.isDir:
 				if os.name == 'nt':
-					vim.command('!rmdir /s /q "' + targetEntry.fullPath + '"')
+					vim.command('silent !rmdir /s /q "' + targetEntry.fullPath + '"')
 				else:
-					vim.command('!rm -r "' + targetEntry.fullPath + '"')
+					vim.command('silent !rm -r "' + targetEntry.fullPath + '"')
 
 	execute = staticmethod(execute)
 EOM
