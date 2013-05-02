@@ -1,4 +1,5 @@
 import imaplib
+from email.header import decode_header
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 
@@ -16,10 +17,17 @@ mail.select()
 
 _, [data] = mail.search(None, 'ALL')
 
-print len(data)
-#for i in data.split(' '):
-#	_, sub = mail.fetch(i, '(BODY[HEADER.FIELDS (SUBJECT)])')
-#	print sub[0][1].strip()
+for i in data.split(' '):
+	_, sub = mail.fetch(i, '(BODY[HEADER.FIELDS (SUBJECT)])')
+	
+	try:
+		decoded = decode_header(sub[0][1].strip())[1]
+		print unicode(decoded[0], decoded[1])
+	except:
+		print sub[0][1].strip()
 
+	if int(i) == 8:
+		break
+
+mail.close()
 mail.logout()
-
