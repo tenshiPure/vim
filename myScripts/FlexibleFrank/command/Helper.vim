@@ -25,6 +25,33 @@ class Helper:
 
 		return result
 
+	#
+	# エントリがディレクトリのみか判定する
+	#
+	def isDirOnly(entries):
+		for entry in entries:
+			if not(entry.isDir):
+				return False
+		return True
+
+	#
+	# エントリがファイルのみか判定する
+	#
+	def isFileOnly(entries):
+		for entry in entries:
+			if entry.isDir:
+				return False
+		return True
+
+	#
+	# エントリが同一タイプのみか判定する
+	#
+	def isOnlySameTypeEntries(entries):
+		return Helper.isDirOnly(entries) or Helper.isFileOnly(entries)
+
 	getUnderCursorEntry = staticmethod(getUnderCursorEntry)
 	getTargetEntries = staticmethod(getTargetEntries)
+	isDirOnly = staticmethod(isDirOnly)
+	isFileOnly = staticmethod(isFileOnly)
+	isOnlySameTypeEntries = staticmethod(isOnlySameTypeEntries)
 EOM

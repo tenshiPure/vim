@@ -15,6 +15,7 @@ source $myScripts/FlexibleFrank/command/Copy.vim
 source $myScripts/FlexibleFrank/command/Move.vim
 source $myScripts/FlexibleFrank/command/Delete.vim
 source $myScripts/FlexibleFrank/command/Mkdir.vim
+source $myScripts/FlexibleFrank/command/Rename.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -23,7 +24,9 @@ augroup END
 autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
-autocmd autoCmdFrank BufEnter *.frank call SetBufLocalMapping()
+autocmd autoCmdFrank BufEnter WorkingText.frank call SetBufLocalMapping()
+autocmd autoCmdFrank BufEnter MoreWorkingText.frank call SetBufLocalMapping()
+autocmd autoCmdFrank BufEnter RenameWorkingText.frank call SetBufLocalMapping_Rename()
 
 function! FlexibleFrankController(mode) range
 
@@ -96,6 +99,12 @@ elif mode == 'delete':
 elif mode == 'mkdir':
 	Mkdir.execute(frank)
 
+elif mode == 'renameBuf':
+	Rename.renameBuf(frank)
+
+elif mode == 'renameFix':
+	Rename.renameFix()
+
 EOM
 
 endfunction
@@ -114,6 +123,7 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> mv        :call FlexibleFrankController('move')<CR>
 	nnoremap <buffer> rm        :call FlexibleFrankController('delete')<CR>
 	nnoremap <buffer> mk        :call FlexibleFrankController('mkdir')<CR>
+	nnoremap <buffer> re        :call FlexibleFrankController('renameBuf')<CR>
 	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
 	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
 	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
@@ -121,4 +131,8 @@ function! SetBufLocalMapping()
 	vnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
 	nnoremap <buffer> <Tab> :call FlexibleFrankController('tab')<CR>
 	nnoremap <buffer> gw <C-w>w
+endfunction
+
+function! SetBufLocalMapping_Rename()
+	nnoremap <buffer> fix       :call FlexibleFrankController('renameFix')<CR>
 endfunction
