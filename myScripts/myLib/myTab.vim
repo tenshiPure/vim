@@ -35,8 +35,9 @@ class myTab:
 	# 作業バッファを閉じる
 	#
 	def closeWorkingTexts():
-		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
-		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+		myScripts = vim.eval('$myScripts')
+		frank1 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'WorkingText.frank'
+		frank2 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'MoreWorkingText.frank'
 
 		if vim.current.buffer.name == frank1:
 			vim.command('bdelete!')
@@ -64,7 +65,9 @@ class myTab:
 	# フランク１か判定する
 	#
 	def isFrank1():
-		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
+		myScripts = vim.eval('$myScripts')
+		frank1 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'WorkingText.frank'
+
 		if vim.current.buffer.name == frank1:
 			return True
 
@@ -74,7 +77,9 @@ class myTab:
 	# フランク２か判定する
 	#
 	def isFrank2():
-		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+		myScripts = vim.eval('$myScripts')
+		frank2 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'MoreWorkingText.frank'
+
 		if vim.current.buffer.name == frank2:
 			return True
 

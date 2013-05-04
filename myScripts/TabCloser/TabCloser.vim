@@ -42,8 +42,9 @@ class TabCloser:
 	# 左のタブへ移る
 	#
 	def moveLeftTab(self):
-		frank1 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\WorkingText.frank'
-		frank2 = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\MoreWorkingText.frank'
+		myScripts = vim.eval('$myScripts')
+		frank1 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'WorkingText.frank'
+		frank2 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'MoreWorkingText.frank'
 
 		if vim.current.buffer.name == frank1:
 			self.close()

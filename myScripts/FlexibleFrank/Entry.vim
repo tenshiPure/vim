@@ -47,7 +47,7 @@ class Entry:
 	# ファイルの置き場パスを取得
 	#
 	def getPutDir(self):
-		return self.fullPath.replace('\\' + self.entryName, '')
+		return self.fullPath.replace(os.sep + self.entryName, '')
 
 	#
 	# ディレクトリかどうかを判定

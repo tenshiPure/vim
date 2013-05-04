@@ -62,7 +62,7 @@ class Copy:
 	# ディレクトリコピー : mac
 	#
 	def macDirCopy(targetEntry, toFullPathDQ):
-		vim.command('silent !cp ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
+		vim.command('silent !cp -R ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 	execute = staticmethod(execute)
 	winFileCopy = staticmethod(winFileCopy)

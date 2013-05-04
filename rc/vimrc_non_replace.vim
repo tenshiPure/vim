@@ -219,7 +219,8 @@ nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
 "フランク
-nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR>
+nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> --win
+nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR> --mac
 
 "補完操作のマッピング
 inoremap <M-CR>   <C-p>--win

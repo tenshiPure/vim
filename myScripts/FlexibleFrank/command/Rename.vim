@@ -49,7 +49,6 @@ class Rename:
 			print 'Number of beforeEntry and afterEntry do not match. I can\'t execute.'
 			return
 
-
 		for index in range(len(renamedEntries)):
 			beforePutDir = Rename.beforeEntries[index].putDir
 			afterPutDir = renamedEntries[index].putDir
@@ -60,9 +59,13 @@ class Rename:
 
 		for index in range(len(renamedEntries)):
 			before = myString.surround(Rename.beforeEntries[index].fullPath, '"')
-			after = myString.surround(renamedEntries[index].entryName, '"')
 
-			vim.command('silent !rename ' + before + ' ' + after)
+			if os.name == 'nt':
+				after = myString.surround(renamedEntries[index].entryName, '"')
+				vim.command('silent !rename ' + before + ' ' + after)
+			else:
+				after = myString.surround(renamedEntries[index].fullPath, '"')
+				vim.command('silent !mv ' + before + ' ' + after)
 
 	renameBuf = staticmethod(renameBuf)
 	renameFix = staticmethod(renameFix)

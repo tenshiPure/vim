@@ -55,7 +55,7 @@ class FlexibleFrank:
 		cwd = os.getcwd()
 
 		if dirPath != './':
-			self.entries.append(Entry(cwd + dirPath.replace('./', '\\')))
+			self.entries.append(Entry(cwd + dirPath.replace('./', os.sep)))
 
 		for path in os.listdir(dirPath):
 			full = os.path.join(dirPath, path)
@@ -63,7 +63,7 @@ class FlexibleFrank:
 			if os.path.isdir(full):
 				self.getEntries(full)
 			elif os.path.isfile(full):
-				self.entries.append(Entry(cwd + full.replace('./', '\\')))
+				self.entries.append(Entry(cwd + full.replace('./', os.sep)))
 
 	#
 	# エントリ前のヘッダ部等を出力
