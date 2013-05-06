@@ -412,3 +412,12 @@ let $path .= ';C:\Python27'
 
 "nose
 let $path .= 'C:\Python27\Scripts'
+
+
+nnoremap gs  :!git status<CR>
+nnoremap gc  :!git checkout origin 
+nnoremap ga  :!git add 
+nnoremap gc  :!git commit -m '
+nnoremap gpl :!git pull origin 
+nnoremap gps :!git push origin 
+nnoremap gm  : !git merge 
