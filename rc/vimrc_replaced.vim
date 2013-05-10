@@ -415,9 +415,13 @@ let $path .= 'C:\Python27\Scripts'
 
 
 nnoremap gs  :!git status<CR>
-nnoremap gc  :!git checkout origin 
+nnoremap gb  :!git branch<CR>
+nnoremap gl  :!git log<CR><CR>
+nnoremap gco  :!git checkout 
 nnoremap ga  :!git add 
-nnoremap gc  :!git commit -m '
+nnoremap gcm  :!git commit -m '
 nnoremap gpl :!git pull origin 
 nnoremap gps :!git push origin 
-nnoremap gm  : !git merge 
+nnoremap gm  :!git merge 
+
+nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/<CR>
