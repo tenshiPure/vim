@@ -222,6 +222,9 @@ vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> --win
 nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR> --mac
 
+"GitAssist
+command! G :call GitAssistController('new')
+
 "補完操作のマッピング
 inoremap <M-CR>   <C-p>--win
 inoremap <S-M-CR> <C-n>--win
@@ -279,6 +282,9 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
 "TabCloser
 source $myScripts/TabCloser/TabCloserController.vim
+
+"GitAssist
+source $myScripts/GitAssist/GitAssistController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 

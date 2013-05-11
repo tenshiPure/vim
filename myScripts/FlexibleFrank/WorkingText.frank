@@ -1,13 +1,12 @@
----------------------------------------------
-    /Users/ryo/Documents/gitvim/myScripts
----------------------------------------------
+---------------------------------------------------
+    C:\Program Files (x86)\vim\gitvim\myScripts
+---------------------------------------------------
 
 	FlexibleComment
 		CommentStyle.vim
 		FlexibleComment.vim
 		FlexibleCommentController.vim
 	FlexibleFrank
-		.DS_Store
 		command
 			ChangeDir.vim
 			Copy.vim
@@ -44,6 +43,11 @@
 		MoreWorkingText.frank
 		RenameWorkingText.frank
 		WorkingText.frank
+	GitAssist
+		CommandList.txt
+		CommandResult.txt
+		GitAssist.vim
+		GitAssistController.vim
 	myLib
 		myCursor.vim
 		myFile.vim
@@ -56,6 +60,7 @@
 		TabCloser.vim
 		TabCloserController.vim
 	ViMail
+		account.txt
 		tmp.py
 		ViMail.vim
 		ViMailController.vim

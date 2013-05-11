@@ -1,0 +1,21 @@
+-----------------------
+GitAssist CommandResult
+-----------------------
+
+# On branch master
+# Your branch is ahead of 'origin/master' by 3 commits.
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/FlexibleFrank/FlexibleFrankController.vim
+#	modified:   myScripts/FlexibleFrank/WorkingText.frank
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	myScripts/GitAssist/
+no changes added to commit (use "git add" and/or "git commit -a")

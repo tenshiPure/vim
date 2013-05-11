@@ -24,9 +24,9 @@ augroup END
 autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
-autocmd autoCmdFrank BufEnter WorkingText.frank call SetBufLocalMapping()
-autocmd autoCmdFrank BufEnter MoreWorkingText.frank call SetBufLocalMapping()
-autocmd autoCmdFrank BufEnter RenameWorkingText.frank call SetBufLocalMapping_Rename()
+autocmd autoCmdFrank BufEnter WorkingText.frank call BufMap_Frank()
+autocmd autoCmdFrank BufEnter MoreWorkingText.frank call BufMap_Frank()
+autocmd autoCmdFrank BufEnter RenameWorkingText.frank call BufMap_Frank_Rename()
 
 function! FlexibleFrankController(mode) range
 
@@ -109,7 +109,7 @@ EOM
 
 endfunction
 
-function! SetBufLocalMapping()
+function! BufMap_Frank()
 	nnoremap <buffer> e         :call FlexibleFrankController('edit')<CR>
 	nnoremap <buffer> m         :call FlexibleFrankController('lcd')<CR>
 	nnoremap <buffer> M         :call FlexibleFrankController('cd')<CR>
@@ -133,6 +133,6 @@ function! SetBufLocalMapping()
 	nnoremap <buffer> gw <C-w>w
 endfunction
 
-function! SetBufLocalMapping_Rename()
+function! BufMap_Frank_Rename()
 	nnoremap <buffer> fix       :call FlexibleFrankController('renameFix')<CR>
 endfunction
