@@ -32,24 +32,6 @@ class myTab:
 		return length == 1 and oneLine == ''
 
 	#
-	# 作業バッファを閉じる
-	#
-	def closeWorkingTexts():
-		myScripts = vim.eval('$myScripts')
-		frank1 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'WorkingText.frank'
-		frank2 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'MoreWorkingText.frank'
-
-		if vim.current.buffer.name == frank1:
-			vim.command('bdelete!')
-		elif vim.current.buffer.name == frank2:
-			vim.command('bdelete!')
-
-		if vim.current.buffer.name == frank1:
-			vim.command('bdelete!')
-		elif vim.current.buffer.name == frank2:
-			vim.command('bdelete!')
-
-	#
 	# カレントバッファを空にする
 	#
 	def clearCurrentBuffer():
@@ -88,7 +70,6 @@ class myTab:
 	openWorkingText = staticmethod(openWorkingText)
 	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
-	closeWorkingTexts = staticmethod(closeWorkingTexts)
 	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
 	changeWindow = staticmethod(changeWindow)
 	isFrank1 = staticmethod(isFrank1)

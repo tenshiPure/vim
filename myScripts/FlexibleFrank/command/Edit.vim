@@ -12,7 +12,9 @@ class Edit:
 
 		targetEntries = Helper.getTargetEntries(frank, 'under')
 
-		myTab.closeWorkingTexts()
+		tabCloser = TabCloser()
+		tabCloser.execute()
+
 		for targetEntry in targetEntries:
 
 			if targetEntry.isDir:

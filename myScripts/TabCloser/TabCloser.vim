@@ -4,7 +4,6 @@ import os
 
 class TabCloser:
 
-	targetBufNum  = 0
 	targetBufName = ''
 	forceList = {}
 
@@ -12,7 +11,6 @@ class TabCloser:
 	# 擬似コンストラクタ
 	#
 	def __init__(self):
-		self.targetBufNum  = int(vim.eval('tabpagenr()'))
 		self.targetBufName = vim.current.buffer.name
 		self.makeForceList()
 
@@ -33,7 +31,6 @@ class TabCloser:
 	def execute(self):
 		self.close()
 		self.secondClose()
-#		self.moveLeftTab()
 
 	#
 	# 強制的に閉じるタブか判定
@@ -64,19 +61,4 @@ class TabCloser:
 			if currentTargetBufName == second:
 				vim.command('execute "bdelete!"')
 
-	#
-	# 左のタブへ移る
-	#
-#	def moveLeftTab(self):
-#		myScripts = vim.eval('$myScripts')
-#		frank1 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'WorkingText.frank'
-#		frank2 = myScripts + os.sep + 'FlexibleFrank' + os.sep + 'MoreWorkingText.frank'
-
-#		if vim.current.buffer.name == frank1:
-#			self.close()
-#		elif vim.current.buffer.name == frank2:
-#			self.close()
-
-#		if int(vim.eval('tabpagenr()')) != self.targetBufNum - 1:
-#			vim.command('execute ":normal gT"')
 EOM

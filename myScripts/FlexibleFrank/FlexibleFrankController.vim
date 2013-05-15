@@ -4,6 +4,8 @@ source $myScripts/myLib/myCursor.vim
 source $myScripts/myLib/myTab.vim
 source $myScripts/myLib/myString.vim
 
+source $myScripts/TabCloser/TabCloserController.vim
+
 source $myScripts/FlexibleFrank/FlexibleFrank.vim
 source $myScripts/FlexibleFrank/Entry.vim
 
@@ -21,9 +23,11 @@ augroup autoCmdFrank
 	autocmd!
 augroup END
 
+autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
+
 autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
 autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
-autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
+
 autocmd autoCmdFrank BufEnter WorkingText.frank call BufMap_Frank()
 autocmd autoCmdFrank BufEnter MoreWorkingText.frank call BufMap_Frank()
 autocmd autoCmdFrank BufEnter RenameWorkingText.frank call BufMap_Frank_Rename()
@@ -43,7 +47,8 @@ if mode == 'new':
 	frank.newFrank()
 
 elif mode == 'close':
-	myTab.closeWorkingTexts()
+	tabCloser = TabCloser()
+	tabCloser.execute()
 
 elif mode == 'reload':
 	frank.reloadFrank()
