@@ -15,8 +15,6 @@ git checkout application/ tests/
 git add myScripts/ rc/
 git add 
 
-git reset HEAD 
-
 git commit -m 
 
 git pull origin devel
@@ -27,5 +25,4 @@ git push origin devel
 git push origin ryo
 git push origin master
 
-git merge devel
 git merge ryo

@@ -60,6 +60,9 @@ class FlexibleFrank:
 		for path in os.listdir(dirPath):
 			full = os.path.join(dirPath, path)
 
+			if path == '.git':
+				continue
+
 			if os.path.isdir(full):
 				self.getEntries(full)
 			elif os.path.isfile(full):
