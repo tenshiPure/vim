@@ -319,31 +319,8 @@ nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpun
 "nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=wip /Users/ryo/Documents/projects/slf/tests/application/<CR>
 
 
-nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>hhhhhhhhi
+nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 "DBAssist
-command! DB :call DBAssistController('new')
-nnoremap <F9> :call DBAssistController('new')<CR>
-
-function! DBAssistController(mode)
-python <<EOM
-import vim
-
-user = 'slf'
-password = 'slf'
-Database = 'slf'
-
-login = '!mysql -u %(user)s -p%(password)s %(Database)s -e ' % {'user' : user, 'password' : password, 'Database' : Database}
-
-
-column = '*'
-column = 'service_id, doc_no, doc_title'
-table = 'SLFDocumentMngInfo'
-
-query = 'select %(column)s from %(table)s limit 3;' % {'column' : column, 'table' : table}
-query = myString.surround(query, '"')
-
-vim.command(login + query)
-
-EOM
-endfunction
+source $myScripts/MySQLAssist/MySQLAssistController.vim
+nnoremap <F9> :call DBAssistController('')<LEFT><LEFT>
