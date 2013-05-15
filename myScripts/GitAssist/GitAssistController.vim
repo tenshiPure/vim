@@ -3,15 +3,22 @@
 source $myScripts/myLib/myCursor.vim
 source $myScripts/myLib/myString.vim
 
+source $myScripts/TabCloser/TabCloserController.vim
+
 source $myScripts/GitAssist/GitAssist.vim
 
 augroup autoCmdGitAssit
 	autocmd!
 augroup END
 
-autocmd autoCmdGitAssit BufEnter CommandList.txt call BufMap_GitAssist()
-autocmd autoCmdGitAssit BufEnter CommandList.txt call BufMap_GitAssist_CommandList()
-autocmd autoCmdGitAssit BufEnter CommandResult.txt call BufMap_GitAssist()
+autocmd autoCmdFrank BufRead,BufNewFile *.gass set filetype=gass
+
+autocmd autoCmdFrank FocusLost *.gass :call GitAssistController('close')
+autocmd autoCmdFrank TabLeave *.gass :call GitAssistController('close')
+
+autocmd autoCmdGitAssit BufEnter CommandList.gass call BufMap_GitAssist()
+autocmd autoCmdGitAssit BufEnter CommandList.gass call BufMap_GitAssist_CommandList()
+autocmd autoCmdGitAssit BufEnter CommandResult.gass call BufMap_GitAssist()
 
 function! GitAssistController(mode)
 
@@ -24,8 +31,8 @@ mode = vim.eval('a:mode')
 
 if mode == 'new':
 	head = vim.eval('$myScripts')
-	CommandList = os.path.abspath(head + '/GitAssist/CommandList.txt')
-	CommandResult = os.path.abspath(head + '/GitAssist/CommandResult.txt')
+	CommandList = os.path.abspath(head + '/GitAssist/CommandList.gass')
+	CommandResult = os.path.abspath(head + '/GitAssist/CommandResult.gass')
 
 	vim.command('tabedit ' + CommandResult)
 	vim.command('set splitbelow')
@@ -38,6 +45,10 @@ elif mode == 'execute':
 	if not(myString.isBlankLine(command)):
 		gitAssist = GitAssist(command)
 		gitAssist.execute()
+
+elif mode == 'close':
+	tabCloser = TabCloser()
+	tabCloser.execute()
 
 EOM
 

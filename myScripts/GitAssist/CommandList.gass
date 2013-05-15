@@ -10,7 +10,7 @@ git log
 
 git checkout devel
 git checkout ryo
-git checkout application/ tests/
+git checkout 
 
 git add myScripts/ rc/
 git add 

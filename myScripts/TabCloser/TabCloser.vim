@@ -22,8 +22,8 @@ class TabCloser:
 
 		self.forceList['FlexibleFrank_frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingText.frank')
 		self.forceList['FlexibleFrank_frank2'] = os.path.abspath(head + '/FlexibleFrank/MoreWorkingText.frank')
-		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.txt')
-		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.txt')
+		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.gass')
+		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.gass')
 
 	#
 	# コントローラから呼ばれるメソッド
