@@ -50,5 +50,5 @@ endfunction
 
 function! BufMap_GitAssist_CommandList()
 	nnoremap <buffer> <CR>  :call GitAssistController('execute')<CR>
-	inoremap <buffer> <CR>  :call GitAssistController('execute')<CR>
+	inoremap <buffer> <CR>  <ESC>:call GitAssistController('execute')<CR>
 endfunction

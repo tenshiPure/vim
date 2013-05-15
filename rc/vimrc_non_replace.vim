@@ -316,3 +316,34 @@ nnoremap gps :!git push origin
 nnoremap gm  :!git merge 
 
 nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/<CR>
+"nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=wip /Users/ryo/Documents/projects/slf/tests/application/<CR>
+
+
+nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>hhhhhhhhi
+
+"DBAssist
+command! DB :call DBAssistController('new')
+nnoremap <F9> :call DBAssistController('new')<CR>
+
+function! DBAssistController(mode)
+python <<EOM
+import vim
+
+user = 'slf'
+password = 'slf'
+Database = 'slf'
+
+login = '!mysql -u %(user)s -p%(password)s %(Database)s -e ' % {'user' : user, 'password' : password, 'Database' : Database}
+
+
+column = '*'
+column = 'service_id, doc_no, doc_title'
+table = 'SLFDocumentMngInfo'
+
+query = 'select %(column)s from %(table)s limit 3;' % {'column' : column, 'table' : table}
+query = myString.surround(query, '"')
+
+vim.command(login + query)
+
+EOM
+endfunction
