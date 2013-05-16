@@ -438,4 +438,4 @@ nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
-nnoremap <F9> :call DBAssistController('')<LEFT><LEFT>
+command! -nargs=+ D call MySQLAssistController(<f-args>)
