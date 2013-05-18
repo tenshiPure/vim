@@ -32,11 +32,18 @@ class myTab:
 		return length == 1 and oneLine == ''
 
 	#
-	# カレントバッファを空にする
+	# 作業テキストの初期化
 	#
-	def clearCurrentBuffer():
-		vim.current.buffer[:] = None
-		
+	def initWorkingText(header):
+		buf = vim.current.buffer
+
+		buf[:] = None
+
+		for line in header:
+			buf.append(line)
+
+		del buf[0]
+
 	#
 	# ウィンドウを切り替える
 	#
@@ -70,7 +77,7 @@ class myTab:
 	openWorkingText = staticmethod(openWorkingText)
 	openMoreWorkingText = staticmethod(openMoreWorkingText)
 	isBlankTab = staticmethod(isBlankTab)
-	clearCurrentBuffer = staticmethod(clearCurrentBuffer)
+	initWorkingText = staticmethod(initWorkingText)
 	changeWindow = staticmethod(changeWindow)
 	isFrank1 = staticmethod(isFrank1)
 	isFrank2 = staticmethod(isFrank2)

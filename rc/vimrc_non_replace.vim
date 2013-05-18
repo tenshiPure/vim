@@ -323,4 +323,19 @@ nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
-nnoremap <F9> :call DBAssistController('')<LEFT><LEFT>
+
+
+
+":J tenshi
+command! -nargs=1 -complete=buffer J call Hoge(<f-args>)
+
+function! Hoge(str)
+	echo "hi I'm hoge."
+	echo "args is " . a:str
+endfunction
+
+
+
+source $myScripts/FlexibleFrank2/FlexibleFrank2Controller.vim
+nnoremap <F9> :call FlexibleFrank2Controller()<CR>
+command! -nargs=1 -complete=dir FF call FlexibleFrank2Controller(<f-args>)

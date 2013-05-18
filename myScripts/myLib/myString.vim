@@ -12,7 +12,7 @@ class myString:
 			return False
 
 	#
-	#
+	# 任意の文字を指定の文字で囲む
 	#
 	def surround(targetString, surroundString):
 		return surroundString + targetString + surroundString
