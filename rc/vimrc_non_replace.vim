@@ -323,6 +323,7 @@ nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
+<<<<<<< HEAD
 
 
 
@@ -339,3 +340,6 @@ endfunction
 source $myScripts/FlexibleFrank2/FlexibleFrank2Controller.vim
 nnoremap <F9> :call FlexibleFrank2Controller()<CR>
 command! -nargs=1 -complete=dir FF call FlexibleFrank2Controller(<f-args>)
+=======
+command! -nargs=+ D call MySQLAssistController(<f-args>)
+>>>>>>> 40a0a34225c8e19bf2ff3c576f0dd6236a09c5ae
