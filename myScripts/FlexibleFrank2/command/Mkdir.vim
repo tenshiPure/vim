@@ -7,6 +7,7 @@ class Mkdir:
 	#
 	# 新規ディレクトリを作成する
 	#
+	@staticmethod
 	def execute(frank):
 		if myTab.isFrank2():
 			return
@@ -18,5 +19,4 @@ class Mkdir:
 		toFullPathDQ = toEntry.fullPathDQ + os.sep
 		vim.command('silent !mkdir ' + toFullPathDQ + 'new_dir')
 
-	execute = staticmethod(execute)
 EOM

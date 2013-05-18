@@ -4,8 +4,9 @@ import vim
 class Move:
 
 	#
-	# ‘ÎÛ‚ğˆÚ“®‚·‚é
+	# å¯¾è±¡ã‚’ç§»å‹•ã™ã‚‹
 	#
+	@staticmethod
 	def execute(frank):
 		if myTab.isFrank1():
 			return
@@ -22,5 +23,4 @@ class Move:
 			else:
 				vim.command('silent !mv "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
 
-	execute = staticmethod(execute)
 EOM

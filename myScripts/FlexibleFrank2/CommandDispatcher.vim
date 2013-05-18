@@ -28,61 +28,53 @@ if mode == 'close':
 	tabCloser.execute()
 
 elif mode == 'reload':
-	frank.reloadFrank()
+	frank1.reloadFrank()
 
 elif mode == 'pointOn':
-	frank.pointOn(int(firstLine), int(lastLine))
+	frank1.pointOn(int(firstLine), int(lastLine))
 
 elif mode == 'pointOff':
-	frank.pointOff(int(firstLine), int(lastLine))
+	frank1.pointOff(int(firstLine), int(lastLine))
 
 elif mode == 'edit':
-	Edit.execute(frank)
+	Edit.execute(frank1)
 
 elif mode == 'openDir':
-	Explorer.openDir(frank)
+	Explorer.openDir(frank1)
 
 elif mode == 'openByApp':
-	Explorer.openByApp(frank)
-
-elif mode == 'lcd':
-	ChangeDir.cd(frank, 'local')
+	Explorer.openByApp(frank1)
 
 elif mode == 'cd':
-	ChangeDir.cd(frank)
-
-elif mode == 'lcdUpper':
-	ChangeDir.cdUpper('local')
+	ChangeDir.cd(frank1)
 
 elif mode == 'cdUpper':
-	ChangeDir.cdUpper()
-
-elif mode == 'lcdLast':
-	ChangeDir.cdLast('local')
+	ChangeDir.cdUpper(frank1)
 
 elif mode == 'cdLast':
-	ChangeDir.cdLast()
+	ChangeDir.cdLast(frank1)
 
 elif mode == 'tab':
-	if frank.single:
-		frank.moreFrank()
-	else:
-		myTab.changeWindow()
+	myTab.changeWindow()
 
 elif mode == 'copy':
-	Copy.execute(frank)
+	Copy.execute(frank1)
+	frank1.reloadFrank()
 
 elif mode == 'move':
-	Move.execute(frank)
+	Move.execute(frank1)
+	frank1.reloadFrank()
 
 elif mode == 'delete':
-	Delete.execute(frank)
+	Delete.execute(frank1)
+	frank1.reloadFrank()
 
 elif mode == 'mkdir':
-	Mkdir.execute(frank)
+	Mkdir.execute(frank1)
+	frank1.reloadFrank()
 
 elif mode == 'renameBuf':
-	Rename.renameBuf(frank)
+	Rename.renameBuf(frank1)
 
 elif mode == 'renameFix':
 	Rename.renameFix()

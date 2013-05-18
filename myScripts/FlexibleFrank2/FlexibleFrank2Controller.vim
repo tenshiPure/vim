@@ -27,19 +27,19 @@ import os
 targetDir = os.path.abspath(vim.eval('a:targetDir'))
 
 head = vim.eval('$myScripts') + '/FlexibleFrank2/WorkingTexts/'
-Frank1 = os.path.abspath(head + 'Frank1.frank2')
-Frank2 = os.path.abspath(head + 'Frank2.frank2')
+pathFrank1 = os.path.abspath(head + 'Frank1.frank2')
+pathFrank2 = os.path.abspath(head + 'Frank2.frank2')
 
-vim.command('tabedit ' + Frank1)
+vim.command('tabedit ' + pathFrank1)
 
 frank1 = EntryManager(targetDir)
-frank1.initWorkingText(targetDir)
+frank1.initWorkingText()
 frank1.outputEntries()
 
 #vim.command('set splitright')
-#vim.command('vsplit ' + Frank2)
+#vim.command('vsplit ' + pathFrank2)
 #frank2 = EntryManager(targetDir)
-#frank2.initWorkingText(targetDir)
+#frank2.initWorkingText()
 #frank2.outputEntries()
 
 EOM
@@ -48,12 +48,9 @@ endfunction
 
 function! BufMap_Frank()
 	nnoremap <buffer> e         :call CommandDispatcher('edit')<CR>
-	nnoremap <buffer> m         :call CommandDispatcher('lcd')<CR>
-	nnoremap <buffer> M         :call CommandDispatcher('cd')<CR>
-	nnoremap <buffer> h         :call CommandDispatcher('lcdUpper')<CR>
-	nnoremap <buffer> H         :call CommandDispatcher('cdUpper')<CR>
-	nnoremap <buffer> l         :call CommandDispatcher('lcdLast')<CR>
-	nnoremap <buffer> L         :call CommandDispatcher('cdLast')<CR>
+	nnoremap <buffer> m         :call CommandDispatcher('cd')<CR>
+	nnoremap <buffer> h         :call CommandDispatcher('cdUpper')<CR>
+	nnoremap <buffer> l         :call CommandDispatcher('cdLast')<CR>
 	nnoremap <buffer> o         :call CommandDispatcher('openDir')<CR>
 	nnoremap <buffer> a         :call CommandDispatcher('openByApp')<CR>
 	nnoremap <buffer> cp        :call CommandDispatcher('copy')<CR>

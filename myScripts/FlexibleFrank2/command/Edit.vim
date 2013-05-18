@@ -6,6 +6,7 @@ class Edit:
 	#
 	# 対象ファイルをタブで開く
 	#
+	@staticmethod
 	def execute(frank):
 		if myTab.isFrank2():
 			return
@@ -22,5 +23,4 @@ class Edit:
 
 			vim.command('tabedit ' + targetEntry.fullPath)
 
-	execute = staticmethod(execute)
 EOM

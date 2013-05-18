@@ -4,6 +4,8 @@ import os
 
 class EntryManager:
 
+	targetDir = ''
+	header = []
 	entries = []
 	linedEntries = {}
 
@@ -11,21 +13,11 @@ class EntryManager:
 	# 擬似コンストラクタ
 	#
 	def __init__(self, targetDir):
+		self.targetDir = targetDir
 		self.entries = []
 		self.linedEntries = {}
-		self.getEntries(targetDir, targetDir)
-#		self.getEntries('./')
+		self.getEntries(self.targetDir, self.targetDir)
 
-	#
-	# 更新
-	#
-	def reloadFrank(self):
-		self.entries = []
-		self.linedEntries = {}
-		self.getEntries('./')
-		self.outputHeaders()
-		self.outputEntries()
-		
 	#
 	# エントリを生成
 	#
@@ -45,16 +37,16 @@ class EntryManager:
 	#
 	# エントリ前のヘッダ部等を出力
 	#
-	def initWorkingText(self, targetDir):
+	def initWorkingText(self):
 		cwd = os.getcwd()
 
-		header = []
-		header.append('----')
-		header.append(targetDir)
-		header.append('----')
-		header.append('')
+		self.header = []
+		self.header.append('----')
+		self.header.append(self.targetDir)
+		self.header.append('----')
+		self.header.append('')
 
-		myTab.initWorkingText(header)
+		myTab.initWorkingText(self.header)
 
 	#
 	# エントリを出力
@@ -72,8 +64,8 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-		if myTab.isFrank2():
-			return
+#		if myTab.isFrank2():
+#			return
 
 		cursor = myCursor()
 		cursor.storePos()
@@ -81,7 +73,7 @@ class EntryManager:
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOn()
 
-		self.outputHeaders()
+		myTab.initWorkingText(self.header)
 		self.outputEntries()
 
 		cursor.setPosAtStored()
@@ -90,8 +82,8 @@ class EntryManager:
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
-		if myTab.isFrank2():
-			return
+#		if myTab.isFrank2():
+#			return
 
 		cursor = myCursor()
 		cursor.storePos()
@@ -99,8 +91,19 @@ class EntryManager:
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOff()
 
-		self.outputHeaders()
+		myTab.initWorkingText(self.header)
 		self.outputEntries()
 
 		cursor.setPosAtStored()
+
+	#
+	# 更新
+	#
+	def reloadFrank(self):
+		self.entries = []
+		self.linedEntries = {}
+		self.getEntries(self.targetDir, self.targetDir)
+		self.initWorkingText()
+		self.outputEntries()
+		
 EOM

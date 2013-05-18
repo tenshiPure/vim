@@ -9,7 +9,6 @@ class Entry:
 	fullPath = ''
 	fullPathDQ = ''
 	entryName = ''
-	underCurrentDepth = ''
 	putDir = ''
 	isDir = False
 	depth = 0
@@ -23,7 +22,6 @@ class Entry:
 		self.fullPath = fullPath
 		self.fullPathDQ = myString.surround(fullPath, '"')
 		self.entryName = self.getEntryName()
-		self.underHeadDepth = self.getUnderHeadDepth(head)
 		self.putDir = self.getPutDir()
 		self.isDir = self.getIsDir()
 		self.depth = self.getDepth(head)
@@ -35,12 +33,6 @@ class Entry:
 	#
 	def getEntryName(self):
 		return self.fullPath.rsplit(os.sep, 1)[1]
-
-	#
-	# 検索起点以下のパスを取得
-	#
-	def getUnderHeadDepth(self, head):
-		return self.fullPath.replace(head + os.sep, '')
 
 	#
 	# ファイルの置き場パスを取得
@@ -71,18 +63,18 @@ class Entry:
 
 		return point + tab + self.entryName
 
-#	#
-#	# ポイントをオンにして出力内容を再作成する
-#	#
-#	def pointOn(self):
-#		self.pointed = True
-#		self.formatedForOutput = self.createFormatedForOutput()
+	#
+	# ポイントをオンにして出力内容を再作成する
+	#
+	def pointOn(self):
+		self.pointed = True
+		self.formatedForOutput = self.createFormatedForOutput()
 
-#	#
-#	# ポイントをオフにして出力内容を再作成する
-#	#
-#	def pointOff(self):
-#		self.pointed = False
-#		self.formatedForOutput = self.createFormatedForOutput()
+	#
+	# ポイントをオフにして出力内容を再作成する
+	#
+	def pointOff(self):
+		self.pointed = False
+		self.formatedForOutput = self.createFormatedForOutput()
 
 EOM
