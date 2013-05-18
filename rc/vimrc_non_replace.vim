@@ -219,7 +219,8 @@ nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
 "フランク
-nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> --win
+"nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> --win
+nnoremap <S-M-CR> :FF ./<CR> --win
 nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR> --mac
 
 "GitAssist
@@ -321,25 +322,17 @@ nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpun
 
 nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
+
+
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
-<<<<<<< HEAD
-
-
-
-":J tenshi
-command! -nargs=1 -complete=buffer J call Hoge(<f-args>)
-
-function! Hoge(str)
-	echo "hi I'm hoge."
-	echo "args is " . a:str
-endfunction
-
-
-
-source $myScripts/FlexibleFrank2/FlexibleFrank2Controller.vim
-nnoremap <F9> :call FlexibleFrank2Controller()<CR>
-command! -nargs=1 -complete=dir FF call FlexibleFrank2Controller(<f-args>)
-=======
 command! -nargs=+ D call MySQLAssistController(<f-args>)
->>>>>>> 40a0a34225c8e19bf2ff3c576f0dd6236a09c5ae
+
+
+
+"Frank2
+source $myScripts/FlexibleFrank2/FlexibleFrank2Controller.vim
+command! -nargs=1 -complete=dir FF call FlexibleFrank2Controller(<f-args>)
+
+
+command! M messages

@@ -20,8 +20,9 @@ class TabCloser:
 	def makeForceList(self):
 		head = vim.eval('$myScripts')
 
-		self.forceList['FlexibleFrank_frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingText.frank')
-		self.forceList['FlexibleFrank_frank2'] = os.path.abspath(head + '/FlexibleFrank/MoreWorkingText.frank')
+		self.forceList['FlexibleFrank_Frank1'] = os.path.abspath(head + '/FlexibleFrank2/WorkingTexts/Frank1.frank2')
+		self.forceList['FlexibleFrank_Frank2'] = os.path.abspath(head + '/FlexibleFrank2/WorkingTexts/Frank2.frank2')
+		self.forceList['FlexibleFrank_Rename'] = os.path.abspath(head + '/FlexibleFrank2/WorkingTexts/Rename.frank2')
 		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.gass')
 		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.gass')
 

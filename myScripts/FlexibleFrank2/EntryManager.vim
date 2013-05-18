@@ -13,8 +13,8 @@ class EntryManager:
 	def __init__(self, targetDir):
 		self.entries = []
 		self.linedEntries = {}
+		self.getEntries(targetDir, targetDir)
 #		self.getEntries('./')
-		self.getEntries(targetDir)
 
 	#
 	# 更新
@@ -29,22 +29,18 @@ class EntryManager:
 	#
 	# エントリを生成
 	#
-	def getEntries(self, dirPath):
-		cwd = os.getcwd()
+	def getEntries(self, head, dirPath):
 
-		if dirPath != './':
-			self.entries.append(Entry(cwd + dirPath.replace('./', os.sep)))
+		if head != dirPath:
+			self.entries.append(Entry(head, dirPath))
 
 		for path in os.listdir(dirPath):
-			full = os.path.join(dirPath, path)
+			fullPath = os.path.join(dirPath, path)
 
-			if path == '.git':
-				continue
-
-			if os.path.isdir(full):
-				self.getEntries(full)
-			elif os.path.isfile(full):
-				self.entries.append(Entry(cwd + full.replace('./', os.sep)))
+			if os.path.isdir(fullPath):
+				self.getEntries(head, fullPath)
+			elif os.path.isfile(fullPath):
+				self.entries.append(Entry(head, fullPath))
 
 	#
 	# エントリ前のヘッダ部等を出力
