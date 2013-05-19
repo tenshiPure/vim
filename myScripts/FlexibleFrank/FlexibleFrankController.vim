@@ -35,11 +35,11 @@ if myTab.isBlankTab():
 	vim.command('edit ' + pathFrank2)
 else:
 	vim.command('tabedit ' + pathFrank2)
-frank2 = EntryManager(targetDir,pathFrank2)
+frank2 = EntryManager(targetDir, pathFrank2)
 frank2.outputFrank()
 
 vim.command('vsplit ' + pathFrank1)
-frank1 = EntryManager(targetDir,pathFrank1)
+frank1 = EntryManager(targetDir, pathFrank1)
 frank1.outputFrank()
 
 EOM

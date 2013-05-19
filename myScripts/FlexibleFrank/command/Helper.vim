@@ -17,7 +17,7 @@ class Helper:
 	@staticmethod
 	def getTargetEntries(frank, under = ''):
 		result = []
-		for entry in frank.linedEntries.itervalues():
+		for entry in frank1.entries:
 			if entry.pointed:
 				result.append(entry)
 

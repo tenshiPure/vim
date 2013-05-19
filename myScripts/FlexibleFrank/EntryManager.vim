@@ -76,6 +76,9 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
+		if vim.current.buffer.name == pathFrank2:
+			return
+
 		cursor = myCursor()
 		cursor.storePos()
 
