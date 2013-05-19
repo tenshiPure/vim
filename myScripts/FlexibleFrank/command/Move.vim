@@ -8,14 +8,20 @@ class Move:
 	#
 	@staticmethod
 	def execute(frank):
-		if myTab.isFrank1():
+		if vim.current.buffer.name == pathFrank1:
+			print 'mv ... frank2 only'
 			return
 
 		toEntry = Helper.getUnderCursorEntry(frank)
 		if not(toEntry.isDir):
+			print 'mv ... dir only'
 			return
 
 		targetEntries = Helper.getTargetEntries(frank)
+
+		if len(targetEntries) == 0:
+			print 'mv ... no pointed'
+			return
 
 		for targetEntry in targetEntries:
 			if os.name == 'nt':

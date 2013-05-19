@@ -29,18 +29,17 @@ targetDir = os.path.abspath(vim.eval('a:targetDir'))
 head = vim.eval('$myScripts') + '/FlexibleFrank/WorkingTexts/'
 pathFrank1 = os.path.abspath(head + 'Frank1.frank')
 pathFrank2 = os.path.abspath(head + 'Frank2.frank')
+pathRename = os.path.abspath(head + 'Rename.frank')
 
-vim.command('tabedit ' + pathFrank1)
+vim.command('tabedit ' + pathFrank2)
+frank2 = EntryManager(targetDir)
+frank2.initWorkingText()
+frank2.outputEntries()
 
+vim.command('vsplit ' + pathFrank1)
 frank1 = EntryManager(targetDir)
 frank1.initWorkingText()
 frank1.outputEntries()
-
-#vim.command('set splitright')
-#vim.command('vsplit ' + pathFrank2)
-#frank2 = EntryManager(targetDir)
-#frank2.initWorkingText()
-#frank2.outputEntries()
 
 EOM
 

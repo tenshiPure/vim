@@ -8,9 +8,6 @@ class Edit:
 	#
 	@staticmethod
 	def execute(frank):
-		if myTab.isFrank2():
-			return
-
 		targetEntries = Helper.getTargetEntries(frank, 'under')
 
 		tabCloser = TabCloser()

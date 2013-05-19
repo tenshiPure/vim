@@ -78,6 +78,7 @@ elif mode == 'renameBuf':
 
 elif mode == 'renameFix':
 	Rename.renameFix()
+	frank1.reloadFrank()
 
 EOM
 

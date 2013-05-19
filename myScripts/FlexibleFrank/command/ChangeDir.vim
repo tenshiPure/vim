@@ -33,13 +33,17 @@ class ChangeDir:
 
 		frank.reloadFrank()
 
-#	#
-#	# 一つ前のディレクトリに移動する
-#	#
-#	@staticmethod
-#	def cdLast(frank):
-#		frank.targetDir = os.path.abspath(ChangeDir.lastDir)
+	#
+	# 一つ前のディレクトリに移動する
+	#
+	@staticmethod
+	def cdLast(frank):
+		tmpLastDir = frank.targetDir
 
-#		frank.reloadFrank()
+		frank.targetDir = os.path.abspath(ChangeDir.lastDir)
+
+		ChangeDir.lastDir = tmpLastDir
+
+		frank.reloadFrank()
 
 EOM

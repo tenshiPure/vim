@@ -32,6 +32,7 @@ class TabCloser:
 	def execute(self):
 		self.close()
 		self.secondClose()
+		self.secondClose()
 
 	#
 	# 強制的に閉じるタブか判定

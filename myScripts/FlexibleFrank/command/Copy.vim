@@ -8,15 +8,21 @@ class Copy:
 	#
 	@staticmethod
 	def execute(frank):
-#		if myTab.isFrank1():
-#			return
+		if vim.current.buffer.name == pathFrank1:
+			print 'cp ... frank2 only'
+			return
 
 		toEntry = Helper.getUnderCursorEntry(frank)
 		if not(toEntry.isDir):
+			print 'cp ... dir only'
 			return
 
 		toFullPathDQ = toEntry.fullPathDQ
 		targetEntries = Helper.getTargetEntries(frank)
+
+		if len(targetEntries) == 0:
+			print 'cp ... no pointed'
+			return
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):

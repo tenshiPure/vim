@@ -11,6 +11,7 @@ class Explorer:
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if not(targetEntry.isDir):
+			print 'open ... dir only'
 			return
 
 		if os.name == 'nt':
@@ -26,6 +27,7 @@ class Explorer:
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
 		if targetEntry.isDir:
+			print 'app ... file only'
 			return
 
 		if os.name == 'nt':
