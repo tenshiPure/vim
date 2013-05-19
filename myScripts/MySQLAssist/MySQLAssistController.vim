@@ -1,48 +1,16 @@
-function! MySQLAssistController(command, ...)
+function! MySQLAssistController()
 python <<EOM
 import vim
 
-argsNum = int(vim.eval('len(a:000)'))
-print argsNum
+head = vim.eval('$myScripts')
+DescResult = os.path.abspath(head + '/MySQLAssist/DescResult.mass')
+SelectResult = os.path.abspath(head + '/MySQLAssist/SelectResult.mass')
+TableList = os.path.abspath(head + '/MySQLAssist/TableList.mass')
 
-if 0 < argsNum:
-	r = vim.eval('a:1')
-else:
-	r = ''
+vim.command('tabedit ' + DescResult)
+vim.command('set splitbelow')
+vim.command('split ' + SelectResult)
+vim.command('split ' + TableList)
 
-user = 'slf'
-password = 'slf'
-Database = 'slf'
-
-login = '!mysql -u %(user)s -p%(password)s %(Database)s -e ' % {'user' : user, 'password' : password, 'Database' : Database}
-
-
-command = vim.eval('a:command')
-
-if command == 'select':
-	column = 'service_id, doc_no, doc_title'
-	table = vim.eval("expand('<cword>')")
-
-	query = myString.surround('select %(column)s from %(table)s;' % {'column' : column, 'table' : table}, '"')
-
-elif command == 'desc':
-	table = vim.eval("expand('<cword>')")
-
-	query = myString.surround('desc %(table)s;' % {'table' : table}, '"')
-
-elif command == 'show':
-
-	query = myString.surround('show tables;', '"')
-
-else:
-	query = ''
-
-if r == '':
-	vim.command(login + query)
-else:
-	vim.command("tabedit")
-	vim.command(r + login + query)
-
-#	SLFDocumentMngInfo
 EOM
 endfunction

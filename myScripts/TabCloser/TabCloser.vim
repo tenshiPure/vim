@@ -24,6 +24,9 @@ class TabCloser:
 		self.forceList['FlexibleFrank_frank2'] = os.path.abspath(head + '/FlexibleFrank/MoreWorkingText.frank')
 		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.gass')
 		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.gass')
+		self.forceList['MySQLAssist_DescResult'] = os.path.abspath(head + '/MySQLAssist/DescResult.mass')
+		self.forceList['MySQLAssist_SelectResult'] = os.path.abspath(head + '/MySQLAssist/SelectResult.mass')
+		self.forceList['MySQLAssist_TableList'] = os.path.abspath(head + '/MySQLAssist/TableList.mass')
 
 	#
 	# コントローラから呼ばれるメソッド
