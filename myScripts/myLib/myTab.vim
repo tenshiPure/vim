@@ -5,16 +5,6 @@ import vim
 class myTab:
 
 	#
-	# 新規作業バッファを開く
-	#
-	@staticmethod
-	def openWorkingText(path):
-		if myTab.isBlankTab():
-			vim.command('edit ' + path)
-		else:
-			vim.command('tabedit ' + path)
-		
-	#
 	# 無題のタブか判定
 	#
 	@staticmethod

@@ -31,7 +31,10 @@ pathFrank1 = os.path.abspath(head + 'Frank1.frank')
 pathFrank2 = os.path.abspath(head + 'Frank2.frank')
 pathRename = os.path.abspath(head + 'Rename.frank')
 
-vim.command('tabedit ' + pathFrank2)
+if myTab.isBlankTab():
+	vim.command('edit ' + pathFrank2)
+else:
+	vim.command('tabedit ' + pathFrank2)
 frank2 = EntryManager(targetDir)
 frank2.initWorkingText()
 frank2.outputEntries()
