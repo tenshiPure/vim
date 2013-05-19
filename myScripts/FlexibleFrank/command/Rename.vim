@@ -7,6 +7,7 @@ class Rename:
 	#
 	# リネーム対象を別バッファに表示する
 	#
+	@staticmethod
 	def renameBuf(frank):
 		if myTab.isFrank2():
 			return
@@ -32,6 +33,7 @@ class Rename:
 	#
 	# リネームを実行する
 	#
+	@staticmethod
 	def renameFix():
 		if myTab.isFrank1() or myTab.isFrank2():
 			print 'fix ... only frank3'
@@ -67,6 +69,4 @@ class Rename:
 				after = myString.surround(renamedEntries[index].fullPath, '"')
 				vim.command('silent !mv ' + before + ' ' + after)
 
-	renameBuf = staticmethod(renameBuf)
-	renameFix = staticmethod(renameFix)
 EOM

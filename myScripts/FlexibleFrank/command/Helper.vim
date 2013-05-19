@@ -6,13 +6,15 @@ class Helper:
 	#
 	# カーソル下のエントリを取得する
 	#
+	@staticmethod
 	def getUnderCursorEntry(frank):
-		currentLine = int(myCursor().getCursolLineNum())
+		currentLine = myCursor().getCursolLineNum()
 		return frank.linedEntries[currentLine]
 
 	#
 	# ポイントエントリもしくはカーソル下エントリを取得する
 	#
+	@staticmethod
 	def getTargetEntries(frank, under = ''):
 		result = []
 		for entry in frank.linedEntries.itervalues():
@@ -28,6 +30,7 @@ class Helper:
 	#
 	# エントリがディレクトリのみか判定する
 	#
+	@staticmethod
 	def isDirOnly(entries):
 		for entry in entries:
 			if not(entry.isDir):
@@ -37,6 +40,7 @@ class Helper:
 	#
 	# エントリがファイルのみか判定する
 	#
+	@staticmethod
 	def isFileOnly(entries):
 		for entry in entries:
 			if entry.isDir:
@@ -46,12 +50,8 @@ class Helper:
 	#
 	# エントリが同一タイプのみか判定する
 	#
+	@staticmethod
 	def isOnlySameTypeEntries(entries):
 		return Helper.isDirOnly(entries) or Helper.isFileOnly(entries)
 
-	getUnderCursorEntry = staticmethod(getUnderCursorEntry)
-	getTargetEntries = staticmethod(getTargetEntries)
-	isDirOnly = staticmethod(isDirOnly)
-	isFileOnly = staticmethod(isFileOnly)
-	isOnlySameTypeEntries = staticmethod(isOnlySameTypeEntries)
 EOM

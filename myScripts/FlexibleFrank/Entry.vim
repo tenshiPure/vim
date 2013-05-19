@@ -9,7 +9,6 @@ class Entry:
 	fullPath = ''
 	fullPathDQ = ''
 	entryName = ''
-	underCurrentDepth = ''
 	putDir = ''
 	isDir = False
 	depth = 0
@@ -19,14 +18,13 @@ class Entry:
 	#
 	# 擬似コンストラクタ
 	#
-	def __init__(self, fullPath):
+	def __init__(self, head, fullPath):
 		self.fullPath = fullPath
 		self.fullPathDQ = myString.surround(fullPath, '"')
 		self.entryName = self.getEntryName()
-		self.underCurrentDepth = self.getUnderCurrentDepth()
 		self.putDir = self.getPutDir()
 		self.isDir = self.getIsDir()
-		self.depth = self.getDepth()
+		self.depth = self.getDepth(head)
 		self.pointed = False
 		self.formatedForOutput = self.createFormatedForOutput()
 
@@ -35,13 +33,6 @@ class Entry:
 	#
 	def getEntryName(self):
 		return self.fullPath.rsplit(os.sep, 1)[1]
-
-	#
-	# カレント階層以下部のパスを取得
-	#
-	def getUnderCurrentDepth(self):
-		cwd = os.getcwd()
-		return self.fullPath.replace(cwd + os.sep, '')
 
 	#
 	# ファイルの置き場パスを取得
@@ -58,11 +49,10 @@ class Entry:
 	#
 	# 階層深度を取得
 	#
-	def getDepth(self):
-		cwd = os.getcwd()
-		cwdDepth = cwd.count(os.sep)
+	def getDepth(self, head):
+		headDepth = head.count(os.sep)
 		fullDepth = self.fullPath.count(os.sep)
-		return fullDepth - cwdDepth
+		return fullDepth - headDepth
 
 	#
 	# 出力フォーマット

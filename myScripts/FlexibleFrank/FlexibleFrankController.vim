@@ -1,23 +1,8 @@
 "FlexibleFrank.vim
 
-source $myScripts/myLib/myCursor.vim
-source $myScripts/myLib/myTab.vim
-source $myScripts/myLib/myString.vim
-
-source $myScripts/TabCloser/TabCloserController.vim
-
-source $myScripts/FlexibleFrank/FlexibleFrank.vim
+source $myScripts/FlexibleFrank/EntryManager.vim
 source $myScripts/FlexibleFrank/Entry.vim
-
-source $myScripts/FlexibleFrank/command/Helper.vim
-source $myScripts/FlexibleFrank/command/Edit.vim
-source $myScripts/FlexibleFrank/command/ChangeDir.vim
-source $myScripts/FlexibleFrank/command/Explorer.vim
-source $myScripts/FlexibleFrank/command/Copy.vim
-source $myScripts/FlexibleFrank/command/Move.vim
-source $myScripts/FlexibleFrank/command/Delete.vim
-source $myScripts/FlexibleFrank/command/Mkdir.vim
-source $myScripts/FlexibleFrank/command/Rename.vim
+source $myScripts/FlexibleFrank/CommandDispatcher.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -25,119 +10,63 @@ augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 
-autocmd autoCmdFrank FocusLost *.frank :call FlexibleFrankController('close')
-autocmd autoCmdFrank TabLeave *.frank :call FlexibleFrankController('close')
+autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('close')
+autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('close')
 
-autocmd autoCmdFrank BufEnter WorkingText.frank call BufMap_Frank()
-autocmd autoCmdFrank BufEnter MoreWorkingText.frank call BufMap_Frank()
-autocmd autoCmdFrank BufEnter RenameWorkingText.frank call BufMap_Frank_Rename()
+autocmd autoCmdFrank BufEnter Frank1.frank call BufMap_Frank()
+autocmd autoCmdFrank BufEnter Frank2.frank call BufMap_Frank()
+autocmd autoCmdFrank BufEnter Rename.frank call BufMap_Rename()
 
-function! FlexibleFrankController(mode) range
+function! FlexibleFrankController(targetDir)
 
 python <<EOM
 
 import vim
+import os
 
-mode = vim.eval('a:mode')
-firstLine = vim.eval('a:firstline')
-lastLine = vim.eval('a:lastline')
+targetDir = os.path.abspath(vim.eval('a:targetDir'))
 
-if mode == 'new':
-	frank = FlexibleFrank()
-	frank.newFrank()
+head = vim.eval('$myScripts') + '/FlexibleFrank/WorkingTexts/'
+pathFrank1 = os.path.abspath(head + 'Frank1.frank')
+pathFrank2 = os.path.abspath(head + 'Frank2.frank')
 
-elif mode == 'close':
-	tabCloser = TabCloser()
-	tabCloser.execute()
+vim.command('tabedit ' + pathFrank1)
 
-elif mode == 'reload':
-	frank.reloadFrank()
+frank1 = EntryManager(targetDir)
+frank1.initWorkingText()
+frank1.outputEntries()
 
-elif mode == 'pointOn':
-	frank.pointOn(int(firstLine), int(lastLine))
-
-elif mode == 'pointOff':
-	frank.pointOff(int(firstLine), int(lastLine))
-
-elif mode == 'edit':
-	Edit.execute(frank)
-
-elif mode == 'openDir':
-	Explorer.openDir(frank)
-
-elif mode == 'openByApp':
-	Explorer.openByApp(frank)
-
-elif mode == 'lcd':
-	ChangeDir.cd(frank, 'local')
-
-elif mode == 'cd':
-	ChangeDir.cd(frank)
-
-elif mode == 'lcdUpper':
-	ChangeDir.cdUpper('local')
-
-elif mode == 'cdUpper':
-	ChangeDir.cdUpper()
-
-elif mode == 'lcdLast':
-	ChangeDir.cdLast('local')
-
-elif mode == 'cdLast':
-	ChangeDir.cdLast()
-
-elif mode == 'tab':
-	if frank.single:
-		frank.moreFrank()
-	else:
-		myTab.changeWindow()
-
-elif mode == 'copy':
-	Copy.execute(frank)
-
-elif mode == 'move':
-	Move.execute(frank)
-
-elif mode == 'delete':
-	Delete.execute(frank)
-
-elif mode == 'mkdir':
-	Mkdir.execute(frank)
-
-elif mode == 'renameBuf':
-	Rename.renameBuf(frank)
-
-elif mode == 'renameFix':
-	Rename.renameFix()
+#vim.command('set splitright')
+#vim.command('vsplit ' + pathFrank2)
+#frank2 = EntryManager(targetDir)
+#frank2.initWorkingText()
+#frank2.outputEntries()
 
 EOM
 
 endfunction
 
 function! BufMap_Frank()
-	nnoremap <buffer> e         :call FlexibleFrankController('edit')<CR>
-	nnoremap <buffer> m         :call FlexibleFrankController('lcd')<CR>
-	nnoremap <buffer> M         :call FlexibleFrankController('cd')<CR>
-	nnoremap <buffer> h         :call FlexibleFrankController('lcdUpper')<CR>
-	nnoremap <buffer> H         :call FlexibleFrankController('cdUpper')<CR>
-	nnoremap <buffer> l         :call FlexibleFrankController('lcdLast')<CR>
-	nnoremap <buffer> L         :call FlexibleFrankController('cdLast')<CR>
-	nnoremap <buffer> o         :call FlexibleFrankController('openDir')<CR>
-	nnoremap <buffer> a         :call FlexibleFrankController('openByApp')<CR>
-	nnoremap <buffer> cp        :call FlexibleFrankController('copy')<CR>
-	nnoremap <buffer> mv        :call FlexibleFrankController('move')<CR>
-	nnoremap <buffer> rm        :call FlexibleFrankController('delete')<CR>
-	nnoremap <buffer> mk        :call FlexibleFrankController('mkdir')<CR>
-	nnoremap <buffer> re        :call FlexibleFrankController('renameBuf')<CR>
-	nnoremap <buffer> <F5>      :call FlexibleFrankController('reload')<CR>
-	nnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
-	vnoremap <buffer> p   :call FlexibleFrankController('pointOn')<CR>
-	nnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
-	vnoremap <buffer> <S-p> :call FlexibleFrankController('pointOff')<CR>
-	nnoremap <buffer> <Tab> :call FlexibleFrankController('tab')<CR>
-	nnoremap <buffer> gw <C-w>w
+	nnoremap <buffer> e         :call CommandDispatcher('edit')<CR>
+	nnoremap <buffer> m         :call CommandDispatcher('cd')<CR>
+	nnoremap <buffer> h         :call CommandDispatcher('cdUpper')<CR>
+	nnoremap <buffer> l         :call CommandDispatcher('cdLast')<CR>
+	nnoremap <buffer> o         :call CommandDispatcher('openDir')<CR>
+	nnoremap <buffer> a         :call CommandDispatcher('openByApp')<CR>
+	nnoremap <buffer> cp        :call CommandDispatcher('copy')<CR>
+	nnoremap <buffer> mv        :call CommandDispatcher('move')<CR>
+	nnoremap <buffer> rm        :call CommandDispatcher('delete')<CR>
+	nnoremap <buffer> mk        :call CommandDispatcher('mkdir')<CR>
+	nnoremap <buffer> re        :call CommandDispatcher('renameBuf')<CR>
+	nnoremap <buffer> <F5>      :call CommandDispatcher('reload')<CR>
+	nnoremap <buffer> p         :call CommandDispatcher('pointOn')<CR>
+	vnoremap <buffer> p         :call CommandDispatcher('pointOn')<CR>
+	nnoremap <buffer> <S-p>     :call CommandDispatcher('pointOff')<CR>
+	vnoremap <buffer> <S-p>     :call CommandDispatcher('pointOff')<CR>
+	nnoremap <buffer> <Tab>     :call CommandDispatcher('tab')<CR>
+	nnoremap <buffer> gw        <C-w>w
 endfunction
 
-function! BufMap_Frank_Rename()
-	nnoremap <buffer> fix       :call FlexibleFrankController('renameFix')<CR>
+function! BufMap_Rename()
+	nnoremap <buffer> fix       :call CommandDispatcher('renameFix')<CR>
 endfunction

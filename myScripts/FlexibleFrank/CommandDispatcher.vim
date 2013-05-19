@@ -3,15 +3,15 @@
 source $myScripts/TabCloser/TabCloserController.vim
 source $myScripts/myLib/myTab.vim
 
-source $myScripts/FlexibleFrank2/command/Helper.vim
-source $myScripts/FlexibleFrank2/command/Edit.vim
-source $myScripts/FlexibleFrank2/command/ChangeDir.vim
-source $myScripts/FlexibleFrank2/command/Explorer.vim
-source $myScripts/FlexibleFrank2/command/Copy.vim
-source $myScripts/FlexibleFrank2/command/Move.vim
-source $myScripts/FlexibleFrank2/command/Delete.vim
-source $myScripts/FlexibleFrank2/command/Mkdir.vim
-source $myScripts/FlexibleFrank2/command/Rename.vim
+source $myScripts/FlexibleFrank/command/Helper.vim
+source $myScripts/FlexibleFrank/command/Edit.vim
+source $myScripts/FlexibleFrank/command/ChangeDir.vim
+source $myScripts/FlexibleFrank/command/Explorer.vim
+source $myScripts/FlexibleFrank/command/Copy.vim
+source $myScripts/FlexibleFrank/command/Move.vim
+source $myScripts/FlexibleFrank/command/Delete.vim
+source $myScripts/FlexibleFrank/command/Mkdir.vim
+source $myScripts/FlexibleFrank/command/Rename.vim
 
 function! CommandDispatcher(mode) range
 

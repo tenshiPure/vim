@@ -219,9 +219,9 @@ nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
 
 "フランク
-"nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> --win
 nnoremap <S-M-CR> :FF ./<CR> --win
-nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR> --mac
+nnoremap <S-C-CR> :FF ./<CR> --mac
+command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
 "GitAssist
 command! G :call GitAssistController('new')
@@ -330,9 +330,6 @@ command! -nargs=+ D call MySQLAssistController(<f-args>)
 
 
 
-"Frank2
-source $myScripts/FlexibleFrank2/FlexibleFrank2Controller.vim
-command! -nargs=1 -complete=dir FF call FlexibleFrank2Controller(<f-args>)
 
 
 command! M messages

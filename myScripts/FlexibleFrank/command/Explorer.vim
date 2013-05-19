@@ -6,6 +6,7 @@ class Explorer:
 	#
 	# ディレクトリを開く
 	#
+	@staticmethod
 	def openDir(frank):
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
@@ -13,13 +14,14 @@ class Explorer:
 			return
 
 		if os.name == 'nt':
-			vim.command('silent !explorer ' + targetEntry.underCurrentDepth)
+			vim.command('!explorer ' + targetEntry.fullPathDQ)
 		else:
-			vim.command('silent !open ' + targetEntry.underCurrentDepth)
+			vim.command('silent !open ' + targetEntry.fullPath)
 
 	#
 	# 指定ファイルをアプリケーションで開く
 	#
+	@staticmethod
 	def openByApp(frank):
 		targetEntry = Helper.getUnderCursorEntry(frank)
 
@@ -27,10 +29,8 @@ class Explorer:
 			return
 
 		if os.name == 'nt':
-			vim.command('silent !explorer ' + targetEntry.underCurrentDepth)
+			vim.command('!explorer ' + targetEntry.fullPathDQ)
 		else:
-			vim.command('silent !open ' + targetEntry.underCurrentDepth)
+			vim.command('silent !open ' + targetEntry.fullPath)
 
-	openDir = staticmethod(openDir)
-	openByApp = staticmethod(openByApp)
 EOM
