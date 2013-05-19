@@ -40,10 +40,8 @@ class EntryManager:
 	# ヘッダとエントリを出力する
 	#
 	def outputFrank(self):
-#		if self.myBufName != vim.current.buffer:
-#			myTab.changeWindow()
-#		if self.myBufName != vim.current.buffer:
-#			myTab.changeWindow()
+		if self.myBufName != vim.current.buffer.name:
+			myTab.changeWindow()
 
 		self.outputHeader()
 		self.outputEntries()
@@ -56,8 +54,7 @@ class EntryManager:
 
 		self.header = []
 		self.header.append('----')
-#		self.header.append(self.targetDir)
-		self.header.append(self.myBufName)
+		self.header.append(self.targetDir)
 		self.header.append('----')
 		self.header.append('')
 
