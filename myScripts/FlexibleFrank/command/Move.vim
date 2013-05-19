@@ -8,10 +8,6 @@ class Move:
 	#
 	@staticmethod
 	def execute(frank):
-		if vim.current.buffer.name == pathFrank1:
-			print 'mv ... frank2 only'
-			return
-
 		toEntry = Helper.getUnderCursorEntry(frank)
 		if not(toEntry.isDir):
 			print 'mv ... dir only'

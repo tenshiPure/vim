@@ -8,10 +8,6 @@ class Delete:
 	#
 	@staticmethod
 	def execute(frank):
-		if vim.current.buffer.name == pathFrank1:
-			print 'rm ... frank2 only'
-			return
-
 		targetEntries = Helper.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:

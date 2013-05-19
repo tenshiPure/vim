@@ -4,6 +4,7 @@ import os
 
 class EntryManager:
 
+	myBufName = ''
 	targetDir = ''
 	header = []
 	entries = []
@@ -12,7 +13,8 @@ class EntryManager:
 	#
 	# 擬似コンストラクタ
 	#
-	def __init__(self, targetDir):
+	def __init__(self, targetDir, myBufName):
+		self.myBufName = myBufName
 		self.targetDir = targetDir
 		self.entries = []
 		self.linedEntries = {}
@@ -35,14 +37,27 @@ class EntryManager:
 				self.entries.append(Entry(head, fullPath))
 
 	#
+	# ヘッダとエントリを出力する
+	#
+	def outputFrank(self):
+#		if self.myBufName != vim.current.buffer:
+#			myTab.changeWindow()
+#		if self.myBufName != vim.current.buffer:
+#			myTab.changeWindow()
+
+		self.outputHeader()
+		self.outputEntries()
+
+	#
 	# エントリ前のヘッダ部等を出力
 	#
-	def initWorkingText(self):
+	def outputHeader(self):
 		cwd = os.getcwd()
 
 		self.header = []
 		self.header.append('----')
-		self.header.append(self.targetDir)
+#		self.header.append(self.targetDir)
+		self.header.append(self.myBufName)
 		self.header.append('----')
 		self.header.append('')
 
@@ -64,17 +79,13 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-#		if myTab.isFrank2():
-#			return
-
 		cursor = myCursor()
 		cursor.storePos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOn()
 
-		myTab.initWorkingText(self.header)
-		self.outputEntries()
+		self.outputFrank()
 
 		cursor.setPosAtStored()
 
@@ -82,17 +93,13 @@ class EntryManager:
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
-#		if myTab.isFrank2():
-#			return
-
 		cursor = myCursor()
 		cursor.storePos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOff()
 
-		myTab.initWorkingText(self.header)
-		self.outputEntries()
+		self.outputFrank()
 
 		cursor.setPosAtStored()
 
@@ -103,7 +110,6 @@ class EntryManager:
 		self.entries = []
 		self.linedEntries = {}
 		self.getEntries(self.targetDir, self.targetDir)
-		self.initWorkingText()
-		self.outputEntries()
+		self.outputFrank()
 		
 EOM

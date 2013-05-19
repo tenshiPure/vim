@@ -23,62 +23,73 @@ mode = vim.eval('a:mode')
 firstLine = vim.eval('a:firstline')
 lastLine = vim.eval('a:lastline')
 
+frank = None
+if vim.current.buffer.name == pathFrank1:
+	frank = frank1
+if vim.current.buffer.name == pathFrank2:
+	frank = frank2
+
 if mode == 'close':
 	tabCloser = TabCloser()
 	tabCloser.execute()
 
 elif mode == 'reload':
 	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 elif mode == 'pointOn':
-	frank1.pointOn(int(firstLine), int(lastLine))
+	frank.pointOn(int(firstLine), int(lastLine))
 
 elif mode == 'pointOff':
-	frank1.pointOff(int(firstLine), int(lastLine))
+	frank.pointOff(int(firstLine), int(lastLine))
 
 elif mode == 'edit':
-	Edit.execute(frank1)
+	Edit.execute(frank)
 
 elif mode == 'openDir':
-	Explorer.openDir(frank1)
+	Explorer.openDir(frank)
 
 elif mode == 'openByApp':
-	Explorer.openByApp(frank1)
+	Explorer.openByApp(frank)
 
 elif mode == 'cd':
-	ChangeDir.cd(frank1)
+	ChangeDir.cd(frank)
 
 elif mode == 'cdUpper':
-	ChangeDir.cdUpper(frank1)
+	ChangeDir.cdUpper(frank)
 
 elif mode == 'cdLast':
-	ChangeDir.cdLast(frank1)
+	ChangeDir.cdLast(frank)
 
 elif mode == 'tab':
 	myTab.changeWindow()
 
 elif mode == 'copy':
-	Copy.execute(frank1)
-	frank1.reloadFrank()
+	Copy.execute(frank)
+	frank.reloadFrank()
 
 elif mode == 'move':
-	Move.execute(frank1)
+	Move.execute(frank)
 	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 elif mode == 'delete':
-	Delete.execute(frank1)
+	Delete.execute(frank)
 	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 elif mode == 'mkdir':
-	Mkdir.execute(frank1)
+	Mkdir.execute(frank)
 	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 elif mode == 'renameBuf':
-	Rename.renameBuf(frank1)
+	Rename.renameBuf(frank)
 
 elif mode == 'renameFix':
 	Rename.renameFix()
 	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 EOM
 

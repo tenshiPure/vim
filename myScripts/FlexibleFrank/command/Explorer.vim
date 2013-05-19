@@ -15,7 +15,7 @@ class Explorer:
 			return
 
 		if os.name == 'nt':
-			vim.command('!explorer ' + targetEntry.fullPathDQ)
+			vim.command('silent !explorer ' + targetEntry.fullPathDQ)
 		else:
 			vim.command('silent !open ' + targetEntry.fullPath)
 
@@ -31,7 +31,7 @@ class Explorer:
 			return
 
 		if os.name == 'nt':
-			vim.command('!explorer ' + targetEntry.fullPathDQ)
+			vim.command('silent !explorer ' + targetEntry.fullPathDQ)
 		else:
 			vim.command('silent !open ' + targetEntry.fullPath)
 
