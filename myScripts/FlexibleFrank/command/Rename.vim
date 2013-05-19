@@ -7,17 +7,21 @@ class Rename:
 	#
 	# リネーム対象を別バッファに表示する
 	#
+	@staticmethod
 	def renameBuf(frank):
-		if myTab.isFrank2():
-			return
-
 		targetEntries = Helper.getTargetEntries(frank)
-		if not(Helper.isOnlySameTypeEntries(targetEntries)):
+
+		if len(targetEntries) == 0:
+			print 'rename ... no pointed'
 			return
 
-		myTab.openMoreWorkingText('$myScripts/FlexibleFrank/RenameWorkingText.frank')
-		frank.single = False
+		if not(Helper.isOnlySameTypeEntries(targetEntries)):
+			print 'rename ... only same type entries'
+			return
+
+		vim.command('botright 10split ' + pathRename)
 		myTab.clearCurrentBuffer()
+
 		buf = vim.current.buffer
 
 		index = 0
@@ -32,9 +36,10 @@ class Rename:
 	#
 	# リネームを実行する
 	#
+	@staticmethod
 	def renameFix():
-		if myTab.isFrank1() or myTab.isFrank2():
-			print 'fix ... only frank3'
+		if vim.current.buffer.name == pathFrank1 or vim.current.buffer.name == pathFrank2:
+			print 'fix ... Rename only'
 			return
 
 		buf = vim.current.buffer
@@ -42,11 +47,11 @@ class Rename:
 
 		index = 0
 		for index in range(len(buf)):
-			renamedEntries.append(Entry(buf[index]))
+			renamedEntries.append(Entry('hogeHead', buf[index]))
 			index += 1
 
 		if len(Rename.beforeEntries) != len(renamedEntries):
-			print 'Number of beforeEntry and afterEntry do not match. I can\'t execute.'
+			print 'fix ... number of beforeEntry and afterEntry do not match'
 			return
 
 		for index in range(len(renamedEntries)):
@@ -54,19 +59,17 @@ class Rename:
 			afterPutDir = renamedEntries[index].putDir
 
 			if beforePutDir != afterPutDir:
-				print 'Dirctory Changed. I can\'t execute.'
+				print 'fix ... put directory changed'
 				return
 
 		for index in range(len(renamedEntries)):
-			before = myString.surround(Rename.beforeEntries[index].fullPath, '"')
+			before = Rename.beforeEntries[index].fullPathDQ
 
 			if os.name == 'nt':
 				after = myString.surround(renamedEntries[index].entryName, '"')
 				vim.command('silent !rename ' + before + ' ' + after)
 			else:
-				after = myString.surround(renamedEntries[index].fullPath, '"')
+				after = renamedEntries[index].fullPathDQ
 				vim.command('silent !mv ' + before + ' ' + after)
 
-	renameBuf = staticmethod(renameBuf)
-	renameFix = staticmethod(renameFix)
 EOM

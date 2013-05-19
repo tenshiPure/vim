@@ -20,8 +20,9 @@ class TabCloser:
 	def makeForceList(self):
 		head = vim.eval('$myScripts')
 
-		self.forceList['FlexibleFrank_frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingText.frank')
-		self.forceList['FlexibleFrank_frank2'] = os.path.abspath(head + '/FlexibleFrank/MoreWorkingText.frank')
+		self.forceList['FlexibleFrank_Frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank1.frank')
+		self.forceList['FlexibleFrank_Frank2'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank2.frank')
+		self.forceList['FlexibleFrank_Rename'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Rename.frank')
 		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.gass')
 		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.gass')
 		self.forceList['MySQLAssist_DescResult'] = os.path.abspath(head + '/MySQLAssist/DescResult.mass')
@@ -33,6 +34,7 @@ class TabCloser:
 	#
 	def execute(self):
 		self.close()
+		self.secondClose()
 		self.secondClose()
 
 	#

@@ -323,11 +323,12 @@ endif
 
 "フランク
 if os == 'win'
-	nnoremap <S-M-CR> :call FlexibleFrankController('new')<CR> 
+	nnoremap <S-M-CR> :FF ./<CR> 
 endif
 if os == 'mac'
-	nnoremap <S-C-CR> :call FlexibleFrankController('new')<CR> 
+	nnoremap <S-C-CR> :FF ./<CR> 
 endif
+command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
 "GitAssist
 command! G :call GitAssistController('new')
@@ -436,7 +437,12 @@ nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpun
 
 nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
+
+
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
-"command! -nargs=+ D call MySQLAssistController(<f-args>)
-command! D call MySQLAssistController()
+command! -nargs=+ D call MySQLAssistController(<f-args>)
+
+
+
+command! M messages

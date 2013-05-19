@@ -43,5 +43,5 @@ class myCursor:
 	#
 	def getCursolLineNum(self):
 		self.storePos()
-		return self.lnum
+		return int(self.lnum)
 EOM

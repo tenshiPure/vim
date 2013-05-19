@@ -4,17 +4,20 @@ import vim
 class Move:
 
 	#
-	# ‘ÎÛ‚ğˆÚ“®‚·‚é
+	# å¯¾è±¡ã‚’ç§»å‹•ã™ã‚‹
 	#
+	@staticmethod
 	def execute(frank):
-		if myTab.isFrank1():
-			return
-
 		toEntry = Helper.getUnderCursorEntry(frank)
 		if not(toEntry.isDir):
+			print 'mv ... dir only'
 			return
 
 		targetEntries = Helper.getTargetEntries(frank)
+
+		if len(targetEntries) == 0:
+			print 'mv ... no pointed'
+			return
 
 		for targetEntry in targetEntries:
 			if os.name == 'nt':
@@ -22,5 +25,4 @@ class Move:
 			else:
 				vim.command('silent !mv "' + targetEntry.fullPath + '" "' + toEntry.fullPath + '"')
 
-	execute = staticmethod(execute)
 EOM

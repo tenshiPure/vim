@@ -6,10 +6,8 @@ class Delete:
 	#
 	# 対象を削除する
 	#
+	@staticmethod
 	def execute(frank):
-		if myTab.isFrank1():
-			return
-
 		targetEntries = Helper.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:
@@ -25,5 +23,4 @@ class Delete:
 				else:
 					vim.command('silent !rm -r "' + targetEntry.fullPath + '"')
 
-	execute = staticmethod(execute)
 EOM
