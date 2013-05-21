@@ -3,6 +3,7 @@ python <<EOM
 class Desc:
 
 	bufName = ''
+	header = []
 	loginCommand = ''
 	table = ''
 	command = ''
@@ -10,19 +11,23 @@ class Desc:
 	#
 	# 擬似コンストラクタ
 	#
-	def __init__(self, bufName, loginCommand):
+	def __init__(self, bufName, loginCommand, table):
 		self.bufName = bufName
+		self.header = self.initWorkingText()
 		self.loginCommand = loginCommand
-		self.table = self.getTableName()
+		self.table = table
 		self.command = self.createCommand()
 
 	#
-	# テーブル名を取得
+	# テキストの初期化
 	#
-	def getTableName(self):
-#		table = vim.eval("expand('<cword>')")
-#		return 'SLFDocumentMngInfo'
-		return 'book'
+	def initWorkingText(self):
+		tmp = []
+		tmp.append('----------------------')
+		tmp.append('MySQLAssist DescResult')
+		tmp.append('----------------------')
+		
+		return tmp
 
 	#
 	# コマンド作成
@@ -36,7 +41,9 @@ class Desc:
 	#
 	def output(self):
 		myTab.switchTab(self.bufName, 3)
+		myTab.initWorkingText(self.header)
 		myCursor.moveCursolBottom(1)
 		vim.command('r' + self.command)
+		del vim.current.buffer[4]
 
 EOM

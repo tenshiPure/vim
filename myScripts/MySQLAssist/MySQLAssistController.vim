@@ -1,5 +1,7 @@
 "MySQLAssistController.vim
 
+source $myScripts/myLib/myCursor.vim
+
 source $myScripts/MySQLAssist/LoginInfo.vim
 source $myScripts/MySQLAssist/MySQLQueries/Desc.vim
 source $myScripts/MySQLAssist/MySQLQueries/Show.vim
@@ -39,11 +41,8 @@ loginInfo = LoginInfo('test_user', 'test_pswd', 'test_db')
 show = Show(ShowResult, loginInfo.loginCommand)
 show.output()
 
-desc = Desc(DescResult, loginInfo.loginCommand)
-desc.output()
-
-select = Select(SelectResult, loginInfo.loginCommand)
-select.output()
+#myTab.switchTab(ShowResult, 3)
+MyCursor().setPosOptional(4, 0, 0)
 
 EOM
 endfunction
@@ -57,6 +56,30 @@ tabCloser.execute()
 EOM
 endfunction
 
+function! MySQLAssistCR()
+python <<EOM
+import vim
+
+if vim.current.buffer.name != ShowResult:
+	print 'MySQLAssist ... only ShowResult Tab'
+else:
+	currentLine = int(myCursor().getCursolLineNum())
+	if myString.isBlankLine(vim.current.buffer[currentLine - 1]):
+		print 'MySQLAssist ... only non blank line'
+	else:
+		table = vim.current.buffer[currentLine - 1]
+		desc = Desc(DescResult, loginInfo.loginCommand, table)
+		desc.output()
+
+		select = Select(SelectResult, loginInfo.loginCommand, table)
+		select.output()
+
+		myTab.switchTab(ShowResult, 3)
+
+EOM
+endfunction
+
 function! BufMap_MySQLAssist()
 	nnoremap <buffer> gw <C-w>w
+	nnoremap <buffer> <CR> :call MySQLAssistCR()<CR>
 endfunction

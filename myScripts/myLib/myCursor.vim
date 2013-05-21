@@ -1,7 +1,7 @@
 python <<EOM
 import vim
 
-class myCursor:
+class MyCursor:
 
 	bufnum = 0
 	lnum   = 0
