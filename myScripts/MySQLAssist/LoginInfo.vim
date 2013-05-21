@@ -20,7 +20,7 @@ class LoginInfo:
 	# ログイン部のコマンドを作成する
 	#
 	def createLoginCommand(self):
-		return '!mysql -u %(user)s -p%(pswd)s %(db)s -e ' % {'user' : self.user, 'pswd' : self.pswd, 'db' : self.db}
+#		return '!mysql -u %(user)s -p%(pswd)s %(db)s -e ' % {'user' : self.user, 'pswd' : self.pswd, 'db' : self.db}
+		return r'!C:\xampp\mysql\bin\mysql -u %(user)s -p%(pswd)s %(db)s -e ' % {'user' : self.user, 'pswd' : self.pswd, 'db' : self.db}
 		
-
 EOM

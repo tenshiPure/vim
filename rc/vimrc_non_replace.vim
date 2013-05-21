@@ -226,11 +226,17 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "GitAssist
 command! G :call GitAssistController('new')
 
+"DBAssist
+command! D call MySQLAssistController()
+
 "補完操作のマッピング
 inoremap <M-CR>   <C-p>--win
 inoremap <S-M-CR> <C-n>--win
 inoremap <C-CR>   <C-p>--mac
 inoremap <S-C-CR> <C-n>--mac
+
+":messagesの省略
+command! M messages
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -287,6 +293,9 @@ source $myScripts/TabCloser/TabCloserController.vim
 "GitAssist
 source $myScripts/GitAssist/GitAssistController.vim
 
+"DBAssist
+source $myScripts/MySQLAssist/MySQLAssistController.vim
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマンド
@@ -305,30 +314,4 @@ let $path .= ';C:\Python27'
 "nose
 let $path .= 'C:\Python27\Scripts'
 
-
-nnoremap gs  :!git status<CR>
-nnoremap gb  :!git branch<CR>
-nnoremap gl  :!git log<CR><CR>
-nnoremap gco  :!git checkout 
-nnoremap ga  :!git add 
-nnoremap gcm  :!git commit -m '
-nnoremap gpl :!git pull origin 
-nnoremap gps :!git push origin 
-nnoremap gm  :!git merge 
-
-nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/<CR>
-"nnoremap gts :!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=wip /Users/ryo/Documents/projects/slf/tests/application/<CR>
-
-
 nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
-
-
-
-"DBAssist
-source $myScripts/MySQLAssist/MySQLAssistController.vim
-command! -nargs=+ D call MySQLAssistController(<f-args>)
-command! D call MySQLAssistController()
-
-
-
-command! M messages

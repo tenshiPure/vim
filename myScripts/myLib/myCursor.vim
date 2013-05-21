@@ -44,4 +44,14 @@ class myCursor:
 	def getCursolLineNum(self):
 		self.storePos()
 		return int(self.lnum)
+
+	#
+	# カーソルを行末に移動して空行を任意数あける
+	#
+	@staticmethod
+	def moveCursolBottom(blankLineNum):
+		vim.command('execute ":normal G"')
+		for blankLine in range(blankLineNum):
+			vim.command('execute ":normal o"')
+
 EOM

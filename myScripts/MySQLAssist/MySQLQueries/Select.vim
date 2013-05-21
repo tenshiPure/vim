@@ -23,7 +23,8 @@ class Select:
 	#
 	def getTableName(self):
 #		table = vim.eval("expand('<cword>')")
-		return 'SLFDocumentMngInfo'
+#		return 'SLFDocumentMngInfo'
+		return 'book'
 
 	#
 	# カラムを取得
@@ -42,6 +43,8 @@ class Select:
 	# 実行
 	#
 	def output(self):
+		myTab.switchTab(self.bufName, 3)
+		myCursor.moveCursolBottom(1)
 		vim.command('r' + self.command)
 
 EOM

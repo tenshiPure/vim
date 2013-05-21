@@ -21,7 +21,8 @@ class Desc:
 	#
 	def getTableName(self):
 #		table = vim.eval("expand('<cword>')")
-		return 'SLFDocumentMngInfo'
+#		return 'SLFDocumentMngInfo'
+		return 'book'
 
 	#
 	# コマンド作成
@@ -34,6 +35,8 @@ class Desc:
 	# 実行
 	#
 	def output(self):
+		myTab.switchTab(self.bufName, 3)
+		myCursor.moveCursolBottom(1)
 		vim.command('r' + self.command)
 
 EOM

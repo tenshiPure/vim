@@ -14,6 +14,8 @@ autocmd autoCmdMySQLAssist BufRead,BufNewFile *.mass set filetype=mass
 autocmd autoCmdMySQLAssist FocusLost *.mass :call MySQLAssistCloser()
 autocmd autoCmdMySQLAssist TabLeave *.mass :call MySQLAssistCloser()
 
+autocmd autoCmdMySQLAssist BufEnter *.mass call BufMap_MySQLAssist()
+
 function! MySQLAssistController()
 python <<EOM
 import vim
@@ -32,16 +34,16 @@ vim.command('botright 24split ' + SelectResult)
 
 
 
-loginInfo = LoginInfo('test_user', 'test_pass', 'test_db')
+loginInfo = LoginInfo('test_user', 'test_pswd', 'test_db')
 
-#desc = Desc(DescResult, loginInfo.loginCommand)
-#desc.output()
+show = Show(ShowResult, loginInfo.loginCommand)
+show.output()
 
-#show = Show(ShowResult, loginInfo.loginCommand)
-#show.output()
+desc = Desc(DescResult, loginInfo.loginCommand)
+desc.output()
 
-#select = Select(SelectResult, loginInfo.loginCommand)
-#select.output()
+select = Select(SelectResult, loginInfo.loginCommand)
+select.output()
 
 EOM
 endfunction
@@ -53,4 +55,8 @@ tabCloser = TabCloser()
 tabCloser.execute()
 
 EOM
+endfunction
+
+function! BufMap_MySQLAssist()
+	nnoremap <buffer> gw <C-w>w
 endfunction

@@ -44,4 +44,13 @@ class myTab:
 	def changeWindow():
 		vim.command('execute ":normal gw"')
 
+	#
+	# タブを切り替える
+	#
+	@staticmethod
+	def switchTab(target, tryCount):
+		for count in range(tryCount):
+			if vim.current.buffer.name != target:
+				myTab.changeWindow()
+
 EOM
