@@ -1,6 +1,6 @@
 "ViMail.vim
 
-"source $myScripts/myLib/myString.vim
+"source $myScripts/MyLib/MyString.vim
 
 source $myScripts/ViMail/ViMail.vim
 

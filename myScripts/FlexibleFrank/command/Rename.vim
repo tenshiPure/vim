@@ -20,7 +20,7 @@ class Rename:
 			return
 
 		vim.command('botright 10split ' + pathRename)
-		myTab.clearCurrentBuffer()
+		MyTab.clearCurrentBuffer()
 
 		buf = vim.current.buffer
 
@@ -66,7 +66,7 @@ class Rename:
 			before = Rename.beforeEntries[index].fullPathDQ
 
 			if os.name == 'nt':
-				after = myString.surround(renamedEntries[index].entryName, '"')
+				after = MyString.surround(renamedEntries[index].entryName, '"')
 				vim.command('silent !rename ' + before + ' ' + after)
 			else:
 				after = renamedEntries[index].fullPathDQ

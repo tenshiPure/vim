@@ -23,7 +23,7 @@ class Edit:
 			if targetEntry.isDir:
 				continue
 
-			if index == 0 and myTab.isBlankTab():
+			if index == 0 and MyTab.isBlankTab():
 				vim.command('edit ' + targetEntry.fullPath)
 			else:
 				vim.command('tabedit ' + targetEntry.fullPath)

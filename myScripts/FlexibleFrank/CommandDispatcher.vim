@@ -1,7 +1,7 @@
 "CommandDispatcher.vim
 
 source $myScripts/TabCloser/TabCloserController.vim
-source $myScripts/myLib/myTab.vim
+source $myScripts/MyLib/MyTab.vim
 
 source $myScripts/FlexibleFrank/command/Helper.vim
 source $myScripts/FlexibleFrank/command/Edit.vim
@@ -36,7 +36,7 @@ if mode == 'close':
 elif mode == 'reload':
 	frank1.reloadFrank()
 	frank2.reloadFrank()
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 elif mode == 'pointOn':
 	frank.pointOn(int(firstLine), int(lastLine))
@@ -63,7 +63,7 @@ elif mode == 'cdLast':
 	ChangeDir.cdLast(frank)
 
 elif mode == 'tab':
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 elif mode == 'copy':
 	Copy.execute(frank)
@@ -73,19 +73,19 @@ elif mode == 'move':
 	Move.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 elif mode == 'delete':
 	Delete.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 elif mode == 'mkdir':
 	Mkdir.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 elif mode == 'renameBuf':
 	Rename.renameBuf(frank)
@@ -94,7 +94,7 @@ elif mode == 'renameFix':
 	Rename.renameFix()
 	frank1.reloadFrank()
 	frank2.reloadFrank()
-	myTab.changeWindow()
+	MyTab.changeWindow()
 
 EOM
 

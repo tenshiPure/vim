@@ -33,15 +33,15 @@ class Desc:
 	# コマンド作成
 	#
 	def createCommand(self):
-		query = myString.surround('desc %(table)s;' % {'table' : self.table}, '"')
+		query = MyString.surround('desc %(table)s;' % {'table' : self.table}, '"')
 		return self.loginCommand + query
 
 	#
 	# 実行
 	#
 	def output(self):
-		myTab.switchTab(self.bufName, 3)
-		myTab.initWorkingText(self.header)
+		MyTab.switchTab(self.bufName, 3)
+		MyTab.initWorkingText(self.header)
 		MyCursor.moveCursorBottom(1)
 		vim.command('r' + self.command)
 		del vim.current.buffer[4]

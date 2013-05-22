@@ -20,7 +20,7 @@ class Entry:
 	#
 	def __init__(self, head, fullPath):
 		self.fullPath = fullPath
-		self.fullPathDQ = myString.surround(fullPath, '"')
+		self.fullPathDQ = MyString.surround(fullPath, '"')
 		self.entryName = self.getEntryName()
 		self.putDir = self.getPutDir()
 		self.isDir = self.getIsDir()

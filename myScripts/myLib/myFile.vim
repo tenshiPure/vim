@@ -3,7 +3,7 @@ python <<EOM
 import vim
 import os.path
 
-class myFile:
+class MyFile:
 
 	#
 	# カレントバッファの拡張子取得

@@ -31,7 +31,7 @@ pathFrank1 = os.path.abspath(head + 'Frank1.frank')
 pathFrank2 = os.path.abspath(head + 'Frank2.frank')
 pathRename = os.path.abspath(head + 'Rename.frank')
 
-if myTab.isBlankTab():
+if MyTab.isBlankTab():
 	vim.command('edit ' + pathFrank2)
 else:
 	vim.command('tabedit ' + pathFrank2)

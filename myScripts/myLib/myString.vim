@@ -1,6 +1,6 @@
 python <<EOM
 
-class myString:
+class MyString:
 
 	#
 	# 空行判定

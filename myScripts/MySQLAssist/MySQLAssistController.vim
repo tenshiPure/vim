@@ -1,6 +1,6 @@
 "MySQLAssistController.vim
 
-source $myScripts/myLib/myCursor.vim
+source $myScripts/MyLib/MyCursor.vim
 
 source $myScripts/MySQLAssist/LoginInfo.vim
 source $myScripts/MySQLAssist/MySQLQueries/Desc.vim
@@ -27,7 +27,7 @@ DescResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass')
 SelectResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/SelectResult.mass')
 ShowResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/ShowResult.mass')
 
-if myTab.isBlankTab():
+if MyTab.isBlankTab():
 	vim.command('edit ' + DescResult)
 else:
 	vim.command('tabedit ' + DescResult)
@@ -41,7 +41,7 @@ loginInfo = LoginInfo('test_user', 'test_pswd', 'test_db')
 show = Show(ShowResult, loginInfo.loginCommand)
 show.output()
 
-#myTab.switchTab(ShowResult, 3)
+#MyTab.switchTab(ShowResult, 3)
 MyCursor().setPosOptional(4, 0, 0)
 
 EOM
@@ -63,8 +63,8 @@ import vim
 if vim.current.buffer.name != ShowResult:
 	print 'MySQLAssist ... only ShowResult Tab'
 else:
-	currentLine = int(myCursor().getCursolLineNum())
-	if myString.isBlankLine(vim.current.buffer[currentLine - 1]):
+	currentLine = int(MyCursor().getCursolLineNum())
+	if MyString.isBlankLine(vim.current.buffer[currentLine - 1]):
 		print 'MySQLAssist ... only non blank line'
 	else:
 		table = vim.current.buffer[currentLine - 1]
@@ -74,7 +74,7 @@ else:
 		select = Select(SelectResult, loginInfo.loginCommand, table)
 		select.output()
 
-		myTab.switchTab(ShowResult, 3)
+		MyTab.switchTab(ShowResult, 3)
 
 EOM
 endfunction

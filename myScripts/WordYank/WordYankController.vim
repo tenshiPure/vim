@@ -1,6 +1,6 @@
 "WordYankController.vim
 
-source $myScripts/myLib/myCursor.vim
+source $myScripts/MyLib/MyCursor.vim
 
 source $myScripts/WordYank/WordYank.vim
 

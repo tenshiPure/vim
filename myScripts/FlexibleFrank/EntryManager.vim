@@ -41,7 +41,7 @@ class EntryManager:
 	#
 	def outputFrank(self):
 		if self.myBufName != vim.current.buffer.name:
-			myTab.changeWindow()
+			MyTab.changeWindow()
 
 		self.outputHeader()
 		self.outputEntries()
@@ -58,7 +58,7 @@ class EntryManager:
 		self.header.append('----')
 		self.header.append('')
 
-		myTab.initWorkingText(self.header)
+		MyTab.initWorkingText(self.header)
 
 	#
 	# エントリを出力
@@ -79,7 +79,7 @@ class EntryManager:
 		if vim.current.buffer.name == pathFrank2:
 			return
 
-		cursor = myCursor()
+		cursor = MyCursor()
 		cursor.storePos()
 
 		for index in range(firstLine, lastLine + 1):
@@ -93,7 +93,7 @@ class EntryManager:
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
-		cursor = myCursor()
+		cursor = MyCursor()
 		cursor.storePos()
 
 		for index in range(firstLine, lastLine + 1):

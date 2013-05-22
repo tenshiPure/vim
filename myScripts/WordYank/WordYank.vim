@@ -13,7 +13,7 @@ class WordYank:
 	# コントローラから呼ばれるメソッド
 	#
 	def execute(self):
-		cursor = myCursor()
+		cursor = MyCursor()
 		cursor.storePos()
 
 		self.yankUnderCursor()

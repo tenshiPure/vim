@@ -38,7 +38,7 @@ class Copy:
 	#
 	@staticmethod
 	def winFileCopy(targetEntry, toFullPathDQ):
-		if myString.surround(targetEntry.putDir, '"') == toFullPathDQ:
+		if MyString.surround(targetEntry.putDir, '"') == toFullPathDQ:
 			vim.command('silent !copy ' + targetEntry.fullPathDQ + ' ' + targetEntry.fullPathDQ + '_copy')
 		else:
 			vim.command('silent !copy ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
@@ -55,7 +55,7 @@ class Copy:
 	#
 	@staticmethod
 	def winDirCopy(targetEntry, toFullPathDQ):
-		if myString.surround(targetEntry.putDir, '"') == toFullPathDQ:
+		if MyString.surround(targetEntry.putDir, '"') == toFullPathDQ:
 			toMadeDir = toFullPathDQ + '\\' + targetEntry.entryName + '_copy'
 			vim.command('silent !mkdir ' + toMadeDir)
 			vim.command('silent !xcopy /e ' + targetEntry.fullPathDQ + ' ' + toMadeDir)

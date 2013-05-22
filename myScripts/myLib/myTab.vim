@@ -2,7 +2,7 @@ python <<EOM
 
 import vim
 
-class myTab:
+class MyTab:
 
 	#
 	# 無題のタブか判定
@@ -51,6 +51,6 @@ class myTab:
 	def switchTab(target, tryCount):
 		for count in range(tryCount):
 			if vim.current.buffer.name != target:
-				myTab.changeWindow()
+				MyTab.changeWindow()
 
 EOM

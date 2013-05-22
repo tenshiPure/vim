@@ -41,15 +41,15 @@ class Select:
 	# コマンド作成
 	#
 	def createCommand(self):
-		query = myString.surround('select %(column)s from %(table)s;' % {'column' : self.column, 'table' : self.table}, '"')
+		query = MyString.surround('select %(column)s from %(table)s;' % {'column' : self.column, 'table' : self.table}, '"')
 		return self.loginCommand + query
 
 	#
 	# 実行
 	#
 	def output(self):
-		myTab.switchTab(self.bufName, 3)
-		myTab.initWorkingText(self.header)
+		MyTab.switchTab(self.bufName, 3)
+		MyTab.initWorkingText(self.header)
 		MyCursor.moveCursorBottom(1)
 		vim.command('r' + self.command)
 		del vim.current.buffer[4]

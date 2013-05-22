@@ -1,7 +1,7 @@
 "FlexibleCommentController
 
-source $myScripts/myLib/myCursor.vim
-source $myScripts/myLib/myString.vim
+source $myScripts/MyLib/MyCursor.vim
+source $myScripts/MyLib/MyString.vim
 
 source $myScripts/TabCloser/TabCloserController.vim
 
@@ -39,10 +39,10 @@ if mode == 'new':
 	vim.command('split ' + CommandList)
 
 elif mode == 'execute':
-	currentLine = int(myCursor().getCursolLineNum())
+	currentLine = int(MyCursor().getCursolLineNum())
 	command = vim.current.buffer[currentLine - 1]
 
-	if not(myString.isBlankLine(command)):
+	if not(MyString.isBlankLine(command)):
 		gitAssist = GitAssist(command)
 		gitAssist.execute()
 
