@@ -49,7 +49,7 @@ class MyCursor:
 	# カーソルを行末に移動して空行を任意数あける
 	#
 	@staticmethod
-	def moveCursolBottom(blankLineNum):
+	def moveCursorBottom(blankLineNum):
 		vim.command('execute ":normal G"')
 		for blankLine in range(blankLineNum):
 			vim.command('execute ":normal o"')

@@ -40,7 +40,7 @@ class Show:
 	def output(self):
 		myTab.switchTab(self.bufName, 3)
 		myTab.initWorkingText(self.header)
-		myCursor.moveCursolBottom(1)
+		MyCursor.moveCursorBottom(1)
 		vim.command('r' + self.command)
 		del vim.current.buffer[4]
 
