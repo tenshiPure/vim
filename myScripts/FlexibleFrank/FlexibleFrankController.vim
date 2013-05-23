@@ -38,6 +38,9 @@ frank1.outputFrank()
 
 frank2 = EntryManager(targetDir, pathFrank2)
 frank2.outputFrank()
+
+MyTab.switchTab(pathFrank1, 3)
+
 EOM
 
 endfunction

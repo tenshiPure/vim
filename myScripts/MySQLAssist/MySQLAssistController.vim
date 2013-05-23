@@ -27,7 +27,7 @@ DescResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass')
 SelectResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/SelectResult.mass')
 ShowResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/ShowResult.mass')
 
-MyTab.ExpandReverseT(DescResult, ShowResult, SelectResult, 24)
+MyTab.ExpandReverseT(ShowResult, DescResult, SelectResult, 24)
 
 
 

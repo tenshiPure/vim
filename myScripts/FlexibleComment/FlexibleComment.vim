@@ -25,7 +25,7 @@ class FlexibleComment:
 		for lineNum in range(self.firstLine, self.lastLine + 1):
 			line = vim.current.buffer[lineNum]
 
-			if myString.isBlankLine(line):
+			if MyString.isBlankLine(line):
 				continue
 
 			commentStyle = self.getCommentStyle(line)

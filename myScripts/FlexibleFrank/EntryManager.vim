@@ -75,7 +75,8 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-		if vim.current.buffer.name == pathFrank2:
+		if self.myBufName != pathFrank1:
+			print 'point ... only frank1'
 			return
 
 		cursor = MyCursor()
