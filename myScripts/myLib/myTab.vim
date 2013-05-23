@@ -53,4 +53,16 @@ class MyTab:
 			if vim.current.buffer.name != target:
 				MyTab.changeWindow()
 
+	#
+	# 複数のタブを展開する：逆Ｔ字
+	#
+	@staticmethod
+	def ExpandReverseT(buf1, buf2, buf3, height):
+		if MyTab.isBlankTab():
+			vim.command('edit ' + buf1)
+		else:
+			vim.command('tabedit ' + buf1)
+		vim.command('vsplit ' + buf2)
+		vim.command('botright ' + str(height) + 'split ' + buf3)
+
 EOM

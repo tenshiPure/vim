@@ -27,12 +27,7 @@ DescResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass')
 SelectResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/SelectResult.mass')
 ShowResult = os.path.abspath(head + '/MySQLAssist/WorkingTexts/ShowResult.mass')
 
-if MyTab.isBlankTab():
-	vim.command('edit ' + DescResult)
-else:
-	vim.command('tabedit ' + DescResult)
-vim.command('vsplit ' + ShowResult)
-vim.command('botright 24split ' + SelectResult)
+MyTab.ExpandReverseT(DescResult, ShowResult, SelectResult, 24)
 
 
 
@@ -41,7 +36,6 @@ loginInfo = LoginInfo('test_user', 'test_pswd', 'test_db')
 show = Show(ShowResult, loginInfo.loginCommand)
 show.output()
 
-#MyTab.switchTab(ShowResult, 3)
 MyCursor().setPosOptional(4, 0, 0)
 
 EOM
