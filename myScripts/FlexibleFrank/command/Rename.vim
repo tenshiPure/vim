@@ -19,8 +19,7 @@ class Rename:
 			print 'rename ... only same type entries'
 			return
 
-		vim.command('botright 10split ' + pathRename)
-		MyTab.clearCurrentBuffer()
+		MyTab.switchTab(pathFrank3, 3)
 
 		buf = vim.current.buffer
 
