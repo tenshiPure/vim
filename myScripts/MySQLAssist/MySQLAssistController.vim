@@ -57,11 +57,10 @@ import vim
 if vim.current.buffer.name != ShowResult:
 	print 'MySQLAssist ... only ShowResult Tab'
 else:
-	currentLine = int(MyCursor().getCursolLineNum())
-	if MyString.isBlankLine(vim.current.buffer[currentLine - 1]):
-		print 'MySQLAssist ... only non blank line'
+	table = MyString.getUnderCursorLine()
+	if MyString.isBlankLine(table):
+		print 'MySQLAssist ... only not blank line'
 	else:
-		table = vim.current.buffer[currentLine - 1]
 		desc = Desc(DescResult, loginInfo.loginCommand, table)
 		desc.output()
 

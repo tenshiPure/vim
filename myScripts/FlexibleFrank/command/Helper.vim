@@ -8,7 +8,7 @@ class Helper:
 	#
 	@staticmethod
 	def getUnderCursorEntry(frank):
-		currentLine = MyCursor().getCursolLineNum()
+		currentLine = MyCursor().getCursorLineNum()
 		return frank.linedEntries[currentLine]
 
 	#

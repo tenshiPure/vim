@@ -39,9 +39,7 @@ if mode == 'new':
 	vim.command('split ' + CommandList)
 
 elif mode == 'execute':
-	currentLine = int(MyCursor().getCursolLineNum())
-	command = vim.current.buffer[currentLine - 1]
-
+	command = MyString.getUnderCursorLine()
 	if not(MyString.isBlankLine(command)):
 		gitAssist = GitAssist(command)
 		gitAssist.execute()

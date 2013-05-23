@@ -41,7 +41,7 @@ class MyCursor:
 	#
 	# カーソルが何行目にあるか取得
 	#
-	def getCursolLineNum(self):
+	def getCursorLineNum(self):
 		self.storePos()
 		return int(self.lnum)
 
