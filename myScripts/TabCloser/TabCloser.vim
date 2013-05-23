@@ -22,7 +22,7 @@ class TabCloser:
 
 		self.forceList['FlexibleFrank_Frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank1.frank')
 		self.forceList['FlexibleFrank_Frank2'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank2.frank')
-		self.forceList['FlexibleFrank_Rename'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Rename.frank')
+		self.forceList['FlexibleFrank_Frank3'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank3.frank')
 		self.forceList['GitAssist_CommandList'] = os.path.abspath(head + '/GitAssist/CommandList.gass')
 		self.forceList['GitAssist_CommandResult'] = os.path.abspath(head + '/GitAssist/CommandResult.gass')
 		self.forceList['MySQLAssist_DescResult'] = os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass')

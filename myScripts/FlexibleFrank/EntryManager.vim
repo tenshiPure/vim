@@ -40,8 +40,7 @@ class EntryManager:
 	# ヘッダとエントリを出力する
 	#
 	def outputFrank(self):
-		if self.myBufName != vim.current.buffer.name:
-			MyTab.changeWindow()
+		MyTab.switchTab(self.myBufName, 3)
 
 		self.outputHeader()
 		self.outputEntries()
