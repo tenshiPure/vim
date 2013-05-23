@@ -36,8 +36,8 @@ MyTab.ExpandReverseT(pathFrank1, pathFrank2, pathFrank3, 4)
 frank1 = EntryManager(targetDir, pathFrank1)
 frank1.outputFrank()
 
-frank2 = EntryManager(targetDir, pathFrank2)
-frank2.outputFrank()
+#frank2 = EntryManager(targetDir, pathFrank2)
+#frank2.outputFrank()
 
 MyTab.switchTab(pathFrank1, 3)
 

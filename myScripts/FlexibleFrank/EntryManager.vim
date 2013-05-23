@@ -31,6 +31,9 @@ class EntryManager:
 		for path in os.listdir(dirPath):
 			fullPath = os.path.join(dirPath, path)
 
+			if path == '.git':
+				continue
+
 			if os.path.isdir(fullPath):
 				self.getEntries(head, fullPath)
 			elif os.path.isfile(fullPath):
