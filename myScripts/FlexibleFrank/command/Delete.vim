@@ -1,13 +1,13 @@
 python <<EOM
 import vim
 
-class Delete:
+class Delete(CommandBase):
 
 	#
 	# 対象を削除する
 	#
 	def execute(self, frank):
-		targetEntries = CommandBase.getTargetEntries(frank)
+		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):

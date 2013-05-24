@@ -2,7 +2,7 @@ python <<EOM
 import vim
 import os
 
-class ChangeDirUpper:
+class ChangeDirUpper(CommandBase):
 
 	#
 	# 一つ上のディレクトリに移動する

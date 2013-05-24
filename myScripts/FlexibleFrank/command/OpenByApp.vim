@@ -1,13 +1,13 @@
 python <<EOM
 import vim
 
-class OpenByApp:
+class OpenByApp(CommandBase):
 
 	#
 	# 指定ファイルをアプリケーションで開く
 	#
 	def execute(self, frank):
-		targetEntry = CommandBase.getUnderCursorEntry(frank)
+		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if targetEntry.isDir:
 			print 'app ... file only'

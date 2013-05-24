@@ -1,13 +1,13 @@
 python <<EOM
 import vim
 
-class OpenDir:
+class OpenDir(CommandBase):
 
 	#
 	# ディレクトリを開く
 	#
 	def execute(self, frank):
-		targetEntry = CommandBase.getUnderCursorEntry(frank)
+		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(targetEntry.isDir):
 			print 'open ... dir only'

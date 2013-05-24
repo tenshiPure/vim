@@ -1,18 +1,18 @@
 python <<EOM
 import vim
 
-class Move:
+class Move(CommandBase):
 
 	#
 	# 対象を移動する
 	#
 	def execute(self, frank):
-		toEntry = CommandBase.getUnderCursorEntry(frank)
+		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
 			print 'mv ... dir only'
 			return
 
-		targetEntries = CommandBase.getTargetEntries(frank)
+		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
 			print 'mv ... no pointed'

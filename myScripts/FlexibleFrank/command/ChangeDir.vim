@@ -2,13 +2,13 @@ python <<EOM
 import vim
 import os
 
-class ChangeDir:
+class ChangeDir(CommandBase):
 
 	#
 	# 指定したディレクトリに移動する
 	#
 	def execute(self, frank):
-		targetEntry = CommandBase.getUnderCursorEntry(frank)
+		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(targetEntry.isDir):
 			return

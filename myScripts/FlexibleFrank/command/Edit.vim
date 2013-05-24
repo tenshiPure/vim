@@ -1,15 +1,15 @@
 python <<EOM
 import vim
 
-class Edit:
+class Edit(CommandBase):
 
 	#
 	# 対象ファイルをタブで開く
 	#
 	def execute(self, frank):
-		targetEntries = CommandBase.getTargetEntries(frank, 'under')
+		targetEntries = CommandBase.getTargetEntries(self, frank, 'under')
 
-		if CommandBase.isDirOnly(targetEntries):
+		if CommandBase.isDirOnly(self, targetEntries):
 			print 'edit ... not only dir'
 			return
 

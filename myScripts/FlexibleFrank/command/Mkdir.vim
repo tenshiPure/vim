@@ -2,13 +2,13 @@ python <<EOM
 import vim
 import os
 
-class Mkdir:
+class Mkdir(CommandBase):
 
 	#
 	# 新規ディレクトリを作成する
 	#
 	def execute(self, frank):
-		toEntry = CommandBase.getUnderCursorEntry(frank)
+		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
 			print 'mkdir ... dir only'
 			return

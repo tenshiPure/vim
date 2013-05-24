@@ -1,19 +1,19 @@
 python <<EOM
 import vim
 
-class Copy:
+class Copy(CommandBase):
 
 	#
 	# 対象をコピーする
 	#
 	def execute(self, frank):
-		toEntry = CommandBase.getUnderCursorEntry(frank)
+		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
 			print 'cp ... dir only'
 			return
 
 		toFullPathDQ = toEntry.fullPathDQ
-		targetEntries = CommandBase.getTargetEntries(frank)
+		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
 			print 'cp ... no pointed'

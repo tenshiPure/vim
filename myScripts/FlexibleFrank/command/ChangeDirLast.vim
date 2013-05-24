@@ -2,7 +2,7 @@ python <<EOM
 import vim
 import os
 
-class ChangeDirLast:
+class ChangeDirLast(CommandBase):
 
 	#
 	# 一つ前のディレクトリに移動する
