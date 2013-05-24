@@ -1,7 +1,7 @@
 python <<EOM
 import vim
 
-class Helper:
+class CommandBase:
 
 	#
 	# カーソル下のエントリを取得する
@@ -23,7 +23,7 @@ class Helper:
 
 		if under == 'under':
 			if len(result) == 0:
-				result.append(Helper.getUnderCursorEntry(frank))
+				result.append(CommandBase.getUnderCursorEntry(frank))
 
 		return result
 
@@ -52,6 +52,6 @@ class Helper:
 	#
 	@staticmethod
 	def isOnlySameTypeEntries(entries):
-		return Helper.isDirOnly(entries) or Helper.isFileOnly(entries)
+		return CommandBase.isDirOnly(entries) or CommandBase.isFileOnly(entries)
 
 EOM

@@ -6,11 +6,10 @@ class Edit:
 	#
 	# 対象ファイルをタブで開く
 	#
-	@staticmethod
-	def execute(frank):
-		targetEntries = Helper.getTargetEntries(frank, 'under')
+	def execute(self, frank):
+		targetEntries = CommandBase.getTargetEntries(frank, 'under')
 
-		if Helper.isDirOnly(targetEntries):
+		if CommandBase.isDirOnly(targetEntries):
 			print 'edit ... not only dir'
 			return
 

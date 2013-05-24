@@ -7,9 +7,8 @@ class Mkdir:
 	#
 	# 新規ディレクトリを作成する
 	#
-	@staticmethod
-	def execute(frank):
-		toEntry = Helper.getUnderCursorEntry(frank)
+	def execute(self, frank):
+		toEntry = CommandBase.getUnderCursorEntry(frank)
 		if not(toEntry.isDir):
 			print 'mkdir ... dir only'
 			return

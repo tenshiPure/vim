@@ -6,9 +6,8 @@ class Delete:
 	#
 	# 対象を削除する
 	#
-	@staticmethod
-	def execute(frank):
-		targetEntries = Helper.getTargetEntries(frank)
+	def execute(self, frank):
+		targetEntries = CommandBase.getTargetEntries(frank)
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):

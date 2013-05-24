@@ -3,10 +3,13 @@
 source $myScripts/TabCloser/TabCloserController.vim
 source $myScripts/MyLib/MyTab.vim
 
-source $myScripts/FlexibleFrank/command/Helper.vim
+source $myScripts/FlexibleFrank/command/CommandBase.vim
 source $myScripts/FlexibleFrank/command/Edit.vim
 source $myScripts/FlexibleFrank/command/ChangeDir.vim
-source $myScripts/FlexibleFrank/command/Explorer.vim
+source $myScripts/FlexibleFrank/command/ChangeDirUpper.vim
+source $myScripts/FlexibleFrank/command/ChangeDirLast.vim
+source $myScripts/FlexibleFrank/command/OpenByApp.vim
+source $myScripts/FlexibleFrank/command/OpenDir.vim
 source $myScripts/FlexibleFrank/command/Copy.vim
 source $myScripts/FlexibleFrank/command/Move.vim
 source $myScripts/FlexibleFrank/command/Delete.vim
@@ -30,8 +33,8 @@ if vim.current.buffer.name == pathFrank2:
 	frank = frank2
 
 if mode == 'close':
-	tabCloser = TabCloser()
-	tabCloser.execute()
+	command = TabCloser()
+	command.execute()
 
 elif mode == 'reload':
 	frank1.reloadFrank()
@@ -45,53 +48,64 @@ elif mode == 'pointOff':
 	frank.pointOff(int(firstLine), int(lastLine))
 
 elif mode == 'edit':
-	Edit.execute(frank)
+	command = Edit()
+	command.execute(frank)
 
 elif mode == 'openDir':
-	Explorer.openDir(frank)
+	command = OpenDir()
+	command.execute(frank)
 
 elif mode == 'openByApp':
-	Explorer.openByApp(frank)
+	command = OpenByApp()
+	command.openByApp(frank)
 
 elif mode == 'cd':
-	ChangeDir.cd(frank)
+	command = ChangeDir()
+	command.execute(frank)
 
 elif mode == 'cdUpper':
-	ChangeDir.cdUpper(frank)
+	command = ChangeDirUpper()
+	command.execute(frank)
 
 elif mode == 'cdLast':
-	ChangeDir.cdLast(frank)
+	command = ChangeDirLast()
+	command.execute(frank)
 
 elif mode == 'tab':
 	MyTab.changeWindow()
 
 elif mode == 'copy':
-	Copy.execute(frank)
-	frank.reloadFrank()
+	command = Copy()
+	command.execute(frank)
+	frank1.reloadFrank()
+	frank2.reloadFrank()
 
 elif mode == 'move':
-	Move.execute(frank)
+	command = Move()
+	command.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
 
 elif mode == 'delete':
-	Delete.execute(frank)
+	command = Delete()
+	command.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
 
 elif mode == 'mkdir':
-	Mkdir.execute(frank)
+	command = Mkdir()
+	command.execute(frank)
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
 
 elif mode == 'renameBuf':
-	Rename.renameBuf(frank)
+	command.renameBuf(frank)
 
 elif mode == 'renameFix':
-	Rename.renameFix()
+	command.renameFix()
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
