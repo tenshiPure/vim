@@ -8,7 +8,7 @@ class ChangeDirUpper:
 	# 一つ上のディレクトリに移動する
 	#
 	def execute(self, frank):
-		ChangeDir.lastDir = frank.targetDir
+		Prev.lastDir = frank.targetDir
 
 		frank.targetDir = os.path.abspath(frank.targetDir + '/../')
 

@@ -10,9 +10,9 @@ class ChangeDirLast:
 	def execute(self, frank):
 		tmpLastDir = frank.targetDir
 
-		frank.targetDir = os.path.abspath(ChangeDir.lastDir)
+		frank.targetDir = os.path.abspath(Prev.lastDir)
 
-		ChangeDir.lastDir = tmpLastDir
+		Prev.lastDir = tmpLastDir
 
 		frank.reloadFrank()
 

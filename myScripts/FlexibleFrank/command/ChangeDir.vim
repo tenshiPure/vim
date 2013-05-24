@@ -13,7 +13,7 @@ class ChangeDir:
 		if not(targetEntry.isDir):
 			return
 
-		ChangeDir.lastDir = frank.targetDir
+		Prev.lastDir = frank.targetDir
 
 		frank.targetDir = os.path.abspath(targetEntry.fullPath)
 

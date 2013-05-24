@@ -4,6 +4,7 @@ source $myScripts/TabCloser/TabCloserController.vim
 source $myScripts/MyLib/MyTab.vim
 
 source $myScripts/FlexibleFrank/command/CommandBase.vim
+source $myScripts/FlexibleFrank/command/Prev.vim
 source $myScripts/FlexibleFrank/command/Edit.vim
 source $myScripts/FlexibleFrank/command/ChangeDir.vim
 source $myScripts/FlexibleFrank/command/ChangeDirUpper.vim
