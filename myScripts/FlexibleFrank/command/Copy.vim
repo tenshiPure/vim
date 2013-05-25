@@ -1,7 +1,16 @@
 python <<EOM
 import vim
+import os
 
 class Copy(CommandBase):
+
+	commandName = ''
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, commandName):
+		self.commandName = commandName
 
 	#
 	# 対象をコピーする
@@ -9,13 +18,13 @@ class Copy(CommandBase):
 	def execute(self, frank):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
-			raise DestinationNotDirException('Copy')
+			raise DestinationNotDirException(self.commandName)
 
 		toFullPathDQ = toEntry.fullPathDQ
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
-			raise NotPoiontedException('Copy')
+			raise NotPoiontedException(self.commandName)
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):

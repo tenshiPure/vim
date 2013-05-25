@@ -3,6 +3,14 @@ import vim
 
 class Edit(CommandBase):
 
+	commandName = ''
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, commandName):
+		self.commandName = commandName
+
 	#
 	# 対象ファイルをタブで開く
 	#
@@ -10,7 +18,7 @@ class Edit(CommandBase):
 		targetEntries = CommandBase.getTargetEntries(self, frank, 'under')
 
 		if not(CommandBase.isFileOnly(self, targetEntries)):
-			raise TargetNotFileOnlyException('Edit')
+			raise TargetNotFileOnlyException(self.commandName)
 
 		tabCloser = TabCloser()
 		tabCloser.execute()

@@ -17,6 +17,8 @@ source $myScripts/FlexibleFrank/command/Delete.vim
 source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
 
+source $myScripts/FlexibleFrank/CommandFactory.vim
+
 source $myScripts/FlexibleFrank/exception/TargetNotFileOnlyException.vim
 source $myScripts/FlexibleFrank/exception/TargetNotDirException.vim
 source $myScripts/FlexibleFrank/exception/TargetNotFileException.vim
@@ -54,84 +56,8 @@ elif mode == 'pointOn':
 elif mode == 'pointOff':
 	frank.pointOff(int(firstLine), int(lastLine))
 
-elif mode == 'edit':
-	command = Edit()
-	try:
-		command.execute(frank)
-	except TargetNotFileOnlyException as e:
-		e.showMessage()
-
-elif mode == 'openDir':
-	command = OpenDir()
-	try:
-		command.execute(frank)
-	except TargetNotDirException as e:
-		e.showMessage()
-
-elif mode == 'openByApp':
-	command = OpenByApp()
-	try:
-		command.execute(frank)
-	except TargetNotFileException as e:
-		e.showMessage()
-
-elif mode == 'cd':
-	command = ChangeDir()
-	try:
-		command.execute(frank)
-	except TargetNotDirException as e:
-		e.showMessage()
-
-elif mode == 'cdUpper':
-	command = ChangeDirUpper()
-	command.execute(frank)
-
-elif mode == 'cdLast':
-	command = ChangeDirLast()
-	command.execute(frank)
-
 elif mode == 'tab':
 	MyTab.changeWindow()
-
-elif mode == 'copy':
-	command = Copy()
-	try:
-		command.execute(frank)
-		frank1.reloadFrank()
-		frank2.reloadFrank()
-	except DestinationNotDirException as e:
-		e.showMessage()
-	except NotPoiontedException as e:
-		e.showMessage()
-
-elif mode == 'move':
-	command = Move()
-	try:
-		command.execute(frank)
-		frank1.reloadFrank()
-		frank2.reloadFrank()
-		MyTab.changeWindow()
-	except DestinationNotDirException as e:
-		e.showMessage()
-	except NotPoiontedException as e:
-		e.showMessage()
-
-elif mode == 'delete':
-	command = Delete()
-	command.execute(frank)
-	frank1.reloadFrank()
-	frank2.reloadFrank()
-	MyTab.changeWindow()
-
-elif mode == 'mkdir':
-	command = Mkdir()
-	try:
-		command.execute(frank)
-		frank1.reloadFrank()
-		frank2.reloadFrank()
-		MyTab.changeWindow()
-	except DestinationNotDirException as e:
-		e.showMessage()
 
 elif mode == 'renameBuf':
 	command.renameBuf(frank)
@@ -141,6 +67,23 @@ elif mode == 'renameFix':
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
+
+else:
+	factory = CommandFactory()
+	command = factory.create(mode)
+
+	try:
+		command.execute(frank)
+	except TargetNotFileOnlyException as e:
+		e.showMessage()
+	except TargetNotDirException as e:
+		e.showMessage()
+	except TargetNotFileException as e:
+		e.showMessage()
+	except DestinationNotDirException as e:
+		e.showMessage()
+	except NotPoiontedException as e:
+		e.showMessage()
 
 EOM
 

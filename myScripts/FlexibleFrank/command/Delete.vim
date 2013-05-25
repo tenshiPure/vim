@@ -1,7 +1,16 @@
 python <<EOM
 import vim
+import os
 
 class Delete(CommandBase):
+
+	commandName = ''
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, commandName):
+		self.commandName = commandName
 
 	#
 	# 対象を削除する

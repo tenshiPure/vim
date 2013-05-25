@@ -1,7 +1,16 @@
 python <<EOM
 import vim
+import os
 
 class Move(CommandBase):
+
+	commandName = ''
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, commandName):
+		self.commandName = commandName
 
 	#
 	# 対象を移動する
@@ -9,12 +18,12 @@ class Move(CommandBase):
 	def execute(self, frank):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
-			raise DestinationNotDirException('Move')
+			raise DestinationNotDirException(self.commandName)
 
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
-			raise NotPoiontedException('Move')
+			raise NotPoiontedException(self.commandName)
 
 		for targetEntry in targetEntries:
 			if os.name == 'nt':
