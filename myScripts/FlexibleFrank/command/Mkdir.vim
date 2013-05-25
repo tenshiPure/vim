@@ -10,8 +10,7 @@ class Mkdir(CommandBase):
 	def execute(self, frank):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
-			print 'mkdir ... dir only'
-			return
+			raise DestinationNotDirException('Mkdir')
 
 		toFullPathDQ = toEntry.fullPathDQ + os.sep
 		vim.command('silent !mkdir ' + toFullPathDQ + 'new_dir')

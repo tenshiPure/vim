@@ -10,8 +10,7 @@ class OpenDir(CommandBase):
 		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(targetEntry.isDir):
-			print 'open ... dir only'
-			return
+			raise TargetNotDirException('OpenDir')
 
 		if os.name == 'nt':
 			vim.command('silent !explorer ' + targetEntry.fullPathDQ)

@@ -11,7 +11,7 @@ class ChangeDir(CommandBase):
 		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(targetEntry.isDir):
-			return
+			raise TargetNotDirException('ChangeDir')
 
 		Prev.lastDir = frank.targetDir
 

@@ -10,8 +10,7 @@ class OpenByApp(CommandBase):
 		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if targetEntry.isDir:
-			print 'app ... file only'
-			return
+			raise TargetNotFileException('OpenByApp')
 
 		if os.name == 'nt':
 			vim.command('silent !explorer ' + targetEntry.fullPathDQ)

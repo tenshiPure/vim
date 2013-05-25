@@ -9,14 +9,12 @@ class Move(CommandBase):
 	def execute(self, frank):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
-			print 'mv ... dir only'
-			return
+			raise DestinationNotDirException('Move')
 
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
-			print 'mv ... no pointed'
-			return
+			raise NotPoiontedException('Move')
 
 		for targetEntry in targetEntries:
 			if os.name == 'nt':

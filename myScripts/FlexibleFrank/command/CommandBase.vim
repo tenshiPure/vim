@@ -29,6 +29,12 @@ class CommandBase:
 		return frank.linedEntries[currentLine]
 
 	#
+	# エントリが同一タイプのみか判定する
+	#
+	def isOnlySameTypeEntries(self, entries):
+		return self.isDirOnly(entries) or self.isFileOnly(entries)
+
+	#
 	# エントリがディレクトリのみか判定する
 	#
 	def isDirOnly(self, entries):
@@ -40,17 +46,11 @@ class CommandBase:
 	#
 	# エントリがファイルのみか判定する
 	#
-	def isFileOnly(entries):
+	def isFileOnly(self, entries):
 		for entry in entries:
 			if entry.isDir:
 				return False
 		return True
-
-	#
-	# エントリが同一タイプのみか判定する
-	#
-	def isOnlySameTypeEntries(self, entries):
-		return self.isDirOnly(entries) or self.isFileOnly(entries)
 
 	#
 	# 実際の各コマンドの処理

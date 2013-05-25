@@ -17,6 +17,12 @@ source $myScripts/FlexibleFrank/command/Delete.vim
 source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
 
+source $myScripts/FlexibleFrank/exception/TargetNotFileOnlyException.vim
+source $myScripts/FlexibleFrank/exception/TargetNotDirException.vim
+source $myScripts/FlexibleFrank/exception/TargetNotFileException.vim
+source $myScripts/FlexibleFrank/exception/DestinationNotDirException.vim
+source $myScripts/FlexibleFrank/exception/NotPoiontedException.vim
+
 function! CommandDispatcher(mode) range
 
 python <<EOM
@@ -50,19 +56,31 @@ elif mode == 'pointOff':
 
 elif mode == 'edit':
 	command = Edit()
-	command.execute(frank)
+	try:
+		command.execute(frank)
+	except TargetNotFileOnlyException as e:
+		e.showMessage()
 
 elif mode == 'openDir':
 	command = OpenDir()
-	command.execute(frank)
+	try:
+		command.execute(frank)
+	except TargetNotDirException as e:
+		e.showMessage()
 
 elif mode == 'openByApp':
 	command = OpenByApp()
-	command.openByApp(frank)
+	try:
+		command.execute(frank)
+	except TargetNotFileException as e:
+		e.showMessage()
 
 elif mode == 'cd':
 	command = ChangeDir()
-	command.execute(frank)
+	try:
+		command.execute(frank)
+	except TargetNotDirException as e:
+		e.showMessage()
 
 elif mode == 'cdUpper':
 	command = ChangeDirUpper()
@@ -77,16 +95,26 @@ elif mode == 'tab':
 
 elif mode == 'copy':
 	command = Copy()
-	command.execute(frank)
-	frank1.reloadFrank()
-	frank2.reloadFrank()
+	try:
+		command.execute(frank)
+		frank1.reloadFrank()
+		frank2.reloadFrank()
+	except DestinationNotDirException as e:
+		e.showMessage()
+	except NotPoiontedException as e:
+		e.showMessage()
 
 elif mode == 'move':
 	command = Move()
-	command.execute(frank)
-	frank1.reloadFrank()
-	frank2.reloadFrank()
-	MyTab.changeWindow()
+	try:
+		command.execute(frank)
+		frank1.reloadFrank()
+		frank2.reloadFrank()
+		MyTab.changeWindow()
+	except DestinationNotDirException as e:
+		e.showMessage()
+	except NotPoiontedException as e:
+		e.showMessage()
 
 elif mode == 'delete':
 	command = Delete()
@@ -97,10 +125,13 @@ elif mode == 'delete':
 
 elif mode == 'mkdir':
 	command = Mkdir()
-	command.execute(frank)
-	frank1.reloadFrank()
-	frank2.reloadFrank()
-	MyTab.changeWindow()
+	try:
+		command.execute(frank)
+		frank1.reloadFrank()
+		frank2.reloadFrank()
+		MyTab.changeWindow()
+	except DestinationNotDirException as e:
+		e.showMessage()
 
 elif mode == 'renameBuf':
 	command.renameBuf(frank)

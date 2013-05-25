@@ -9,24 +9,16 @@ class Edit(CommandBase):
 	def execute(self, frank):
 		targetEntries = CommandBase.getTargetEntries(self, frank, 'under')
 
-		if CommandBase.isDirOnly(self, targetEntries):
-			print 'edit ... not only dir'
-			return
+		if not(CommandBase.isFileOnly(self, targetEntries)):
+			raise TargetNotFileOnlyException('Edit')
 
 		tabCloser = TabCloser()
 		tabCloser.execute()
 
-		index = 0
-		for targetEntry in targetEntries:
-
-			if targetEntry.isDir:
-				continue
-
+		for index, targetEntry in enumerate(targetEntries):
 			if index == 0 and MyTab.isBlankTab():
 				vim.command('edit ' + targetEntry.fullPath)
 			else:
 				vim.command('tabedit ' + targetEntry.fullPath)
-
-			index += 1
 
 EOM

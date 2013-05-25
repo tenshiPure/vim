@@ -9,15 +9,13 @@ class Copy(CommandBase):
 	def execute(self, frank):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 		if not(toEntry.isDir):
-			print 'cp ... dir only'
-			return
+			raise DestinationNotDirException('Copy')
 
 		toFullPathDQ = toEntry.fullPathDQ
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
-			print 'cp ... no pointed'
-			return
+			raise NotPoiontedException('Copy')
 
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):
