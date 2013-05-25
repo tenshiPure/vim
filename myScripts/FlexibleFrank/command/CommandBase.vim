@@ -53,6 +53,26 @@ class CommandBase:
 		return True
 
 	#
+	# エントリをフランク３へ出力する
+	#
+	def outputToFrank3(self, entries):
+		MyTab.switchTab(pathFrank3, 3)
+
+		buf = vim.current.buffer
+
+		for entry in entries:
+			buf.append(entry.entryName)
+
+		del buf[0]
+
+	#
+	# フランク３のエントリ名を取得する
+	#
+	def getEntryNamesFromFrank3(self):
+		MyTab.switchTab(pathFrank3, 3)
+		return vim.current.buffer
+
+	#
 	# 実際の各コマンドの処理
 	#
 	@abstractmethod

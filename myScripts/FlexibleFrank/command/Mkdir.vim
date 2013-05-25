@@ -4,13 +4,7 @@ import os
 
 class Mkdir(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'Mkdir'
 
 	#
 	# 新規ディレクトリを作成する

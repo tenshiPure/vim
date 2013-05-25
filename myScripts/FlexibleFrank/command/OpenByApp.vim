@@ -4,13 +4,7 @@ import os
 
 class OpenByApp(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'OpenByApp'
 
 	#
 	# 指定ファイルをアプリケーションで開く

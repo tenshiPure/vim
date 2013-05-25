@@ -4,13 +4,7 @@ import os
 
 class Copy(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'Copy'
 
 	#
 	# 対象をコピーする
@@ -29,20 +23,20 @@ class Copy(CommandBase):
 		for targetEntry in targetEntries:
 			if not(targetEntry.isDir):
 				if os.name == 'nt':
-					Copy.winFileCopy(targetEntry, toFullPathDQ)
+					self.winFileCopy(targetEntry, toFullPathDQ)
 				else:
-					Copy.macFileCopy(targetEntry, toFullPathDQ)
+					self.macFileCopy(targetEntry, toFullPathDQ)
 
 			if targetEntry.isDir:
 				if os.name == 'nt':
-					Copy.winDirCopy(targetEntry, toFullPathDQ)
+					self.winDirCopy(targetEntry, toFullPathDQ)
 				else:
-					Copy.macDirCopy(targetEntry, toFullPathDQ)
+					self.macDirCopy(targetEntry, toFullPathDQ)
 
 	#
 	# ファイルコピー : win
 	#
-	def winFileCopy(targetEntry, toFullPathDQ):
+	def winFileCopy(self, targetEntry, toFullPathDQ):
 		if MyString.surround(targetEntry.putDir, '"') == toFullPathDQ:
 			vim.command('silent !copy ' + targetEntry.fullPathDQ + ' ' + targetEntry.fullPathDQ + '_copy')
 		else:
@@ -51,13 +45,13 @@ class Copy(CommandBase):
 	#
 	# ファイルコピー : mac
 	#
-	def macFileCopy(targetEntry, toFullPathDQ):
+	def macFileCopy(self, targetEntry, toFullPathDQ):
 		vim.command('silent !cp ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 	#
 	# ディレクトリコピー : win
 	#
-	def winDirCopy(targetEntry, toFullPathDQ):
+	def winDirCopy(self, targetEntry, toFullPathDQ):
 		if MyString.surround(targetEntry.putDir, '"') == toFullPathDQ:
 			toMadeDir = toFullPathDQ + '\\' + targetEntry.entryName + '_copy'
 			vim.command('silent !mkdir ' + toMadeDir)
@@ -70,7 +64,7 @@ class Copy(CommandBase):
 	#
 	# ディレクトリコピー : mac
 	#
-	def macDirCopy(targetEntry, toFullPathDQ):
+	def macDirCopy(self, targetEntry, toFullPathDQ):
 		vim.command('silent !cp -R ' + targetEntry.fullPathDQ + ' ' + toFullPathDQ)
 
 EOM

@@ -3,13 +3,7 @@ import vim
 
 class Edit(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'Edit'
 
 	#
 	# 対象ファイルをタブで開く

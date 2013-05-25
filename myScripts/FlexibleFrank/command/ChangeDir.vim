@@ -4,13 +4,7 @@ import os
 
 class ChangeDir(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'ChangeDir'
 
 	#
 	# 指定したディレクトリに移動する

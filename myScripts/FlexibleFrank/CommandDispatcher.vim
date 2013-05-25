@@ -24,6 +24,7 @@ source $myScripts/FlexibleFrank/exception/TargetNotDirException.vim
 source $myScripts/FlexibleFrank/exception/TargetNotFileException.vim
 source $myScripts/FlexibleFrank/exception/DestinationNotDirException.vim
 source $myScripts/FlexibleFrank/exception/NotPoiontedException.vim
+source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
 
 function! CommandDispatcher(mode) range
 
@@ -63,10 +64,12 @@ elif mode == 'renameBuf':
 	command.renameBuf(frank)
 
 elif mode == 'renameFix':
-	command.renameFix()
-	frank1.reloadFrank()
-	frank2.reloadFrank()
-	MyTab.changeWindow()
+	try:
+		command.fix()
+	except DestinationNotDirException as e:
+		e.showMessage()
+	except NotMatchEntryNumbersException as e:
+		e.showMessage()
 
 else:
 	factory = CommandFactory()

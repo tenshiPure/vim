@@ -31,7 +31,7 @@ pathFrank1 = os.path.abspath(head + 'Frank1.frank')
 pathFrank2 = os.path.abspath(head + 'Frank2.frank')
 pathFrank3 = os.path.abspath(head + 'Frank3.frank')
 
-MyTab.ExpandReverseT(pathFrank1, pathFrank2, pathFrank3, 4)
+MyTab.ExpandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
 
 frank1 = EntryManager(targetDir, pathFrank1)
 frank1.outputFrank()
@@ -63,6 +63,7 @@ function! BufMap_Frank()
 	nnoremap <buffer> <S-p> :call CommandDispatcher('pointOff')<CR>
 	vnoremap <buffer> <S-p> :call CommandDispatcher('pointOff')<CR>
 	nnoremap <buffer> <Tab> :call CommandDispatcher('tab')<CR>
+	nnoremap <buffer> fix   :call CommandDispatcher('renameFix')<CR>
 	nnoremap <buffer> gw    <C-w>w
 endfunction
 

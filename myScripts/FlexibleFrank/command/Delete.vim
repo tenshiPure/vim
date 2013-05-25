@@ -4,13 +4,7 @@ import os
 
 class Delete(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'Delete'
 
 	#
 	# 対象を削除する

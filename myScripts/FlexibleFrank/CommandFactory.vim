@@ -7,34 +7,34 @@ class CommandFactory:
 	#
 	def create(self, command):
 		if command == 'edit':
-			command = Edit('Edit')
+			command = Edit()
 
 		elif command == 'openDir':
-			command = OpenDir('OpenDir')
+			command = OpenDir()
 
 		elif command == 'openByApp':
-			command = OpenByApp('OpenByApp')
+			command = OpenByApp()
 
 		elif command == 'cd':
-			command = ChangeDir('ChangeDir')
+			command = ChangeDir()
 
 		elif command == 'cdUpper':
-			command = ChangeDirUpper('ChangeDirUpper')
+			command = ChangeDirUpper()
 
 		elif command == 'cdLast':
-			command = ChangeDirLast('ChangeDirLast')
+			command = ChangeDirLast()
 
 		elif command == 'copy':
-			command = Copy('Copy')
+			command = Copy()
 
 		elif command == 'move':
-			command = Move('Move')
+			command = Move()
 
 		elif command == 'delete':
-			command = Delete('Delete')
+			command = Delete()
 
 		elif command == 'mkdir':
-			command = Mkdir('Mkdir')
+			command = Mkdir()
 
 		return command
 EOM

@@ -4,13 +4,7 @@ import os
 
 class ChangeDirLast(CommandBase):
 
-	commandName = ''
-
-	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, commandName):
-		self.commandName = commandName
+	commandName = 'ChangeDirLast'
 
 	#
 	# 一つ前のディレクトリに移動する

@@ -87,6 +87,9 @@ let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 "myScripts
 let $myScripts  = $gitvim . '/myScripts'
 
+"frank
+let $frank  = $gitvim . '/myScripts/FlexibleFrank'
+
 "AutoHotkeys
 if os == 'win'
 	let $ahk     = "D:/MyDocument/AutoHotKeys" 
