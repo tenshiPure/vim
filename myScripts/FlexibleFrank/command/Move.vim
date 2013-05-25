@@ -15,11 +15,10 @@ class Move(CommandBase):
 		if len(targetEntries) == 0:
 			raise NotPoiontedException(self.commandName)
 
-		CommandBase.outputToFrank3(self, targetEntries)
+		CommandBase.outputEntriesToFrank3(self, targetEntries)
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		Prev.lastCommand = self.commandName
 		Prev.beforeEntries = targetEntries
 	
 	#
@@ -27,6 +26,7 @@ class Move(CommandBase):
 	#
 	def fix(self):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
+
 		if not(toEntry.isDir):
 			raise DestinationNotDirException(self.commandName)
 
@@ -38,7 +38,7 @@ class Move(CommandBase):
 		for index, beforeEntry in enumerate(Prev.beforeEntries):
 			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
 			if os.name == 'nt':
-				vim.command('!move ' + beforeEntry.fullPathDQ + ' ' + MyString.surround(afterFullPath, '"'))
+				vim.command('silent !move ' + beforeEntry.fullPathDQ + ' ' + MyString.surround(afterFullPath, '"'))
 			else:
 				vim.command('silent !mv "' + beforeEntry.fullPath + '" "' + toEntry.fullPath + '"')
 
