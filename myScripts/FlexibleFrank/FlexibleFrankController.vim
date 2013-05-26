@@ -1,18 +1,17 @@
 "FlexibleFrank.vim
 
-source $myScripts/FlexibleFrank/EntryManager.vim
-source $myScripts/FlexibleFrank/Entry.vim
 source $myScripts/FlexibleFrank/CommandDispatcher.vim
+source $myScripts/FlexibleFrank/CommandFactory.vim
+source $myScripts/FlexibleFrank/Entry.vim
+source $myScripts/FlexibleFrank/EntryManager.vim
 
 augroup autoCmdFrank
 	autocmd!
 augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
-
 autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('Close')
 autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('Close')
-
 autocmd autoCmdFrank BufEnter *.frank call BufMap_Frank()
 
 function! FlexibleFrankController(targetDir)
