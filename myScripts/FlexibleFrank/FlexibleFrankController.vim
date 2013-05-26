@@ -55,6 +55,7 @@ function! BufMap_Frank()
 	vnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
 	nnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
 	vnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
+	nnoremap <buffer> rd    :call CommandDispatcher('Reed')<CR>
 	nnoremap <buffer> mk    :call CommandDispatcher('Mkdir')<CR>
 	nnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
 	vnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>

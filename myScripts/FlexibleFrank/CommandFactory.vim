@@ -24,6 +24,9 @@ class CommandFactory:
 		elif command == 'OpenByApp':
 			command = OpenByApp()
 
+		elif command == 'Reed':
+			command = Reed()
+
 		elif command == 'Mkdir':
 			command = Mkdir()
 
