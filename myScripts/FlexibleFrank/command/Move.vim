@@ -5,6 +5,15 @@ import os
 class Move(CommandBase):
 
 	commandName = 'Move'
+	firstLine = 0
+	lastLine = 0
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, firstLine, lastLine):
+		self.firstLine = firstLine
+		self.lastLine = lastLine
 
 	#
 	# 対象をフランク３へ出力する

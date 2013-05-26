@@ -16,6 +16,8 @@ source $myScripts/FlexibleFrank/command/Move.vim
 source $myScripts/FlexibleFrank/command/Delete.vim
 source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
+source $myScripts/FlexibleFrank/command/PointOn.vim
+source $myScripts/FlexibleFrank/command/PointOff.vim
 
 source $myScripts/FlexibleFrank/CommandFactory.vim
 
@@ -33,8 +35,8 @@ python <<EOM
 import vim
 
 mode = vim.eval('a:mode')
-firstLine = vim.eval('a:firstline')
-lastLine = vim.eval('a:lastline')
+firstLine = int(vim.eval('a:firstline'))
+lastLine = int(vim.eval('a:lastline'))
 
 frank = None
 if vim.current.buffer.name == pathFrank1:
@@ -42,25 +44,19 @@ if vim.current.buffer.name == pathFrank1:
 if vim.current.buffer.name == pathFrank2:
 	frank = frank2
 
-if mode == 'close':
+if mode == 'Close':
 	command = TabCloser()
 	command.execute()
 
-elif mode == 'reload':
+elif mode == 'Reload':
 	frank1.reloadFrank()
 	frank2.reloadFrank()
 	MyTab.changeWindow()
 
-elif mode == 'pointOn':
-	frank.pointOn(int(firstLine), int(lastLine))
-
-elif mode == 'pointOff':
-	frank.pointOff(int(firstLine), int(lastLine))
-
-elif mode == 'tab':
+elif mode == 'Tab':
 	MyTab.changeWindow()
 
-elif mode == 'renameFix':
+elif mode == 'Fix':
 	try:
 		command.fix()
 	except DestinationNotDirException as e:
@@ -70,7 +66,7 @@ elif mode == 'renameFix':
 
 else:
 	factory = CommandFactory()
-	command = factory.create(mode)
+	command = factory.create(mode, firstLine, lastLine)
 
 	try:
 		command.execute(frank)

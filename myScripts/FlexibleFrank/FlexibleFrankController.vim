@@ -13,9 +13,7 @@ autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('close')
 autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('close')
 
-autocmd autoCmdFrank BufEnter Frank1.frank call BufMap_Frank()
-autocmd autoCmdFrank BufEnter Frank2.frank call BufMap_Frank()
-autocmd autoCmdFrank BufEnter Frank3.frank call BufMap_Frank3()
+autocmd autoCmdFrank BufEnter *.frank call BufMap_Frank()
 
 function! FlexibleFrankController(targetDir)
 
@@ -46,28 +44,24 @@ EOM
 endfunction
 
 function! BufMap_Frank()
-	nnoremap <buffer> e     :call CommandDispatcher('edit')<CR>
-	nnoremap <buffer> m     :call CommandDispatcher('cd')<CR>
-	nnoremap <buffer> h     :call CommandDispatcher('cdUpper')<CR>
-	nnoremap <buffer> l     :call CommandDispatcher('cdLast')<CR>
-	nnoremap <buffer> o     :call CommandDispatcher('openDir')<CR>
-	nnoremap <buffer> a     :call CommandDispatcher('openByApp')<CR>
-	nnoremap <buffer> cp    :call CommandDispatcher('copy')<CR>
-	nnoremap <buffer> mv    :call CommandDispatcher('move')<CR>
-	nnoremap <buffer> rm    :call CommandDispatcher('delete')<CR>
-	nnoremap <buffer> mk    :call CommandDispatcher('mkdir')<CR>
-	nnoremap <buffer> re    :call CommandDispatcher('renameBuf')<CR>
-	nnoremap <buffer> <F5>  :call CommandDispatcher('reload')<CR>
-	nnoremap <buffer> p     :call CommandDispatcher('pointOn')<CR>
-	vnoremap <buffer> p     :call CommandDispatcher('pointOn')<CR>
-	nnoremap <buffer> <S-p> :call CommandDispatcher('pointOff')<CR>
-	vnoremap <buffer> <S-p> :call CommandDispatcher('pointOff')<CR>
-	nnoremap <buffer> <Tab> :call CommandDispatcher('tab')<CR>
-	nnoremap <buffer> fix   :call CommandDispatcher('renameFix')<CR>
-	nnoremap <buffer> gw    <C-w>w
-endfunction
-
-function! BufMap_Frank3()
-	nnoremap <buffer> fix   :call CommandDispatcher('renameFix')<CR>
+	nnoremap <buffer> e     :call CommandDispatcher('Edit')<CR>
+	vnoremap <buffer> e     :call CommandDispatcher('Edit')<CR>
+	nnoremap <buffer> m     :call CommandDispatcher('ChangeDir')<CR>
+	nnoremap <buffer> h     :call CommandDispatcher('ChangeDirUpper')<CR>
+	nnoremap <buffer> l     :call CommandDispatcher('ChangeDirLast')<CR>
+	nnoremap <buffer> o     :call CommandDispatcher('OpenDir')<CR>
+	nnoremap <buffer> a     :call CommandDispatcher('OpenByApp')<CR>
+	nnoremap <buffer> cp    :call CommandDispatcher('Copy')<CR>
+	nnoremap <buffer> mv    :call CommandDispatcher('Move')<CR>
+	nnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
+	nnoremap <buffer> mk    :call CommandDispatcher('Mkdir')<CR>
+	nnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
+	nnoremap <buffer> <F5>  :call CommandDispatcher('Reload')<CR>
+	nnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
+	vnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
+	nnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
+	vnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
+	nnoremap <buffer> <Tab> :call CommandDispatcher('Tab')<CR>
+	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
 	nnoremap <buffer> gw    <C-w>w
 endfunction

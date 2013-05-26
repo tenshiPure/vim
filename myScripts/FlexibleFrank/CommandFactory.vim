@@ -3,41 +3,47 @@ python <<EOM
 class CommandFactory:
 
 	#
-	# ƒRƒ}ƒ“ƒh‚ð¶¬‚·‚é
+	# ã‚³ãƒžãƒ³ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹
 	#
-	def create(self, command):
-		if command == 'edit':
-			command = Edit()
-
-		elif command == 'openDir':
-			command = OpenDir()
-
-		elif command == 'openByApp':
-			command = OpenByApp()
-
-		elif command == 'cd':
+	def create(self, command, firstLine, lastLine):
+		if command == 'ChangeDir':
 			command = ChangeDir()
 
-		elif command == 'cdUpper':
+		elif command == 'ChangeDirUpper':
 			command = ChangeDirUpper()
 
-		elif command == 'cdLast':
+		elif command == 'ChangeDirLast':
 			command = ChangeDirLast()
 
-		elif command == 'copy':
-			command = Copy()
+		elif command == 'OpenDir':
+			command = OpenDir()
 
-		elif command == 'move':
-			command = Move()
+		elif command == 'OpenByApp':
+			command = OpenByApp()
 
-		elif command == 'delete':
-			command = Delete()
-
-		elif command == 'mkdir':
+		elif command == 'Mkdir':
 			command = Mkdir()
 
-		elif command == 'renameBuf':
-			command = Rename()
+		elif command == 'PointOn':
+			command = PointOn(firstLine, lastLine)
+
+		elif command == 'PointOff':
+			command = PointOff(firstLine, lastLine)
+
+		elif command == 'Edit':
+			command = Edit(firstLine, lastLine)
+
+		elif command == 'Copy':
+			command = Copy(firstLine, lastLine)
+
+		elif command == 'Move':
+			command = Move(firstLine, lastLine)
+
+		elif command == 'Delete':
+			command = Delete(firstLine, lastLine)
+
+		elif command == 'Rename':
+			command = Rename(firstLine, lastLine)
 
 		return command
 EOM

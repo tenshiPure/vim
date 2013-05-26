@@ -5,6 +5,15 @@ import os
 class Copy(CommandBase):
 
 	commandName = 'Copy'
+	firstLine = 0
+	lastLine = 0
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, firstLine, lastLine):
+		self.firstLine = firstLine
+		self.lastLine = lastLine
 
 	#
 	# 対象をコピーする

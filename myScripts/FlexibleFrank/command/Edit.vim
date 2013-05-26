@@ -4,6 +4,15 @@ import vim
 class Edit(CommandBase):
 
 	commandName = 'Edit'
+	firstLine = 0
+	lastLine = 0
+
+	#
+	# 擬似コンストラクタ
+	#
+	def __init__(self, firstLine, lastLine):
+		self.firstLine = firstLine
+		self.lastLine = lastLine
 
 	#
 	# 対象ファイルをタブで開く
