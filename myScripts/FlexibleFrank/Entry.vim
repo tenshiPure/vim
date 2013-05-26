@@ -11,6 +11,7 @@ class Entry:
 	entryName = ''
 	putDir = ''
 	isDir = False
+	extension = ''
 	depth = 0
 	pointed = False
 	formatedForOutput = ''
@@ -24,6 +25,7 @@ class Entry:
 		self.entryName = self.getEntryName()
 		self.putDir = self.getPutDir()
 		self.isDir = self.getIsDir()
+		self.extension = self.getExtension()
 		self.depth = self.getDepth(head)
 		self.pointed = False
 		self.formatedForOutput = self.createFormatedForOutput()
@@ -45,6 +47,15 @@ class Entry:
 	#
 	def getIsDir(self):
 		return os.path.isdir(self.fullPath)
+
+	#
+	# 拡張子を取得
+	#
+	def getExtension(self):
+		if self.isDir:
+			return ''
+		else:
+			return self.entryName.rsplit('.', 1)[1]
 
 	#
 	# 階層深度を取得

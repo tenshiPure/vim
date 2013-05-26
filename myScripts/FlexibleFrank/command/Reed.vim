@@ -20,5 +20,8 @@ class Reed(CommandBase):
 		vim.command('r ' + targetEntry.fullPath)
 		del vim.current.buffer[0]
 
+		vim.command('set filetype=' + targetEntry.extension)
+		vim.command('set nowrap')
+
 		MyTab.switchTab(pathFrank1, 3)
 EOM
