@@ -145,7 +145,9 @@ if os == 'mac'
 endif
 
 "slf
-let $slf = '/Users/ryo/Documents/projects/slf'
+if os == 'mac'
+	let $slf = '/Users/ryo/Documents/projects/slf'         
+endif
 
 if os == 'mac'
 	let $application  = $slf . '/application'              
@@ -247,9 +249,6 @@ nnoremap , zz
 
 " * コマンドで移動しな�~D
 nnoremap * *N
-
-" cc -> bcw
-nnoremap cc bcw
 
 "redo
 nmap <S-u> <C-r>

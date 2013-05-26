@@ -110,7 +110,7 @@ let $colors = 'D:/MyDocument/Program/colors' --win
 let $colors = '/Users/ryo/Documents/projects/colors' --mac
 
 "slf
-let $slf = '/Users/ryo/Documents/projects/slf'
+let $slf = '/Users/ryo/Documents/projects/slf'         --mac
 
 let $application  = $slf . '/application'              --mac
 let $controllers  = $application . '/controllers'      --mac
@@ -178,9 +178,6 @@ nnoremap , zz
 
 " * コマンドで移動しない
 nnoremap * *N
-
-" cc -> bcw
-nnoremap cc bcw
 
 "redo
 nmap <S-u> <C-r>

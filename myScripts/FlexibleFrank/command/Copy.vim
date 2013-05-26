@@ -10,28 +10,45 @@ class Copy(CommandBase):
 	# 対象をコピーする
 	#
 	def execute(self, frank):
-		toEntry = CommandBase.getUnderCursorEntry(self, frank)
-		if not(toEntry.isDir):
-			raise DestinationNotDirException(self.commandName)
-
-		toFullPathDQ = toEntry.fullPathDQ
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
 			raise NotPoiontedException(self.commandName)
 
-		for targetEntry in targetEntries:
-			if not(targetEntry.isDir):
-				if os.name == 'nt':
-					self.winFileCopy(targetEntry, toFullPathDQ)
-				else:
-					self.macFileCopy(targetEntry, toFullPathDQ)
+		CommandBase.outputEntriesToFrank3(self, targetEntries)
 
-			if targetEntry.isDir:
+		MyTab.switchTab(pathFrank1, 3)
+
+		Prev.beforeEntries = targetEntries
+
+	#
+	# コピーを実行する
+	#
+	def fix(self):
+		toEntry = CommandBase.getUnderCursorEntry(self, frank)
+
+		if not(toEntry.isDir):
+			raise DestinationNotDirException(self.commandName)
+
+		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
+
+		if len(Prev.beforeEntries) != len(afterEntryNames):
+			raise NotMatchEntryNumbersException(self.commandName)
+
+		for index, beforeEntry in enumerate(Prev.beforeEntries):
+			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
+			afterFullPathDQ = MyString.surround(afterFullPath, '"')
+			if not(beforeEntry.isDir):
 				if os.name == 'nt':
-					self.winDirCopy(targetEntry, toFullPathDQ)
+					self.winFileCopy(beforeEntry, afterFullPathDQ)
 				else:
-					self.macDirCopy(targetEntry, toFullPathDQ)
+					self.macFileCopy(beforeEntry, afterFullPathDQ)
+
+			if beforeEntry.isDir:
+				if os.name == 'nt':
+					self.winDirCopy(beforeEntry, afterFullPathDQ)
+				else:
+					self.macDirCopy(beforeEntry, afterFullPathDQ)
 
 	#
 	# ファイルコピー : win

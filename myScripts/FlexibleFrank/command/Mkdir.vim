@@ -13,7 +13,7 @@ class Mkdir(CommandBase):
 		CommandBase.outputStringToFrank3(self, 'new_dir')
 	
 	#
-	# 移動を実行する
+	# ディレクトリ作成を実行する
 	#
 	def fix(self):
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
