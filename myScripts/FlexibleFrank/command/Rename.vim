@@ -1,74 +1,38 @@
 python <<EOM
 import vim
 
-class Rename:
+class Rename(CommandBase):
 
-	beforeEntries = []
+	commandName = 'Rename'
+
 	#
-	# リネーム対象を別バッファに表示する
+	# 対象をフランク３へ出力する
 	#
-	@staticmethod
-	def renameBuf(frank):
-		targetEntries = Helper.getTargetEntries(frank)
+	def execute(self, frank):
+		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
-			print 'rename ... no pointed'
-			return
+			raise NotPoiontedException(self.commandName)
 
-		if not(Helper.isOnlySameTypeEntries(targetEntries)):
-			print 'rename ... only same type entries'
-			return
+		CommandBase.outputEntriesToFrank3(self, targetEntries)
 
-		MyTab.switchTab(pathFrank3, 3)
+		MyTab.switchTab(pathFrank1, 3)
 
-		buf = vim.current.buffer
-
-		index = 0
-		for targetEntry in targetEntries:
-			buf[index] = targetEntry.fullPath
-			buf.append('')
-			index += 1
-		del buf[index]
-
-		Rename.beforeEntries = targetEntries
+		Prev.beforeEntries = targetEntries
 
 	#
 	# リネームを実行する
 	#
-	@staticmethod
-	def renameFix():
-		if vim.current.buffer.name == pathFrank1 or vim.current.buffer.name == pathFrank2:
-			print 'fix ... Rename only'
-			return
+	def fix(self):
+		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		buf = vim.current.buffer
-		renamedEntries = []
+		if len(Prev.beforeEntries) != len(afterEntryNames):
+			raise NotMatchEntryNumbersException(self.commandName)
 
-		index = 0
-		for index in range(len(buf)):
-			renamedEntries.append(Entry('hogeHead', buf[index]))
-			index += 1
-
-		if len(Rename.beforeEntries) != len(renamedEntries):
-			print 'fix ... number of beforeEntry and afterEntry do not match'
-			return
-
-		for index in range(len(renamedEntries)):
-			beforePutDir = Rename.beforeEntries[index].putDir
-			afterPutDir = renamedEntries[index].putDir
-
-			if beforePutDir != afterPutDir:
-				print 'fix ... put directory changed'
-				return
-
-		for index in range(len(renamedEntries)):
-			before = Rename.beforeEntries[index].fullPathDQ
-
+		for index, beforeEntry in enumerate(Prev.beforeEntries):
 			if os.name == 'nt':
-				after = MyString.surround(renamedEntries[index].entryName, '"')
-				vim.command('silent !rename ' + before + ' ' + after)
+				vim.command('!rename ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 			else:
-				after = renamedEntries[index].fullPathDQ
-				vim.command('silent !mv ' + before + ' ' + after)
+				vim.command('silent !mv ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 
 EOM

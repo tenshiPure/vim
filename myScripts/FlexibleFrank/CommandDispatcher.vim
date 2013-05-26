@@ -60,9 +60,6 @@ elif mode == 'pointOff':
 elif mode == 'tab':
 	MyTab.changeWindow()
 
-elif mode == 'renameBuf':
-	command.renameBuf(frank)
-
 elif mode == 'renameFix':
 	try:
 		command.fix()

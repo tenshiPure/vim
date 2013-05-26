@@ -36,5 +36,8 @@ class CommandFactory:
 		elif command == 'mkdir':
 			command = Mkdir()
 
+		elif command == 'renameBuf':
+			command = Rename()
+
 		return command
 EOM
