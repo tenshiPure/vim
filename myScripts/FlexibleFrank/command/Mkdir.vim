@@ -26,4 +26,6 @@ class Mkdir(CommandBase):
 		for index, dirName in enumerate(makingDirNames):
 			vim.command('silent !mkdir "' + toEntry.fullPath + os.sep + dirName + '"')
 
+		frank.reloadFrank()
+
 EOM

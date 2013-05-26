@@ -51,4 +51,6 @@ class Move(CommandBase):
 			else:
 				vim.command('silent !mv "' + beforeEntry.fullPath + '" "' + toEntry.fullPath + '"')
 
+		frank.reloadFrank()
+
 EOM

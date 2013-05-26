@@ -18,7 +18,6 @@ source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
 source $myScripts/FlexibleFrank/command/PointOn.vim
 source $myScripts/FlexibleFrank/command/PointOff.vim
-source $myScripts/FlexibleFrank/command/Close.vim
 
 source $myScripts/FlexibleFrank/CommandFactory.vim
 
@@ -44,9 +43,6 @@ lastLine = int(vim.eval('a:lastline'))
 if mode == 'Close':
 	command = TabCloser()
 	command.execute()
-
-elif mode == 'Reload':
-	frank.reloadFrank()
 
 elif mode == 'Fix':
 	try:

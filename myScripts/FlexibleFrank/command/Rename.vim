@@ -44,4 +44,6 @@ class Rename(CommandBase):
 			else:
 				vim.command('silent !mv ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 
+		frank.reloadFrank()
+
 EOM

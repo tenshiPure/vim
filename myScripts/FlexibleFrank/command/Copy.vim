@@ -59,6 +59,8 @@ class Copy(CommandBase):
 				else:
 					self.macDirCopy(beforeEntry, afterFullPathDQ)
 
+		frank.reloadFrank()
+
 	#
 	# ファイルコピー : win
 	#

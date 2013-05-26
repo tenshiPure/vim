@@ -34,4 +34,6 @@ class Delete(CommandBase):
 				else:
 					vim.command('silent !rm -r "' + targetEntry.fullPath + '"')
 
+		frank.reloadFrank()
+
 EOM
