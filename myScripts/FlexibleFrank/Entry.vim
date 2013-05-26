@@ -55,7 +55,10 @@ class Entry:
 		if self.isDir:
 			return ''
 		else:
-			return self.entryName.rsplit('.', 1)[1]
+			try:
+				return self.entryName.rsplit('.', 1)[1]
+			except IndexError:
+				return ''
 
 	#
 	# 階層深度を取得
