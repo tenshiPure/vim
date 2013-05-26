@@ -7,17 +7,17 @@ class CommandBase:
 	__metaclass__ = ABCMeta
 
 	#
-	# ポイントエントリもしくはカーソル下エントリを取得する
+	# ポイントエントリもしくは範囲選択エントリを取得する
 	#
-	def getTargetEntries(self, frank, under = ''):
+	def getTargetEntries(self, frank, firstLine, lastLine):
 		result = []
 		for entry in frank.entries:
 			if entry.pointed:
 				result.append(entry)
 
-		if under == 'under':
-			if len(result) == 0:
-				result.append(self.getUnderCursorEntry(frank))
+		if len(result) == 0:
+			for index in range(firstLine, lastLine + 1):
+				result.append(frank.linedEntries[index])
 
 		return result
 

@@ -49,10 +49,14 @@ function! BufMap_Frank()
 	nnoremap <buffer> o     :call CommandDispatcher('OpenDir')<CR>
 	nnoremap <buffer> a     :call CommandDispatcher('OpenByApp')<CR>
 	nnoremap <buffer> cp    :call CommandDispatcher('Copy')<CR>
+	vnoremap <buffer> cp    :call CommandDispatcher('Copy')<CR>
 	nnoremap <buffer> mv    :call CommandDispatcher('Move')<CR>
+	vnoremap <buffer> mv    :call CommandDispatcher('Move')<CR>
 	nnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
-	nnoremap <buffer> mk    :call CommandDispatcher('Mkdir')<CR>
+	vnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
 	nnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
+	vnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
+	nnoremap <buffer> mk    :call CommandDispatcher('Mkdir')<CR>
 	nnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
 	vnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
 	nnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>

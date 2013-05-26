@@ -22,7 +22,7 @@ class Copy(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrank1Exception(self.commandName)
 
-		targetEntries = CommandBase.getTargetEntries(self, frank)
+		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if len(targetEntries) == 0:
 			raise NotPoiontedException(self.commandName)

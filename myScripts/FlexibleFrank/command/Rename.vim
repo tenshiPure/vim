@@ -18,7 +18,7 @@ class Rename(CommandBase):
 	# 対象をフランク３へ出力する
 	#
 	def execute(self, frank):
-		targetEntries = CommandBase.getTargetEntries(self, frank)
+		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if len(targetEntries) == 0:
 			raise NotPoiontedException(self.commandName)

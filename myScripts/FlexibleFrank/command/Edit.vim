@@ -18,7 +18,7 @@ class Edit(CommandBase):
 	# 対象ファイルをタブで開く
 	#
 	def execute(self, frank):
-		targetEntries = CommandBase.getTargetEntries(self, frank, 'under')
+		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if not(CommandBase.isFileOnly(self, targetEntries)):
 			raise TargetNotFileOnlyException(self.commandName)
