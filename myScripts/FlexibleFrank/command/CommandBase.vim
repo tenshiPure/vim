@@ -11,7 +11,7 @@ class CommandBase:
 	#
 	def getTargetEntries(self, frank, under = ''):
 		result = []
-		for entry in frank1.entries:
+		for entry in frank.entries:
 			if entry.pointed:
 				result.append(entry)
 

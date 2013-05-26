@@ -78,10 +78,6 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-		if self.myBufName != pathFrank1:
-			print 'point ... only frank1'
-			return
-
 		cursor = MyCursor()
 		cursor.storePos()
 

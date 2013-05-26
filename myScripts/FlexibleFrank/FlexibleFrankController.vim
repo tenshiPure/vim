@@ -10,8 +10,8 @@ augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.frank set filetype=frank
 
-autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('close')
-autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('close')
+autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('Close')
+autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('Close')
 
 autocmd autoCmdFrank BufEnter *.frank call BufMap_Frank()
 
@@ -31,11 +31,8 @@ pathFrank3 = os.path.abspath(head + 'Frank3.frank')
 
 MyTab.ExpandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
 
-frank1 = EntryManager(targetDir, pathFrank1)
-frank1.outputFrank()
-
-#frank2 = EntryManager(targetDir, pathFrank2)
-#frank2.outputFrank()
+frank = EntryManager(targetDir, pathFrank1)
+frank.outputFrank()
 
 MyTab.switchTab(pathFrank1, 3)
 
@@ -61,7 +58,6 @@ function! BufMap_Frank()
 	vnoremap <buffer> p     :call CommandDispatcher('PointOn')<CR>
 	nnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
 	vnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
-	nnoremap <buffer> <Tab> :call CommandDispatcher('Tab')<CR>
 	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
 	nnoremap <buffer> gw    <C-w>w
 endfunction

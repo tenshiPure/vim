@@ -18,6 +18,7 @@ source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
 source $myScripts/FlexibleFrank/command/PointOn.vim
 source $myScripts/FlexibleFrank/command/PointOff.vim
+source $myScripts/FlexibleFrank/command/Close.vim
 
 source $myScripts/FlexibleFrank/CommandFactory.vim
 
@@ -26,6 +27,8 @@ source $myScripts/FlexibleFrank/exception/TargetNotDirException.vim
 source $myScripts/FlexibleFrank/exception/TargetNotFileException.vim
 source $myScripts/FlexibleFrank/exception/DestinationNotDirException.vim
 source $myScripts/FlexibleFrank/exception/NotPoiontedException.vim
+source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
+source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
 source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
 
 function! CommandDispatcher(mode) range
@@ -38,23 +41,12 @@ mode = vim.eval('a:mode')
 firstLine = int(vim.eval('a:firstline'))
 lastLine = int(vim.eval('a:lastline'))
 
-frank = None
-if vim.current.buffer.name == pathFrank1:
-	frank = frank1
-if vim.current.buffer.name == pathFrank2:
-	frank = frank2
-
 if mode == 'Close':
 	command = TabCloser()
 	command.execute()
 
 elif mode == 'Reload':
-	frank1.reloadFrank()
-	frank2.reloadFrank()
-	MyTab.changeWindow()
-
-elif mode == 'Tab':
-	MyTab.changeWindow()
+	frank.reloadFrank()
 
 elif mode == 'Fix':
 	try:
