@@ -29,11 +29,15 @@ class Move(CommandBase):
 		MyTab.switchTab(pathFrank1, 3)
 
 		Prev.beforeEntries = targetEntries
+		Prev.fix = self.fix
 	
 	#
 	# 移動を実行する
 	#
 	def fix(self):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrank1Exception(self.commandName)
+
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(toEntry.isDir):

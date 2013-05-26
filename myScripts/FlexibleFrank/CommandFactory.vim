@@ -6,7 +6,10 @@ class CommandFactory:
 	# コマンドを生成する
 	#
 	def create(self, command, firstLine, lastLine):
-		if command == 'ChangeDir':
+		if command == 'Fix':
+			command = Fix()
+
+		elif command == 'ChangeDir':
 			command = ChangeDir()
 
 		elif command == 'ChangeDirUpper':

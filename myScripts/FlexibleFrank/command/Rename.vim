@@ -28,6 +28,7 @@ class Rename(CommandBase):
 		MyTab.switchTab(pathFrank1, 3)
 
 		Prev.beforeEntries = targetEntries
+		Prev.fix = self.fix
 
 	#
 	# リネームを実行する
@@ -40,7 +41,7 @@ class Rename(CommandBase):
 
 		for index, beforeEntry in enumerate(Prev.beforeEntries):
 			if os.name == 'nt':
-				vim.command('!rename ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
+				vim.command('silent !rename ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 			else:
 				vim.command('silent !mv ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 

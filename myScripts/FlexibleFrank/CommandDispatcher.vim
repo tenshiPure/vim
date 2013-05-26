@@ -18,6 +18,7 @@ source $myScripts/FlexibleFrank/command/Mkdir.vim
 source $myScripts/FlexibleFrank/command/Rename.vim
 source $myScripts/FlexibleFrank/command/PointOn.vim
 source $myScripts/FlexibleFrank/command/PointOff.vim
+source $myScripts/FlexibleFrank/command/Fix.vim
 
 source $myScripts/FlexibleFrank/CommandFactory.vim
 
@@ -27,8 +28,8 @@ source $myScripts/FlexibleFrank/exception/TargetNotFileException.vim
 source $myScripts/FlexibleFrank/exception/DestinationNotDirException.vim
 source $myScripts/FlexibleFrank/exception/NotPoiontedException.vim
 source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
-source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
-source $myScripts/FlexibleFrank/exception/NotMatchEntryNumbersException.vim
+source $myScripts/FlexibleFrank/exception/NotExecutedFrank1Exception.vim
+source $myScripts/FlexibleFrank/exception/NotExecutedBeforeFixCommandException.vim
 
 function! CommandDispatcher(mode) range
 
@@ -43,14 +44,6 @@ lastLine = int(vim.eval('a:lastline'))
 if mode == 'Close':
 	command = TabCloser()
 	command.execute()
-
-elif mode == 'Fix':
-	try:
-		command.fix()
-	except DestinationNotDirException as e:
-		e.showMessage()
-	except NotMatchEntryNumbersException as e:
-		e.showMessage()
 
 else:
 	factory = CommandFactory()
@@ -67,6 +60,12 @@ else:
 	except DestinationNotDirException as e:
 		e.showMessage()
 	except NotPoiontedException as e:
+		e.showMessage()
+	except NotMatchEntryNumbersException as e:
+		e.showMessage()
+	except NotExecutedFrank1Exception as e:
+		e.showMessage()
+	except NotExecutedBeforeFixCommandException as e:
 		e.showMessage()
 
 EOM

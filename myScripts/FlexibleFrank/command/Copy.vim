@@ -19,6 +19,9 @@ class Copy(CommandBase):
 	# 対象をコピーする
 	#
 	def execute(self, frank):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrank1Exception(self.commandName)
+
 		targetEntries = CommandBase.getTargetEntries(self, frank)
 
 		if len(targetEntries) == 0:
@@ -29,6 +32,7 @@ class Copy(CommandBase):
 		MyTab.switchTab(pathFrank1, 3)
 
 		Prev.beforeEntries = targetEntries
+		Prev.fix = self.fix
 
 	#
 	# コピーを実行する

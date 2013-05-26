@@ -11,11 +11,16 @@ class Mkdir(CommandBase):
 	#
 	def execute(self, frank):
 		CommandBase.outputStringToFrank3(self, 'new_dir')
+
+		Prev.fix = self.fix
 	
 	#
 	# ディレクトリ作成を実行する
 	#
 	def fix(self):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrank1Exception(self.commandName)
+
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(toEntry.isDir):
