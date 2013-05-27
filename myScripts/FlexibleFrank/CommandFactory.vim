@@ -18,8 +18,8 @@ class CommandFactory:
 		elif command == 'ChangeDirUpper':
 			command = ChangeDirUpper()
 
-		elif command == 'ChangeDirLast':
-			command = ChangeDirLast()
+		elif command == 'ChangeDirBefore':
+			command = ChangeDirBefore()
 
 		elif command == 'OpenDir':
 			command = OpenDir()

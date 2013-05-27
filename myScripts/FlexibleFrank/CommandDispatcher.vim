@@ -8,7 +8,7 @@ source $myScripts/FlexibleFrank/Command/Prev.vim
 source $myScripts/FlexibleFrank/Command/Edit.vim
 source $myScripts/FlexibleFrank/Command/ChangeDir.vim
 source $myScripts/FlexibleFrank/Command/ChangeDirUpper.vim
-source $myScripts/FlexibleFrank/Command/ChangeDirLast.vim
+source $myScripts/FlexibleFrank/Command/ChangeDirBefore.vim
 source $myScripts/FlexibleFrank/Command/OpenByApp.vim
 source $myScripts/FlexibleFrank/Command/OpenDir.vim
 source $myScripts/FlexibleFrank/Command/Copy.vim
@@ -31,6 +31,7 @@ source $myScripts/FlexibleFrank/Exception/NotPoiontedException.vim
 source $myScripts/FlexibleFrank/Exception/NotMatchEntryNumbersException.vim
 source $myScripts/FlexibleFrank/Exception/NotExecutedFrank1Exception.vim
 source $myScripts/FlexibleFrank/Exception/NotExecutedBeforeFixCommandException.vim
+source $myScripts/FlexibleFrank/Exception/NoMoreBeforeDirException.vim
 
 function! CommandDispatcher(mode) range
 
@@ -67,6 +68,8 @@ else:
 	except NotExecutedFrank1Exception as e:
 		e.showMessage()
 	except NotExecutedBeforeFixCommandException as e:
+		e.showMessage()
+	except NoMoreBeforeDirException as e:
 		e.showMessage()
 
 EOM

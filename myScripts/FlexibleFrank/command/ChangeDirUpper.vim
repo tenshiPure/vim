@@ -10,7 +10,7 @@ class ChangeDirUpper(CommandBase):
 	# 一つ上のディレクトリに移動する
 	#
 	def execute(self, frank):
-		Prev.lastDir = frank.targetDir
+		Prev.lastDir.append(frank.targetDir)
 
 		frank.targetDir = os.path.abspath(frank.targetDir + '/../')
 

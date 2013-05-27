@@ -15,7 +15,7 @@ class ChangeDir(CommandBase):
 		if not(targetEntry.isDir):
 			raise TargetNotDirException(self.commandName)
 
-		Prev.lastDir = frank.targetDir
+		Prev.lastDir.append(frank.targetDir)
 
 		frank.targetDir = os.path.abspath(targetEntry.fullPath)
 

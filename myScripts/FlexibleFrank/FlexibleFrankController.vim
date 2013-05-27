@@ -42,9 +42,9 @@ endfunction
 function! BufMap_Frank()
 	nnoremap <buffer> e     :call CommandDispatcher('Edit')<CR>
 	vnoremap <buffer> e     :call CommandDispatcher('Edit')<CR>
-	nnoremap <buffer> m     :call CommandDispatcher('ChangeDir')<CR>
+	nnoremap <buffer> mm    :call CommandDispatcher('ChangeDir')<CR>
 	nnoremap <buffer> h     :call CommandDispatcher('ChangeDirUpper')<CR>
-	nnoremap <buffer> l     :call CommandDispatcher('ChangeDirLast')<CR>
+	nnoremap <buffer> l     :call CommandDispatcher('ChangeDirBefore')<CR>
 	nnoremap <buffer> o     :call CommandDispatcher('OpenDir')<CR>
 	nnoremap <buffer> a     :call CommandDispatcher('OpenByApp')<CR>
 	nnoremap <buffer> cp    :call CommandDispatcher('Copy')<CR>

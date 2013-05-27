@@ -22,7 +22,7 @@ class EntryManager:
 		self.entries = []
 		self.linedEntries = {}
 		self.getEntryMode = 'all'
-		self.entriesLimit = sys.maxint
+		self.entriesLimit = 200
 		self.getEntries(self.targetDir, self.targetDir)
 
 	#
@@ -77,6 +77,7 @@ class EntryManager:
 	# エントリの取得モードを切り替えてエントリを再取得する
 	#
 	def reGetEntries(self):
+		print self.getEntryMode
 		self.entries = []
 		self.switchGetEntryMode()
 		self.getEntries(self.targetDir, self.targetDir)
@@ -97,11 +98,10 @@ class EntryManager:
 		cwd = os.getcwd()
 
 		self.header = []
-		self.header.append('get mode : ' + self.getEntryMode)
 		self.header.append('')
-		self.header.append('----')
+		self.header.append('-' * len(self.targetDir))
 		self.header.append(self.targetDir)
-		self.header.append('----')
+		self.header.append('-' * len(self.targetDir))
 		self.header.append('')
 
 		MyTab.initWorkingText(self.header)

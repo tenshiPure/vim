@@ -3,7 +3,7 @@ import vim
 
 class Prev:
 
-	lastDir = ''
+	lastDir = []
 	beforeEntries = []
 	fix = None
 
