@@ -20,6 +20,7 @@ source $myScripts/FlexibleFrank/Command/Rename.vim
 source $myScripts/FlexibleFrank/Command/PointOn.vim
 source $myScripts/FlexibleFrank/Command/PointOff.vim
 source $myScripts/FlexibleFrank/Command/Fix.vim
+source $myScripts/FlexibleFrank/Command/GetModeSwitch.vim
 
 
 source $myScripts/FlexibleFrank/Exception/TargetNotFileOnlyException.vim

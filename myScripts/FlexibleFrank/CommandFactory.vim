@@ -6,7 +6,10 @@ class CommandFactory:
 	# コマンドを生成する
 	#
 	def create(self, command, firstLine, lastLine):
-		if command == 'Fix':
+		if command == 'Switch':
+			command = GetModeSwitch()
+
+		elif command == 'Fix':
 			command = Fix()
 
 		elif command == 'ChangeDir':

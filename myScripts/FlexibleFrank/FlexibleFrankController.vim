@@ -62,5 +62,6 @@ function! BufMap_Frank()
 	nnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
 	vnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
 	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
+	nnoremap <buffer> sw    :call CommandDispatcher('Switch')<CR>
 	nnoremap <buffer> gw    <C-w>w
 endfunction

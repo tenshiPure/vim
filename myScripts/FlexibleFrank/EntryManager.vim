@@ -1,4 +1,5 @@
 python <<EOM
+import sys
 import vim
 import os
 
@@ -21,7 +22,7 @@ class EntryManager:
 		self.entries = []
 		self.linedEntries = {}
 		self.getEntryMode = 'all'
-		self.entriesLimit = 200
+		self.entriesLimit = sys.maxint
 		self.getEntries(self.targetDir, self.targetDir)
 
 	#
@@ -62,11 +63,22 @@ class EntryManager:
 			return False
 
 	#
-	# モードを切り替えてエントリを再取得する
+	# エントリの取得モードを切り替える
+	#
+	def switchGetEntryMode(self):
+		if self.getEntryMode == 'all':
+			self.getEntryMode = 'currentOnly'
+			self.entriesLimit = 200
+		else:
+			self.getEntryMode = 'all'
+			self.entriesLimit = sys.maxint
+
+	#
+	# エントリの取得モードを切り替えてエントリを再取得する
 	#
 	def reGetEntries(self):
 		self.entries = []
-		self.getEntryMode = 'currentOnly'
+		self.switchGetEntryMode()
 		self.getEntries(self.targetDir, self.targetDir)
 
 	#
@@ -85,6 +97,8 @@ class EntryManager:
 		cwd = os.getcwd()
 
 		self.header = []
+		self.header.append('get mode : ' + self.getEntryMode)
+		self.header.append('')
 		self.header.append('----')
 		self.header.append(self.targetDir)
 		self.header.append('----')
