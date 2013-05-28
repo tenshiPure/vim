@@ -265,9 +265,17 @@ nnoremap yy :call WordYankController()<CR>
 "単語を置換ペースト
 nnoremap yp ciw<C-r>0<ESC>
 
-"ビジュアル矩形モードの物理キー配置をmac と揃える
+"ビジュアル矩形モードの物理キー配置をmacと揃える
 if os == 'win'
 	nnoremap <M-S-v> <C-S-v> 
+endif
+
+"インクリ・デクリの物理キー配置をmacを揃える
+if os == 'win'
+	nnoremap <M-a> <C-a>
+endif
+if os == 'win'
+	nnoremap <M-x> <C-x>
 endif
 
 "コマンドラインモードへ移行

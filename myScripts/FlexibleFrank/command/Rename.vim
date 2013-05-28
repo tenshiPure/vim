@@ -28,9 +28,9 @@ class Rename(CommandBase):
 
 		CommandBase.outputEntriesToFrank3(self, targetEntries)
 
-		MyTab.switchTab(pathFrank1, 3)
+		MyTab.switchTab(pathFrank3, 3)
 
-		Prev.beforeEntries = targetEntries
+		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 
 	#
@@ -39,15 +39,29 @@ class Rename(CommandBase):
 	def fix(self):
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		if len(Prev.beforeEntries) != len(afterEntryNames):
+		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)
 
-		for index, beforeEntry in enumerate(Prev.beforeEntries):
+		for index, beforeEntry in enumerate(Prev.targetEntries):
 			if os.name == 'nt':
-				vim.command('silent !rename ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
+				self.winRename(beforeEntry.fullPathDQ, afterEntryNames[index])
 			else:
-				vim.command('silent !mv ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
+				self.macRename(beforeEntry.fullPathDQ, afterEntryNames[index])
 
 		frank.reloadFrank()
+
+		MyTab.switchTab(pathFrank1, 3)
+
+	#
+	# リネーム : win
+	#
+	def winRename(self, beforeFullPathDQ, afterEntryName):
+		vim.command('silent !rename ' + beforeFullPathDQ + ' ' + afterEntryName)
+
+	#
+	# リネーム : mac
+	#
+	def macRename(self, beforeFullPathDQ, afterEntryName):
+		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + afterEntryName)
 
 EOM

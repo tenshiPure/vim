@@ -31,7 +31,7 @@ class Move(CommandBase):
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		Prev.beforeEntries = targetEntries
+		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 	
 	#
@@ -41,23 +41,38 @@ class Move(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrankNException(self.commandName, 1)
 
-		toEntry = CommandBase.getUnderCursorEntry(self, frank)
+		toDir = CommandBase.getUnderCursorEntry(self, frank)
 
-		if not(toEntry.isDir):
+		if not(toDir.isDir):
 			raise DestinationNotDirException(self.commandName)
 
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		if len(Prev.beforeEntries) != len(afterEntryNames):
+		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)
 
-		for index, beforeEntry in enumerate(Prev.beforeEntries):
-			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
+		for index, beforeEntry in enumerate(Prev.targetEntries):
+			afterFullPathDQ = MyString.surround(toDir.fullPath + os.path + afterEntryNames[index], '"')
 			if os.name == 'nt':
-				vim.command('silent !move ' + beforeEntry.fullPathDQ + ' ' + MyString.surround(afterFullPath, '"'))
+				self.winMove(beforeEntry.fullPathDQ, afterFullPathDQ)
 			else:
-				vim.command('silent !mv "' + beforeEntry.fullPath + '" "' + toEntry.fullPath + '"')
+#				self.macMove(beforeEntry.fullPathDQ, toDir.fullPathDQ)
+				self.macMove(beforeEntry.fullPathDQ, afterFullPathDQ)
 
 		frank.reloadFrank()
+
+		MyTab.switchTab(pathFrank1, 3)
+
+	#
+	# 移動 : win
+	#
+	def winMove(self, beforeFullPathDQ, afterFullPathDQ):
+		vim.command('silent !move ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
+
+	#
+	# 移動 : mac
+	#
+	def macMove(self, beforeFullPathDQ, afterFullPathDQ):
+		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
 
 EOM

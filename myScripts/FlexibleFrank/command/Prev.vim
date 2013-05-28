@@ -4,7 +4,7 @@ import vim
 class Prev:
 
 	lastDir = []
-	beforeEntries = []
+	targetEntries = []
 	fix = None
 
 EOM
