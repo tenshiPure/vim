@@ -28,7 +28,7 @@ class Move(CommandBase):
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		Prev.beforeEntries = targetEntries
+		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 	
 	#
@@ -45,10 +45,10 @@ class Move(CommandBase):
 
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		if len(Prev.beforeEntries) != len(afterEntryNames):
+		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)
 
-		for index, beforeEntry in enumerate(Prev.beforeEntries):
+		for index, beforeEntry in enumerate(Prev.targetEntries):
 			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
 			if os.name == 'nt':
 				vim.command('silent !move ' + beforeEntry.fullPathDQ + ' ' + MyString.surround(afterFullPath, '"'))

@@ -27,7 +27,7 @@ class Rename(CommandBase):
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		Prev.beforeEntries = targetEntries
+		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 
 	#
@@ -36,10 +36,10 @@ class Rename(CommandBase):
 	def fix(self):
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		if len(Prev.beforeEntries) != len(afterEntryNames):
+		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)
 
-		for index, beforeEntry in enumerate(Prev.beforeEntries):
+		for index, beforeEntry in enumerate(Prev.targetEntries):
 			if os.name == 'nt':
 				vim.command('silent !rename ' + beforeEntry.fullPathDQ + ' ' + afterEntryNames[index])
 			else:

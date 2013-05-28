@@ -31,7 +31,7 @@ class Copy(CommandBase):
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		Prev.beforeEntries = targetEntries
+		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 
 	#
@@ -45,10 +45,10 @@ class Copy(CommandBase):
 
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
 
-		if len(Prev.beforeEntries) != len(afterEntryNames):
+		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)
 
-		for index, beforeEntry in enumerate(Prev.beforeEntries):
+		for index, beforeEntry in enumerate(Prev.targetEntries):
 			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
 			afterFullPathDQ = MyString.surround(afterFullPath, '"')
 			if not(beforeEntry.isDir):
