@@ -58,6 +58,8 @@ class Move(CommandBase):
 
 		frank.reloadFrank()
 
+		MyTab.switchTab(pathFrank1, 3)
+
 	#
 	# 移動 : win
 	#

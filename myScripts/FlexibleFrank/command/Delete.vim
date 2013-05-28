@@ -53,6 +53,8 @@ class Delete(CommandBase):
 
 		frank.reloadFrank()
 
+		MyTab.switchTab(pathFrank1, 3)
+
 	#
 	# ファイル削除 : win
 	#

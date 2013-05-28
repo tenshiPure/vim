@@ -65,6 +65,8 @@ class Copy(CommandBase):
 
 		frank.reloadFrank()
 
+		MyTab.switchTab(pathFrank1, 3)
+
 	#
 	# ファイルコピー : win
 	#

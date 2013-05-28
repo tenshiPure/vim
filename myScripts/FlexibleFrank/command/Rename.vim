@@ -47,6 +47,8 @@ class Rename(CommandBase):
 
 		frank.reloadFrank()
 
+		MyTab.switchTab(pathFrank1, 3)
+
 	#
 	# リネーム : win
 	#

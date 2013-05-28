@@ -34,6 +34,8 @@ class Mkdir(CommandBase):
 
 		frank.reloadFrank()
 
+		MyTab.switchTab(pathFrank1, 3)
+
 	#
 	# ディレクトリ作成
 	#
