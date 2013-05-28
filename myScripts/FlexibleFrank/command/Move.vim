@@ -38,9 +38,9 @@ class Move(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrank1Exception(self.commandName)
 
-		toEntry = CommandBase.getUnderCursorEntry(self, frank)
+		toDir = CommandBase.getUnderCursorEntry(self, frank)
 
-		if not(toEntry.isDir):
+		if not(toDir.isDir):
 			raise DestinationNotDirException(self.commandName)
 
 		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
@@ -49,12 +49,25 @@ class Move(CommandBase):
 			raise NotMatchEntryNumbersException(self.commandName)
 
 		for index, beforeEntry in enumerate(Prev.targetEntries):
-			afterFullPath = os.path.abspath(toEntry.fullPath + '/' + afterEntryNames[index])
+			afterFullPathDQ = MyString.surround(toDir.fullPath + os.path + afterEntryNames[index], '"')
 			if os.name == 'nt':
-				vim.command('silent !move ' + beforeEntry.fullPathDQ + ' ' + MyString.surround(afterFullPath, '"'))
+				self.winMove(beforeEntry.fullPathDQ, afterFullPathDQ)
 			else:
-				vim.command('silent !mv "' + beforeEntry.fullPath + '" "' + toEntry.fullPath + '"')
+#				self.macMove(beforeEntry.fullPathDQ, toDir.fullPathDQ)
+				self.macMove(beforeEntry.fullPathDQ, afterFullPathDQ)
 
 		frank.reloadFrank()
+
+	#
+	# 移動 : win
+	#
+	def winMove(self, beforeFullPathDQ, afterFullPathDQ):
+		vim.command('silent !move ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
+
+	#
+	# 移動 : mac
+	#
+	def macMove(self, beforeFullPathDQ, afterFullPathDQ):
+		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
 
 EOM

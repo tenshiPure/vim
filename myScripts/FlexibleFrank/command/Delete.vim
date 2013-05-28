@@ -41,16 +41,40 @@ class Delete(CommandBase):
 		for targetEntry in Prev.targetEntries:
 			if not(targetEntry.isDir):
 				if os.name == 'nt':
-					vim.command('silent !del "' + targetEntry.fullPath + '"')
+					self.winFileRemove(targetEntry.fullPathDQ)
 				else:
-					vim.command('silent !rm "' + targetEntry.fullPath + '"')
+					self.macFileRemove(targetEntry.fullPathDQ)
 
 			if targetEntry.isDir:
 				if os.name == 'nt':
-					vim.command('silent !rmdir /s /q "' + targetEntry.fullPath + '"')
+					self.winDirRemove(targetEntry.fullPathDQ)
 				else:
-					vim.command('silent !rm -r "' + targetEntry.fullPath + '"')
+					self.macDirRemove(targetEntry.fullPathDQ)
 
 		frank.reloadFrank()
+
+	#
+	# ファイル削除 : win
+	#
+	def winFileRemove(self, targetFullPathDQ):
+		vim.command('silent !del ' + targetFullPathDQ)
+		
+	#
+	# ファイル削除 : mac
+	#
+	def macFileRemove(self, targetFullPathDQ):
+		vim.command('silent !rm ' + targetFullPathDQ)
+
+	#
+	# ディレクトリ削除 : win
+	#
+	def winDirRemove(self, targetFullPathDQ):
+		vim.command('silent !rmdir /s /q ' + targetFullPathDQ)
+		
+	#
+	# ディレクトリ削除 : mac
+	#
+	def macDirRemove(self, targetFullPathDQ):
+		vim.command('silent !rm -r ' + targetFullPathDQ)
 
 EOM

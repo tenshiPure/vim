@@ -29,8 +29,15 @@ class Mkdir(CommandBase):
 		makingDirNames = CommandBase.getEntryNamesFromFrank3(self)
 
 		for index, dirName in enumerate(makingDirNames):
-			vim.command('silent !mkdir "' + toEntry.fullPath + os.sep + dirName + '"')
+			targetDirName = toEntry.fullPath + os.sep + dirName
+			self.DirMake(MyString.surround(targetDirName, '"'))
 
 		frank.reloadFrank()
+
+	#
+	# ディレクトリ作成
+	#
+	def DirMake(self, targetFullPath):
+		vim.command('silent !mkdir ' + targetFullPath)
 
 EOM
