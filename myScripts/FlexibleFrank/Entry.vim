@@ -74,8 +74,9 @@ class Entry:
 	def createFormatedForOutput(self):
 		point = '*' if self.pointed else ''
 		tab = '\t' * self.depth
+		space = ' ' if self.isDir else ''
 
-		return point + tab + self.entryName
+		return point + tab + self.entryName + space
 
 	#
 	# ポイントをオンにして出力内容を再作成する
