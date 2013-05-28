@@ -1,14 +1,14 @@
 python <<EOM
 
-class NotExecutedFrank1Exception():
+class NotExecutedFrankNException():
 
 	message = ''
 
 	#
 	# 擬似コンストラクタ
 	#
-	def __init__(self, command):
-		self.message = '[%(command)s] Error : command must execute frank1.' % locals()
+	def __init__(self, command, num):
+		self.message = '[%(command)s] Error : command must execute frank%(num)s.' % locals()
 
 	#
 	# エラーメッセージを表示

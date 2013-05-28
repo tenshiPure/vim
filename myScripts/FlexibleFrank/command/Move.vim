@@ -19,6 +19,9 @@ class Move(CommandBase):
 	# 対象をフランク３へ出力する
 	#
 	def execute(self, frank):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrankNException(self.commandName, 1)
+
 		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if len(targetEntries) == 0:
@@ -36,7 +39,7 @@ class Move(CommandBase):
 	#
 	def fix(self):
 		if vim.current.buffer.name != pathFrank1:
-			raise NotExecutedFrank1Exception(self.commandName)
+			raise NotExecutedFrankNException(self.commandName, 1)
 
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 

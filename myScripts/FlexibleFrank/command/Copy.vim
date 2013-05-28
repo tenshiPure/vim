@@ -20,7 +20,7 @@ class Copy(CommandBase):
 	#
 	def execute(self, frank):
 		if vim.current.buffer.name != pathFrank1:
-			raise NotExecutedFrank1Exception(self.commandName)
+			raise NotExecutedFrankNException(self.commandName, 1)
 
 		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
@@ -38,6 +38,9 @@ class Copy(CommandBase):
 	# コピーを実行する
 	#
 	def fix(self):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrankNException(self.commandName, 1)
+
 		toEntry = CommandBase.getUnderCursorEntry(self, frank)
 
 		if not(toEntry.isDir):

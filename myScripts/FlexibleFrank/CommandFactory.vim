@@ -12,6 +12,9 @@ class CommandFactory:
 		elif command == 'Fix':
 			command = Fix()
 
+		elif command == 'Grep':
+			command = Grep()
+
 		elif command == 'ChangeDir':
 			command = ChangeDir()
 

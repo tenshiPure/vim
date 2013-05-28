@@ -18,6 +18,9 @@ class Edit(CommandBase):
 	# 対象ファイルをタブで開く
 	#
 	def execute(self, frank):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrankNException(self.commandName, 1)
+
 		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if not(CommandBase.isFileOnly(self, targetEntries)):

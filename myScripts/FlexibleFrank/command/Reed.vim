@@ -10,9 +10,12 @@ class Reed(CommandBase):
 	#
 	def execute(self, frank):
 		if vim.current.buffer.name != pathFrank1:
-			raise NotExecutedFrank1Exception(self.commandName)
+			raise NotExecutedFrankNException(self.commandName, 1)
 
 		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
+
+		if targetEntry.isDir:
+			raise TargetNotFileException(self.commandName)
 
 		MyTab.switchTab(pathFrank2, 3)
 		MyTab.clearCurrentBuffer()

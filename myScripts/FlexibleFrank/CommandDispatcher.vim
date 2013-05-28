@@ -21,6 +21,7 @@ source $myScripts/FlexibleFrank/Command/PointOn.vim
 source $myScripts/FlexibleFrank/Command/PointOff.vim
 source $myScripts/FlexibleFrank/Command/Fix.vim
 source $myScripts/FlexibleFrank/Command/GetModeSwitch.vim
+source $myScripts/FlexibleFrank/Command/Grep.vim
 
 
 source $myScripts/FlexibleFrank/Exception/TargetNotFileOnlyException.vim
@@ -29,7 +30,7 @@ source $myScripts/FlexibleFrank/Exception/TargetNotFileException.vim
 source $myScripts/FlexibleFrank/Exception/DestinationNotDirException.vim
 source $myScripts/FlexibleFrank/Exception/NotPoiontedException.vim
 source $myScripts/FlexibleFrank/Exception/NotMatchEntryNumbersException.vim
-source $myScripts/FlexibleFrank/Exception/NotExecutedFrank1Exception.vim
+source $myScripts/FlexibleFrank/Exception/NotExecutedFrankNException.vim
 source $myScripts/FlexibleFrank/Exception/NotExecutedBeforeFixCommandException.vim
 source $myScripts/FlexibleFrank/Exception/NoMoreBeforeDirException.vim
 
@@ -65,7 +66,7 @@ else:
 		e.showMessage()
 	except NotMatchEntryNumbersException as e:
 		e.showMessage()
-	except NotExecutedFrank1Exception as e:
+	except NotExecutedFrankNException as e:
 		e.showMessage()
 	except NotExecutedBeforeFixCommandException as e:
 		e.showMessage()

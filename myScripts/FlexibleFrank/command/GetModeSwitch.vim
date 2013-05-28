@@ -10,7 +10,7 @@ class GetModeSwitch(CommandBase):
 	#
 	def execute(self, frank):
 		if vim.current.buffer.name != pathFrank1:
-			raise NotExecutedFrank1Exception(self.commandName)
+			raise NotExecutedFrankNException(self.commandName, 1)
 
 		frank.switchGetEntryMode()
 		frank.reloadFrank()

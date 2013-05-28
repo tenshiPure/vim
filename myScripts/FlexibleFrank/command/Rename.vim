@@ -18,6 +18,9 @@ class Rename(CommandBase):
 	# 対象をフランク３へ出力する
 	#
 	def execute(self, frank):
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrankNException(self.commandName, 1)
+
 		targetEntries = CommandBase.getTargetEntries(self, frank, self.firstLine, self.lastLine)
 
 		if len(targetEntries) == 0:
