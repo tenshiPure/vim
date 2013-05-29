@@ -5,6 +5,8 @@ import os
 class Delete(CommandBase):
 
 	commandName = 'Delete'
+	doneMessage = commandName + CommandBase.doneMessage
+	fixMessage = commandName + CommandBase.fixMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -33,6 +35,8 @@ class Delete(CommandBase):
 
 		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
+
+		print self.doneMessage
 	
 	#
 	# 削除を実行する
@@ -57,6 +61,8 @@ class Delete(CommandBase):
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
+
+		print self.fixMessage
 
 	#
 	# ファイル削除 : win

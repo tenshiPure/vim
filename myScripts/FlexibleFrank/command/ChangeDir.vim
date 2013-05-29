@@ -5,6 +5,7 @@ import os
 class ChangeDir(CommandBase):
 
 	commandName = 'ChangeDir'
+	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# 指定したディレクトリに移動する
@@ -20,5 +21,7 @@ class ChangeDir(CommandBase):
 		frank.targetDir = os.path.abspath(targetEntry.fullPath)
 
 		frank.reloadFrank()
+
+		print self.doneMessage
 
 EOM

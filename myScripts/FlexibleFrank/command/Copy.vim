@@ -5,6 +5,8 @@ import os
 class Copy(CommandBase):
 
 	commandName = 'Copy'
+	doneMessage = commandName + CommandBase.doneMessage
+	fixMessage = commandName + CommandBase.fixMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -33,6 +35,8 @@ class Copy(CommandBase):
 
 		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
+
+		print self.doneMessage
 
 	#
 	# コピーを実行する
@@ -69,6 +73,8 @@ class Copy(CommandBase):
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
+
+		print self.fixMessage
 
 	#
 	# ファイルコピー : win

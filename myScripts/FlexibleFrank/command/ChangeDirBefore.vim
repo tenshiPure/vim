@@ -5,6 +5,7 @@ import os
 class ChangeDirBefore(CommandBase):
 
 	commandName = 'ChangeDirBefore'
+	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# 一つ前のディレクトリに移動する
@@ -16,5 +17,7 @@ class ChangeDirBefore(CommandBase):
 			frank.targetDir = Prev.lastDir.pop()
 
 		frank.reloadFrank()
+
+		print self.doneMessage
 
 EOM

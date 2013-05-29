@@ -4,6 +4,7 @@ import vim
 class Edit(CommandBase):
 
 	commandName = 'Edit'
+	doneMessage = commandName + CommandBase.doneMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -34,5 +35,7 @@ class Edit(CommandBase):
 				vim.command('edit ' + targetEntry.fullPath)
 			else:
 				vim.command('tabedit ' + targetEntry.fullPath)
+
+		print self.doneMessage
 
 EOM

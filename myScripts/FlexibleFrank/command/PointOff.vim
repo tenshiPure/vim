@@ -4,6 +4,7 @@ import vim
 class PointOff(CommandBase):
 
 	commandName = 'PointOff'
+	doneMessage = commandName + CommandBase.doneMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -19,5 +20,7 @@ class PointOff(CommandBase):
 	#
 	def execute(self, frank):
 		frank.pointOff(self.firstLine, self.lastLine)
+
+		print self.doneMessage
 
 EOM

@@ -5,6 +5,7 @@ import os
 class OpenDir(CommandBase):
 
 	commandName = 'OpenDir'
+	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# ディレクトリを開く
@@ -19,5 +20,7 @@ class OpenDir(CommandBase):
 			vim.command('silent !explorer ' + targetEntry.fullPathDQ)
 		else:
 			vim.command('silent !open ' + targetEntry.fullPath)
+
+		print self.doneMessage
 
 EOM

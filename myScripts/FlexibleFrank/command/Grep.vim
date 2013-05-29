@@ -4,6 +4,7 @@ import vim
 class Grep(CommandBase):
 
 	commandName = 'Grep'
+	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# ディレクトリを開く
@@ -13,5 +14,7 @@ class Grep(CommandBase):
 			raise NotExecutedFrankNException(self.commandName, 3)
 
 		print 'Grep'
+
+		print self.doneMessage
 
 EOM

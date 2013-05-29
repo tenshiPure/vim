@@ -5,6 +5,7 @@ import os
 class ChangeDirUpper(CommandBase):
 
 	commandName = 'ChangeDirUpper'
+	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# 一つ上のディレクトリに移動する
@@ -15,5 +16,7 @@ class ChangeDirUpper(CommandBase):
 		frank.targetDir = os.path.abspath(frank.targetDir + '/../')
 
 		frank.reloadFrank()
+
+		print self.doneMessage
 
 EOM

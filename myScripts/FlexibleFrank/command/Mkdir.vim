@@ -5,6 +5,8 @@ import os
 class Mkdir(CommandBase):
 
 	commandName = 'Mkdir'
+	doneMessage = commandName + CommandBase.doneMessage
+	fixMessage = commandName + CommandBase.fixMessage
 
 	#
 	# 対象をフランク３へ出力する
@@ -16,6 +18,8 @@ class Mkdir(CommandBase):
 		CommandBase.outputStringToFrank3(self, 'new_dir')
 
 		Prev.fix = self.fix
+
+		print self.doneMessage
 	
 	#
 	# ディレクトリ作成を実行する
@@ -38,6 +42,8 @@ class Mkdir(CommandBase):
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
+
+		print self.fixMessage
 
 	#
 	# ディレクトリ作成
