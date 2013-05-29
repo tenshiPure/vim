@@ -4,7 +4,6 @@ import vim
 class PointOn(CommandBase):
 
 	commandName = 'PointOn'
-	doneMessage = commandName + CommandBase.doneMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -20,7 +19,5 @@ class PointOn(CommandBase):
 	#
 	def execute(self, frank):
 		frank.pointOn(self.firstLine, self.lastLine)
-
-		print self.doneMessage
 
 EOM

@@ -72,6 +72,8 @@ else:
 		e.showMessage()
 	except NoMoreBeforeDirException as e:
 		e.showMessage()
+	else:
+		print '[' + command.commandName + '] OK.'
 
 EOM
 

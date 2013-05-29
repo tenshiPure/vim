@@ -5,7 +5,6 @@ import os
 class OpenByApp(CommandBase):
 
 	commandName = 'OpenByApp'
-	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# 指定ファイルをアプリケーションで開く
@@ -20,7 +19,5 @@ class OpenByApp(CommandBase):
 			vim.command('silent !explorer ' + targetEntry.fullPathDQ)
 		else:
 			vim.command('silent !open ' + targetEntry.fullPath)
-
-		print self.doneMessage
 
 EOM

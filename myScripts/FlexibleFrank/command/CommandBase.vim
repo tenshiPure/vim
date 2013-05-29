@@ -4,9 +4,6 @@ from abc import ABCMeta, abstractmethod
 
 class CommandBase:
 	
-	doneMessage = ' Done : execute.'
-	fixMessage = ' Done : fix.'
-
 	__metaclass__ = ABCMeta
 
 	#

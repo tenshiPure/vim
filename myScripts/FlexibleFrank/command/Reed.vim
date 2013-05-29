@@ -4,7 +4,6 @@ import vim
 class Reed(CommandBase):
 
 	commandName = 'Reed'
-	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# 指定ファイルをフランク２に表示
@@ -28,7 +27,5 @@ class Reed(CommandBase):
 		vim.command('set nowrap')
 
 		MyTab.switchTab(pathFrank1, 3)
-
-		print self.doneMessage
 
 EOM

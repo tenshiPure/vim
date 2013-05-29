@@ -5,8 +5,6 @@ import os
 class Mkdir(CommandBase):
 
 	commandName = 'Mkdir'
-	doneMessage = commandName + CommandBase.doneMessage
-	fixMessage = commandName + CommandBase.fixMessage
 
 	#
 	# 対象をフランク３へ出力する
@@ -18,8 +16,6 @@ class Mkdir(CommandBase):
 		CommandBase.outputStringToFrank3(self, 'new_dir')
 
 		Prev.fix = self.fix
-
-		print self.doneMessage
 	
 	#
 	# ディレクトリ作成を実行する
@@ -37,18 +33,16 @@ class Mkdir(CommandBase):
 
 		for index, dirName in enumerate(makingDirNames):
 			targetDirName = toEntry.fullPath + os.sep + dirName
-			self.DirMake(MyString.surround(targetDirName, '"'))
+			self.dirMake(MyString.surround(targetDirName, '"'))
 
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
 
-		print self.fixMessage
-
 	#
 	# ディレクトリ作成
 	#
-	def DirMake(self, targetFullPath):
-		vim.command('silent !mkdir ' + targetFullPath)
+	def dirMake(self, targetDirNameDQ):
+		vim.command('silent !mkdir ' + targetDirNameDQ)
 
 EOM

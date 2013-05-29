@@ -4,8 +4,6 @@ import vim
 class Rename(CommandBase):
 
 	commandName = 'Rename'
-	doneMessage = commandName + CommandBase.doneMessage
-	fixMessage = commandName + CommandBase.fixMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -35,8 +33,6 @@ class Rename(CommandBase):
 		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
 
-		print self.doneMessage
-
 	#
 	# リネームを実行する
 	#
@@ -55,8 +51,6 @@ class Rename(CommandBase):
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-		print self.fixMessage
 
 	#
 	# リネーム : win

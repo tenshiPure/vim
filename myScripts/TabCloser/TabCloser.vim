@@ -4,6 +4,7 @@ import os
 
 class TabCloser:
 
+	commandName = 'TabClose'
 	targetBufName = ''
 	forceList = {}
 

@@ -4,7 +4,6 @@ import vim
 class GetModeSwitch(CommandBase):
 
 	commandName = 'GetModeSwitch'
-	doneMessage = commandName + CommandBase.doneMessage
 
 	#
 	# エントリの取得モードを切り替える
@@ -15,7 +14,5 @@ class GetModeSwitch(CommandBase):
 
 		frank.switchGetEntryMode()
 		frank.reloadFrank()
-
-		print self.doneMessage
 
 EOM

@@ -5,8 +5,6 @@ import os
 class Move(CommandBase):
 
 	commandName = 'Move'
-	doneMessage = commandName + CommandBase.doneMessage
-	fixMessage = commandName + CommandBase.fixMessage
 	firstLine = 0
 	lastLine = 0
 
@@ -35,8 +33,6 @@ class Move(CommandBase):
 
 		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
-
-		print self.doneMessage
 	
 	#
 	# 移動を実行する
@@ -66,8 +62,6 @@ class Move(CommandBase):
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-		print self.fixMessage
 
 	#
 	# 移動 : win
