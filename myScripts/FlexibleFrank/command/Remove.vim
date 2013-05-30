@@ -2,9 +2,9 @@ python <<EOM
 import vim
 import os
 
-class Delete(CommandBase):
+class Remove(CommandBase):
 
-	commandName = 'Delete'
+	commandName = 'Remove'
 	firstLine = 0
 	lastLine = 0
 
@@ -39,7 +39,7 @@ class Delete(CommandBase):
 	#
 	def fix(self):
 		if vim.current.buffer.name != pathFrank1:
-			raise NotExecutedFrank1Exception(self.commandName)
+			raise NotExecutedFrankNException(self.commandName)
 
 		for targetEntry in Prev.targetEntries:
 			if not(targetEntry.isDir):

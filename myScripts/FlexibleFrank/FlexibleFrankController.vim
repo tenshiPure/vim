@@ -53,8 +53,8 @@ function! BufMap_Frank()
 	vnoremap <buffer> cp    :call CommandDispatcher('Copy')<CR>
 	nnoremap <buffer> mv    :call CommandDispatcher('Move')<CR>
 	vnoremap <buffer> mv    :call CommandDispatcher('Move')<CR>
-	nnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
-	vnoremap <buffer> rm    :call CommandDispatcher('Delete')<CR>
+	nnoremap <buffer> rm    :call CommandDispatcher('Remove')<CR>
+	vnoremap <buffer> rm    :call CommandDispatcher('Remove')<CR>
 	nnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
 	vnoremap <buffer> re    :call CommandDispatcher('Rename')<CR>
 	nnoremap <buffer> rd    :call CommandDispatcher('Reed')<CR>

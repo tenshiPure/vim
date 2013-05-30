@@ -1,5 +1,6 @@
 python <<EOM
 import vim
+import os
 
 class Rename(CommandBase):
 
@@ -46,7 +47,7 @@ class Rename(CommandBase):
 			if os.name == 'nt':
 				self.winRename(beforeEntry.fullPathDQ, afterEntryNames[index])
 			else:
-				self.macRename(beforeEntry.fullPathDQ, afterEntryNames[index])
+				self.macRename(beforeEntry.fullPathDQ, beforeEntry.putDir, afterEntryNames[index])
 
 		frank.reloadFrank()
 
@@ -61,7 +62,7 @@ class Rename(CommandBase):
 	#
 	# リネーム : mac
 	#
-	def macRename(self, beforeFullPathDQ, afterEntryName):
-		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + afterEntryName)
+	def macRename(self, beforeFullPathDQ, beforePutDir, afterEntryName):
+		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + beforePutDir + '/' + afterEntryName)
 
 EOM

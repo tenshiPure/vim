@@ -51,8 +51,8 @@ class CommandFactory:
 		elif command == 'Move':
 			command = Move(firstLine, lastLine)
 
-		elif command == 'Delete':
-			command = Delete(firstLine, lastLine)
+		elif command == 'Remove':
+			command = Remove(firstLine, lastLine)
 
 		elif command == 'Rename':
 			command = Rename(firstLine, lastLine)

@@ -13,7 +13,7 @@ source $myScripts/FlexibleFrank/Command/OpenByApp.vim
 source $myScripts/FlexibleFrank/Command/OpenDir.vim
 source $myScripts/FlexibleFrank/Command/Copy.vim
 source $myScripts/FlexibleFrank/Command/Move.vim
-source $myScripts/FlexibleFrank/Command/Delete.vim
+source $myScripts/FlexibleFrank/Command/Remove.vim
 source $myScripts/FlexibleFrank/Command/Mkdir.vim
 source $myScripts/FlexibleFrank/Command/Reed.vim
 source $myScripts/FlexibleFrank/Command/Rename.vim
