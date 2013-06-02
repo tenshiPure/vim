@@ -109,6 +109,9 @@ let $bomber = '/Users/ryo/Documents/projects/bomberman' --mac
 let $colors = 'D:/MyDocument/Program/colors' --win
 let $colors = '/Users/ryo/Documents/projects/colors' --mac
 
+"HandGame
+let $hand = 'D:/MyDocument/Program/HandGame' --win
+
 "slf
 let $slf = '/Users/ryo/Documents/projects/slf'         --mac
 

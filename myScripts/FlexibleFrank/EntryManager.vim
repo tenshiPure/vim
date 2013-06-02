@@ -30,11 +30,10 @@ class EntryManager:
 	#
 	def getEntries(self, head, dirPath):
 
-		if head != dirPath:
-			self.entries.append(Entry(head, dirPath))
-			if self.getEntryMode == 'all':
-				if self.isOverLimit():
-					self.reGetEntries()
+		self.entries.append(Entry(head, dirPath))
+		if self.getEntryMode == 'all':
+			if self.isOverLimit():
+				self.reGetEntries()
 
 		for path in os.listdir(dirPath):
 			fullPath = os.path.join(dirPath, path)
