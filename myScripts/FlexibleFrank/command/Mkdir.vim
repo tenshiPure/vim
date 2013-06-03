@@ -24,25 +24,19 @@ class Mkdir(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrankNException(self.commandName, 1)
 
-		toEntry = CommandBase.getUnderCursorEntry(self, frank)
+		dstDir = CommandBase.getUnderCursorEntry(self, frank)
 
-		if not(toEntry.isDir):
+		if not(dstDir.isDir):
 			raise DestinationNotDirException(self.commandName)
 
 		makingDirNames = CommandBase.getEntryNamesFromFrank3(self)
 
 		for index, dirName in enumerate(makingDirNames):
-			targetDirName = toEntry.fullPath + os.sep + dirName
-			self.dirMake(MyString.surround(targetDirName, '"'))
+			targetDirName = os.path.abspath(dstDir.fullPath + os.sep + dirName)
+			os.makedirs(targetDirName)
 
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-	#
-	# ディレクトリ作成
-	#
-	def dirMake(self, targetDirNameDQ):
-		vim.command('silent !mkdir ' + targetDirNameDQ)
 
 EOM

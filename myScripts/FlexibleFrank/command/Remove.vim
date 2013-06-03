@@ -1,6 +1,7 @@
 python <<EOM
 import vim
 import os
+import shutil
 
 class Remove(CommandBase):
 
@@ -42,44 +43,14 @@ class Remove(CommandBase):
 			raise NotExecutedFrankNException(self.commandName)
 
 		for targetEntry in Prev.targetEntries:
-			if not(targetEntry.isDir):
-				if os.name == 'nt':
-					self.winFileRemove(targetEntry.fullPathDQ)
-				else:
-					self.macFileRemove(targetEntry.fullPathDQ)
-
 			if targetEntry.isDir:
-				if os.name == 'nt':
-					self.winDirRemove(targetEntry.fullPathDQ)
-				else:
-					self.macDirRemove(targetEntry.fullPathDQ)
+				shutil.rmtree(targetEntry.fullPath)
+
+			elif not(targetEntry.isDir):
+				os.remove(targetEntry.fullPath)
 
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-	#
-	# ファイル削除 : win
-	#
-	def winFileRemove(self, targetFullPathDQ):
-		vim.command('silent !del ' + targetFullPathDQ)
-		
-	#
-	# ファイル削除 : mac
-	#
-	def macFileRemove(self, targetFullPathDQ):
-		vim.command('silent !rm ' + targetFullPathDQ)
-
-	#
-	# ディレクトリ削除 : win
-	#
-	def winDirRemove(self, targetFullPathDQ):
-		vim.command('silent !rmdir /s /q ' + targetFullPathDQ)
-		
-	#
-	# ディレクトリ削除 : mac
-	#
-	def macDirRemove(self, targetFullPathDQ):
-		vim.command('silent !rm -r ' + targetFullPathDQ)
 
 EOM

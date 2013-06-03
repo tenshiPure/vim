@@ -1,6 +1,7 @@
 python <<EOM
 import vim
 import os
+import shutil
 
 class Move(CommandBase):
 
@@ -52,27 +53,12 @@ class Move(CommandBase):
 			raise NotMatchEntryNumbersException(self.commandName)
 
 		for index, beforeEntry in enumerate(Prev.targetEntries):
-			afterFullPathDQ = MyString.surround(toDir.fullPath + os.path + afterEntryNames[index], '"')
-			if os.name == 'nt':
-				self.winMove(beforeEntry.fullPathDQ, afterFullPathDQ)
-			else:
-#				self.macMove(beforeEntry.fullPathDQ, toDir.fullPathDQ)
-				self.macMove(beforeEntry.fullPathDQ, afterFullPathDQ)
+			afterFullPath = toDir.fullPath + os.sep + afterEntryNames[index]
+
+			shutil.move(beforeEntry.fullPath, afterFullPath)
 
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-	#
-	# 移動 : win
-	#
-	def winMove(self, beforeFullPathDQ, afterFullPathDQ):
-		vim.command('silent !move ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
-
-	#
-	# 移動 : mac
-	#
-	def macMove(self, beforeFullPathDQ, afterFullPathDQ):
-		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + afterFullPathDQ)
 
 EOM

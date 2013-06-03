@@ -44,25 +44,11 @@ class Rename(CommandBase):
 			raise NotMatchEntryNumbersException(self.commandName)
 
 		for index, beforeEntry in enumerate(Prev.targetEntries):
-			if os.name == 'nt':
-				self.winRename(beforeEntry.fullPathDQ, afterEntryNames[index])
-			else:
-				self.macRename(beforeEntry.fullPathDQ, beforeEntry.putDir, afterEntryNames[index])
+			afterFullPath = beforeEntry.putDir + os.sep + afterEntryNames[index]
+			os.rename(beforeEntry.fullPath, afterFullPath)
 
 		frank.reloadFrank()
 
 		MyTab.switchTab(pathFrank1, 3)
-
-	#
-	# リネーム : win
-	#
-	def winRename(self, beforeFullPathDQ, afterEntryName):
-		vim.command('silent !rename ' + beforeFullPathDQ + ' ' + afterEntryName)
-
-	#
-	# リネーム : mac
-	#
-	def macRename(self, beforeFullPathDQ, beforePutDir, afterEntryName):
-		vim.command('silent !mv ' + beforeFullPathDQ + ' ' + beforePutDir + '/' + afterEntryName)
 
 EOM
