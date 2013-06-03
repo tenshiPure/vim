@@ -8,7 +8,7 @@ class Grep(CommandBase):
 	commandName = 'Grep'
 
 	#
-	# ディレクトリを開く
+	# Grep〜〜
 	#
 	def execute(self, frank):
 		if vim.current.buffer.name != pathFrank3:
@@ -21,39 +21,26 @@ class Grep(CommandBase):
 		option = '-inr'
 		word = 'execute'
 		targetPath = 'C:/Program Files (x86)/vim/gitvim/myScripts/FlexibleFrank'
+		targetPath = '/Users/ryo/Documents/gitvim/myScripts/FlexibleFrank/'
 
-#		vim.command('silent r%(grep)s %(option)s %(word)s %(targetPath)s' % locals())
+		vim.command('redir! => result')
+		vim.command('execute "silent !grep -inr execute /Users/ryo/Documents/gitvim/myScripts/FlexibleFrank/"')
+		vim.command('redir END')
+		res = vim.eval('result')
+#		vim.command('let result = RedirGrepResult()')
+#		res = vim.eval('result')
 
-#		results = CommandBase.getEntryNamesFromFrank3(self)
-
-#		vim.current.buffer[:] = None
-#		for e in results:
-#			vim.current.buffer.append(re.sub('\d\d:\t*', ':', e))
-#			vim.current.buffer.append(e)
-
-#		grepCommand = '%(grep)s %(option)s %(word)s \"%(targetPath)s\"' % locals()
-
-#		vim.command('let var = ""')
-#		vim.command('redir! => var')
-#		vim.command('execute "' + grepCommand + '"')
-#		vim.command('redir END')
-#		var = vim.eval('var')
-
-#		print var
-
-		vim.command('call Hoge()')
+		print res
 
 
 EOM
 
-function! Hoge()
-	redir! => var
-"	execute '!C:/cygwin/bin/grep -inr execute ' + 'C:/Program Files (x86)/vim/gitvim/myScripts/FlexibleFrank'
-	execute '!C:/cygwin/bin/grep -inr execute .'
+function! RedirGrepResult()
+	redir! => result
+	execute 'silent !grep -inr execute /Users/ryo/Documents/gitvim/myScripts/FlexibleFrank/'
 	redir END
 
-	echo 'var...'
-	echo var
+	return result
 endfunction
 
 "正解
