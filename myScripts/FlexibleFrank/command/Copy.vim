@@ -47,7 +47,7 @@ class Copy(CommandBase):
 		if not(dstDir.isDir):
 			raise DestinationNotDirException(self.commandName)
 
-		afterEntryNames = CommandBase.getEntryNamesFromFrank3(self)
+		afterEntryNames = CommandBase.getLinesFromFrank3(self)
 
 		if len(Prev.targetEntries) != len(afterEntryNames):
 			raise NotMatchEntryNumbersException(self.commandName)

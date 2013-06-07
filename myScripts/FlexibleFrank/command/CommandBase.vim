@@ -74,9 +74,9 @@ class CommandBase:
 		vim.current.buffer[0] = string
 
 	#
-	# フランク３のエントリを取得する
+	# フランク３の文字列を取得する
 	#
-	def getEntryNamesFromFrank3(self):
+	def getLinesFromFrank3(self):
 		MyTab.switchTab(pathFrank3, 3)
 		return vim.current.buffer
 

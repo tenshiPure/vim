@@ -191,6 +191,10 @@ if os == 'mac'
 	let $tests        = $slf . '/tests'                    
 endif
 
+"slf2-api
+if os == 'mac'
+	let $api = '/Users/ryo/Documents/projects/slf2-api'    
+endif
 
 " ----------------------------------------------------------------------------------------------------
 " 

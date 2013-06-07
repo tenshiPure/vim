@@ -11,30 +11,31 @@ class Grep(CommandBase):
 	# Grepを実行する
 	#
 	def execute(self, frank):
-		if vim.current.buffer.name != pathFrank3:
-			raise NotExecutedFrankNException(self.commandName, 3)
+		if vim.current.buffer.name != pathFrank1:
+			raise NotExecutedFrankNException(self.commandName, 1)
 
 		if os.name == 'nt':
 			grep = '!C:/cygwin/bin/grep'
 		else:
 			grep = '!grep'
-		option = '-inr'
-		word = 'execute'
-		targetPath = 'C:/Program Files (x86)/vim/gitvim/myScripts/FlexibleFrank'
-		targetPath = '/Users/ryo/Documents/gitvim/myScripts/FlexibleFrank/'
 
-		command = 'execute "silent %(grep)s %(option)s %(word)s %(targetPath)s"' % locals()
+		word = CommandBase.getLinesFromFrank3(self)[0]
+
+		MyTab.switchTab(pathFrank1, 3)
+		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
+
+		if not(targetEntry.isDir):
+			raise DestinationNotDirException(self.commandName)
+
+		targetDir = targetEntry.fullPath
+		command = 'execute "silent %(grep)s -inr %(word)s %(targetDir)s"' % locals()
 
 		result = self.getGrepResult(command)
 
 		self.grepResultObjects = self.makeGrepResultObjects(result)
 
 		for i in range(len(self.grepResultObjects)):
-			print self.grepResultObjects[i].fullPath
-			print self.grepResultObjects[i].putDir
-			print self.grepResultObjects[i].entryName
-			print self.grepResultObjects[i].lineNum
-			print self.grepResultObjects[i].match
+			print self.grepResultObjects[i].formatedForOutput
 			print '-----' * 30
 
 
@@ -59,7 +60,7 @@ class Grep(CommandBase):
 
 		rtnDict = {}
 		for index, row in enumerate(rows):
-			rtnDict[index] = GrepResult(row)
+			rtnDict[index] = GrepResultEntry(row)
 
 		return rtnDict
 

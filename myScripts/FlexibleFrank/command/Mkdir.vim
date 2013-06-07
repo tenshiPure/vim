@@ -29,7 +29,7 @@ class Mkdir(CommandBase):
 		if not(dstDir.isDir):
 			raise DestinationNotDirException(self.commandName)
 
-		makingDirNames = CommandBase.getEntryNamesFromFrank3(self)
+		makingDirNames = CommandBase.getLinesFromFrank3(self)
 
 		for index, dirName in enumerate(makingDirNames):
 			targetDirName = os.path.abspath(dstDir.fullPath + os.sep + dirName)

@@ -67,10 +67,10 @@ function! BufMap_Frank()
 	vnoremap <buffer> <S-p> :call CommandDispatcher('PointOff')<CR>
 	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
 	nnoremap <buffer> sw    :call CommandDispatcher('Switch')<CR>
+	nnoremap <buffer> gr    :call CommandDispatcher('Grep')<CR>
 	nnoremap <buffer> gw    <C-w>w
 endfunction
 
 function! BufMap_Frank3()
 	nnoremap <buffer> gw    <C-w>w
-	nnoremap <buffer> gr    :call CommandDispatcher('Grep')<CR>
 endfunction

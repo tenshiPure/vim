@@ -17,17 +17,6 @@ class EntryBase:
 	__metaclass__ = ABCMeta
 
 	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self, head, fullPath):
-		self.fullPath = fullPath
-		self.fullPathDQ = MyString.surround(fullPath, '"')
-		self.entryName = self.getEntryName()
-		self.putDir = self.getPutDir()
-		self.depth = self.getDepth(head)
-		self.pointed = False
-
-	#
 	# エントリ名を取得
 	#
 	def getEntryName(self):

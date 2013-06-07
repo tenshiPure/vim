@@ -14,7 +14,12 @@ class Entry(EntryBase):
 	# 擬似コンストラクタ
 	#
 	def __init__(self, head, fullPath):
-		EntryBase.__init__(self, head, fullPath)
+		self.fullPath = fullPath
+		self.fullPathDQ = MyString.surround(fullPath, '"')
+		self.entryName = EntryBase.getEntryName(self)
+		self.putDir = EntryBase.getPutDir(self)
+		self.depth = EntryBase.getDepth(self, head)
+		self.pointed = False
 		self.isDir = self.getIsDir()
 		self.extension = self.getExtension()
 		self.formatedForOutput = self.createFormatedForOutput()

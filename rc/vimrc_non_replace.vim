@@ -128,6 +128,8 @@ let $js           = $slf . '/htdocs/js'                --mac
 let $testdata     = $slf . '/testdata'                 --mac
 let $tests        = $slf . '/tests'                    --mac
 
+"slf2-api
+let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
 
 " ----------------------------------------------------------------------------------------------------
 " 
