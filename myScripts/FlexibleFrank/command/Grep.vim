@@ -1,5 +1,3 @@
-source $myScripts/FlexibleFrank/command/GrepResult.vim
-
 python <<EOM
 import vim
 import os

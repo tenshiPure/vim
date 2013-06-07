@@ -3,18 +3,18 @@ import vim
 import os
 import os.path
 import re
+from abc import ABCMeta, abstractmethod
 
-class Entry:
+class EntryBase:
 
 	fullPath = ''
 	fullPathDQ = ''
 	entryName = ''
 	putDir = ''
-	isDir = False
-	extension = ''
 	depth = 0
 	pointed = False
-	formatedForOutput = ''
+
+	__metaclass__ = ABCMeta
 
 	#
 	# 擬似コンストラクタ
@@ -24,11 +24,8 @@ class Entry:
 		self.fullPathDQ = MyString.surround(fullPath, '"')
 		self.entryName = self.getEntryName()
 		self.putDir = self.getPutDir()
-		self.isDir = self.getIsDir()
-		self.extension = self.getExtension()
 		self.depth = self.getDepth(head)
 		self.pointed = False
-		self.formatedForOutput = self.createFormatedForOutput()
 
 	#
 	# エントリ名を取得
@@ -43,40 +40,12 @@ class Entry:
 		return self.fullPath.replace(os.sep + self.entryName, '')
 
 	#
-	# ディレクトリかどうかを判定
-	#
-	def getIsDir(self):
-		return os.path.isdir(self.fullPath)
-
-	#
-	# 拡張子を取得
-	#
-	def getExtension(self):
-		if self.isDir:
-			return ''
-		else:
-			try:
-				return self.entryName.rsplit('.', 1)[1]
-			except IndexError:
-				return ''
-
-	#
 	# 階層深度を取得
 	#
 	def getDepth(self, head):
 		headDepth = head.count(os.sep)
 		fullDepth = self.fullPath.count(os.sep)
 		return fullDepth - headDepth
-
-	#
-	# 出力フォーマット
-	#
-	def createFormatedForOutput(self):
-		point = '*' if self.pointed else ''
-		tab = '\t' * self.depth
-		space = ' ' if self.isDir else ''
-
-		return point + tab + self.entryName + space
 
 	#
 	# ポイントをオンにして出力内容を再作成する
@@ -91,5 +60,12 @@ class Entry:
 	def pointOff(self):
 		self.pointed = False
 		self.formatedForOutput = self.createFormatedForOutput()
+
+	#
+	# 出力フォーマット
+	#
+	@abstractmethod
+	def createFormatedForOutput(self):
+		pass
 
 EOM

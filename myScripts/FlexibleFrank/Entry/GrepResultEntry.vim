@@ -1,7 +1,7 @@
 python <<EOM
 import re
 
-class GrepResult():
+class GrepResultEntry(EntryBase):
 
 	fullPath = ''
 	putDir = ''

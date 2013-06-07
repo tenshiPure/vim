@@ -2,8 +2,10 @@
 
 source $myScripts/FlexibleFrank/CommandDispatcher.vim
 source $myScripts/FlexibleFrank/CommandFactory.vim
-source $myScripts/FlexibleFrank/Entry.vim
-source $myScripts/FlexibleFrank/EntryManager.vim
+source $myScripts/FlexibleFrank/Entry/EntryManager.vim
+source $myScripts/FlexibleFrank/Entry/EntryBase.vim
+source $myScripts/FlexibleFrank/Entry/Entry.vim
+source $myScripts/FlexibleFrank/Entry/GrepResultEntry.vim
 
 augroup autoCmdFrank
 	autocmd!
