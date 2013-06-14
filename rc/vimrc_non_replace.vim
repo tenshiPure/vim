@@ -122,7 +122,6 @@ let $models       = $application . '/models'           --mac
 let $presentation = $application . '/presentation'     --mac
 let $transfer     = $application . '/transfer'         --mac
 let $scripts      = $application . '/views/pc/scripts' --mac
-let $logs         = $slf . '/data/logs/application'    --mac
 let $css          = $slf . '/htdocs/css'               --mac
 let $js           = $slf . '/htdocs/js'                --mac
 let $testdata     = $slf . '/testdata'                 --mac
@@ -130,6 +129,12 @@ let $tests        = $slf . '/tests'                    --mac
 
 "slf2-api
 let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
+
+"uilog
+let $uilog = $slf . '/data/logs/application' --mac
+
+"apilog
+let $apilog = '/var/log/ap/slmctl' --mac
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -232,8 +237,8 @@ nnoremap <S-M-CR> :FF ./<CR> --win
 nnoremap <S-C-CR> :FF ./<CR> --mac
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
-"GitAssist
-command! G :call GitAssistController('new')
+"CommandAssistant
+command! G :call CommandAssistantController('new')
 
 "DBAssist
 command! D call MySQLAssistController()
@@ -299,11 +304,38 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 "TabCloser
 source $myScripts/TabCloser/TabCloserController.vim
 
-"GitAssist
-source $myScripts/GitAssist/GitAssistController.vim
+"CommandAssistant
+source $myScripts/CommandAssistant/CommandAssistantController.vim
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 自動コマンド
+"
+" ----------------------------------------------------------------------------------------------------
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 環境変数の追記
+"
+" ----------------------------------------------------------------------------------------------------
+"python
+let $path .= ';C:\Python27'
+
+"nose
+let $path .= 'C:\Python27\Scripts'
+
+nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
+
+
+
+
+
+nnoremap <F9> :call SampleController()<CR>
+source $myScripts/Sample/SampleController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 

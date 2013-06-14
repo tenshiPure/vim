@@ -1,7 +1,7 @@
 python <<EOM
 import vim
 
-class GitAssist:
+class CommandAssistant:
 
 	command = ''
 

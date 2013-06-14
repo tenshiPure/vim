@@ -28,15 +28,11 @@ class Grep(CommandBase):
 			raise DestinationNotDirException(self.commandName)
 
 		targetDir = targetEntry.fullPath
-		command = 'execute "silent %(grep)s -inr %(word)s %(targetDir)s"' % locals()
 
+		command = 'execute "silent %(grep)s -inr %(word)s %(targetDir)s"' % locals()
 		result = self.getGrepResult(command)
 
 		self.grepResultObjects = self.makeGrepResultObjects(result)
-
-		for i in range(len(self.grepResultObjects)):
-			print self.grepResultObjects[i].formatedForOutput
-			print '-----' * 30
 
 
 	#

@@ -1,0 +1,28 @@
+---------------------
+GitAssist CommandList
+---------------------
+
+git status
+
+git branch
+
+git log
+
+git checkout devel
+git checkout ryo
+git checkout 
+
+git add myScripts/ rc/
+git add 
+
+git commit -m 
+
+git pull origin devel
+git pull origin ryo
+git pull origin master
+
+git push origin devel
+git push origin ryo
+git push origin master
+
+git merge ryo

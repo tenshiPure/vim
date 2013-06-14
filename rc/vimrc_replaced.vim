@@ -176,9 +176,6 @@ if os == 'mac'
 	let $scripts      = $application . '/views/pc/scripts' 
 endif
 if os == 'mac'
-	let $logs         = $slf . '/data/logs/application'    
-endif
-if os == 'mac'
 	let $css          = $slf . '/htdocs/css'               
 endif
 if os == 'mac'
@@ -194,6 +191,16 @@ endif
 "slf2-api
 if os == 'mac'
 	let $api = '/Users/ryo/Documents/projects/slf2-api'    
+endif
+
+"uilog
+if os == 'mac'
+	let $uilog = $slf . '/data/logs/application' 
+endif
+
+"apilog
+if os == 'mac'
+	let $apilog = '/var/log/ap/slmctl' 
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -349,8 +356,8 @@ if os == 'mac'
 endif
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
-"GitAssist
-command! G :call GitAssistController('new')
+"CommandAssistant
+command! G :call CommandAssistantController('new')
 
 "DBAssist
 command! D call MySQLAssistController()
@@ -424,11 +431,38 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 "TabCloser
 source $myScripts/TabCloser/TabCloserController.vim
 
-"GitAssist
-source $myScripts/GitAssist/GitAssistController.vim
+"CommandAssistant
+source $myScripts/CommandAssistant/CommandAssistantController.vim
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 自動コマンド
+"
+" ----------------------------------------------------------------------------------------------------
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 環境変数の追記
+"
+" ----------------------------------------------------------------------------------------------------
+"python
+let $path .= ';C:\Python27'
+
+"nose
+let $path .= 'C:\Python27\Scripts'
+
+nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
+
+
+
+
+
+nnoremap <F9> :call SampleController()<CR>
+source $myScripts/Sample/SampleController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 
