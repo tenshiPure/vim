@@ -13,8 +13,8 @@ augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.gass set filetype=gass
 
-autocmd autoCmdFrank FocusLost *.cass :call CommandAssistantController('close')
-autocmd autoCmdFrank TabLeave *.cass :call CommandAssistantController('close')
+"autocmd autoCmdFrank FocusLost *.cass :call CommandAssistantController('close')
+"autocmd autoCmdFrank TabLeave *.cass :call CommandAssistantController('close')
 
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant()
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant_CommandList()

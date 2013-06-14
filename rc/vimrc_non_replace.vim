@@ -73,7 +73,10 @@ let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 let $myScripts  = $gitvim . '/myScripts'
 
 "frank
-let $frank  = $gitvim . '/myScripts/FlexibleFrank'
+let $frank = $gitvim . '/myScripts/FlexibleFrank'
+
+"cass
+let $cass = $gitvim . '/myScripts/CommandAssistant'
 
 "AutoHotkeys
 let $ahk     = "D:/MyDocument/AutoHotKeys" --win
@@ -238,7 +241,8 @@ nnoremap <S-C-CR> :FF ./<CR> --mac
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
 "CommandAssistant
-command! G :call CommandAssistantController('new')
+nnoremap <S-M-Space> :call CommandAssistantController('new')<CR> --win
+nnoremap <S-C-Space> :call CommandAssistantController('new')<CR> --mac
 
 "DBAssist
 command! D call MySQLAssistController()

@@ -1,7 +1,3 @@
----------------------
-GitAssist CommandList
----------------------
-
 git status
 
 git branch
@@ -26,3 +22,13 @@ git push origin ryo
 git push origin master
 
 git merge ryo
+
+phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=init /Users/ryo/Documents/projects/slf/tests/application/
+phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/
+
+mvn clean test
+mvn package
+
+cp /Users/ryo/Documents/projects/slf2-api/target/slf2-1.0.war /usr/local/Cellar/tomcat/7.0.37/libexec/contents/slf2-1.0-devel.war
+sudo /usr/local/Cellar/tomcat/7.0.37/bin/catalina start
+sudo /usr/local/Cellar/tomcat/7.0.37/bin/catalina stop
