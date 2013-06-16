@@ -1,2 +1,5 @@
-myScripts/ViMail/account.txt
 .DS_Store
+myScripts/ViMail/account.txt
+myScripts/CommandAssistant/cassfiles/CommandResult.cass
+myScripts/CommandAssistant/cassfiles/CommandListHistory.cass
+myScripts/CommandAssistant/cassfiles/CommandResultHistory.cass
