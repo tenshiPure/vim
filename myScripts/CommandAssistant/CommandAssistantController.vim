@@ -13,23 +13,25 @@ augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.gass set filetype=gass
 
-"autocmd autoCmdFrank FocusLost *.cass :call CommandAssistantController('close')
-"autocmd autoCmdFrank TabLeave *.cass :call CommandAssistantController('close')
-
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant()
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant_CommandList()
 autocmd autoCmdGitAssit BufEnter CommandResult.cass call BufMap_CommandAssistant()
 
-function! CommandAssistantController(mode)
+function! CommandAssistantController(...)
 
 python <<EOM
 
 import vim
 import os
 
-mode = vim.eval('a:mode')
+argLen = vim.eval('a:0')
 
-if mode == 'new':
+if argLen == '0':
+	arg = 'new'
+else:
+	arg = vim.eval('a:1')
+
+if arg == 'new':
 	head = vim.eval('$myScripts')
 	CommandList = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandList.cass')
 	CommandResult = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResult.cass')
@@ -40,15 +42,20 @@ if mode == 'new':
 	vim.command('set splitbelow')
 	vim.command('split ' + CommandList)
 
-elif mode == 'execute':
+elif arg == 'execute':
 	command = MyString.getUnderCursorLine()
-	if not(MyString.isBlankLine(command)):
-		gitAssist = CommandAssistant(command)
-		gitAssist.execute()
+	commandAssistant = CommandAssistant(command)
+	commandAssistant.execute()
 
-elif mode == 'close':
+elif arg == 'close':
 	tabCloser = TabCloser()
 	tabCloser.execute()
+
+else:
+	if vim.current.buffer.name == CommandList:
+		command = MyString.getTargetCursorLine(int(arg))
+		commandAssistant = CommandAssistant(command)
+		commandAssistant.execute()
 
 EOM
 

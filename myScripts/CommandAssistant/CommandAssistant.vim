@@ -13,6 +13,10 @@ class CommandAssistant:
 	# コマンド実行
 	#
 	def execute(self):
+		if self.command == 'r!':
+			print 'blank line!'
+			return
+
 		self.initCommandResult()
 		self.outputCommandResult()
 

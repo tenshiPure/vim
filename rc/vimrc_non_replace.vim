@@ -241,8 +241,7 @@ nnoremap <S-C-CR> :FF ./<CR> --mac
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
 "CommandAssistant
-nnoremap <S-M-Space> :call CommandAssistantController('new')<CR> --win
-nnoremap <S-C-Space> :call CommandAssistantController('new')<CR> --mac
+command! -nargs=? CO call CommandAssistantController(<f-args>)
 
 "DBAssist
 command! D call MySQLAssistController()

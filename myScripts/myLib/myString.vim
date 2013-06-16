@@ -26,4 +26,11 @@ class MyString:
 	def getUnderCursorLine():
 		currentLineNum = MyCursor().getCursorLineNum()
 		return vim.current.buffer[currentLineNum - 1]
+
+	#
+	# 指定行の文字列を取得する
+	#
+	@staticmethod
+	def getTargetCursorLine(lineNum):
+		return vim.current.buffer[lineNum - 1]
 EOM
