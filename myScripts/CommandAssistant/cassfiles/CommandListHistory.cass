@@ -1,3 +1,19 @@
-------------------
-CommandListHistory
-------------------
+2013/06/16 - 22:26:47 - 0487     !git status
+2013/06/16 - 22:26:48 - 0147     !git branch
+2013/06/16 - 22:26:48 - 0828     !git status
+2013/06/16 - 22:27:56 - 0163     !git status
+2013/06/16 - 22:28:05 - 0404     !git log
+2013/06/16 - 22:28:19 - 0015     !git status
+2013/06/16 - 22:30:04 - 0226     !git status
+2013/06/16 - 22:30:11 - 0226     !git add .gitignore
+2013/06/16 - 22:30:12 - 0586     !git status
+2013/06/16 - 22:30:31 - 0068     !git commit -m ignoreXVB
+2013/06/16 - 22:30:37 - 0378     !git push origin master
+2013/06/16 - 22:30:57 - 0330     !git status
+2013/06/16 - 22:31:29 - 0803     !git add myScripts/ rc/
+2013/06/16 - 22:31:34 - 0803     !git status
+2013/06/16 - 22:31:58 - 0186     !git add myScripts/ rc/
+2013/06/16 - 22:31:59 - 0316     !git status
+2013/06/16 - 22:32:01 - 0676     !git add myScripts/ rc/
+2013/06/16 - 22:32:02 - 0316     !git add myScripts/ rc/
+2013/06/16 - 22:32:03 - 0126     !git status

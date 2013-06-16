@@ -1,30 +1,30 @@
-git status
+!git status
 
-git branch
+!git branch
 
-git log
+!git log
 
-git checkout devel
-git checkout ryo
-git checkout 
+!git checkout devel
+!git checkout ryo
+!git checkout 
 
-git add myScripts/ rc/
-git add 
+!git add myScripts/ rc/
+!git add 
 
-git commit -m 
+!git commit -m ignore更新。
 
-git pull origin devel
-git pull origin ryo
-git pull origin master
+!git pull origin devel
+!git pull origin ryo
+!git pull origin master
 
-git push origin devel
-git push origin ryo
-git push origin master
+!git push origin devel
+!git push origin ryo
+!git push origin master
 
-git merge ryo
+!git merge ryo
 
-phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=init /Users/ryo/Documents/projects/slf/tests/application/
-phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/
+!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=init /Users/ryo/Documents/projects/slf/tests/application/
+!phpunit --stderr -c /Users/ryo/Documents/projects/slf/tests/phpunit.xml --group=slf /Users/ryo/Documents/projects/slf/tests/application/
 
 mvn clean test
 mvn package

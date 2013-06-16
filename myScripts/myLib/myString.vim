@@ -33,4 +33,36 @@ class MyString:
 	@staticmethod
 	def getTargetCursorLine(lineNum):
 		return vim.current.buffer[lineNum - 1]
+
+	#
+	# リストでバッファを置き換える
+	#
+	@staticmethod
+	def replaceBufferWithList(list):
+		buf = vim.current.buffer
+		del buf[:]
+
+		for row in list:
+			buf.append(row)
+
+		del buf[0]
+
+	#
+	# コマンドをリダイレクトする
+	#
+	@staticmethod
+	def commandRedirect(command):
+		vim.command('tabe')
+		vim.command('r' + command)
+
+		del vim.current.buffer[0]
+
+		commandResult = []
+		for row in vim.current.buffer:
+			commandResult.append(row)
+
+		vim.command('bdelete!')
+
+		return commandResult
+	
 EOM

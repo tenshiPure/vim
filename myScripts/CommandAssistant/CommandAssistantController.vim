@@ -11,7 +11,7 @@ augroup autoCmdGitAssit
 	autocmd!
 augroup END
 
-autocmd autoCmdFrank BufRead,BufNewFile *.gass set filetype=gass
+autocmd autoCmdFrank BufRead,BufNewFile *.cass set filetype=cass
 
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant()
 autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant_CommandList()
