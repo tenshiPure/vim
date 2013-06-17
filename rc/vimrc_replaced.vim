@@ -360,7 +360,8 @@ endif
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
 "CommandAssistant
-command! -nargs=? CO call CommandAssistantController(<f-args>)
+command! -nargs=? CA  call CommandAssistantController(<f-args>)
+command! -nargs=0 CAH call CommandAssistantController('history')
 
 "DBAssist
 command! D call MySQLAssistController()

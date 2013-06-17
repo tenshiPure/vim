@@ -19,6 +19,7 @@ class CommandAssistant:
 			return
 
 		self.timestanp = self.createTimestanp()
+		self.historyHeader = self.createHistoryHeader()
 
 		self.commandResult = MyString.commandRedirect(self.command)
 
@@ -36,6 +37,12 @@ class CommandAssistant:
 		return now.strftime("%Y/%m/%d - %H:%M:%S") + " - %04d" % (now.microsecond // 1000)
 
 	#
+	# 履歴のヘッダを作成（タイムスタンプ＋コマンド）
+	#
+	def createHistoryHeader(self):
+		return self.timestanp + ' ' * 5 + self.command
+
+	#
 	# 結果を出力
 	#
 	def outputCommandResult(self):
@@ -47,7 +54,9 @@ class CommandAssistant:
 	#
 	def outputCommandListHistory(self):
 		file = open(CommandListHistory, 'a')
-		file.write(self.timestanp + "     " + self.command + '\n')
+
+		file.write(self.historyHeader + '\n')
+
 		file.close
 
 	#
@@ -55,10 +64,12 @@ class CommandAssistant:
 	#
 	def outputCommandResultHistory(self):
 		file = open(CommandResultHistory, 'a')
-		file.write(self.timestanp + ' begin' + '\n')
+
+		file.write(self.historyHeader + '\n')
 		for row in self.commandResult:
 			file.write(row + '\n')
-		file.write(self.timestanp + ' end' + '\n' + '\n' + '\n')
+		file.write('-' * 80 + '\n\n')
+
 		file.close
 
 EOM
