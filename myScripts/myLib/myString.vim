@@ -48,10 +48,22 @@ class MyString:
 		del buf[0]
 
 	#
-	# コマンドをリダイレクトする
+	# 内部コマンドをリダイレクトする
 	#
 	@staticmethod
-	def commandRedirect(command):
+	def innerCommandRedirect(command):
+		vim.command('let s:grepResult = "no executed"')
+		vim.command('redir! => s:grepResult')
+		vim.command(command)
+		vim.command('redir END')
+
+		return vim.eval('s:grepResult')
+
+	#
+	# 外部コマンドを別バッファ経由でリダイレクトする
+	#
+	@staticmethod
+	def outterCommandRedirect(command):
 		vim.command('tabe')
 		vim.command('r' + command)
 

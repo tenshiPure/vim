@@ -14,9 +14,8 @@ augroup END
 
 autocmd autoCmdFrank BufRead,BufNewFile *.cass set filetype=cass
 
-autocmd autoCmdGitAssit BufEnter *.cass call BufMap_CommandAssistant()
-autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant_CommandList()
-autocmd autoCmdGitAssit BufEnter CommandListHistory.cass call BufMap_CommandAssistant_CommandList()
+autocmd autoCmdGitAssit BufEnter CommandList.cass call BufMap_CommandAssistant_execute()
+autocmd autoCmdGitAssit BufEnter CommandListHistory.cass call BufMap_CommandAssistant_execute()
 
 function! CommandAssistantController(...)
 
@@ -77,12 +76,7 @@ EOM
 
 endfunction
 
-function! BufMap_CommandAssistant()
-	nnoremap <buffer> <Tab> <C-w>w
-	nnoremap <buffer> gw <C-w>w
-endfunction
-
-function! BufMap_CommandAssistant_CommandList()
+function! BufMap_CommandAssistant_execute()
 	nnoremap <buffer> <CR>  :call CommandAssistantController('execute')<CR>
 	inoremap <buffer> <CR>  <ESC>:call CommandAssistantController('execute')<CR>
 endfunction

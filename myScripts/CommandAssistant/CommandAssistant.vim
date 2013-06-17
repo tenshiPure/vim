@@ -21,7 +21,7 @@ class CommandAssistant:
 		self.timestanp = self.createTimestanp()
 		self.historyHeader = self.createHistoryHeader()
 
-		self.commandResult = MyString.commandRedirect(self.command)
+		self.commandResult = MyString.outterCommandRedirect(self.command)
 
 		self.outputCommandResult()
 		self.outputCommandListHistory()

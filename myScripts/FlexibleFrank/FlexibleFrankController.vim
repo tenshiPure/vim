@@ -16,7 +16,6 @@ autocmd autoCmdFrank FocusLost *.frank :call CommandDispatcher('Close')
 autocmd autoCmdFrank TabLeave *.frank :call CommandDispatcher('Close')
 autocmd autoCmdFrank BufEnter Frank1.frank call BufMap_Frank()
 autocmd autoCmdFrank BufEnter Frank2.frank call BufMap_Frank()
-autocmd autoCmdFrank BufEnter Frank3.frank call BufMap_Frank3()
 
 function! FlexibleFrankController(targetDir)
 
@@ -68,9 +67,4 @@ function! BufMap_Frank()
 	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
 	nnoremap <buffer> sw    :call CommandDispatcher('Switch')<CR>
 	nnoremap <buffer> gr    :call CommandDispatcher('Grep')<CR>
-	nnoremap <buffer> gw    <C-w>w
-endfunction
-
-function! BufMap_Frank3()
-	nnoremap <buffer> gw    <C-w>w
 endfunction

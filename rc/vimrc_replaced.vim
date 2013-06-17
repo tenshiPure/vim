@@ -256,8 +256,11 @@ if os == 'mac'
 	nnoremap <D-Space> :call TabCloserController()<CR> 
 endif
 
-nnoremap <Tab> <C-w>w
-nnoremap <S-Tab> <C-w>W
+"ウィンドウ切り替�~H
+nnoremap <Tab>   gw
+nnoremap <S-Tab> gW
+nnoremap gw      <C-w>w
+nnoremap gW      <C-w>W
 " ----------------------------------------------------------------------------------------------------
 " 
 " その他操作のマッピングだ�~H

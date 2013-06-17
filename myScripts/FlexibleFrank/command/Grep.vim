@@ -29,21 +29,16 @@ class Grep(CommandBase):
 
 		targetDir = targetEntry.fullPath
 
-		command = 'execute "silent %(grep)s -inr %(word)s %(targetDir)s"' % locals()
-		result = self.getGrepResult(command)
+		command = 'silent vimgrep /execute/j ./**/**'
 
-		self.grepResultObjects = self.makeGrepResultObjects(result)
+		result = MyString.innerCommandRedirect(command)
+		print 'oh...'
+		print result
+		print 'no...'
+
+#		self.grepResultObjects = self.makeGrepResultObjects(result)
 
 
-	#
-	# vim変数にgrepのコマンド結果をリダイレクトし、python変数として取得する
-	#
-	def getGrepResult(self, command):
-		vim.command('redir! => result')
-		vim.command(command)
-		vim.command('redir END')
-
-		return vim.eval('result')
 	
 	#
 	# 文字列型のgrep結果を改行パースし、各行をGrepResultオブジェクトとして辞書化する

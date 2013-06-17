@@ -11,7 +11,7 @@
 !git add myScripts/ rc/
 !git add 
 
-!git commit -m ignore更新。
+!git commit -m 
 
 !git pull origin devel
 !git pull origin ryo
