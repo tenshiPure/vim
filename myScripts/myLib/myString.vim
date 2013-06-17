@@ -35,6 +35,13 @@ class MyString:
 		return vim.current.buffer[lineNum - 1]
 
 	#
+	# 半角空白をエスケープする
+	#
+	@staticmethod
+	def escapeSpace(targetString):
+		return targetString.replace(' ', r'\ ')
+
+	#
 	# リストでバッファを置き換える
 	#
 	@staticmethod

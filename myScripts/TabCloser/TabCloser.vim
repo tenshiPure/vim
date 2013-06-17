@@ -5,15 +5,13 @@ import os
 class TabCloser:
 
 	commandName = 'TabClose'
-	targetBufName = ''
-	forceList = {}
 
 	#
 	# 擬似コンストラクタ
 	#
 	def __init__(self):
 		self.targetBufName = vim.current.buffer.name
-		self.makeForceList()
+		self.forceGroup = self.makeForceList()
 
 	#
 	# 強制閉じる対象の辞書を作成する
@@ -21,52 +19,65 @@ class TabCloser:
 	def makeForceList(self):
 		head = vim.eval('$myScripts')
 
-		self.forceList['FlexibleFrank_Frank1'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank1.frank')
-		self.forceList['FlexibleFrank_Frank2'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank2.frank')
-		self.forceList['FlexibleFrank_Frank3'] = os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank3.frank')
-		self.forceList['CommandAssistant_CommandList'] = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandList.cass')
-		self.forceList['CommandAssistant_CommandResult'] = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResult.cass')
-		self.forceList['CommandAssistant_CommandListHistory'] = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandListHistory.cass')
-		self.forceList['CommandAssistant_CommandResultHistory'] = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResultHistory.cass')
-		self.forceList['MySQLAssist_DescResult'] = os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass')
-		self.forceList['MySQLAssist_SelectResult'] = os.path.abspath(head + '/MySQLAssist/WorkingTexts/SelectResult.mass')
-		self.forceList['MySQLAssist_ShowResult'] = os.path.abspath(head + '/MySQLAssist/WorkingTexts/ShowResult.mass')
+		result = {
+			'FlexibleFrank' : 
+			{
+				'frank1' : os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank1.frank'),
+				'frank2' : os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank2.frank'),
+				'frank3' : os.path.abspath(head + '/FlexibleFrank/WorkingTexts/Frank3.frank'),
+			},
+			'CommandAssistant' : 
+			{
+				'CommandList' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandList.cass'),
+				'CommandResult' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResult.cass'),
+			},
+			'CommandAssistantHistory' : 
+			{
+				'CommandListHistory' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandListHistory.cass'),
+				'CommandResultHistory' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResultHistory.cass'),
+			},
+			'MySQLAssistant' : 
+			{
+				'DescResult' : os.path.abspath(head + '/MySQLAssist/WorkingTexts/DescResult.mass'),
+				'SelectResult' : os.path.abspath(head + '/MySQLAssist/WorkingTexts/SelectResult.mass'),
+				'ShowResult' : os.path.abspath(head + '/MySQLAssist/WorkingTexts/ShowResult.mass'),
+			},
+		}
+
+		return result
 
 	#
 	# コントローラから呼ばれるメソッド
 	#
 	def execute(self):
-		self.close()
-		self.secondClose()
-		self.secondClose()
+		groupName = self.isIncludedForceGroup()
+
+		if groupName is None:
+			self.close()
+		else:
+			self.groupClose(groupName)
 
 	#
-	# 強制的に閉じるタブか判定
+	# 強制グループに現バッファが含まれるかを判定する
 	#
-	def isForce(self):
-		for force in self.forceList.itervalues():
-			if self.targetBufName == force:
-				return True
+	def isIncludedForceGroup(self):
+		for groupName, groupElements in self.forceGroup.items():
+			for elementName, elementValue in groupElements.items():
+				if elementValue == vim.current.buffer.name:
+					return groupName
+		return None
 
-		return False
-		
 	#
 	# タブを閉じる
 	#
 	def close(self):
-		if self.isForce():
-			vim.command('execute "bdelete!"')
-		else:
-			vim.command('execute "bdelete"')
+		vim.command('execute "bdelete"')
 	
 	#
-	# 強制対象は２度閉じ対象
+	# グループを閉じる
 	#
-	def secondClose(self):
-		currentTargetBufName = vim.current.buffer.name
-
-		for second in self.forceList.itervalues():
-			if currentTargetBufName == second:
-				vim.command('execute "bdelete!"')
-
+	def groupClose(self, groupName):
+		for elementName, elementValue in self.forceGroup[groupName].items():
+			vim.command('bdelete! ' + MyString.escapeSpace(elementValue))
+		
 EOM
