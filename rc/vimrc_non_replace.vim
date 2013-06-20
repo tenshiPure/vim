@@ -180,8 +180,8 @@ nnoremap <C-Space> :call TabCloserController()<CR> --win
 nnoremap <D-Space> :call TabCloserController()<CR> --mac
 
 "ウィンドウ切り替え
-nnoremap <Tab>   gw
-nnoremap <S-Tab> gW
+nnoremap <Tab>   <C-w>w
+nnoremap <S-Tab> <C-w>W
 nnoremap gw      <C-w>w
 nnoremap gW      <C-w>W
 " ----------------------------------------------------------------------------------------------------
