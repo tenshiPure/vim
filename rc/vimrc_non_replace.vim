@@ -259,6 +259,9 @@ inoremap <S-C-CR> <C-n>--mac
 ":messagesの省略
 command! M messages
 
+"chromeリロード
+command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app --mac
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " ファンクションキーのマッピングだよ
@@ -363,3 +366,8 @@ let $path .= ';C:\Python27'
 let $path .= 'C:\Python27\Scripts'
 
 nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
+
+
+nnoremap <LeftRelease> :echo expand('<cword>')<CR>
+
+
