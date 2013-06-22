@@ -180,8 +180,8 @@ nnoremap <C-Space> :call TabCloserController()<CR> --win
 nnoremap <D-Space> :call TabCloserController()<CR> --mac
 
 "ウィンドウ切り替え
-nnoremap <Tab>   gw
-nnoremap <S-Tab> gW
+nnoremap <Tab>   <C-w>w
+nnoremap <S-Tab> <C-w>W
 nnoremap gw      <C-w>w
 nnoremap gW      <C-w>W
 " ----------------------------------------------------------------------------------------------------
@@ -259,6 +259,9 @@ inoremap <S-C-CR> <C-n>--mac
 ":messagesの省略
 command! M messages
 
+"Surrounder
+command! -nargs=1 S call SurrounderController(<f-args>)
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " ファンクションキーのマッピングだよ
@@ -316,6 +319,9 @@ source $myScripts/CommandAssistant/CommandAssistantController.vim
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
+
+"Surrounder
+source $myScripts/Surrounder/SurrounderController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 

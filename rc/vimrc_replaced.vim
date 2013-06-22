@@ -257,8 +257,8 @@ if os == 'mac'
 endif
 
 "ウィンドウ切り替�~H
-nnoremap <Tab>   gw
-nnoremap <S-Tab> gW
+nnoremap <Tab>   <C-w>w
+nnoremap <S-Tab> <C-w>W
 nnoremap gw      <C-w>w
 nnoremap gW      <C-w>W
 " ----------------------------------------------------------------------------------------------------
@@ -386,6 +386,9 @@ endif
 ":messagesの省略
 command! M messages
 
+"Surrounder
+command! -nargs=1 S call SurrounderController(<f-args>)
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " ファンクションキーのマッピングだ�~H
@@ -443,6 +446,9 @@ source $myScripts/CommandAssistant/CommandAssistantController.vim
 
 "DBAssist
 source $myScripts/MySQLAssist/MySQLAssistController.vim
+
+"Surrounder
+source $myScripts/Surrounder/SurrounderController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 
