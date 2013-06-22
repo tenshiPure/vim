@@ -31,22 +31,6 @@ class Surrounder:
 			self.headSurroundString = '<'
 			self.footSurroundString = '>'
 
-		elif surroundString == '((' or surroundString == '))':
-			self.headSurroundString = '（'
-			self.footSurroundString = '）'
-
-		elif surroundString == '{{' or surroundString == '}}':
-			self.headSurroundString = '【'
-			self.footSurroundString = '】'
-
-		elif surroundString == '[[' or surroundString == ']]':
-			self.headSurroundString = '「'
-			self.footSurroundString = '」'
-
-		elif surroundString == '<' or surroundString == '>':
-			self.headSurroundString = '<'
-			self.footSurroundString = '>'
-
 		else:
 			self.headSurroundString = surroundString
 			self.footSurroundString = surroundString
@@ -56,5 +40,12 @@ class Surrounder:
 	#
 	def createSurroundedWord(self):
 		return self.headSurroundString + self.targetWord + self.footSurroundString
+
+	#
+	# 文字列を置き換える
+	#
+	def replace(self):
+		vim.command('execute ":normal viwx"')
+		vim.command('execute ":normal i' + self.surroundedWord + '"')
 
 EOM
