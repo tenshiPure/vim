@@ -97,6 +97,9 @@ let $todo    = $share . '/todo.txt'
 "JAVA
 let $java = $share . '/../projects/JAVA'
 
+"PlayngCards
+let $pc = $share . '/../projects/PlayngCards'
+
 "mado
 let $dir84 = $share . '/../projects/dir84'
 let $mado = $share . '/../projects/mado'
@@ -264,6 +267,12 @@ command! -nargs=1 S call SurrounderController(<f-args>)
 
 "chromeリロード
 command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app --mac
+
+"Python実行
+command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
+
+"W
+command! W wall | P
 
 " ----------------------------------------------------------------------------------------------------
 " 

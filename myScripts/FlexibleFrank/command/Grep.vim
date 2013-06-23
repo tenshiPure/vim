@@ -1,6 +1,7 @@
 python <<EOM
 import vim
 import os
+import re
 
 class Grep(CommandBase):
 
@@ -14,29 +15,21 @@ class Grep(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrankNException(self.commandName, 1)
 
-		if os.name == 'nt':
-			grep = '!C:/cygwin/bin/grep'
-		else:
-			grep = '!grep'
+		search_dir = r'D:\grepsample'
+		search_pattern = "execute"
 
-		word = CommandBase.getLinesFromFrank3(self)[0]
-
-		MyTab.switchTab(pathFrank1, 3)
-		targetEntry = CommandBase.getUnderCursorEntry(self, frank)
-
-		if not(targetEntry.isDir):
-			raise DestinationNotDirException(self.commandName)
-
-		targetDir = targetEntry.fullPath
-
-		command = 'silent vimgrep /execute/j ./**/**'
-
-		result = MyString.innerCommandRedirect(command)
-		print 'oh...'
-		print result
-		print 'no...'
-
-#		self.grepResultObjects = self.makeGrepResultObjects(result)
+		file_name_list = os.listdir(search_dir)
+		for file_name in file_name_list:
+			f = open(os.path.join(search_dir, file_name))
+			line = f.readline()
+			line_number = 1
+			while line:
+				m = re.search(search_pattern, line)
+				if m:
+					print "Pattern Found: file:%s, line:%d, data:%s" % (file_name, line_number, line)
+				line = f.readline()
+				line_number = line_number + 1
+			f.close()
 
 
 	
