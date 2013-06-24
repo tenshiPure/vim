@@ -1,19 +1,6 @@
 
 " ----------------------------------------------------------------------------------------------------
 " 
-" 環境判定だ�~H
-"
-" ----------------------------------------------------------------------------------------------------
-if has('win32')
-	let os = 'win'
-endif
-
-if has('mac')
-	let os = 'mac'
-endif
-
-" ----------------------------------------------------------------------------------------------------
-" 
 " エディタの基本的な設定だ�~H
 "
 " ----------------------------------------------------------------------------------------------------
@@ -317,7 +304,7 @@ if os == 'mac'
 	nmap '      <sid>(command-line-enter) 
 endif
 
-"コメント操�~\
+"NotCareExtension
 if os == 'win'
 	nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
@@ -355,6 +342,8 @@ endif
 if os == 'mac'
 	vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
+
+command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 if os == 'win'
@@ -399,9 +388,6 @@ endif
 
 "Python実�~L
 command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
-
-"W
-command! W wall | P
 
 " ----------------------------------------------------------------------------------------------------
 " 

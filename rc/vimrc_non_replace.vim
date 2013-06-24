@@ -1,18 +1,5 @@
 " ----------------------------------------------------------------------------------------------------
 " 
-" 環境判定だよ
-"
-" ----------------------------------------------------------------------------------------------------
-if has('win32')
-	let os = 'win'
-endif
-
-if has('mac')
-	let os = 'mac'
-endif
-
-" ----------------------------------------------------------------------------------------------------
-" 
 " エディタの基本的な設定だよ
 "
 " ----------------------------------------------------------------------------------------------------
@@ -226,7 +213,7 @@ nnoremap <sid>(command-line-enter) q: --mac
 nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
-"コメント操作
+"NotCareExtension
 nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
 vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
@@ -240,6 +227,8 @@ nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
 vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
 nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
+
+command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 nnoremap <S-M-CR> :FF ./<CR> --win
@@ -270,9 +259,6 @@ command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app --ma
 
 "Python実行
 command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
-
-"W
-command! W wall | P
 
 " ----------------------------------------------------------------------------------------------------
 " 

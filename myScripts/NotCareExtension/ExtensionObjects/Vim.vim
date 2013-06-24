@@ -5,10 +5,11 @@ class Vim:
 	#
 	# コンストラクタ
 	#
-	def __init__(self, behavior, firstLine, lastLine):
+	def __init__(self, behavior, firstLine, lastLine, fileName):
 		self.behavior = behavior
 		self.firstLine = firstLine
 		self.lastLine = lastLine
+		self.fileName = fileName
 
 	#
 	# 実行
@@ -16,6 +17,8 @@ class Vim:
 	def execute(self):
 		if self.behavior in ['commentAdd', 'commentDelete', 'commentSwitch']:
 			self.commentLoop()
+		elif self.behavior == 'make':
+			self.make()
 
 	#
 	# コメント操作のための選択行ループ
@@ -88,5 +91,11 @@ class Vim:
 			return False
 		else:
 			return True
+
+	#
+	# 実行動作を行う
+	#
+	def make(self):
+		pass
 
 EOM
