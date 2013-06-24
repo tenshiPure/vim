@@ -318,23 +318,26 @@ if os == 'mac'
 endif
 
 "コメント操�~\
+"command! NA call NotCareExtensionController('commentAdd')
+"command! ND call NotCareExtensionController('commentDelete')
+"command! NS call NotCareExtensionController('commentSwitch')
 if os == 'win'
-	nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
+	nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'win'
-	vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
+	vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'win'
-	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'win'
-	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'win'
-	nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
+	nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 if os == 'win'
-	vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
+	vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 
 if os == 'mac'
@@ -464,6 +467,9 @@ source $myScripts/MySQLAssist/MySQLAssistController.vim
 "Surrounder
 source $myScripts/Surrounder/SurrounderController.vim
 
+"NotCareExtension
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマン�~I
@@ -515,8 +521,3 @@ nnoremap <LeftRelease> :echo expand('<cword>')<CR>
 
 
 
-source $myScripts/NotCareExtension/NotCareExtensionController.vim
-
-command! NA call NotCareExtensionController('commentAdd')
-command! ND call NotCareExtensionController('commentDelete')
-command! NS call NotCareExtensionController('commentSwitch')

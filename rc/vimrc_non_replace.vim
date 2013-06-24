@@ -227,19 +227,19 @@ nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
 "コメント操作
-nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
-vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
-nnoremap ?      :call FlexibleCommentController('delete')<CR> --win
-vnoremap ?      :call FlexibleCommentController('delete')<CR> --win
-nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
-vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
+nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
+vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
 
-nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
-vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
-nnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
-vnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
-nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
-vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
+nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
+vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 
 "フランク
 nnoremap <S-M-CR> :FF ./<CR> --win
@@ -335,6 +335,9 @@ source $myScripts/MySQLAssist/MySQLAssistController.vim
 "Surrounder
 source $myScripts/Surrounder/SurrounderController.vim
 
+"NotCareExtension
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマンド
@@ -386,8 +389,4 @@ nnoremap <LeftRelease> :echo expand('<cword>')<CR>
 
 
 
-source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
-command! NA call NotCareExtensionController('commentAdd')
-command! ND call NotCareExtensionController('commentDelete')
-command! NS call NotCareExtensionController('commentSwitch')
