@@ -380,9 +380,14 @@ let $path .= ';C:\Python27'
 "nose
 let $path .= 'C:\Python27\Scripts'
 
-nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 
 nnoremap <LeftRelease> :echo expand('<cword>')<CR>
 
 
+
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
+
+command! NA call NotCareExtensionController('commentAdd')
+command! ND call NotCareExtensionController('commentDelete')
+command! NS call NotCareExtensionController('commentSwitch')

@@ -20,6 +20,7 @@ class Grep(CommandBase):
 
 		file_name_list = os.listdir(search_dir)
 		for file_name in file_name_list:
+			print os.path.join(search_dir, file_name)
 			f = open(os.path.join(search_dir, file_name))
 			line = f.readline()
 			line_number = 1
@@ -47,5 +48,7 @@ class Grep(CommandBase):
 			rtnDict[index] = GrepResultEntry(row)
 
 		return rtnDict
+
+#http://blog.lampetty.net/blog_ja/index.php/archives/418
 
 EOM
