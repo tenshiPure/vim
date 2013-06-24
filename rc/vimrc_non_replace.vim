@@ -311,9 +311,6 @@ set viminfo=
 " 自作スクリプトの読み込みだよ
 "
 " ----------------------------------------------------------------------------------------------------
-"FlexibleComment
-source $myScripts/FlexibleComment/FlexibleCommentController.vim
-
 "FlexibleFrank
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 

@@ -2,9 +2,6 @@ python <<EOM
 
 class Vim:
 
-	commentStyleHead = '#'
-	commentStyleTail = ''
-
 	#
 	# コンストラクタ
 	#
@@ -30,43 +27,64 @@ class Vim:
 			if MyString.isBlankLine(line):
 				continue
 
+			commentStyle = self.getCommentStyle(lineNum, line)
+			commentStyleHead = commentStyle['head']
+			commentStyleTail = commentStyle['tail']
+
 			if self.behavior == 'commentAdd':
-				self.commentAdd(lineNum, line)
+				self.commentAdd(lineNum, line, commentStyleHead, commentStyleTail)
 
 			elif self.behavior == 'commentDelete':
-				self.commentDelete(lineNum, line)
+				self.commentDelete(lineNum, line, commentStyleHead, commentStyleTail)
 
 			elif self.behavior == 'commentSwitch':
-				self.commentSwitch(lineNum, line)
+				self.commentSwitch(lineNum, line, commentStyleHead, commentStyleTail)
+
+	#
+	# コメント形式を得る
+	#
+	def getCommentStyle(self, lineNum, line):
+		if line == 'python <<EOM' or line == 'EOM':
+			return {'head' : '"', 'tail' : ''}
+
+		buf = vim.current.buffer
+
+		for index in range(lineNum - 1, -1, -1):
+			if buf[index] == 'python <<EOM' or buf[index] == '"python <<EOM':
+				return {'head' : '#', 'tail' : ''}
+			elif buf[index] == 'EOM' or buf[index] == '"EOM':
+				break
+
+		return {'head' : '"', 'tail' : ''}
 
 	#
 	# コメント状態にする
 	#
-	def commentAdd(self, lineNum, line):
-		vim.current.buffer[lineNum] = self.commentStyleHead + line + self.commentStyleTail
+	def commentAdd(self, lineNum, line, commentStyleHead, commentStyleTail):
+		vim.current.buffer[lineNum] = commentStyleHead + line + commentStyleTail
 
 	#
 	# コメント状態を解除する
 	#
-	def commentDelete(self, lineNum, line):
-		cutTop = line.replace(self.commentStyleHead, '', 1)
-		cutTopTail = cutTop.replace(self.commentStyleTail, '', 1)
+	def commentDelete(self, lineNum, line, commentStyleHead, commentStyleTail):
+		cutTop = line.replace(commentStyleHead, '', 1)
+		cutTopTail = cutTop.replace(commentStyleTail, '', 1)
 		vim.current.buffer[lineNum] = cutTopTail
 
 	#
 	# コメント状態を入れ替える
 	#
-	def commentSwitch(self, lineNum, line):
-		if self.isCommentedLine(line):
-			self.commentDelete(lineNum, line)
+	def commentSwitch(self, lineNum, line, commentStyleHead, commentStyleTail):
+		if self.isCommentedLine(line, commentStyleHead):
+			self.commentDelete(lineNum, line, commentStyleHead, commentStyleTail)
 		else:
-			self.commentAdd(lineNum, line)
+			self.commentAdd(lineNum, line, commentStyleHead, commentStyleTail)
 
 	#
 	# コメント状態を判定する
 	#
-	def isCommentedLine(self, line):
-		if re.search('^' + self.commentStyleHead, line) is None:
+	def isCommentedLine(self, line, commentStyleHead):
+		if re.search('^' + commentStyleHead, line) is None:
 			return False
 		else:
 			return True

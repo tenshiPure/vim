@@ -318,9 +318,6 @@ if os == 'mac'
 endif
 
 "コメント操�~\
-"command! NA call NotCareExtensionController('commentAdd')
-"command! ND call NotCareExtensionController('commentDelete')
-"command! NS call NotCareExtensionController('commentSwitch')
 if os == 'win'
 	nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
@@ -341,22 +338,22 @@ if os == 'win'
 endif
 
 if os == 'mac'
-	nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
+	nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'mac'
-	vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
+	vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'mac'
-	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'mac'
-	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'mac'
-	nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
+	nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 if os == 'mac'
-	vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
+	vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 
 "フランク
@@ -443,9 +440,6 @@ set viminfo=
 " 自作スクリプトの読み込みだ�~H
 "
 " ----------------------------------------------------------------------------------------------------
-"FlexibleComment
-source $myScripts/FlexibleComment/FlexibleCommentController.vim
-
 "FlexibleFrank
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
