@@ -11,7 +11,7 @@
 !git add myScripts/ rc/
 !git add 
 
-!git commit -m 勢いでSurrounderの作成。
+!git commit -m 
 
 !git pull origin devel
 !git pull origin ryo
