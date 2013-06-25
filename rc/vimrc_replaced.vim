@@ -93,6 +93,9 @@ let $frank = $gitvim . '/myScripts/FlexibleFrank'
 "cass
 let $cass = $gitvim . '/myScripts/CommandAssistant'
 
+"NotCareExtension
+let $notcare = $gitvim . '/myScripts/NotCareExtension'
+
 "AutoHotkeys
 if os == 'win'
 	let $ahk     = "D:/MyDocument/AutoHotKeys" 

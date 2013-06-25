@@ -1,6 +1,10 @@
 python <<EOM
 
-class Vim:
+from abc import ABCMeta, abstractmethod
+
+class Base:
+
+	__metaclass__ = ABCMeta
 
 	#
 	# コンストラクタ
@@ -46,19 +50,9 @@ class Vim:
 	#
 	# コメント形式を得る
 	#
+	@abstractmethod
 	def getCommentStyle(self, lineNum, line):
-		if line == 'python <<EOM' or line == 'EOM':
-			return {'head' : '"', 'tail' : ''}
-
-		buf = vim.current.buffer
-
-		for index in range(lineNum - 1, -1, -1):
-			if buf[index] == 'python <<EOM' or buf[index] == '"python <<EOM':
-				return {'head' : '#', 'tail' : ''}
-			elif buf[index] == 'EOM' or buf[index] == '"EOM':
-				break
-
-		return {'head' : '"', 'tail' : ''}
+		pass
 
 	#
 	# コメント状態にする
@@ -95,6 +89,7 @@ class Vim:
 	#
 	# 実行動作を行う
 	#
+	@abstractmethod
 	def make(self):
 		pass
 
