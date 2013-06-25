@@ -3,6 +3,7 @@
 source $myScripts/MyLib/MyFile.vim
 
 source $myScripts/NotCareExtension/ExtensionObjects/Vim.vim
+source $myScripts/NotCareExtension/ExtensionObjects/Python.vim
 
 function! NotCareExtensionController(behavior, ...) range
 
@@ -22,6 +23,8 @@ lastLine = int(vim.eval('a:lastline')) - 1
 
 if extension == 'vim':
 	extensionObject = Vim(behavior, firstLine, lastLine, fileName)
+elif extension == 'py':
+	extensionObject = Python(behavior, firstLine, lastLine, fileName)
 
 extensionObject.execute()
 
