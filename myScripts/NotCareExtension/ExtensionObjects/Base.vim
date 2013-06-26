@@ -93,4 +93,13 @@ class Base:
 	def make(self):
 		pass
 
+	#
+	# ブラウザをリロードする
+	#
+	def browserReload(self, browser = 'chrome'):
+		os = 'Mac'
+		scriptPath = '/Users/ryo/Documents/gitvim/myScripts/NotCareExtension/Scripts/Reload/%s/%s.app' % (os, browser)
+
+		vim.command('!open ' + scriptPath)
+
 EOM

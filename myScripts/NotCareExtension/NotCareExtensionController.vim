@@ -8,6 +8,7 @@ source $myScripts/NotCareExtension/ExtensionObjects/css.vim
 source $myScripts/NotCareExtension/ExtensionObjects/html.vim
 source $myScripts/NotCareExtension/ExtensionObjects/java.vim
 source $myScripts/NotCareExtension/ExtensionObjects/js.vim
+source $myScripts/NotCareExtension/ExtensionObjects/php.vim
 source $myScripts/NotCareExtension/ExtensionObjects/py.vim
 source $myScripts/NotCareExtension/ExtensionObjects/sh.vim
 source $myScripts/NotCareExtension/ExtensionObjects/tpl.vim
@@ -37,6 +38,8 @@ elif extension == 'html':
 	extensionObject = html(behavior, firstLine, lastLine, fileName)
 elif extension == 'java':
 	extensionObject = js(behavior, firstLine, lastLine, fileName)
+elif extension == 'php':
+	extensionObject = php(behavior, firstLine, lastLine, fileName)
 elif extension == 'py':
 	extensionObject = py(behavior, firstLine, lastLine, fileName)
 elif extension == 'sh':
