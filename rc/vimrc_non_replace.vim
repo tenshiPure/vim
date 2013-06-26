@@ -245,7 +245,8 @@ nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 
 command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
-command! -nargs=? T wall | call NotCareExtensionController('test', <f-args>)
+command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
+command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 
 "フランク
 nnoremap <S-M-CR> :FF ./<CR> --win
@@ -270,12 +271,6 @@ command! M messages
 
 "Surrounder
 command! -nargs=1 S call SurrounderController(<f-args>)
-
-"chromeリロード
-command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app --mac
-
-"Python実行
-command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
 
 " ----------------------------------------------------------------------------------------------------
 " 

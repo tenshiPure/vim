@@ -360,7 +360,8 @@ if os == 'mac'
 endif
 
 command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
-command! -nargs=? T wall | call NotCareExtensionController('test', <f-args>)
+command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
+command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 
 "フランク
 if os == 'win'
@@ -397,14 +398,6 @@ command! M messages
 
 "Surrounder
 command! -nargs=1 S call SurrounderController(<f-args>)
-
-"chromeリロー�~I
-if os == 'mac'
-	command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app 
-endif
-
-"Python実�~L
-command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
 
 " ----------------------------------------------------------------------------------------------------
 " 

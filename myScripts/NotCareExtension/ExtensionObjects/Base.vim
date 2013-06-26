@@ -25,6 +25,8 @@ class Base:
 			self.make()
 		elif self.behavior == 'test':
 			self.test()
+		elif self.behavior == 'log':
+			self.log()
 
 	#
 	# コメント操作のための選択行ループ
@@ -115,6 +117,13 @@ class Base:
 	#
 	@abstractmethod
 	def test(self):
+		pass
+
+	#
+	# ログを吐く文をソースに出力する
+	#
+	@abstractmethod
+	def log(self):
 		pass
 
 EOM

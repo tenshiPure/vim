@@ -26,4 +26,10 @@ class html(Base):
 	def test(self):
 		pass
 
+	#
+	# ログを吐く文をソースに出力する
+	#
+	def log(self):
+		pass
+
 EOM
