@@ -32,10 +32,10 @@ else:
 	arg = vim.eval('a:1')
 
 head = vim.eval('$myScripts')
-CommandList = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandList.cass')
-CommandResult = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResult.cass')
-CommandListHistory = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandListHistory.cass')
-CommandResultHistory = os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResultHistory.cass')
+CommandList = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandList.cass')
+CommandResult = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResult.cass')
+CommandListHistory = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandListHistory.cass')
+CommandResultHistory = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResultHistory.cass')
 
 if arg == 'new':
 

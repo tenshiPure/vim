@@ -28,13 +28,13 @@ class TabCloser:
 			},
 			'CommandAssistant' : 
 			{
-				'CommandList' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandList.cass'),
-				'CommandResult' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResult.cass'),
+				'CommandList' : os.path.abspath(head + '/CommandAssistant/CassFiles/CommandList.cass'),
+				'CommandResult' : os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResult.cass'),
 			},
 			'CommandAssistantHistory' : 
 			{
-				'CommandListHistory' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandListHistory.cass'),
-				'CommandResultHistory' : os.path.abspath(head + '/CommandAssistant/cassfiles/CommandResultHistory.cass'),
+				'CommandListHistory' : os.path.abspath(head + '/CommandAssistant/CassFiles/CommandListHistory.cass'),
+				'CommandResultHistory' : os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResultHistory.cass'),
 			},
 			'MySQLAssistant' : 
 			{
