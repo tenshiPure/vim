@@ -21,4 +21,10 @@ class py(Base):
 		fileName = vim.current.buffer.name if self.option is None else self.option
 		vim.command('!python \"%s\"' % fileName)
 
+	#
+	# テストを実行する
+	#
+	def test(self):
+		pass
+
 EOM

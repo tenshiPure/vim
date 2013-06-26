@@ -20,4 +20,14 @@ class php(Base):
 	def make(self):
 		self.browserReload()
 
+	#
+	# テストを実行する
+	#
+	def test(self):
+		testsDir = '/Users/ryo/Documents/projects/slf/tests'
+		group = 'init' if self.option is None else self.option
+		command = '!phpunit --stderr -c %s/phpunit.xml --group=%s %s/application/' %(testsDir, group, testsDir)
+
+		vim.command(command)
+
 EOM

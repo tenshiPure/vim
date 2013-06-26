@@ -23,6 +23,8 @@ class Base:
 			self.commentLoop()
 		elif self.behavior == 'make':
 			self.make()
+		elif self.behavior == 'test':
+			self.test()
 
 	#
 	# コメント操作のための選択行ループ
@@ -107,5 +109,12 @@ class Base:
 			command = 'open'
 
 		vim.command('silent !%s %s' % (command, scriptPath))
+
+	#
+	# テストを実行する
+	#
+	@abstractmethod
+	def test(self):
+		pass
 
 EOM

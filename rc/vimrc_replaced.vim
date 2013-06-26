@@ -360,6 +360,7 @@ if os == 'mac'
 endif
 
 command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
+command! -nargs=? T wall | call NotCareExtensionController('test', <f-args>)
 
 "フランク
 if os == 'win'

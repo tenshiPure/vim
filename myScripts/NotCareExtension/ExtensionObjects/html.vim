@@ -20,4 +20,10 @@ class html(Base):
 	def make(self):
 		self.browserReload()
 
+	#
+	# テストを実行する
+	#
+	def test(self):
+		pass
+
 EOM

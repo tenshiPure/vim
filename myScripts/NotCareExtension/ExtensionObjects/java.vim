@@ -20,4 +20,10 @@ class java(Base):
 	def make(self):
 		pass
 
+	#
+	# テストを実行する
+	#
+	def test(self):
+		pass
+
 EOM
