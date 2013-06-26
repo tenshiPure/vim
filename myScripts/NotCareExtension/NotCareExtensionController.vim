@@ -19,35 +19,31 @@ function! NotCareExtensionController(behavior, ...) range
 python <<EOM
 import vim
 
-if vim.eval('a:0') == '0':
-	fileName = vim.current.buffer.name
-else:
-	fileName = vim.eval('a:1')
+option = vim.eval('a:1') if vim.eval('a:0') == '1' else None
 
 extension = MyFile.getExtension()
 behavior = vim.eval('a:behavior')
 firstLine = int(vim.eval('a:firstline')) - 1
 lastLine = int(vim.eval('a:lastline')) - 1
 
-
 if   extension == 'ahk':
-	extensionObject = ahk(behavior, firstLine, lastLine, fileName)
+	extensionObject = ahk(behavior, firstLine, lastLine, option)
 elif extension == 'css':
-	extensionObject = css(behavior, firstLine, lastLine, fileName)
+	extensionObject = css(behavior, firstLine, lastLine, option)
 elif extension == 'html':
-	extensionObject = html(behavior, firstLine, lastLine, fileName)
+	extensionObject = html(behavior, firstLine, lastLine, option)
 elif extension == 'java':
-	extensionObject = js(behavior, firstLine, lastLine, fileName)
+	extensionObject = js(behavior, firstLine, lastLine, option)
 elif extension == 'php':
-	extensionObject = php(behavior, firstLine, lastLine, fileName)
+	extensionObject = php(behavior, firstLine, lastLine, option)
 elif extension == 'py':
-	extensionObject = py(behavior, firstLine, lastLine, fileName)
+	extensionObject = py(behavior, firstLine, lastLine, option)
 elif extension == 'sh':
-	extensionObject = sh(behavior, firstLine, lastLine, fileName)
+	extensionObject = sh(behavior, firstLine, lastLine, option)
 elif extension == 'tpl':
-	extensionObject = tpl(behavior, firstLine, lastLine, fileName)
+	extensionObject = tpl(behavior, firstLine, lastLine, option)
 elif extension == 'vim':
-	extensionObject = vim_eo(behavior, firstLine, lastLine, fileName)
+	extensionObject = vim_eo(behavior, firstLine, lastLine, option)
 
 extensionObject.execute()
 

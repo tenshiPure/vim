@@ -9,11 +9,11 @@ class Base:
 	#
 	# コンストラクタ
 	#
-	def __init__(self, behavior, firstLine, lastLine, fileName):
+	def __init__(self, behavior, firstLine, lastLine, option):
 		self.behavior = behavior
 		self.firstLine = firstLine
 		self.lastLine = lastLine
-		self.fileName = fileName
+		self.option = option
 
 	#
 	# 実行

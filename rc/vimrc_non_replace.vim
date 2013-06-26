@@ -244,7 +244,7 @@ vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
 nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 
-command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
+command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 nnoremap <S-M-CR> :FF ./<CR> --win

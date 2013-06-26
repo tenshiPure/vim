@@ -5,8 +5,8 @@ class py(Base):
 	#
 	# コンストラクタ
 	#
-	def __init__(self, behavior, firstLine, lastLine, fileName):
-		Base.__init__(self, behavior, firstLine, lastLine, fileName)
+	def __init__(self, behavior, firstLine, lastLine, option):
+		Base.__init__(self, behavior, firstLine, lastLine, option)
 
 	#
 	# コメント形式を得る
@@ -18,6 +18,7 @@ class py(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		vim.command('!python \"%s\"' % self.fileName)
+		fileName = vim.current.buffer.name if self.option is None else self.option
+		vim.command('!python \"%s\"' % fileName)
 
 EOM

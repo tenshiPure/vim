@@ -5,8 +5,8 @@ class vim_eo(Base):
 	#
 	# コンストラクタ
 	#
-	def __init__(self, behavior, firstLine, lastLine, fileName):
-		Base.__init__(self, behavior, firstLine, lastLine, fileName)
+	def __init__(self, behavior, firstLine, lastLine, option):
+		Base.__init__(self, behavior, firstLine, lastLine, option)
 
 	#
 	# コメント形式を得る

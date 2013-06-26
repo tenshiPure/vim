@@ -359,7 +359,7 @@ if os == 'mac'
 	vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 
-command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
+command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 if os == 'win'
