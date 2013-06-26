@@ -18,6 +18,6 @@ class html(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		pass
+		self.browserReload()
 
 EOM

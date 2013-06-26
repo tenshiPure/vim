@@ -97,9 +97,15 @@ class Base:
 	# ブラウザをリロードする
 	#
 	def browserReload(self, browser = 'chrome'):
-		os = 'Mac'
-		scriptPath = '/Users/ryo/Documents/gitvim/myScripts/NotCareExtension/Scripts/Reload/%s/%s.app' % (os, browser)
+		headDir = vim.eval('$myScripts') + '/NotCareExtension/Scripts/Reload'
 
-		vim.command('!open ' + scriptPath)
+		if os.name == 'nt':
+			scriptPath = MyString.surround(os.path.abspath('%s/win/%s.exe' % (headDir, browser)), '"')
+			command = 'explorer'
+		else:
+			scriptPath = '%s/mac/%s.app' % (headDir, browser)
+			command = 'open'
+
+		vim.command('silent !%s %s' % (command, scriptPath))
 
 EOM
