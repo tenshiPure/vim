@@ -1,5 +1,5 @@
 " ----------------------------------------------------------------------------------------------------
-" 
+"
 " 環境判定だよ
 "
 " ----------------------------------------------------------------------------------------------------
@@ -77,6 +77,9 @@ let $frank = $gitvim . '/myScripts/FlexibleFrank'
 
 "cass
 let $cass = $gitvim . '/myScripts/CommandAssistant'
+
+"NotCareExtension
+let $notcare = $gitvim . '/myScripts/NotCareExtension'
 
 "AutoHotkeys
 let $ahk     = "D:/MyDocument/AutoHotKeys" --win
@@ -226,20 +229,22 @@ nnoremap <sid>(command-line-enter) q: --mac
 nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
-"コメント操作
-nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
-vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    --win
-nnoremap ?      :call FlexibleCommentController('delete')<CR> --win
-vnoremap ?      :call FlexibleCommentController('delete')<CR> --win
-nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
-vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> --win
+"NotCareExtension
+nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
+vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
 
-nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
-vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    --mac
-nnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
-vnoremap ?      :call FlexibleCommentController('delete')<CR> --mac
-nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
-vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> --mac
+nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
+vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
+
+command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 nnoremap <S-M-CR> :FF ./<CR> --win
@@ -270,9 +275,6 @@ command! R !open /Users/ryo/Documents/AppleScript/Browser/Chrome/reload.app --ma
 
 "Python実行
 command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
-
-"W
-command! W wall | P
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -311,9 +313,6 @@ set viminfo=
 " 自作スクリプトの読み込みだよ
 "
 " ----------------------------------------------------------------------------------------------------
-"FlexibleComment
-source $myScripts/FlexibleComment/FlexibleCommentController.vim
-
 "FlexibleFrank
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
@@ -334,6 +333,9 @@ source $myScripts/MySQLAssist/MySQLAssistController.vim
 
 "Surrounder
 source $myScripts/Surrounder/SurrounderController.vim
+
+"NotCareExtension
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -380,9 +382,10 @@ let $path .= ';C:\Python27'
 "nose
 let $path .= 'C:\Python27\Scripts'
 
-nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 
 nnoremap <LeftRelease> :echo expand('<cword>')<CR>
+
+
 
 

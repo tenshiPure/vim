@@ -1,6 +1,6 @@
 
 " ----------------------------------------------------------------------------------------------------
-" 
+"
 " 環境判定だよ
 "
 " ----------------------------------------------------------------------------------------------------
@@ -92,6 +92,9 @@ let $frank = $gitvim . '/myScripts/FlexibleFrank'
 
 "cass
 let $cass = $gitvim . '/myScripts/CommandAssistant'
+
+"NotCareExtension
+let $notcare = $gitvim . '/myScripts/NotCareExtension'
 
 "AutoHotkeys
 if os == 'win'
@@ -317,44 +320,46 @@ if os == 'mac'
 	nmap '      <sid>(command-line-enter) 
 endif
 
-"コメント操作
+"NotCareExtension
 if os == 'win'
-	nnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
+	nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'win'
-	vnoremap <M-/>  :call FlexibleCommentController('add')<CR>    
+	vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'win'
-	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'win'
-	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'win'
-	nnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
+	nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 if os == 'win'
-	vnoremap <M-?>  :call FlexibleCommentController('switch')<CR> 
+	vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 
 if os == 'mac'
-	nnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
+	nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'mac'
-	vnoremap <C-F6> :call FlexibleCommentController('add')<CR>    
+	vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
 endif
 if os == 'mac'
-	nnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'mac'
-	vnoremap ?      :call FlexibleCommentController('delete')<CR> 
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
 endif
 if os == 'mac'
-	nnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
+	nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
 if os == 'mac'
-	vnoremap <C-F7> :call FlexibleCommentController('switch')<CR> 
+	vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
 endif
+
+command! -nargs=? W wall | call NotCareExtensionController('make', <f-args>)
 
 "フランク
 if os == 'win'
@@ -400,9 +405,6 @@ endif
 "Python実行
 command! P !python D:\Dropbox\share\..\projects\PlayngCards\Main.py 
 
-"W
-command! W wall | P
-
 " ----------------------------------------------------------------------------------------------------
 " 
 " ファンクションキーのマッピングだよ
@@ -440,9 +442,6 @@ set viminfo=
 " 自作スクリプトの読み込みだよ
 "
 " ----------------------------------------------------------------------------------------------------
-"FlexibleComment
-source $myScripts/FlexibleComment/FlexibleCommentController.vim
-
 "FlexibleFrank
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
@@ -463,6 +462,9 @@ source $myScripts/MySQLAssist/MySQLAssistController.vim
 
 "Surrounder
 source $myScripts/Surrounder/SurrounderController.vim
+
+"NotCareExtension
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -509,8 +511,9 @@ let $path .= ';C:\Python27'
 "nose
 let $path .= 'C:\Python27\Scripts'
 
-nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 
 nnoremap <LeftRelease> :echo expand('<cword>')<CR>
+
+
 
