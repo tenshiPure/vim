@@ -21,7 +21,7 @@ import vim
 
 option = vim.eval('a:1') if vim.eval('a:0') == '1' else None
 
-extension = MyFile.getExtension()
+extension = MyFile.getExtension(vim.current.buffer.name)
 behavior = vim.eval('a:behavior')
 firstLine = int(vim.eval('a:firstline')) - 1
 lastLine = int(vim.eval('a:lastline')) - 1

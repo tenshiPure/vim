@@ -21,7 +21,7 @@ class CommandAssistant:
 		self.timestanp = self.createTimestanp()
 		self.historyHeader = self.createHistoryHeader()
 
-		self.commandResult = MyString.outterCommandRedirect(self.command)
+		self.commandResult = MyString.commandRedirect(self.command, 'out')
 
 		self.outputCommandResult()
 		self.outputCommandListHistory()
@@ -47,7 +47,7 @@ class CommandAssistant:
 	#
 	def outputCommandResult(self):
 		MyTab.switchTab(CommandResult, 4)
-		MyString.replaceBufferWithList(self.commandResult)
+		MyBuffer.replaceBufferWithList(self.commandResult)
 
 	#
 	# コマンド履歴を出力

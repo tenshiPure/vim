@@ -8,7 +8,6 @@ from abc import ABCMeta, abstractmethod
 class EntryBase:
 
 	fullPath = ''
-	fullPathDQ = ''
 	entryName = ''
 	putDir = ''
 	depth = 0

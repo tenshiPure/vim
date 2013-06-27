@@ -379,9 +379,6 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 command! -nargs=? CA  call CommandAssistantController(<f-args>)
 command! -nargs=0 CAH call CommandAssistantController('history')
 
-"DBAssist
-command! D call MySQLAssistController()
-
 "補完操作のマッピング
 if os == 'win'
 	inoremap <M-CR>   <C-p>
@@ -453,9 +450,6 @@ source $myScripts/TabCloser/TabCloserController.vim
 
 "CommandAssistant
 source $myScripts/CommandAssistant/CommandAssistantController.vim
-
-"DBAssist
-source $myScripts/MySQLAssist/MySQLAssistController.vim
 
 "Surrounder
 source $myScripts/Surrounder/SurrounderController.vim

@@ -2,6 +2,7 @@
 
 source $myScripts/MyLib/MyCursor.vim
 source $myScripts/MyLib/MyString.vim
+source $myScripts/MyLib/MyBuffer.vim
 
 source $myScripts/TabCloser/TabCloserController.vim
 
@@ -50,7 +51,7 @@ elif arg == 'history':
 	vim.command('split ' + CommandListHistory)
 
 elif arg == 'execute':
-	cursorLine = MyString.getUnderCursorLine()
+	cursorLine = MyString.getLineFromCurrentBuffer()
 	if vim.current.buffer.name == CommandList:
 		commandAssistant = CommandAssistant(cursorLine)
 		commandAssistant.execute()
@@ -68,7 +69,7 @@ elif arg == 'hist':
 
 else:
 	if vim.current.buffer.name == CommandList:
-		command = MyString.getTargetCursorLine(int(arg))
+		command = MyString.getLineFromCurrentBuffer(int(arg))
 		commandAssistant = CommandAssistant(command)
 		commandAssistant.execute()
 

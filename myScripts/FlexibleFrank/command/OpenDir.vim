@@ -16,7 +16,7 @@ class OpenDir(CommandBase):
 			raise TargetNotDirException(self.commandName)
 
 		if os.name == 'nt':
-			vim.command('silent !explorer ' + targetEntry.fullPathDQ)
+			vim.command('silent !explorer \"%s\"' % targetEntry.fullPath)
 		else:
 			vim.command('silent !open ' + targetEntry.fullPath)
 

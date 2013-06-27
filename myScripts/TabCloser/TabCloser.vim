@@ -78,6 +78,6 @@ class TabCloser:
 	#
 	def groupClose(self, groupName):
 		for elementName, elementValue in self.forceGroup[groupName].items():
-			vim.command('bdelete! ' + MyString.escapeSpace(elementValue))
-		
+			vim.command('bdelete! ' + elementValue.replace(' ', r'\ '))
+
 EOM

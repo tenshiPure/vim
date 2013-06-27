@@ -15,7 +15,6 @@ class Entry(EntryBase):
 	#
 	def __init__(self, head, fullPath):
 		self.fullPath = fullPath
-		self.fullPathDQ = MyString.surround(fullPath, '"')
 		self.entryName = EntryBase.getEntryName(self)
 		self.putDir = EntryBase.getPutDir(self)
 		self.depth = EntryBase.getDepth(self, head)

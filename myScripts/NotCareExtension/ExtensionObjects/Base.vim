@@ -104,7 +104,7 @@ class Base:
 		headDir = vim.eval('$myScripts') + '/NotCareExtension/Scripts/Reload'
 
 		if os.name == 'nt':
-			scriptPath = MyString.surround(os.path.abspath('%s/win/%s.exe' % (headDir, browser)), '"')
+			scriptPath = '"' + os.path.abspath('%s/win/%s.exe' % (headDir, browser)) + '"'
 			command = 'explorer'
 		else:
 			scriptPath = '%s/mac/%s.app' % (headDir, browser)

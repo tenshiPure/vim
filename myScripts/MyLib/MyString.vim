@@ -13,58 +13,14 @@ class MyString:
 			return False
 
 	#
-	# 任意の文字を指定の文字で囲む
+	# カレントバッファの文字列を取得する　行指定/カーソル行
 	#
 	@staticmethod
-	def surround(targetString, surroundString):
-		return surroundString + targetString + surroundString
+	def getLineFromCurrentBuffer(lineNum = None):
+		if lineNum is None:
+			lineNum = MyCursor().getCursorLineNum()
 
-	#
-	# カーソルのある行の文字列を取得する
-	#
-	@staticmethod
-	def getUnderCursorLine():
-		currentLineNum = MyCursor().getCursorLineNum()
-		return vim.current.buffer[currentLineNum - 1]
-
-	#
-	# 指定行の文字列を取得する
-	#
-	@staticmethod
-	def getTargetCursorLine(lineNum):
 		return vim.current.buffer[lineNum - 1]
-
-	#
-	# 半角空白をエスケープする
-	#
-	@staticmethod
-	def escapeSpace(targetString):
-		return targetString.replace(' ', r'\ ')
-
-	#
-	# リストでバッファを置き換える
-	#
-	@staticmethod
-	def replaceBufferWithList(list):
-		buf = vim.current.buffer
-		del buf[:]
-
-		for row in list:
-			buf.append(row)
-
-		del buf[0]
-
-	#
-	# 内部コマンドをリダイレクトする
-	#
-	@staticmethod
-	def innerCommandRedirect(command):
-		vim.command('let s:grepResult = "no executed"')
-		vim.command('redir! => s:grepResult')
-		vim.command(command)
-		vim.command('redir END')
-
-		return vim.eval('s:grepResult')
 
 	#
 	# 外部コマンドを別バッファ経由でリダイレクトする
@@ -84,4 +40,14 @@ class MyString:
 
 		return commandResult
 	
+	#
+	# コマンドをリダイレクトする
+	#
+	@staticmethod
+	def commandRedirect(command, type):
+		if type == 'out':
+			return MyString.outterCommandRedirect(command)
+		else:
+			return None
+
 EOM
