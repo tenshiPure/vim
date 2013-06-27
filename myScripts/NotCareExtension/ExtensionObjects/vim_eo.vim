@@ -29,7 +29,8 @@ class vim_eo(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		pass
+		buf = My_Buffer()
+		buf.debug()
 
 	#
 	# テストを実行する
@@ -42,5 +43,4 @@ class vim_eo(Base):
 	#
 	def log(self):
 		pass
-
 EOM
