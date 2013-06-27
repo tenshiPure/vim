@@ -18,7 +18,7 @@ class Reed(CommandBase):
 			raise TargetNotFileException(self.commandName)
 
 		MyTab.switchTab(pathFrank2, 3)
-		MyTab.clearCurrentBuffer()
+		MyBuffer.clearCurrentBuffer()
 
 		vim.command('r ' + targetEntry.fullPath)
 		del vim.current.buffer[0]

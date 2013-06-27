@@ -103,7 +103,7 @@ class EntryManager:
 		self.header.append('-' * len(self.targetDir))
 		self.header.append('')
 
-		MyTab.initWorkingText(self.header)
+		MyBuffer.initWorkingText(self.header)
 
 	#
 	# エントリを出力

@@ -31,7 +31,7 @@ pathFrank1 = os.path.abspath(head + 'Frank1.frank')
 pathFrank2 = os.path.abspath(head + 'Frank2.frank')
 pathFrank3 = os.path.abspath(head + 'Frank3.frank')
 
-MyTab.ExpandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
+MyTab.expandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
 
 frank = EntryManager(targetDir, pathFrank1)
 frank.outputFrank()
