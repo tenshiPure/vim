@@ -103,7 +103,7 @@ class EntryManager:
 		self.header.append('-' * len(self.targetDir))
 		self.header.append('')
 
-		MyBuffer.initWorkingText(self.header)
+		MyBuffer.replaceBufferWithList(self.header)
 
 	#
 	# エントリを出力

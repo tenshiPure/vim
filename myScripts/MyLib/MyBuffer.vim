@@ -7,13 +7,11 @@ class MyBuffer:
 	#
 	@staticmethod
 	def replaceBufferWithList(list):
-		buf = vim.current.buffer
-		del buf[:]
+		MyBuffer.clearCurrentBuffer()
 
-		for row in list:
-			buf.append(row)
-
-		del buf[0]
+		for line in list:
+			vim.current.buffer.append(line)
+		del vim.current.buffer[0]
 
 	#
 	# カレントバッファを空にする
@@ -21,19 +19,5 @@ class MyBuffer:
 	@staticmethod
 	def clearCurrentBuffer():
 		vim.current.buffer[:] = None
-
-	#
-	# 作業テキストの初期化
-	#
-	@staticmethod
-	def initWorkingText(header):
-		buf = vim.current.buffer
-
-		buf[:] = None
-
-		for line in header:
-			buf.append(line)
-
-		del buf[0]
 
 EOM
