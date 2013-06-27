@@ -6,11 +6,23 @@ import os.path
 class MyFile:
 
 	#
-	# カレントバッファの拡張子取得
+	# 拡張子を取得する
 	#
 	@staticmethod
-	def getExtension():
-		tmpRoot, extension = os.path.splitext(vim.current.buffer.name)
-		return extension[1:]
+	def getExtension(path):
+		if MyFile.isDir(path):
+			return ''
+		else:
+			try:
+				return path.rsplit('.', 1)[1]
+			except IndexError:
+				return ''
+
+	#
+	# ディレクトリかどうかを判定
+	#
+	@staticmethod
+	def isDir(path):
+		return os.path.isdir(path)
 
 EOM

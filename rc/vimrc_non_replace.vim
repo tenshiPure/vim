@@ -72,6 +72,9 @@ let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 "myScripts
 let $myScripts  = $gitvim . '/myScripts'
 
+"MyLib
+let $lib = $gitvim . '/myScripts/MyLib'
+
 "frank
 let $frank = $gitvim . '/myScripts/FlexibleFrank'
 

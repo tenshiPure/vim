@@ -20,27 +20,9 @@ class Entry(EntryBase):
 		self.putDir = EntryBase.getPutDir(self)
 		self.depth = EntryBase.getDepth(self, head)
 		self.pointed = False
-		self.isDir = self.getIsDir()
-		self.extension = self.getExtension()
+		self.isDir = MyFile.isDir(self.fullPath)
+		self.extension = MyFile.getExtension(self.entryName)
 		self.formatedForOutput = self.createFormatedForOutput()
-
-	#
-	# ディレクトリかどうかを判定
-	#
-	def getIsDir(self):
-		return os.path.isdir(self.fullPath)
-
-	#
-	# 拡張子を取得
-	#
-	def getExtension(self):
-		if self.isDir:
-			return ''
-		else:
-			try:
-				return self.entryName.rsplit('.', 1)[1]
-			except IndexError:
-				return ''
 
 	#
 	# 出力フォーマット
