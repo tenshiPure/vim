@@ -121,29 +121,27 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-		cursor = MyCursor()
-		cursor.storePos()
+		pos = MyCursor.getPos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOn()
 
 		self.outputFrank()
 
-		cursor.setPosAtStored()
+		MyCursor.setPos(pos)
 
 	#
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
-		cursor = MyCursor()
-		cursor.storePos()
+		pos = MyCursor.getPos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOff()
 
 		self.outputFrank()
 
-		cursor.setPosAtStored()
+		MyCursor.setPos(pos)
 
 	#
 	# 更新

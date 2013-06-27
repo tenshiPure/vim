@@ -30,6 +30,10 @@ class Edit(CommandBase):
 		tabCloser.execute()
 
 		for index, targetEntry in enumerate(targetEntries):
-			vim.command('tabedit ' + targetEntry.fullPath)
+			if index == 0 and MyTab.isBlankTab():
+				vim.command('edit ' + targetEntry.fullPath)
+			else:
+				vim.command('tabedit ' + targetEntry.fullPath)
+
 
 EOM

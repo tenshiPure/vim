@@ -1,8 +1,5 @@
 python <<EOM
 
-import vim
-import os.path
-
 class MyFile:
 
 	#

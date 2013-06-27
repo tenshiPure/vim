@@ -1,57 +1,28 @@
 python <<EOM
-import vim
 
 class MyCursor:
 
-	bufnum = 0
-	lnum   = 0
-	col    = 0
-	off    = 0
-
 	#
-	# 擬似コンストラクタ
+	# カーソル位置を記憶
 	#
-	def __init__(self):
-		pass
-
-	#
-	# カーソルの位置を記憶
-	#
-	def storePos(self):
-		self.bufnum, self.lnum, self.col, self.off = vim.eval('getpos(".")')
-
-	#
-	# 記憶した位置にカーソルを移動
-	#
-	def setPosAtStored(self):
-		self.movePos(self.lnum, self.col, self.off)
-
-	#
-	# 任意の位置にカーソルを移動
-	#
-	def setPosOptional(self, lnum, col, off):
-		self.movePos(str(lnum), str(col), str(off))
+	@staticmethod
+	def getPos():
+		bufnum, lnum, col, off = vim.eval('getpos(".")')
+		return (bufnum, lnum, col, off)
 
 	#
 	# カーソルを移動
 	#
-	def movePos(self, lnum, col, off):
-		vim.command('call cursor(' + lnum + ',' + col + ',' + off + ')')
+	@staticmethod
+	def setPos(pos):
+		vim.command('call cursor(%s, %s, %s)' % (pos[1], pos[2], pos[3]))
 
 	#
 	# カーソルが何行目にあるか取得
 	#
-	def getCursorLineNum(self):
-		self.storePos()
-		return int(self.lnum)
-
-	#
-	# カーソルを行末に移動して空行を任意数あける
-	#
 	@staticmethod
-	def moveCursorBottom(blankLineNum):
-		vim.command('execute ":normal G"')
-		for blankLine in range(blankLineNum):
-			vim.command('execute ":normal o"')
+	def getCursorLineNum():
+		pos = MyCursor.getPos()
+		return int(pos[1])
 
 EOM

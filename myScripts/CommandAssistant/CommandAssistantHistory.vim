@@ -38,7 +38,8 @@ class CommandAssistantHistory:
 	def moveCursor(self):
 		MyTab.switchTab(CommandResultHistory, 4)
 
-		MyCursor().setPosOptional(self.lineNume, 0, 0)
+		pos = (0, self.lineNume, 0, 0)
+		MyCursor.setPos(pos)
 		vim.command('execute ":normal zz"')
 		
 EOM

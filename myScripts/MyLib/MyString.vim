@@ -18,7 +18,7 @@ class MyString:
 	@staticmethod
 	def getLineFromCurrentBuffer(lineNum = None):
 		if lineNum is None:
-			lineNum = MyCursor().getCursorLineNum()
+			lineNum = MyCursor.getCursorLineNum()
 
 		return vim.current.buffer[lineNum - 1]
 

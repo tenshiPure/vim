@@ -25,7 +25,7 @@ class CommandBase:
 	# カーソル下のエントリを取得する
 	#
 	def getUnderCursorEntry(self, frank):
-		currentLine = MyCursor().getCursorLineNum()
+		currentLine = MyCursor.getCursorLineNum()
 		return frank.linedEntries[currentLine]
 
 	#

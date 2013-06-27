@@ -1,7 +1,5 @@
 python <<EOM
 
-import vim
-
 class MyTab:
 
 	#

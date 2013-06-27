@@ -4,21 +4,14 @@ import vim
 class WordYank:
 
 	#
-	# 擬似コンストラクタ
-	#
-	def __init__(self):
-		pass
-
-	#
 	# コントローラから呼ばれるメソッド
 	#
 	def execute(self):
-		cursor = MyCursor()
-		cursor.storePos()
+		pos = MyCursor.getPos()
 
 		self.yankUnderCursor()
 
-		cursor.setPosAtStored()
+		MyCursor.setPos(pos)
 
 	#
 	# カーソル下の単語をヤンク
