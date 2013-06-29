@@ -72,9 +72,6 @@ let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 "myScripts
 let $myScripts  = $gitvim . '/myScripts'
 
-"MyLib
-let $lib = $gitvim . '/myScripts/MyLib'
-
 "frank
 let $frank = $gitvim . '/myScripts/FlexibleFrank'
 
@@ -269,9 +266,6 @@ inoremap <S-C-CR> <C-n>--mac
 ":messagesの省略
 command! M messages
 
-"Surrounder
-command! -nargs=1 S call SurrounderController(<f-args>)
-
 " ----------------------------------------------------------------------------------------------------
 " 
 " ファンクションキーのマッピングだよ
@@ -324,9 +318,6 @@ source $myScripts/TabCloser/TabCloserController.vim
 "CommandAssistant
 source $myScripts/CommandAssistant/CommandAssistantController.vim
 
-"Surrounder
-source $myScripts/Surrounder/SurrounderController.vim
-
 "NotCareExtension
 source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
@@ -354,9 +345,6 @@ nnoremap <F2> oAppLog::debug(__FILE__, __LINE__, print_r(, true));<ESC>8<LEFT>i
 
 
 
-nnoremap <F9> :call SampleController()<CR>
-source $myScripts/Sample/SampleController.vim
-
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマンド
@@ -375,10 +363,9 @@ let $path .= ';C:\Python27'
 "nose
 let $path .= 'C:\Python27\Scripts'
 
-
-
-nnoremap <LeftRelease> :echo expand('<cword>')<CR>
-
-
-
-
+source $gitvim/MyLib/String.vim
+source $gitvim/MyLib/Cursor.vim
+source $gitvim/MyLib/File.vim
+source $gitvim/MyLib/Buffer.vim
+source $gitvim/MyLib/Tab.vim
+source $gitvim/MyFundamental/_Buffer.vim

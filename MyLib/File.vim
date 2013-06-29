@@ -1,13 +1,13 @@
 python <<EOM
 
-class MyFile:
+class File:
 
 	#
 	# 拡張子を取得する
 	#
 	@staticmethod
 	def getExtension(path):
-		if MyFile.isDir(path):
+		if File.isDir(path):
 			return ''
 		else:
 			try:

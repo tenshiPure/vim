@@ -1,8 +1,5 @@
 "NotCareExtension
 
-source $myScripts/MyFundamental/My_Buffer.vim
-source $myScripts/MyLib/MyFile.vim
-
 source $myScripts/NotCareExtension/ExtensionObjects/Base.vim
 source $myScripts/NotCareExtension/ExtensionObjects/ahk.vim
 source $myScripts/NotCareExtension/ExtensionObjects/css.vim

@@ -1,9 +1,5 @@
 "CommandAssistant
 
-source $myScripts/MyLib/MyCursor.vim
-source $myScripts/MyLib/MyString.vim
-source $myScripts/MyLib/MyBuffer.vim
-
 source $myScripts/TabCloser/TabCloserController.vim
 
 source $myScripts/CommandAssistant/CommandAssistant.vim

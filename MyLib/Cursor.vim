@@ -1,6 +1,6 @@
 python <<EOM
 
-class MyCursor:
+class Cursor:
 
 	#
 	# カーソル位置を記憶
@@ -22,7 +22,7 @@ class MyCursor:
 	#
 	@staticmethod
 	def getCursorLineNum():
-		pos = MyCursor.getPos()
+		pos = Cursor.getPos()
 		return int(pos[1])
 
 EOM

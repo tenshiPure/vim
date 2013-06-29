@@ -1,6 +1,6 @@
 python <<EOM
 
-class My_Buffer():
+class _Buffer():
 
 	#
 	# コンストラクタ
@@ -9,7 +9,7 @@ class My_Buffer():
 		self.name = vim.current.buffer.name
 		self.lines = self.getLines()
 		self.len = len(self.lines) - 1
-		self.currentCorsurLine = self.lines[MyCursor.getCursorLineNum()]
+		self.currentCorsurLine = self.lines[Cursor.getCursorLineNum()]
 
 	#
 	# 行を取得する

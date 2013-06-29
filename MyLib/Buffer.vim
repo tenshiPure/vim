@@ -1,13 +1,13 @@
 python <<EOM
 
-class MyBuffer:
+class Buffer:
 
 	#
 	# リストでバッファを置き換える
 	#
 	@staticmethod
 	def replaceBufferWithList(list):
-		MyBuffer.clearCurrentBuffer()
+		Buffer.clearCurrentBuffer()
 
 		for line in list:
 			vim.current.buffer.append(line)

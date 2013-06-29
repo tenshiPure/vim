@@ -1,6 +1,6 @@
 python <<EOM
 
-class MyTab:
+class Tab:
 
 	#
 	# 無題のタブか判定
@@ -23,7 +23,7 @@ class MyTab:
 	#
 	@staticmethod
 	def expandReverseT(buf1, buf2, buf3, height):
-		if MyTab.isBlankTab():
+		if Tab.isBlankTab():
 			vim.command('edit ' + buf2)
 		else:
 			vim.command('tabedit ' + buf2)

@@ -1,6 +1,6 @@
 python <<EOM
 
-class MyString:
+class String:
 
 	#
 	# 空行判定
@@ -18,7 +18,7 @@ class MyString:
 	@staticmethod
 	def getLineFromCurrentBuffer(lineNum = None):
 		if lineNum is None:
-			lineNum = MyCursor.getCursorLineNum()
+			lineNum = Cursor.getCursorLineNum()
 
 		return vim.current.buffer[lineNum - 1]
 
@@ -46,7 +46,7 @@ class MyString:
 	@staticmethod
 	def commandRedirect(command, type):
 		if type == 'out':
-			return MyString.outterCommandRedirect(command)
+			return String.outterCommandRedirect(command)
 		else:
 			return None
 

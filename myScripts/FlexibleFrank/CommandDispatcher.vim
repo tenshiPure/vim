@@ -1,8 +1,6 @@
 "CommandDispatcher.vim
 
 source $myScripts/TabCloser/TabCloserController.vim
-source $myScripts/MyLib/MyTab.vim
-source $myScripts/MyLib/MyBuffer.vim
 
 source $myScripts/FlexibleFrank/Command/CommandBase.vim
 source $myScripts/FlexibleFrank/Command/Prev.vim
