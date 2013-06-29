@@ -12,7 +12,7 @@ class My_Buffer():
 		self.currentCorsurLine = self.lines[MyCursor.getCursorLineNum()]
 
 	#
-	# 行をリストとして取得する
+	# 行を取得する
 	#
 	def getLines(self):
 		result = []
@@ -23,24 +23,54 @@ class My_Buffer():
 		return result
 
 	#
-	# リストでバッファを置き換える
+	# 指定間の行を取得する
 	#
-	def replaceBufferWithList(self, list):
-		MyBuffer.clearCurrentBuffer()
-
-		for line in list:
-			vim.current.buffer.append(line)
-		del vim.current.buffer[0]
+	def getPartOfLines(self, firstLine, lastLine):
+		return self.lines[firstLine : lastLine + 1]
 
 	#
-	# カレントバッファを空にする
+	# 指定間の行を行番号と共に取得する
 	#
-	def clearCurrentBuffer(self):
-		vim.current.buffer[:] = None
+	def getPartOfLinesWithLineNum(self, firstLine, lastLine):
+		lineNums = range(firstLine, lastLine + 1)
+		lines = self.getPartOfLines(firstLine, lastLine)
 
+		return zip(lineNums, lines)
+
+	#
+	# 書き換え
+	#
+	def write(self, lineNum, line):
+		self.lines[lineNum] = line
+		self.replace()
+
+	#
+	# 書き足し
+	#
+	def append(self, lineNum, lines):
+		count = 1
+		for line in lines:
+			self.lines.insert(lineNum + count, line)
+			count += 1
+		self.replace()
+
+	#
+	# バッファをリストと置き換える
+	#
+	def replace(self):
+		buf = vim.current.buffer
+		buf[:] = None
+		for line in self.lines:
+			buf.append(line)
+		del buf[0:2]
+
+	#
+	# インスタンス変数出力
+	#
 	def debug(self):
 		print self.name
-		print self.lines
+		for line in self.lines:
+			print line
 		print self.len
 		print self.currentCorsurLine
 

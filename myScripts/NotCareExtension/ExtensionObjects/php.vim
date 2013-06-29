@@ -31,16 +31,14 @@ class php(Base):
 		vim.command(command)
 
 	#
-	# ログを吐く文をソースに出力する
+	# ログ文を得る
 	#
-	def log(self):
+	def getLogText(self):
 		var = '' if self.option is None else self.option
+
 		line1 = 'AppLog::debug(\'tenshi\');'
 		line2 = 'AppLog::debug(print_r(%s, true));' % (var)
 		
-		vim.command('execute ":normal o"')
-		vim.command('execute ":normal o%s"' % (line1))
-		vim.command('execute ":normal o%s"' % (line2))
-		vim.command('execute ":normal o"')
+		return [line1, line2]
 
 EOM

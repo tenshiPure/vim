@@ -27,9 +27,10 @@ class ahk(Base):
 		pass
 
 	#
-	# ログを吐く文をソースに出力する
+	# ログ文を得る
 	#
-	def log(self):
+	@abstractmethod
+	def getLogText(self):
 		pass
 
 EOM

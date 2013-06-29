@@ -10,6 +10,7 @@ class Base:
 	# コンストラクタ
 	#
 	def __init__(self, behavior, firstLine, lastLine, option):
+		self.buf = My_Buffer()
 		self.behavior = behavior
 		self.firstLine = firstLine
 		self.lastLine = lastLine
@@ -32,9 +33,9 @@ class Base:
 	# コメント操作のための選択行ループ
 	#
 	def commentLoop(self):
-		for lineNum in range(self.firstLine, self.lastLine + 1):
-			line = vim.current.buffer[lineNum]
+		pos = MyCursor.getPos()
 
+		for lineNum, line in self.buf.getPartOfLinesWithLineNum(self.firstLine, self.lastLine):
 			if MyString.isBlankLine(line):
 				continue
 
@@ -51,6 +52,8 @@ class Base:
 			elif self.behavior == 'commentSwitch':
 				self.commentSwitch(lineNum, line, commentStyleHead, commentStyleTail)
 
+		MyCursor.setPos(pos)
+
 	#
 	# コメント形式を得る
 	#
@@ -62,15 +65,18 @@ class Base:
 	# コメント状態にする
 	#
 	def commentAdd(self, lineNum, line, commentStyleHead, commentStyleTail):
-		vim.current.buffer[lineNum] = commentStyleHead + line + commentStyleTail
+		line = commentStyleHead + line + commentStyleTail
+
+		self.buf.write(lineNum, line)
 
 	#
 	# コメント状態を解除する
 	#
 	def commentDelete(self, lineNum, line, commentStyleHead, commentStyleTail):
-		cutTop = line.replace(commentStyleHead, '', 1)
-		cutTopTail = cutTop.replace(commentStyleTail, '', 1)
-		vim.current.buffer[lineNum] = cutTopTail
+		line = line.replace(commentStyleHead, '', 1)
+		line = line.replace(commentStyleTail, '', 1)
+
+		self.buf.write(lineNum, line)
 
 	#
 	# コメント状態を入れ替える
@@ -122,8 +128,17 @@ class Base:
 	#
 	# ログを吐く文をソースに出力する
 	#
-	@abstractmethod
 	def log(self):
+		texts = ['']
+		texts.extend(self.getLogText())
+		texts.append('')
+		self.buf.append(self.lastLine, texts)
+
+	#
+	# ログ文を得る
+	#
+	@abstractmethod
+	def getLogText(self):
 		pass
 
 EOM

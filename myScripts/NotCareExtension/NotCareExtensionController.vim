@@ -24,8 +24,8 @@ option = vim.eval('a:1') if vim.eval('a:0') == '1' else None
 
 extension = MyFile.getExtension(vim.current.buffer.name)
 behavior = vim.eval('a:behavior')
-firstLine = int(vim.eval('a:firstline')) - 1
-lastLine = int(vim.eval('a:lastline')) - 1
+firstLine = int(vim.eval('a:firstline'))
+lastLine = int(vim.eval('a:lastline'))
 
 if   extension == 'ahk':
 	extensionObject = ahk(behavior, firstLine, lastLine, option)

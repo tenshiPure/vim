@@ -28,9 +28,9 @@ class py(Base):
 		pass
 
 	#
-	# ログを吐く文をソースに出力する
+	# ログ文を得る
 	#
-	def log(self):
+	def getLogText(self):
 		pass
 
 EOM
