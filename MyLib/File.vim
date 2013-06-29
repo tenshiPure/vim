@@ -1,5 +1,7 @@
 python <<EOM
 
+import re
+
 class File:
 
 	#
@@ -27,38 +29,42 @@ class File:
 	#
 	@staticmethod
 	def roadVimFiles():
-		MyLib         = vim.eval('$lib')
-		MyFundamental = vim.eval('$fundamental')
-		MyScripts = vim.eval('$myScripts')
+		find = '.vim$'
+		ignoreDirs = ['.git', 'rc']
+		gitvim = vim.eval('$gitvim')
+		files = File.getFileNameRecursively(dirPath = gitvim, find = find, ignoreDirs = ignoreDirs)
 
-		#		files = []
-		#		File.getAll(MyLib, files)
-		#		for file in files:
-		#			print file
-		#
-		#		files = []
-		#		File.getAll(MyFundamental, files)
-		#		for file in files:
-		#			print file
-		#
-		#		files = []
-		#		File.getAll(MyScripts, files)
-		#		for file in files:
-		#			print file
+		for fileName in files:
+			vim.command('source ' + fileName)
 
 	#
 	# 再帰的にフルパスを取得する 
 	#
 	@staticmethod
-	def getAll(dirPath, files):
+	def getFileNameRecursively(dirPath, files = [], grep = '', find = '', ignoreDirs = []):
 		for path in os.listdir(dirPath):
 			fullPath = os.path.join(dirPath, path)
 
+			if path in ignoreDirs:
+				continue
+
 			if os.path.isdir(fullPath):
-				File.getAll(fullPath, files)
+				File.getFileNameRecursively(fullPath, files = files, find = find, ignoreDirs = ignoreDirs)
 			elif os.path.isfile(fullPath):
-				files.append(fullPath)
+				if re.search(find, fullPath) is None:
+					pass
+				elif File.tmpGrep():
+					pass
+				else:
+					files.append(fullPath)
 
 		return files
+
+	#
+	# tmp
+	#
+	@staticmethod
+	def tmpGrep():
+		return False
 
 EOM
