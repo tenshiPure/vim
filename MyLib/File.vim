@@ -25,19 +25,6 @@ class File:
 		return os.path.isdir(path)
 
 	#
-	# 配下のファイルを読み込む
-	#
-	@staticmethod
-	def roadVimFiles():
-		find = '.vim$'
-		ignoreDirs = ['.git', 'rc']
-		gitvim = vim.eval('$gitvim')
-		files = File.getFileNameRecursively(dirPath = gitvim, find = find, ignoreDirs = ignoreDirs)
-
-		for fileName in files:
-			vim.command('source ' + fileName)
-
-	#
 	# 再帰的にフルパスを取得する 
 	#
 	@staticmethod
