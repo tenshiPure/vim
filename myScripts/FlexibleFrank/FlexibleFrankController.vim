@@ -1,7 +1,5 @@
 "FlexibleFrank.vim
 
-source $myScripts/TabCloser/TabCloserController.vim
-
 source $myScripts/FlexibleFrank/CommandDispatcher.vim
 source $myScripts/FlexibleFrank/CommandFactory.vim
 source $myScripts/FlexibleFrank/Entry/EntryManager.vim

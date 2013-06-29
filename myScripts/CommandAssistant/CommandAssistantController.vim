@@ -1,7 +1,5 @@
 "CommandAssistant
 
-source $myScripts/TabCloser/TabCloserController.vim
-
 source $myScripts/CommandAssistant/CommandAssistant.vim
 source $myScripts/CommandAssistant/CommandAssistantHistory.vim
 
@@ -54,10 +52,6 @@ elif arg == 'execute':
 	elif vim.current.buffer.name == CommandListHistory:
 		commandAssistantHistory = CommandAssistantHistory(cursorLine)
 		commandAssistantHistory.execute()
-
-elif arg == 'close':
-	tabCloser = TabCloser()
-	tabCloser.execute()
 
 elif arg == 'hist':
 	if vim.current.buffer.name == CommandList:

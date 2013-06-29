@@ -30,4 +30,20 @@ class Tab:
 		vim.command('vsplit ' + buf1)
 		vim.command('botright ' + str(height) + 'split ' + buf3)
 
+	#
+	# タブを閉じる
+	#
+	@staticmethod
+	def close():
+		forceList = ['frank', 'cass']
+
+		extension = File.getExtension(vim.current.buffer.name)
+		
+		if extension in forceList:
+			while extension in forceList:
+				vim.command('bdelete!')
+				extension = File.getExtension(vim.current.buffer.name)
+		else:
+			vim.command('bdelete')
+
 EOM

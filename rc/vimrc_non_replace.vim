@@ -185,8 +185,14 @@ nnoremap <M-Space> :tabedit --win
 nnoremap <C-Space> :tabedit --mac
 
 "タブ（バッファ）を閉じる
-nnoremap <C-Space> :call TabCloserController()<CR> --win
-nnoremap <D-Space> :call TabCloserController()<CR> --mac
+nnoremap <C-Space> :call TabClose()<CR> --win
+nnoremap <D-Space> :call TabClose()<CR> --mac
+
+function! TabClose()
+python <<EOM
+Tab.close()
+EOM
+endfunction
 
 "ウィンドウ切り替え
 nnoremap <Tab>   <C-w>w
@@ -314,9 +320,6 @@ source $myScripts/WordYank/WordYankController.vim
 
 "ReloadVimrc
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
-
-"TabCloser
-source $myScripts/TabCloser/TabCloserController.vim
 
 "CommandAssistant
 source $myScripts/CommandAssistant/CommandAssistantController.vim

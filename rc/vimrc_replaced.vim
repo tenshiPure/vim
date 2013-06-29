@@ -259,11 +259,17 @@ endif
 
 "タブ（バッファ）を閉じ�~K
 if os == 'win'
-	nnoremap <C-Space> :call TabCloserController()<CR> 
+	nnoremap <C-Space> :call TabClose()<CR> 
 endif
 if os == 'mac'
-	nnoremap <D-Space> :call TabCloserController()<CR> 
+	nnoremap <D-Space> :call TabClose()<CR> 
 endif
+
+function! TabClose()
+python <<EOM
+Tab.close()
+EOM
+endfunction
 
 "ウィンドウ切り替�~H
 nnoremap <Tab>   <C-w>w
@@ -441,9 +447,6 @@ source $myScripts/WordYank/WordYankController.vim
 
 "ReloadVimrc
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
-
-"TabCloser
-source $myScripts/TabCloser/TabCloserController.vim
 
 "CommandAssistant
 source $myScripts/CommandAssistant/CommandAssistantController.vim

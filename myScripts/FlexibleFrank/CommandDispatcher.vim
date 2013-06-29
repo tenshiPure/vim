@@ -11,8 +11,7 @@ firstLine = int(vim.eval('a:firstline'))
 lastLine = int(vim.eval('a:lastline'))
 
 if mode == 'Close':
-	command = TabCloser()
-	command.execute()
+	Tab.close()
 
 else:
 	factory = CommandFactory()

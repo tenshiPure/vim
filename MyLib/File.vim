@@ -9,7 +9,9 @@ class File:
 	#
 	@staticmethod
 	def getExtension(path):
-		if File.isDir(path):
+		if path is None:
+			return ''
+		elif File.isDir(path):
 			return ''
 		else:
 			try:
