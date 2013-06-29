@@ -24,7 +24,7 @@ class CommandAssistantHistory:
 	# 履歴詳細の行番号を得る
 	#
 	def getCommandResultHistoryLineNum(self):
-		MyTab.switchTab(CommandResultHistory, 4)
+		Tab.switchTab(CommandResultHistory, 4)
 
 		buf = vim.current.buffer
 
@@ -36,10 +36,10 @@ class CommandAssistantHistory:
 	# カーソル移動
 	#
 	def moveCursor(self):
-		MyTab.switchTab(CommandResultHistory, 4)
+		Tab.switchTab(CommandResultHistory, 4)
 
 		pos = (0, self.lineNume, 0, 0)
-		MyCursor.setPos(pos)
+		Cursor.setPos(pos)
 		vim.command('execute ":normal zz"')
 		
 EOM

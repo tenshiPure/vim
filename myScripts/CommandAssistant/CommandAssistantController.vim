@@ -47,7 +47,7 @@ elif arg == 'history':
 	vim.command('split ' + CommandListHistory)
 
 elif arg == 'execute':
-	cursorLine = MyString.getLineFromCurrentBuffer()
+	cursorLine = String.getLineFromCurrentBuffer()
 	if vim.current.buffer.name == CommandList:
 		commandAssistant = CommandAssistant(cursorLine)
 		commandAssistant.execute()
@@ -65,7 +65,7 @@ elif arg == 'hist':
 
 else:
 	if vim.current.buffer.name == CommandList:
-		command = MyString.getLineFromCurrentBuffer(int(arg))
+		command = String.getLineFromCurrentBuffer(int(arg))
 		commandAssistant = CommandAssistant(command)
 		commandAssistant.execute()
 

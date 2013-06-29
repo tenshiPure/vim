@@ -37,6 +37,6 @@ class Mkdir(CommandBase):
 
 		frank.reloadFrank()
 
-		MyTab.switchTab(pathFrank1, 3)
+		Tab.switchTab(pathFrank1, 3)
 
 EOM

@@ -85,7 +85,7 @@ class EntryManager:
 	# ヘッダとエントリを出力する
 	#
 	def outputFrank(self):
-		MyTab.switchTab(self.myBufName, 3)
+		Tab.switchTab(self.myBufName, 3)
 
 		self.outputHeader()
 		self.outputEntries()
@@ -103,7 +103,7 @@ class EntryManager:
 		self.header.append('-' * len(self.targetDir))
 		self.header.append('')
 
-		MyBuffer.replaceBufferWithList(self.header)
+		Buffer.replaceBufferWithList(self.header)
 
 	#
 	# エントリを出力
@@ -121,27 +121,27 @@ class EntryManager:
 	# ポイントをオンにする
 	#
 	def pointOn(self, firstLine, lastLine):
-		pos = MyCursor.getPos()
+		pos = Cursor.getPos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOn()
 
 		self.outputFrank()
 
-		MyCursor.setPos(pos)
+		Cursor.setPos(pos)
 
 	#
 	# ポイントをオフにする
 	#
 	def pointOff(self, firstLine, lastLine):
-		pos = MyCursor.getPos()
+		pos = Cursor.getPos()
 
 		for index in range(firstLine, lastLine + 1):
 			self.linedEntries[index].pointOff()
 
 		self.outputFrank()
 
-		MyCursor.setPos(pos)
+		Cursor.setPos(pos)
 
 	#
 	# 更新

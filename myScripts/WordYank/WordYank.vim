@@ -7,11 +7,11 @@ class WordYank:
 	# コントローラから呼ばれるメソッド
 	#
 	def execute(self):
-		pos = MyCursor.getPos()
+		pos = Cursor.getPos()
 
 		self.yankUnderCursor()
 
-		MyCursor.setPos(pos)
+		Cursor.setPos(pos)
 
 	#
 	# カーソル下の単語をヤンク

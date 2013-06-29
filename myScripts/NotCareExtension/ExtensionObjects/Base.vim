@@ -10,7 +10,7 @@ class Base:
 	# コンストラクタ
 	#
 	def __init__(self, behavior, firstLine, lastLine, option):
-		self.buf = My_Buffer()
+		self.buf = _Buffer()
 		self.behavior = behavior
 		self.firstLine = firstLine
 		self.lastLine = lastLine
@@ -33,10 +33,10 @@ class Base:
 	# コメント操作のための選択行ループ
 	#
 	def commentLoop(self):
-		pos = MyCursor.getPos()
+		pos = Cursor.getPos()
 
 		for lineNum, line in self.buf.getPartOfLinesWithLineNum(self.firstLine, self.lastLine):
-			if MyString.isBlankLine(line):
+			if String.isBlankLine(line):
 				continue
 
 			commentStyle = self.getCommentStyle(lineNum, line)
@@ -52,7 +52,7 @@ class Base:
 			elif self.behavior == 'commentSwitch':
 				self.commentSwitch(lineNum, line, commentStyleHead, commentStyleTail)
 
-		MyCursor.setPos(pos)
+		Cursor.setPos(pos)
 
 	#
 	# コメント形式を得る

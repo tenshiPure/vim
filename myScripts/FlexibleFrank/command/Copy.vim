@@ -30,7 +30,7 @@ class Copy(CommandBase):
 
 		CommandBase.outputEntriesToFrank3(self, targetEntries)
 
-		MyTab.switchTab(pathFrank1, 3)
+		Tab.switchTab(pathFrank1, 3)
 
 		Prev.targetEntries = targetEntries
 		Prev.fix = self.fix
@@ -61,6 +61,6 @@ class Copy(CommandBase):
 
 		frank.reloadFrank()
 
-		MyTab.switchTab(pathFrank1, 3)
+		Tab.switchTab(pathFrank1, 3)
 
 EOM

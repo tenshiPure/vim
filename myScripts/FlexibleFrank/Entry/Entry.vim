@@ -19,8 +19,8 @@ class Entry(EntryBase):
 		self.putDir = EntryBase.getPutDir(self)
 		self.depth = EntryBase.getDepth(self, head)
 		self.pointed = False
-		self.isDir = MyFile.isDir(self.fullPath)
-		self.extension = MyFile.getExtension(self.entryName)
+		self.isDir = File.isDir(self.fullPath)
+		self.extension = File.getExtension(self.entryName)
 		self.formatedForOutput = self.createFormatedForOutput()
 
 	#

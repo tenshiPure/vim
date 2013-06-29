@@ -17,8 +17,8 @@ class Reed(CommandBase):
 		if targetEntry.isDir:
 			raise TargetNotFileException(self.commandName)
 
-		MyTab.switchTab(pathFrank2, 3)
-		MyBuffer.clearCurrentBuffer()
+		Tab.switchTab(pathFrank2, 3)
+		Buffer.clearCurrentBuffer()
 
 		vim.command('r ' + targetEntry.fullPath)
 		del vim.current.buffer[0]
@@ -26,6 +26,6 @@ class Reed(CommandBase):
 		vim.command('set filetype=' + targetEntry.extension)
 		vim.command('set nowrap')
 
-		MyTab.switchTab(pathFrank1, 3)
+		Tab.switchTab(pathFrank1, 3)
 
 EOM

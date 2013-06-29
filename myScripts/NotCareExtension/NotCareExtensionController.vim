@@ -19,7 +19,7 @@ import vim
 
 option = vim.eval('a:1') if vim.eval('a:0') == '1' else None
 
-extension = MyFile.getExtension(vim.current.buffer.name)
+extension = File.getExtension(vim.current.buffer.name)
 behavior = vim.eval('a:behavior')
 firstLine = int(vim.eval('a:firstline'))
 lastLine = int(vim.eval('a:lastline'))

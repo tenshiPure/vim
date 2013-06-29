@@ -87,6 +87,9 @@ let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 "myScripts
 let $myScripts  = $gitvim . '/myScripts'
 
+let $lib = $gitvim . '/MyLib'
+let $fundamental = $gitvim . '/MyFundamental'
+
 "frank
 let $frank = $gitvim . '/myScripts/FlexibleFrank'
 
@@ -496,3 +499,13 @@ source $gitvim/MyLib/File.vim
 source $gitvim/MyLib/Buffer.vim
 source $gitvim/MyLib/Tab.vim
 source $gitvim/MyFundamental/_Buffer.vim
+
+
+
+source $gitvim/MyLib/File.vim
+function! RoadVimFiles()
+python << EOM
+File().roadVimFiles()
+EOM
+endfunction
+call RoadVimFiles()

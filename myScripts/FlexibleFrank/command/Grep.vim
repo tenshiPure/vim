@@ -18,18 +18,6 @@ class Grep(CommandBase):
 		path = '/Users/ryo/Documents/gitvim/myScripts/FlexibleFrank'
 		self.getAll(path, path)
 
-	#
-	# 
-	#
-	def getAll(self, head, dirPath):
-		for path in os.listdir(dirPath):
-			fullPath = os.path.join(dirPath, path)
-
-			if os.path.isdir(fullPath):
-				self.getAll(head, fullPath)
-			elif os.path.isfile(fullPath):
-				print fullPath
-
 #http://blog.lampetty.net/blog_ja/index.php/archives/418
 
 EOM

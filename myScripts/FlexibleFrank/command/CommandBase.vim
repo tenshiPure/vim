@@ -25,7 +25,7 @@ class CommandBase:
 	# カーソル下のエントリを取得する
 	#
 	def getUnderCursorEntry(self, frank):
-		currentLine = MyCursor.getCursorLineNum()
+		currentLine = Cursor.getCursorLineNum()
 		return frank.linedEntries[currentLine]
 
 	#
@@ -56,7 +56,7 @@ class CommandBase:
 	# エントリをフランク３へ出力する
 	#
 	def outputEntriesToFrank3(self, entries):
-		MyTab.switchTab(pathFrank3, 3)
+		Tab.switchTab(pathFrank3, 3)
 
 		buf = vim.current.buffer
 
@@ -69,7 +69,7 @@ class CommandBase:
 	# 文字列をフランク３へ出力する
 	#
 	def outputStringToFrank3(self, string):
-		MyTab.switchTab(pathFrank3, 3)
+		Tab.switchTab(pathFrank3, 3)
 
 		vim.current.buffer[0] = string
 
@@ -77,7 +77,7 @@ class CommandBase:
 	# フランク３の文字列を取得する
 	#
 	def getLinesFromFrank3(self):
-		MyTab.switchTab(pathFrank3, 3)
+		Tab.switchTab(pathFrank3, 3)
 		return vim.current.buffer
 
 	#

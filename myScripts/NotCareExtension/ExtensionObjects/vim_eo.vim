@@ -29,7 +29,7 @@ class vim_eo(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		buf = My_Buffer()
+		buf = _Buffer()
 		buf.debug()
 
 	#
