@@ -13,7 +13,7 @@ endif
 
 " ----------------------------------------------------------------------------------------------------
 " 
-" エディタの基本的な設定だよ
+" エディタの基本設定だよ
 "
 " ----------------------------------------------------------------------------------------------------
 "行番号の表示
@@ -28,12 +28,17 @@ set shiftwidth=4
 "保存していなくても別のバッファに移れる
 set hidden
 
-"日本語入力のときにカーソルを赤くする
-hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
-
 "インサートモードから戻るときに、日本語入力をオフにする
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
+"クリップボードを共有
+set clipboard=unnamed
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" エディタGUI設定だよ
+"
+" ----------------------------------------------------------------------------------------------------
 "ツールバー非表示
 set guioptions-=T
 
@@ -44,11 +49,8 @@ set guioptions-=m
 set lines=80 --mac
 set columns=250 --mac
 
-"クリップボードかな
-set clipboard=unnamed
-
-"文字コードの設定
-autocmd BufNew * set fileencoding=utf8 --win
+"日本語入力のときにカーソルを赤くする
+hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -59,30 +61,15 @@ autocmd BufNew * set fileencoding=utf8 --win
 let $gitvim = $vim . '/gitvim' --win
 let $gitvim = '/Users/ryo/Documents/gitvim' --mac
 
-"share
-let $share = 'D:/Dropbox/share'         --win
-let $share = '/Users/ryo/Dropbox/share' --mac
-
-"vimrc_non_replace.vim
-let $rc = $gitvim . '/rc/vimrc_non_replace.vim'
-
-"vimrc_replaced.vim
+"vim
+let $rc          = $gitvim . '/rc/vimrc_non_replace.vim'
 let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
-
-"myScripts
-let $myScripts  = $gitvim . '/myScripts'
-
-let $lib = $gitvim . '/MyLib'
+let $myScripts   = $gitvim . '/myScripts'
+let $lib         = $gitvim . '/MyLib'
 let $fundamental = $gitvim . '/MyFundamental'
-
-"frank
-let $frank = $gitvim . '/myScripts/FlexibleFrank'
-
-"cass
-let $cass = $gitvim . '/myScripts/CommandAssistant'
-
-"NotCareExtension
-let $notcare = $gitvim . '/myScripts/NotCareExtension'
+let $frank       = $gitvim . '/myScripts/FlexibleFrank'
+let $cass        = $gitvim . '/myScripts/CommandAssistant'
+let $notcare     = $gitvim . '/myScripts/NotCareExtension'
 
 "AutoHotkeys
 let $ahk     = "D:/MyDocument/AutoHotKeys" --win
@@ -91,38 +78,19 @@ let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk" --win
 "account
 let $account = "D:/MyDocument/account" --win
 
+"KeyRemap4MacBook
 let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml" --mac
 
 "tmp
 let $tmp = "D:/MyDocument/tmp"         --win
 let $tmp = "/Users/ryo/Documents/tmp/" --mac
 
+"share
+let $share = 'D:/Dropbox/share'         --win
+let $share = '/Users/ryo/Dropbox/share' --mac
+
 "todo
-let $todo    = $share . '/todo.txt'
-
-"JAVA
-let $java = $share . '/../projects/JAVA'
-
-"PlayngCards
-let $pc = $share . '/../projects/PlayngCards'
-
-"mado
-let $dir84 = $share . '/../projects/dir84'
-let $mado = $share . '/../projects/mado'
-
-"botch
-let $dir88 = $share . '/../projects/dir88'
-
-"bomber
-let $bomber = 'D:/MyDocument/Program/bomberman' --win
-let $bomber = '/Users/ryo/Documents/projects/bomberman' --mac
-
-"colors
-let $colors = 'D:/MyDocument/Program/colors' --win
-let $colors = '/Users/ryo/Documents/projects/colors' --mac
-
-"HandGame
-let $hand = 'D:/MyDocument/Program/HandGame' --win
+let $todo = $share . '/todo.txt'
 
 "slf
 let $slf = '/Users/ryo/Documents/projects/slf'         --mac
@@ -142,11 +110,17 @@ let $tests        = $slf . '/tests'                    --mac
 "slf2-api
 let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
 
-"uilog
-let $uilog = $slf . '/data/logs/application' --mac
-
-"apilog
+"slf-log
+let $uilog  = $slf . '/data/logs/application' --mac
 let $apilog = '/var/log/ap/slmctl' --mac
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 自動コマンド
+"
+" ----------------------------------------------------------------------------------------------------
+"文字コードの設定
+autocmd BufNew * set fileencoding=utf8 --win
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -184,7 +158,7 @@ nnoremap <S-Space> gT
 nnoremap <M-Space> :tabedit --win
 nnoremap <C-Space> :tabedit --mac
 
-"タブ（バッファ）を閉じる
+"バッファを閉じる
 nnoremap <C-Space> :call TabClose()<CR> --win
 nnoremap <D-Space> :call TabClose()<CR> --mac
 
@@ -199,6 +173,33 @@ nnoremap <Tab>   <C-w>w
 nnoremap <S-Tab> <C-w>W
 nnoremap gw      <C-w>w
 nnoremap gW      <C-w>W
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" winとmacのコマンドの物理配置を同じにするよ
+"
+" ----------------------------------------------------------------------------------------------------
+"ビジュアル矩形
+nnoremap <M-S-v> <C-S-v> --win
+
+"インクリメント
+nnoremap <M-a> <C-a>--win
+
+"デクリメント
+nnoremap <M-x> <C-x>--win
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" ファンクションキーのマッピングだよ
+"
+" ----------------------------------------------------------------------------------------------------
+"ヘルプの誤作動防止
+nnoremap <F1> <ESC>
+inoremap <F1> <ESC>
+
+"vimrc の置換と読み込み
+nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " その他操作のマッピングだよ
@@ -219,26 +220,43 @@ nmap <silent><ESC><ESC> :noh<CR>
 "全選択
 vnoremap , <ESC>ggVG
 
-"単語をコピー
-nnoremap yy :call WordYankController()<CR>
-
-"単語を置換ペースト
-nnoremap yp ciw<C-r>0<ESC>
-
-"ビジュアル矩形モードの物理キー配置をmacと揃える
-nnoremap <M-S-v> <C-S-v> --win
-
-"インクリ・デクリの物理キー配置をmacを揃える
-nnoremap <M-a> <C-a>--win
-nnoremap <M-x> <C-x>--win
-
 "コマンドラインモードへ移行
 nnoremap <sid>(command-line-enter) q: --win
 nnoremap <sid>(command-line-enter) q: --mac
 nmap <M-:>  <sid>(command-line-enter) --win
 nmap '      <sid>(command-line-enter) --mac
 
+"補完
+inoremap <M-CR>   <C-p>--win
+inoremap <S-M-CR> <C-n>--win
+inoremap <C-CR>   <C-p>--mac
+inoremap <S-C-CR> <C-n>--mac
+
+":messagesの省略
+command! M messages
+
+" ----------------------------------------------------------------------------------------------------
+" 
+" 自作プラグインの設定だよ
+"
+" ----------------------------------------------------------------------------------------------------
+"CommandAssistant
+source $myScripts/CommandAssistant/CommandAssistantController.vim
+
+command! -nargs=? CA  call CommandAssistantController(<f-args>)
+command! -nargs=0 CAH call CommandAssistantController('history')
+
+"FlexibleFrank
+source $myScripts/FlexibleFrank/FlexibleFrankController.vim
+
+nnoremap <S-M-CR> :FF ./<CR> --win
+nnoremap <S-C-CR> :FF ./<CR> --mac
+
+command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
+
 "NotCareExtension
+source $myScripts/NotCareExtension/NotCareExtensionController.vim
+
 nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
 vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
@@ -257,35 +275,24 @@ command! -nargs=? -complete=file W wall | call NotCareExtensionController('make'
 command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
 command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 
-"フランク
-nnoremap <S-M-CR> :FF ./<CR> --win
-nnoremap <S-C-CR> :FF ./<CR> --mac
-command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
+"ReloadVimrc
+source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
-"CommandAssistant
-command! -nargs=? CA  call CommandAssistantController(<f-args>)
-command! -nargs=0 CAH call CommandAssistantController('history')
+"WordYank
+source $myScripts/WordYank/WordYankController.vim
 
-"補完操作のマッピング
-inoremap <M-CR>   <C-p>--win
-inoremap <S-M-CR> <C-n>--win
-inoremap <C-CR>   <C-p>--mac
-inoremap <S-C-CR> <C-n>--mac
+nnoremap yy :call WordYankController()<CR>
+nnoremap yp ciw<C-r>0<ESC>
 
-":messagesの省略
-command! M messages
+"MyLibs
+source $gitvim/MyLib/String.vim
+source $gitvim/MyLib/Cursor.vim
+source $gitvim/MyLib/File.vim
+source $gitvim/MyLib/Buffer.vim
+source $gitvim/MyLib/Tab.vim
 
-" ----------------------------------------------------------------------------------------------------
-" 
-" ファンクションキーのマッピングだよ
-"
-" ----------------------------------------------------------------------------------------------------
-"ヘルプの誤作動防止
-nnoremap <F1> <ESC>
-inoremap <F1> <ESC>
-
-"vimrc の置換と読み込み
-nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
+"MyFundamentals
+source $gitvim/MyFundamental/_Buffer.vim
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -303,49 +310,6 @@ set viminfo=
 
 " ----------------------------------------------------------------------------------------------------
 " 
-" 諸プラグインの設定だよ
-"
-" ----------------------------------------------------------------------------------------------------
-
-" ----------------------------------------------------------------------------------------------------
-" 
-" 自作スクリプトの読み込みだよ
-"
-" ----------------------------------------------------------------------------------------------------
-"FlexibleFrank
-source $myScripts/FlexibleFrank/FlexibleFrankController.vim
-
-"WordYank
-source $myScripts/WordYank/WordYankController.vim
-
-"ReloadVimrc
-source $myScripts/ReloadVimrc/ReloadVimrc.vim
-
-"CommandAssistant
-source $myScripts/CommandAssistant/CommandAssistantController.vim
-
-"NotCareExtension
-source $myScripts/NotCareExtension/NotCareExtensionController.vim
-
-"MyLibs
-source $gitvim/MyLib/String.vim
-source $gitvim/MyLib/Cursor.vim
-source $gitvim/MyLib/File.vim
-source $gitvim/MyLib/Buffer.vim
-source $gitvim/MyLib/Tab.vim
-
-"MyFundamentals
-source $gitvim/MyFundamental/_Buffer.vim
-
-" ----------------------------------------------------------------------------------------------------
-" 
-" 自動コマンド
-"
-" ----------------------------------------------------------------------------------------------------
-autocmd QuickFixCmdPost *grep* cwindow
-
-" ----------------------------------------------------------------------------------------------------
-" 
 " 環境変数の追記
 "
 " ----------------------------------------------------------------------------------------------------
@@ -354,22 +318,3 @@ let $path .= ';C:\Python27'
 
 "nose
 let $path .= 'C:\Python27\Scripts'
-
-" ----------------------------------------------------------------------------------------------------
-" 
-" 自動コマンド
-"
-" ----------------------------------------------------------------------------------------------------
-autocmd QuickFixCmdPost *grep* cwindow
-
-" ----------------------------------------------------------------------------------------------------
-" 
-" 環境変数の追記
-"
-" ----------------------------------------------------------------------------------------------------
-"python
-let $path .= ';C:\Python27'
-
-"nose
-let $path .= 'C:\Python27\Scripts'
-
