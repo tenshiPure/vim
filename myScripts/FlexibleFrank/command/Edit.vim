@@ -26,8 +26,7 @@ class Edit(CommandBase):
 		if not(CommandBase.isFileOnly(self, targetEntries)):
 			raise TargetNotFileOnlyException(self.commandName)
 
-		tabCloser = TabCloser()
-		tabCloser.execute()
+		Tab.close()
 
 		for index, targetEntry in enumerate(targetEntries):
 			if index == 0 and Tab.isBlankTab():
