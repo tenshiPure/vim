@@ -10,8 +10,7 @@ class Translator:
 		token = self.getAccessToken()
 		translateApiResult = self.translate(token)
 		result = self.parseXml(translateApiResult)
-
-		print result
+		self.outputResult(result)
 
 	#
 	# アクセストークンを取得するAPIをたたく
@@ -39,7 +38,18 @@ class Translator:
 	# GETパラメータを追加する
 	#
 	def addGetParams(self, url):
-		return url + '?from=ja&to=en&text=早寝早起き'
+		buf = _Buffer()
+
+		if buf.name == ja_trs:
+			_from = 'ja'
+			_to = 'en'
+		else:
+			_from = 'en'
+			_to = 'ja'
+
+		text = buf.currentCorsurLine
+
+		return url + '?from=%s&to=%s&text=%s' % (_from, _to, text)
 
 	#
 	# API返却値から結果を抜き出す
@@ -47,4 +57,19 @@ class Translator:
 	def parseXml(self, string):
 		return re.sub(r'<[^>]*>', '', string)
 		
+	#
+	# 結果を出力する
+	#
+	def outputResult(self, result):
+		buf = _Buffer()
+
+		if buf.name == ja_trs:
+			Tab.switchTab(en_trs, 2)
+		else:
+			Tab.switchTab(ja_trs, 2)
+
+		buf.write(1, result)
+
+		Tab.switchTab(buf.name, 2)
+
 EOM
