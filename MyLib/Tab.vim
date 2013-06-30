@@ -19,6 +19,23 @@ class Tab:
 				vim.command('execute ":normal gw"')
 
 	#
+	# 複数のタブを展開する：水平２つ
+	#
+	@staticmethod
+	def expandTwoHorizontally(buf1, buf2, focus, height = None):
+		if Tab.isBlankTab():
+			vim.command('edit ' + buf1)
+		else:
+			vim.command('tabedit ' + buf1)
+			vim.command('set splitbelow')
+		if height is None:
+			vim.command('split ' + en_trs)
+		else:
+			vim.command('botright ' + str(height) + 'split ' + buf2)
+
+		Tab.switchTab(focus, 2)
+
+	#
 	# 複数のタブを展開する：逆Ｔ字
 	#
 	@staticmethod
@@ -35,7 +52,7 @@ class Tab:
 	#
 	@staticmethod
 	def close():
-		forceList = ['frank', 'cass']
+		forceList = ['frank', 'cass', 'trs']
 
 		extension = File.getExtension(vim.current.buffer.name)
 		

@@ -4,9 +4,9 @@ python <<EOM
 class Translator:
 
 	#
-	# コンストラクタ
+	# 翻訳実行
 	#
-	def __init__(self):
+	def execute(self):
 		token = self.getAccessToken()
 		translateApiResult = self.translate(token)
 		result = self.parseXml(translateApiResult)
@@ -14,7 +14,7 @@ class Translator:
 		print result
 
 	#
-	# アクセストークンを取得する
+	# アクセストークンを取得するAPIをたたく
 	#
 	def getAccessToken(self):
 		params = urllib.urlencode(GetAccessTokenVal.POST_PARAMS)
@@ -25,7 +25,7 @@ class Translator:
 		return jsonData['access_token']
 
 	#
-	# 翻訳する
+	# 翻訳するAPIをたたく
 	#
 	def translate(self, token):
 		url = self.addGetParams(TranslateVal.URL)

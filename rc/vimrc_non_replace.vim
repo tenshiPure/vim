@@ -322,4 +322,4 @@ let $path .= 'C:\Python27\Scripts'
 
 
 source $myScripts/Translator/TranslatorController.vim
-nnoremap <F9> :call TranslatorController()<CR>
+nnoremap <F9> :call TranslatorController('new')<CR>
