@@ -435,3 +435,8 @@ let $path .= ';C:\Python27'
 
 "nose
 let $path .= 'C:\Python27\Scripts'
+
+
+
+source $myScripts/Translator/TranslatorController.vim
+nnoremap <F9> :call TranslatorController()<CR>

@@ -3,3 +3,5 @@ myScripts/ViMail/account.txt
 myScripts/CommandAssistant/cassfiles/CommandResult.cass
 myScripts/CommandAssistant/cassfiles/CommandListHistory.cass
 myScripts/CommandAssistant/cassfiles/CommandResultHistory.cass
+myScripts/Translator/GetAccessTokenVal.vim
+myScripts/Translator/TranslateVal.vim
