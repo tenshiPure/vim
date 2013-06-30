@@ -15,9 +15,12 @@ class Grep(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrankNException(self.commandName, 1)
 
-		path = '/Users/ryo/Documents/gitvim/myScripts/FlexibleFrank'
-		self.getAll(path, path)
+		path = vim.eval('$frank') + '/command'
+		grep = 'execute'
+		ignoreDirs = ['.git', 'cassfiles', 'WorkingText', 'Scripts']
+		fileNames = File.getFileNameRecursively(dirPath = path, grep = grep, ignoreDirs = ignoreDirs)
 
-#http://blog.lampetty.net/blog_ja/index.php/archives/418
+		for filename in fileNames:
+			print filename
 
 EOM

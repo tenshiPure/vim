@@ -40,20 +40,31 @@ class File:
 			if os.path.isdir(fullPath):
 				File.getFileNameRecursively(fullPath, files = files, find = find, ignoreDirs = ignoreDirs)
 			elif os.path.isfile(fullPath):
-				if re.search(find, fullPath) is None:
-					pass
-				elif File.tmpGrep():
-					pass
-				else:
+				if File.find(find, fullPath) and File.grep(grep, fullPath):
 					files.append(fullPath)
 
 		return files
 
 	#
-	# tmp
+	# find
 	#
 	@staticmethod
-	def tmpGrep():
-		return False
+	def find(pattern, string):
+		if re.search(pattern, string) is None:
+			return False
+		else:
+			return True
+
+	#
+	# grep
+	#
+	@staticmethod
+	def grep(pattern, fileName):
+		if pattern == '':
+			return True
+		with open(fileName) as file:
+			for lineNum, line in enumerate(file):
+				if File.find(pattern, line):
+					return True
 
 EOM
