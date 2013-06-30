@@ -1,36 +1,21 @@
 python <<EOM
-import sys
-import vim
-import os
 
-class EntryManager:
-
-	myBufName = ''
-	targetDir = ''
-	getEntryMode = ''
-	entriesLimit = 0
-	header = []
-	entries = []
-	linedEntries = {}
+class NormalManager(BaseManager):
 
 	#
-	# 擬似コンストラクタ
+	# コンストラクタ
 	#
 	def __init__(self, targetDir, myBufName):
-		self.myBufName = myBufName
-		self.targetDir = targetDir
-		self.entries = []
-		self.linedEntries = {}
 		self.getEntryMode = 'all'
 		self.entriesLimit = 200
-		self.getEntries(self.targetDir, self.targetDir)
+		BaseManager.__init__(self, targetDir, myBufName)
 
 	#
 	# エントリを生成する
 	#
 	def getEntries(self, head, dirPath):
 
-		self.entries.append(Entry(head, dirPath))
+		self.entries.append(NormalEntry(head, dirPath))
 		if self.getEntryMode == 'all':
 			if self.isOverLimit():
 				self.reGetEntries()
@@ -45,12 +30,12 @@ class EntryManager:
 				if os.path.isdir(fullPath):
 					self.getEntries(head, fullPath)
 				elif os.path.isfile(fullPath):
-					self.entries.append(Entry(head, fullPath))
+					self.entries.append(NormalEntry(head, fullPath))
 					if self.isOverLimit():
 						self.reGetEntries()
 
 			elif self.getEntryMode == 'currentOnly':
-				self.entries.append(Entry(head, fullPath))
+				self.entries.append(NormalEntry(head, fullPath))
 
 	#
 	# エントリの数が上限を超えていないか判定する
@@ -82,15 +67,6 @@ class EntryManager:
 		self.getEntries(self.targetDir, self.targetDir)
 
 	#
-	# ヘッダとエントリを出力する
-	#
-	def outputFrank(self):
-		Tab.switchTab(self.myBufName, 3)
-
-		self.outputHeader()
-		self.outputEntries()
-
-	#
 	# エントリ前のヘッダ部等を出力
 	#
 	def outputHeader(self):
@@ -105,51 +81,4 @@ class EntryManager:
 
 		Buffer.replaceBufferWithList(self.header)
 
-	#
-	# エントリを出力
-	#
-	def outputEntries(self):
-		buf = vim.current.buffer
-
-		line = len(buf) + 1
-		for entry in self.entries:
-			buf.append(entry.formatedForOutput)
-			self.linedEntries[line] = entry
-			line += 1
-
-	#
-	# ポイントをオンにする
-	#
-	def pointOn(self, firstLine, lastLine):
-		pos = Cursor.getPos()
-
-		for index in range(firstLine, lastLine + 1):
-			self.linedEntries[index].pointOn()
-
-		self.outputFrank()
-
-		Cursor.setPos(pos)
-
-	#
-	# ポイントをオフにする
-	#
-	def pointOff(self, firstLine, lastLine):
-		pos = Cursor.getPos()
-
-		for index in range(firstLine, lastLine + 1):
-			self.linedEntries[index].pointOff()
-
-		self.outputFrank()
-
-		Cursor.setPos(pos)
-
-	#
-	# 更新
-	#
-	def reloadFrank(self):
-		self.entries = []
-		self.linedEntries = {}
-		self.getEntries(self.targetDir, self.targetDir)
-		self.outputFrank()
-		
 EOM

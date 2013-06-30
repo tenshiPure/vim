@@ -5,15 +5,22 @@ import os.path
 import re
 from abc import ABCMeta, abstractmethod
 
-class EntryBase:
-
-	fullPath = ''
-	entryName = ''
-	putDir = ''
-	depth = 0
-	pointed = False
+class BaseEntry:
 
 	__metaclass__ = ABCMeta
+
+	#
+	# コンストラクタ
+	#
+	def __init__(self, head, fullPath):
+		self.fullPath = fullPath
+		self.entryName = self.getEntryName()
+		self.putDir = self.getPutDir()
+		self.depth = self.getDepth(head)
+		self.pointed = False
+		self.isDir = File.isDir(self.fullPath)
+		self.extension = File.getExtension(self.entryName)
+		self.formatedForOutput = self.createFormatedForOutput()
 
 	#
 	# エントリ名を取得

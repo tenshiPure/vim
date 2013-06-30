@@ -2,10 +2,13 @@
 
 source $myScripts/FlexibleFrank/CommandDispatcher.vim
 source $myScripts/FlexibleFrank/CommandFactory.vim
-source $myScripts/FlexibleFrank/Entry/EntryManager.vim
-source $myScripts/FlexibleFrank/Entry/EntryBase.vim
-source $myScripts/FlexibleFrank/Entry/Entry.vim
-source $myScripts/FlexibleFrank/Entry/GrepResultEntry.vim
+
+source $myScripts/FlexibleFrank/Entry/BaseEntry.vim
+source $myScripts/FlexibleFrank/Entry/BaseManager.vim
+source $myScripts/FlexibleFrank/Entry/GrepEntry.vim
+source $myScripts/FlexibleFrank/Entry/GrepManager.vim
+source $myScripts/FlexibleFrank/Entry/NormalEntry.vim
+source $myScripts/FlexibleFrank/Entry/NormalManager.vim
 
 source $myScripts/FlexibleFrank/Command/CommandBase.vim
 source $myScripts/FlexibleFrank/Command/Prev.vim
@@ -63,7 +66,7 @@ pathFrank3 = os.path.abspath(head + 'Frank3.frank')
 
 Tab.expandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
 
-frank = EntryManager(targetDir, pathFrank1)
+frank = NormalManager(targetDir, pathFrank1)
 frank.outputFrank()
 
 Tab.switchTab(pathFrank1, 3)
