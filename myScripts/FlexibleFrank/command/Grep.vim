@@ -6,7 +6,6 @@ import re
 class Grep(CommandBase):
 
 	commandName = 'Grep'
-	grepResultObjects = {}
 
 	#
 	# Grepを実行する
@@ -15,12 +14,12 @@ class Grep(CommandBase):
 		if vim.current.buffer.name != pathFrank1:
 			raise NotExecutedFrankNException(self.commandName, 1)
 
-		path = vim.eval('$frank') + '/command'
-		grep = 'execute'
+		path = vim.eval('$frank')
+#		path = vim.eval('$frank') + '/command'
+		pattern = 'execute'
 		ignoreDirs = ['.git', 'cassfiles', 'WorkingText', 'Scripts']
-		fileNames = File.getFileNameRecursively(dirPath = path, grep = grep, ignoreDirs = ignoreDirs)
 
-		for filename in fileNames:
-			print filename
+		frank = GrepManager(path, pathFrank1, pattern, ignoreDirs)
+		frank.outputFrank()
 
 EOM

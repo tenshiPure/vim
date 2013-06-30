@@ -2,5 +2,21 @@ python <<EOM
 import re
 
 class GrepEntry(BaseEntry):
-	pass
+
+	#
+	# コンストラクタ
+	#
+	def __init__(self, head, fullPath):
+		BaseEntry.__init__(self, head, fullPath)
+
+	#
+	# 出力フォーマット
+	#
+	def createFormatedForOutput(self):
+		point = '*' if self.pointed else ''
+		tab = '\t' * self.depth
+		space = ' ' if self.isDir else ''
+
+		return point + tab + self.entryName + space
+
 EOM

@@ -17,6 +17,13 @@ class BaseManager:
 		self.getEntries(self.targetDir, self.targetDir)
 
 	#
+	# エントリを生成する
+	#
+	@abstractmethod
+	def getEntries(self, head, dirPath):
+		pass
+
+	#
 	# ヘッダとエントリを出力する
 	#
 	def outputFrank(self):
