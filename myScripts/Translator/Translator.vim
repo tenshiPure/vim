@@ -47,19 +47,25 @@ class Translator:
 			_from = 'en'
 			_to = 'ja'
 
-		text = self.adjustCharCode(buf.currentCorsurLine)
+		if os.name == 'nt':
+			text = self.convertCharCode(buf.currentCorsurLine, 'cp932', 'utf-8')
+		else:
+			text = self.convertCharCode(buf.currentCorsurLine, 'cp932', 'utf-8')
+		text = self.replaceSpace(text)
 
 		return url + '?from=%s&to=%s&text=%s' % (_from, _to, text)
 	
 	#
-	# 文字コードの調整
+	# 文字コード変換
 	#
-	def adjustCharCode(self, string):
-		if os.name == 'nt':
-			#str/cp932 -> unicode/cp932 -> str/utf-8
-			return string.decode('cp932').encode('utf-8')
-		else:
-			pass
+	def convertCharCode(self, string, _from, _to):
+		return string.decode(_from).encode(_to)
+
+	#
+	# 半角スペースを半角＋に置き換える
+	#
+	def replaceSpace(self, string):
+		return re.sub(r' ', r'+', string)
 
 	#
 	# API返却値から結果を抜き出す
@@ -70,7 +76,7 @@ class Translator:
 	#
 	# 結果を出力する
 	#
-	def outputResult(self, result):
+	def outputResult(self, text):
 		buf = _Buffer()
 
 		if buf.name == ja_trs:
@@ -78,7 +84,12 @@ class Translator:
 		else:
 			Tab.switchTab(ja_trs, 2)
 
-		buf.write(1, result)
+		if os.name == 'nt':
+			text = self.convertCharCode(text, 'utf-8', 'cp932')
+		else:
+			text = self.convertCharCode(text, 'utf-8', 'cp932')
+			
+		buf.write(1, text)
 
 		Tab.switchTab(buf.name, 2)
 
