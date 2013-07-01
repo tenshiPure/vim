@@ -47,9 +47,19 @@ class Translator:
 			_from = 'en'
 			_to = 'ja'
 
-		text = buf.currentCorsurLine
+		text = self.adjustCharCode(buf.currentCorsurLine)
 
 		return url + '?from=%s&to=%s&text=%s' % (_from, _to, text)
+	
+	#
+	# 文字コードの調整
+	#
+	def adjustCharCode(self, string):
+		if os.name == 'nt':
+			#str/cp932 -> unicode/cp932 -> str/utf-8
+			return string.decode('cp932').encode('utf-8')
+		else:
+			pass
 
 	#
 	# API返却値から結果を抜き出す
