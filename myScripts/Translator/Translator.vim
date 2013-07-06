@@ -9,7 +9,7 @@ import re
 class Translator:
 
 	#
-	# ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	# ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	#
 	def __init__(self, _from, _to, _text):
 		self._from = _from
@@ -17,28 +17,53 @@ class Translator:
 		self._text = _text
 
 	#
-	# –|–óÀs
+	# å®Ÿè¡Œ
 	#
 	def execute(self):
-		token = self.getAccessToken()
-		translateApiResult = self.translate(token)
+		try:
+			token = self.getLocalToken()
+			translateApiResult = self.translate(token)
+		except:
+			token = self.getToken()
+			translateApiResult = self.translate(token)
+
 		result = self.parseXml(translateApiResult)
 
 		return result
 
 	#
-	# ƒAƒNƒZƒXƒg[ƒNƒ“‚ğæ“¾‚·‚éAPI‚ğ‚½‚½‚­
+	# ãƒ­ãƒ¼ã‚«ãƒ«ã®ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å–å¾—ã™ã‚‹
 	#
-	def getAccessToken(self):
+	def getLocalToken(self):
+		_file = open('LocalToken', 'r')
+
+		return _file.readline()
+
+	#
+	# ãƒ­ãƒ¼ã‚«ãƒ«ã«ãƒˆãƒ¼ã‚¯ãƒ³ã‚’ä¿å­˜ã™ã‚‹
+	#
+	def setLocalToken(self, token):
+		_file = open('LocalToken', 'w')
+
+		_file.write(token)
+		_file.close()
+
+	#
+	# ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å–å¾—ã™ã‚‹
+	#
+	def getToken(self):
 		params = urllib.urlencode(Const.TOKEN_PARAMS)
 		request = urllib2.Request(Const.TOKEN_URL, params)
 		response = urllib2.urlopen(request)
 		jsonData = json.loads(response.read())
 
-		return jsonData['access_token']
+		token = jsonData['access_token']
+
+		self.setLocalToken(token)
+		return token
 
 	#
-	# –|–ó‚·‚éAPI‚ğ‚½‚½‚­
+	# ç¿»è¨³ã™ã‚‹
 	#
 	def translate(self, token):
 		url = Const.TRANS_URL + '?from=%s&to=%s&text=%s' % (self._from, self._to, self._text)
@@ -49,7 +74,7 @@ class Translator:
 		return response.read()
 
 	#
-	# API•Ô‹p’l‚©‚çŒ‹‰Ê‚ğ”²‚«o‚·
+	# APIè¿”å´å€¤ã‹ã‚‰çµæœã‚’æŠœãå‡ºã™
 	#
 	def parseXml(self, string):
 		return re.sub(r'<[^>]*>', '', string)
