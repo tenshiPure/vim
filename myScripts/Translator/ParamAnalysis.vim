@@ -4,7 +4,7 @@ python <<EOM
 class ParamAnalysis:
 
 	#
-	# –|–óŒ³Œ¾Œê‚ðŽæ“¾‚·‚é
+	# ç¿»è¨³å…ƒè¨€èªžã‚’å–å¾—ã™ã‚‹
 	#
 	@staticmethod
 	def getFrom():
@@ -16,7 +16,7 @@ class ParamAnalysis:
 			return 'en'
 
 	#
-	# –|–óæŒ¾Œê‚ðŽæ“¾‚·‚é
+	# ç¿»è¨³å…ˆè¨€èªžã‚’å–å¾—ã™ã‚‹
 	#
 	@staticmethod
 	def getTo():
@@ -28,10 +28,10 @@ class ParamAnalysis:
 			return 'ja'
 
 	#
-	# –|–ó‚·‚éƒeƒLƒXƒg‚ðŽæ“¾‚·‚é
+	# ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰ç¿»è¨³ã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹
 	#
 	@staticmethod
-	def getText():
+	def getTextFromBuffer():
 		buf = _Buffer()
 
 		result = buf.lines[1]

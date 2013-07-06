@@ -323,4 +323,8 @@ let $path .= 'C:\Python27\Scripts'
 
 
 source $myScripts/Translator/TranslatorController.vim
-nnoremap <F9> :call TranslatorController('new')<CR>
+command! -nargs=1 Jts call TranslatorController('arg_ja', <f-args>)
+command! -nargs=1 Ets call TranslatorController('arg_en', <f-args>)
+command!          Bts call TranslatorController('buffer')
+command!          Qts call TranslatorController('quick')
+command! -range   Vts call TranslatorController('visual')

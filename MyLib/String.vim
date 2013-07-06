@@ -23,6 +23,24 @@ class String:
 		return vim.current.buffer[lineNum - 1]
 
 	#
+	# カーソル下の単語を取得する
+	#
+	@staticmethod
+	def getUnderCursorWord():
+		return vim.eval('expand("<cword>")')
+
+	#
+	# ビジュアルモードで選択したテキストを取得する
+	#
+	@staticmethod
+	def getVisualCommandText():
+		vim.command('let tmp = @@')
+		vim.command('silent normal gvy')
+		vim.command('let selected = @@')
+		vim.command('let @@ = tmp')
+		return vim.eval('selected')
+
+	#
 	# 外部コマンドを別バッファ経由でリダイレクトする
 	#
 	@staticmethod

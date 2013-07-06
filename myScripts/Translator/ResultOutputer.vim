@@ -4,7 +4,7 @@ python <<EOM
 class ResultOutputer:
 
 	#
-	# 結果を出力する
+	# バッファに結果を出力する
 	#
 	@staticmethod
 	def toBuffer(text):
@@ -22,4 +22,14 @@ class ResultOutputer:
 		Tab.switchTab(toBuf, 2)
 		buf.write(1, text)
 		Tab.switchTab(fromBuf, 2)
+
+	#
+	# コマンドラインエリアに結果を出力する
+	#
+	@staticmethod
+	def toCommandLineArea(text):
+		text = text.decode('utf-8').encode('cp932')
+
+		print text
+
 EOM
