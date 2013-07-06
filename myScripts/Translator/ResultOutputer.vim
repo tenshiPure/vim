@@ -8,11 +8,18 @@ class ResultOutputer:
 	#
 	@staticmethod
 	def toBuffer(text):
-		Tab.switchTab(en_trs, 2)
+		buf = _Buffer()
+
+		if buf.name == ja_trs:
+			fromBuf = ja_trs
+			toBuf = en_trs
+		else:
+			fromBuf = en_trs
+			toBuf = ja_trs
 
 		text = text.decode('utf-8').encode('cp932')
 
-		buf = _Buffer()
+		Tab.switchTab(toBuf, 2)
 		buf.write(1, text)
-
+		Tab.switchTab(fromBuf, 2)
 EOM

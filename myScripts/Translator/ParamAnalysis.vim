@@ -8,14 +8,24 @@ class ParamAnalysis:
 	#
 	@staticmethod
 	def getFrom():
-		return 'ja'
+		buf = _Buffer()
+
+		if buf.name == ja_trs:
+			return 'ja'
+		else:
+			return 'en'
 
 	#
 	# 翻訳先言語を取得する
 	#
 	@staticmethod
 	def getTo():
-		return 'en'
+		buf = _Buffer()
+
+		if buf.name == ja_trs:
+			return 'en'
+		else:
+			return 'ja'
 
 	#
 	# 翻訳するテキストを取得する
