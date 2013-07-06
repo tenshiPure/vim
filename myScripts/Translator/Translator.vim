@@ -14,7 +14,7 @@ class Translator:
 	def __init__(self, _from, _to, _text):
 		self._from = _from
 		self._to = _to
-		self._text = _text
+		self._text = re.sub(r' ', r'+', _text)
 
 	#
 	# 実行
