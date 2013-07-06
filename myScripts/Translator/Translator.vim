@@ -1,33 +1,47 @@
 python <<EOM
 # -*- coding: utf-8 -*-
 
+import urllib
+import urllib2
+import json
+import re
+
 class Translator:
 
 	#
-	# ç¿»è¨³å®Ÿè¡Œ
+	# ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	#
+	def __init__(self, _from, _to, _text):
+		self._from = _from
+		self._to = _to
+		self._text = _text
+
+	#
+	# –|–óÀs
 	#
 	def execute(self):
 		token = self.getAccessToken()
 		translateApiResult = self.translate(token)
 		result = self.parseXml(translateApiResult)
-		self.outputResult(result)
+
+		return result
 
 	#
-	# ã‚¢ã‚¯ã‚»ã‚¹ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å–å¾—ã™ã‚‹APIã‚’ãŸãŸã
+	# ƒAƒNƒZƒXƒg[ƒNƒ“‚ğæ“¾‚·‚éAPI‚ğ‚½‚½‚­
 	#
 	def getAccessToken(self):
-		params = urllib.urlencode(GetAccessTokenVal.POST_PARAMS)
-		request = urllib2.Request(GetAccessTokenVal.URL, params)
+		params = urllib.urlencode(Const.TOKEN_PARAMS)
+		request = urllib2.Request(Const.TOKEN_URL, params)
 		response = urllib2.urlopen(request)
 		jsonData = json.loads(response.read())
 
 		return jsonData['access_token']
 
 	#
-	# ç¿»è¨³ã™ã‚‹APIã‚’ãŸãŸã
+	# –|–ó‚·‚éAPI‚ğ‚½‚½‚­
 	#
 	def translate(self, token):
-		url = self.addGetParams(TranslateVal.URL)
+		url = Const.TRANS_URL + '?from=%s&to=%s&text=%s' % (self._from, self._to, self._text)
 		request = urllib2.Request(url)
 		request.add_header('Authorization', 'Bearer %s' % (token))
 		response = urllib2.urlopen(request)
@@ -35,62 +49,9 @@ class Translator:
 		return response.read()
 
 	#
-	# GETãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹
-	#
-	def addGetParams(self, url):
-		buf = _Buffer()
-
-		if buf.name == ja_trs:
-			_from = 'ja'
-			_to = 'en'
-		else:
-			_from = 'en'
-			_to = 'ja'
-
-		if os.name == 'nt':
-			text = self.convertCharCode(buf.currentCorsurLine, 'cp932', 'utf-8')
-		else:
-			text = self.convertCharCode(buf.currentCorsurLine, 'cp932', 'utf-8')
-		text = self.replaceSpace(text)
-
-		return url + '?from=%s&to=%s&text=%s' % (_from, _to, text)
-	
-	#
-	# æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›
-	#
-	def convertCharCode(self, string, _from, _to):
-		return string.decode(_from).encode(_to)
-
-	#
-	# åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã‚’åŠè§’ï¼‹ã«ç½®ãæ›ãˆã‚‹
-	#
-	def replaceSpace(self, string):
-		return re.sub(r' ', r'+', string)
-
-	#
-	# APIè¿”å´å€¤ã‹ã‚‰çµæœã‚’æŠœãå‡ºã™
+	# API•Ô‹p’l‚©‚çŒ‹‰Ê‚ğ”²‚«o‚·
 	#
 	def parseXml(self, string):
 		return re.sub(r'<[^>]*>', '', string)
 		
-	#
-	# çµæœã‚’å‡ºåŠ›ã™ã‚‹
-	#
-	def outputResult(self, text):
-		buf = _Buffer()
-
-		if buf.name == ja_trs:
-			Tab.switchTab(en_trs, 2)
-		else:
-			Tab.switchTab(ja_trs, 2)
-
-		if os.name == 'nt':
-			text = self.convertCharCode(text, 'utf-8', 'cp932')
-		else:
-			text = self.convertCharCode(text, 'utf-8', 'cp932')
-			
-		buf.write(1, text)
-
-		Tab.switchTab(buf.name, 2)
-
 EOM

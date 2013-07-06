@@ -1,6 +1,7 @@
 source $myScripts/Translator/Translator.vim
-source $myScripts/Translator/TranslateVal.vim
-source $myScripts/Translator/GetAccessTokenVal.vim
+source $myScripts/Translator/ParamAnalysis.vim
+source $myScripts/Translator/ResultOutputer.vim
+source $myScripts/Translator/Const.vim
 
 augroup autoCmdTranslator
 	autocmd!
@@ -14,10 +15,6 @@ function! TranslatorController(mode)
 
 python <<EOM
 
-import urllib
-import urllib2
-import json
-import re
 import vim
 
 mode = vim.eval('a:mode')
@@ -30,8 +27,10 @@ if mode == 'new':
 	Tab.expandTwoHorizontally(ja_trs, en_trs, ja_trs)
 
 elif mode == 'execute':
-	translator = Translator()
-	translator.execute()
+	translator = Translator(ParamAnalysis.getFrom(), ParamAnalysis.getTo(), ParamAnalysis.getText())
+	result = translator.execute()
+
+	ResultOutputer.toBuffer(result)
 
 EOM
 
@@ -39,5 +38,5 @@ endfunction
 
 function! BufMap_Translator()
 	nnoremap <buffer> <CR>  :call TranslatorController('execute')<CR>
-	inoremap <buffer> <CR>  <ESC>:call TranslatorController('execute')<CR>
 endfunction
+

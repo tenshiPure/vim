@@ -70,6 +70,7 @@ let $fundamental = $gitvim . '/MyFundamental'
 let $frank       = $gitvim . '/myScripts/FlexibleFrank'
 let $cass        = $gitvim . '/myScripts/CommandAssistant'
 let $notcare     = $gitvim . '/myScripts/NotCareExtension'
+let $trans       = $gitvim . '/myScripts/Translator'
 
 "AutoHotkeys
 let $ahk     = "D:/MyDocument/AutoHotKeys" --win
