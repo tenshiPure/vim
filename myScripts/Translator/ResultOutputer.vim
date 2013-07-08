@@ -4,7 +4,7 @@ python <<EOM
 class ResultOutputer:
 
 	#
-	# ƒoƒbƒtƒ@‚ÉŒ‹‰Ê‚ðo—Í‚·‚é
+	# ãƒãƒƒãƒ•ã‚¡ã«çµæžœã‚’å‡ºåŠ›ã™ã‚‹
 	#
 	@staticmethod
 	def toBuffer(text):
@@ -17,18 +17,18 @@ class ResultOutputer:
 			fromBuf = en_trs
 			toBuf = ja_trs
 
-		text = text.decode('utf-8').encode('cp932')
+		text = text.decode('utf-8').encode(vim.eval('&encoding'))
 
 		Tab.switchTab(toBuf, 2)
 		buf.write(1, text)
 		Tab.switchTab(fromBuf, 2)
 
 	#
-	# ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ƒGƒŠƒA‚ÉŒ‹‰Ê‚ðo—Í‚·‚é
+	# ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚¨ãƒªã‚¢ã«çµæžœã‚’å‡ºåŠ›ã™ã‚‹
 	#
 	@staticmethod
 	def toCommandLineArea(text):
-		text = text.decode('utf-8').encode('cp932')
+		text = text.decode('utf-8').encode(vim.eval('&encoding'))
 
 		print text
 

@@ -14,6 +14,7 @@ autocmd autoCmdTranslator BufEnter *.trs call BufMap_Translator()
 function! TranslatorController(mode, ...)
 
 python <<EOM
+# -*- coding: utf-8 -*-
 
 import vim
 
