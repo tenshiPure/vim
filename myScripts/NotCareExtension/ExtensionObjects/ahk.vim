@@ -18,7 +18,7 @@ class ahk(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		pass
+		vim.command('silent !explorer "C:\Program Files\AutoHotkey\AutoHotKeyU64.exe"')
 
 	#
 	# テストを実行する
@@ -29,7 +29,6 @@ class ahk(Base):
 	#
 	# ログ文を得る
 	#
-	@abstractmethod
 	def getLogText(self):
 		pass
 
