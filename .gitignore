@@ -5,7 +5,7 @@ myScripts/CommandAssistant/cassfiles/CommandListHistory.cass
 myScripts/CommandAssistant/cassfiles/CommandResultHistory.cass
 
 myScripts/Translator/Const.vim
-myScripts/Translator/LocalToken.vim
+myScripts/Translator/LocalToken
 myScripts/Translator/TrsFiles/en.trs
 myScripts/Translator/TrsFiles/ja.trs
 
