@@ -71,6 +71,7 @@ let $frank       = $gitvim . '/myScripts/FlexibleFrank'
 let $cass        = $gitvim . '/myScripts/CommandAssistant'
 let $notcare     = $gitvim . '/myScripts/NotCareExtension'
 let $trans       = $gitvim . '/myScripts/Translator'
+let $vmail       = $gitvim . '/myScripts/vMail'
 
 "AutoHotkeys
 let $ahk     = "D:/MyDocument/AutoHotKeys" --win
