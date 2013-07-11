@@ -8,6 +8,8 @@ import re
 
 class Translator:
 
+	LocalToken = vim.eval('$myScripts') + '/Translator/LocalToken'
+
 	#
 	# コンストラクタ
 	#
@@ -35,7 +37,7 @@ class Translator:
 	# ローカルのトークンを取得する
 	#
 	def getLocalToken(self):
-		_file = open('LocalToken', 'r')
+		_file = open(Translator.LocalToken, 'r')
 
 		return _file.readline()
 
@@ -43,7 +45,7 @@ class Translator:
 	# ローカルにトークンを保存する
 	#
 	def setLocalToken(self, token):
-		_file = open('LocalToken', 'w')
+		_file = open(Translator.LocalToken, 'w')
 
 		_file.write(token)
 		_file.close()

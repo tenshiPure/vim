@@ -4,19 +4,23 @@ import vim
 class WordYank:
 
 	#
-	# コントローラから呼ばれるメソッド
+	# ヤンク
 	#
-	def execute(self):
+	def yank(self):
 		pos = Cursor.getPos()
 
-		self.yankUnderCursor()
+		vim.command('execute ":normal viwy"')
 
 		Cursor.setPos(pos)
 
 	#
-	# カーソル下の単語をヤンク
+	# ペースト
 	#
-	def yankUnderCursor(self):
-		vim.command('execute ":normal viwy"')
+	def paste(self):
+		vim.command('call Paste()')
 
 EOM
+
+function! Paste()
+	execute 'normal! diw"0P'
+endfunction

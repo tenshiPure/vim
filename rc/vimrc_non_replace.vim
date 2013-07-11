@@ -282,8 +282,8 @@ source $myScripts/ReloadVimrc/ReloadVimrc.vim
 "WordYank
 source $myScripts/WordYank/WordYankController.vim
 
-nnoremap yy :call WordYankController()<CR>
-nnoremap yp ciw<C-r>0<ESC>
+nnoremap yy :call WordYankController('yank')<CR>
+nnoremap yp :call WordYankController('paste')<CR>
 
 "MyLibs
 source $gitvim/MyLib/String.vim

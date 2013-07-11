@@ -2,10 +2,14 @@
 
 source $myScripts/WordYank/WordYank.vim
 
-function! WordYankController()
+function! WordYankController(mode)
 
 python <<EOM
-WordYank().execute()
+wordYank = WordYank()
+if vim.eval('a:mode') == 'yank':
+	wordYank.yank()
+else:
+	wordYank.paste()
 EOM
 
 endfunction
