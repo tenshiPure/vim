@@ -17,25 +17,26 @@ class Mail:
 
 		self.title = self.decode(mailData.get('Subject'))
 		self.sender = self.decode(mailData.get('From'))
-		self.date = self.get_format_date(mailData.get('Date'))
+		self.date = self.dateFormat(mailData.get('Date'))
 
-		for part in mailData.walk():
-			if part.get_content_maintype() == 'multipart':
+		for data in mailData.walk():
+			if data.get_content_type() != 'text/plain':
 				continue
 				
-			self.body = self.decode_body(part)
+			self.body = self.decode_body(data)
 
 	#
 	# デコード
 	#
 	def decode(self, dec_target):
 		decodefrag = email.Header.decode_header(dec_target)
+		title = ''
 		
 		for string, encoding in decodefrag:
 			if encoding is None:
-				title = unicode(string)
+				title += unicode(string)
 			else:
-				title = unicode(string, encoding)
+				title += unicode(string, encoding)
 		
 		return title
 	
@@ -54,7 +55,7 @@ class Mail:
 	#
 	# 日付フォーマット
 	#
-	def get_format_date(self, date_string):
+	def dateFormat(self, date_string):
 		
 		format_pattern = '%a, %d %b %Y %H:%M:%S'
 
