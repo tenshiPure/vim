@@ -15,20 +15,20 @@ class Mail:
 	def __init__(self, mailData):
 		mailData = email.message_from_string(mailData)
 
-		self.title = self.decode(mailData.get('Subject'))
-		self.sender = self.decode(mailData.get('From'))
+		self.title = self.analysis(mailData.get('Subject'))
+		self.sender = self.analysis(mailData.get('From'))
 		self.date = self.dateFormat(mailData.get('Date'))
 
 		for data in mailData.walk():
 			if data.get_content_type() != 'text/plain':
 				continue
 				
-			self.body = self.decode_body(data)
+			self.body = self.analysisBody(data)
 
 	#
-	# デコード
+	# 解析
 	#
-	def decode(self, dec_target):
+	def analysis(self, dec_target):
 		decodefrag = email.Header.decode_header(dec_target)
 		title = ''
 		
@@ -38,19 +38,19 @@ class Mail:
 			else:
 				title += unicode(string, encoding)
 		
-		return title
+		return title.encode(vim.eval('&encoding'))
 	
 	#
-	# デコード
+	# 解析
 	#
-	def decode_body(self, part):
+	def analysisBody(self, part):
 		charset = str(part.get_content_charset())
 		if charset is None:
 			body = part.get_payload()
 		else:
 			body = unicode(part.get_payload(), charset)
 			
-		return body
+		return body.encode(vim.eval('&encoding'))
 
 	#
 	# 日付フォーマット
@@ -64,7 +64,8 @@ class Mail:
 		weeks = {0 : u'月', 1 : u'火', 2 : u'水', 3 : u'木', 4 : u'金', 5 : u'土', 6 : u'日'}
 		week = weeks[f.tm_wday]
 
-		return "%s/%s/%s(%s) %s:%s:%s" % (f.tm_year, f.tm_mon, f.tm_mday, week, f.tm_hour, f.tm_min, f.tm_sec)
+		result = "%s/%s/%s(%s) %s:%s:%s" %(f.tm_year, f.tm_mon, f.tm_mday, week, f.tm_hour, f.tm_min, f.tm_sec)
+		return result.encode(vim.eval('&encoding'))
 
 	#
 	# メールダンプ
@@ -72,6 +73,7 @@ class Mail:
 	def dump(self):
 		print self.title
 		print self.sender
+		print type(self.date)
 		print self.date
 		print self.body
 
