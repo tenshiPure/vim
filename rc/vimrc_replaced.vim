@@ -446,3 +446,9 @@ command! -nargs=1 Ets call TranslatorController('arg_en', <f-args>)
 command!          Bts call TranslatorController('buffer')
 command!          Qts call TranslatorController('quick')
 command! -range   Vts call TranslatorController('visual')
+
+
+
+
+source $myScripts/VMail/VMailController.vim
+command! J call VMailController()
