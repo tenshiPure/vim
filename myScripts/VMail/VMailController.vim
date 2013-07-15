@@ -24,8 +24,9 @@ mode = vim.eval('a:mode')
 
 if mode == 'new':
 	mailManager = MailManager(143, 143)
-	Tab.expandTwoHorizontally(titlesPath, Tab.CLEAR, mainPath, Tab.CLEAR, titlesPath)
-	mailManager.outputTitleList()
+	mailManager.mails[1].dump()
+#	Tab.expandTwoHorizontally(titlesPath, Tab.CLEAR, mainPath, Tab.CLEAR, titlesPath)
+#	mailManager.outputTitleList()
 
 elif mode == 'reed':
 	mailManager.outputMain(Cursor.getCursorLineNum())

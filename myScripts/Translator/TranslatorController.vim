@@ -46,7 +46,7 @@ elif mode == 'quick':
 	ResultOutputer.toCommandLineArea(result)
 
 elif mode == 'arg_ja':
-	text = vim.eval('a:1').decode(vim.eval('&encoding')).encode('utf-8')
+	text = String.convert(vim.eval('a:1'), 'vim', 'utf-8')
 
 	translator = Translator('ja', 'en', text)
 	result = translator.execute()

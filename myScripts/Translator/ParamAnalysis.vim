@@ -38,6 +38,6 @@ class ParamAnalysis:
 		for line in buf.lines[2:]:
 			result = result + '+' + line
 
-		return result.decode(vim.eval('&encoding')).encode('utf-8')
+		return String.convert(result, 'vim', 'utf-8')
 
 EOM

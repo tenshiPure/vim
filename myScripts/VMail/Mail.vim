@@ -10,7 +10,7 @@ import time
 
 class Mail:
 
-	ANALYSIS_FAILURE = '+++解析不能+++'.decode('utf-8').encode(vim.eval('&encoding'))
+	ANALYSIS_FAILURE = String.convert('+++解析不能+++', 'utf-8', 'vim')
 
 	#
 	# コンストラクタ
@@ -42,7 +42,7 @@ class Mail:
 				else:
 					title += unicode(string, encoding)
 		
-			return title.encode(vim.eval('&encoding'))
+			return String.convert(title, None, 'vim')
 
 		except:
 			return Mail.ANALYSIS_FAILURE
@@ -58,7 +58,7 @@ class Mail:
 			else:
 				oneLineMain = unicode(part.get_payload(), charset)
 				
-			oneLineMain = oneLineMain.encode(vim.eval('&encoding'))
+			oneLineMain = String.convert(oneLineMain, None, 'vim')
 
 			return oneLineMain.split('\r\n')[:-1]
 
@@ -89,21 +89,21 @@ class Mail:
 			_time = _datetime.strftime('%H:%M:%S')
 
 			weeks = {'0' : u'日', '1' : u'月', '2' : u'火', '3' : u'水', '4' : u'木', '5' : u'金', '6' : u'土'}
-			_week = weeks[_datetime.strftime('%w')].encode(vim.eval('&encoding'))
+			_week = String.convert(weeks[_datetime.strftime('%w')], None, 'vim')
 
 			return '%s(%s) %s' % (_date, _week, _time)
 
-		except Exception as e:
+		except:
 			return Mail.ANALYSIS_FAILURE
 
 	#
 	# メールダンプ
 	#
 	def dump(self):
-		print 'タイトル : '.decode('utf-8').encode('cp932') + self.title
-		print '送信者   : '.decode('utf-8').encode('cp932') + self.sender
-		print '送信日時 : '.decode('utf-8').encode('cp932') + self.date
-		print '本文 ...'.decode('utf-8').encode('cp932')
+		print String.convert('タイトル : ', 'utf-8', 'vim') + self.title
+		print String.convert('送信者　 : ', 'utf-8', 'vim') + self.sender
+		print String.convert('送信日時 : ', 'utf-8', 'vim') + self.date
+		print String.convert('本文...', 'utf-8', 'vim')
 		for line in self.main:
 			print line
 

@@ -17,7 +17,7 @@ class ResultOutputer:
 			fromBuf = en_trs
 			toBuf = ja_trs
 
-		text = text.decode('utf-8').encode(vim.eval('&encoding'))
+		text = String.convert(text, 'utf-8', 'vim')
 
 		Tab.switchTab(toBuf, 2)
 		buf.write(1, text)
@@ -28,8 +28,6 @@ class ResultOutputer:
 	#
 	@staticmethod
 	def toCommandLineArea(text):
-		text = text.decode('utf-8').encode(vim.eval('&encoding'))
-
-		print text
+		print String.convert(text, 'utf-8', 'vim')
 
 EOM

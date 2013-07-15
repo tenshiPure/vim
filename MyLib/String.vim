@@ -68,4 +68,22 @@ class String:
 		else:
 			return None
 
+	#
+	# 文字変換
+	#
+	@staticmethod
+	def convert(string, _from, _to):
+		if _from == 'vim':
+			result = string.decode(vim.eval('&encoding'))
+		elif _from is not None:
+			result = string.decode(_from)
+		elif _from is None:
+			result = string
+
+		if _to == 'vim':
+			result = result.encode(vim.eval('&encoding'))
+		elif _to is not None:
+			result = result.encode(_to)
+
+		return result
 EOM
