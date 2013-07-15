@@ -45,6 +45,18 @@ class _Buffer():
 		self.replace()
 
 	#
+	# リストで書き換え
+	#
+	def writeWithList(self, lineNum, list):
+		for line in list:
+			try:
+				self.lines[lineNum] = line
+			except:
+				self.lines.append(line)
+			lineNum += 1
+		self.replace()
+
+	#
 	# 書き足し
 	#
 	def append(self, lineNum, lines):
@@ -65,7 +77,14 @@ class _Buffer():
 		del buf[0:2]
 
 	#
-	# インスタンス変数出力
+	# バッファクリア
+	#
+	def clear(self):
+		buf = vim.current.buffer
+		buf[:] = None
+
+	#
+	# デバッグ
 	#
 	def debug(self):
 		print self.name

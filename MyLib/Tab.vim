@@ -2,6 +2,8 @@ python <<EOM
 
 class Tab:
 
+	CLEAR = 0
+
 	#
 	# 無題のタブか判定
 	#
@@ -22,16 +24,24 @@ class Tab:
 	# 複数のタブを展開する：水平２つ
 	#
 	@staticmethod
-	def expandTwoHorizontally(buf1, buf2, focus, height = None):
+	def expandTwoHorizontally(buf1, clearFlg1, buf2, clearFlg2, focus, height = None):
 		if Tab.isBlankTab():
 			vim.command('edit ' + buf1)
 		else:
 			vim.command('tabedit ' + buf1)
-			vim.command('set splitbelow')
+
+		if clearFlg1 == Tab.CLEAR:
+			_Buffer().clear()
+
+		vim.command('set splitbelow')
+
 		if height is None:
-			vim.command('split ' + en_trs)
+			vim.command('split ' + buf2)
 		else:
 			vim.command('botright ' + str(height) + 'split ' + buf2)
+
+		if clearFlg2 == Tab.CLEAR:
+			_Buffer().clear()
 
 		Tab.switchTab(focus, 2)
 
@@ -52,7 +62,7 @@ class Tab:
 	#
 	@staticmethod
 	def close():
-		forceList = ['frank', 'cass', 'trs']
+		forceList = ['frank', 'cass', 'trs', 'vmail']
 
 		extension = File.getExtension(vim.current.buffer.name)
 		

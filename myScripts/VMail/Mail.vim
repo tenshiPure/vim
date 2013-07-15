@@ -23,7 +23,7 @@ class Mail:
 			if data.get_content_type() != 'text/plain':
 				continue
 				
-			self.body = self.analysisBody(data)
+			self.main = self.analysisMain(data)
 
 	#
 	# 解析
@@ -43,14 +43,16 @@ class Mail:
 	#
 	# 解析
 	#
-	def analysisBody(self, part):
+	def analysisMain(self, part):
 		charset = str(part.get_content_charset())
 		if charset is None:
-			body = part.get_payload()
+			oneLineMain = part.get_payload()
 		else:
-			body = unicode(part.get_payload(), charset)
+			oneLineMain = unicode(part.get_payload(), charset)
 			
-		return body.encode(vim.eval('&encoding'))
+		oneLineMain = oneLineMain.encode(vim.eval('&encoding'))
+
+		return oneLineMain.split('\r\n')[:-1]
 
 	#
 	# 日付フォーマット
@@ -75,6 +77,6 @@ class Mail:
 		print self.sender
 		print type(self.date)
 		print self.date
-		print self.body
+		print self.main
 
 EOM

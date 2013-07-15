@@ -24,14 +24,30 @@ class MailManager:
 		self._tearDown(gmail)
 
 	#
-	# 指定範囲のメールのタイトルリストを返す
+	# タイトルリストを出力する
 	#
-	def getTitles(self):
+	def outputTitleList(self):
 		titles = []
 		for mail in self.mails.itervalues():
 			titles.append(mail.title)
 
-		return titles
+		Tab.switchTab(titlesPath, 2)
+		_Buffer().clear()
+
+		buf = _Buffer()
+		buf.writeWithList(1, titles)
+
+	#
+	# 本文を出力する
+	#
+	def outputMain(self, index):
+		Tab.switchTab(mainPath, 2)
+		_Buffer().clear()
+
+		buf = _Buffer()
+		buf.writeWithList(1, self.mails[index].main)
+
+		Tab.switchTab(titlesPath, 2)
 
 	#
 	# 起動

@@ -451,4 +451,4 @@ command! -range   Vts call TranslatorController('visual')
 
 
 source $myScripts/VMail/VMailController.vim
-command! J call VMailController()
+command! Vmail call VMailController('new')
