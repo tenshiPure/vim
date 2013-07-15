@@ -1,7 +1,7 @@
 source $myScripts/Translator/Translator.vim
 source $myScripts/Translator/ParamAnalysis.vim
 source $myScripts/Translator/ResultOutputer.vim
-source $myScripts/Translator/Const.vim
+source $myScripts/Translator/AccessInfo.vim
 
 augroup autoCmdTranslator
 	autocmd!
@@ -25,7 +25,8 @@ ja_trs = os.path.abspath(head + '/Translator/TrsFiles/ja.trs')
 en_trs = os.path.abspath(head + '/Translator/TrsFiles/en.trs')
 
 if mode == 'buffer':
-	Tab.expandTwoHorizontally(ja_trs, en_trs, ja_trs)
+	pass
+#	Tab.expandTwoHorizontally(ja_trs, en_trs, ja_trs)
 
 elif mode == 'execute':
 	translator = Translator(ParamAnalysis.getFrom(), ParamAnalysis.getTo(), ParamAnalysis.getTextFromBuffer())

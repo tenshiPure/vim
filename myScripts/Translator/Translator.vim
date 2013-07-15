@@ -54,8 +54,8 @@ class Translator:
 	# トークンを取得する
 	#
 	def getToken(self):
-		params = urllib.urlencode(Const.TOKEN_PARAMS)
-		request = urllib2.Request(Const.TOKEN_URL, params)
+		params = urllib.urlencode(AccessInfo.TOKEN_PARAMS)
+		request = urllib2.Request(AccessInfo.TOKEN_URL, params)
 		response = urllib2.urlopen(request)
 		jsonData = json.loads(response.read())
 
@@ -68,7 +68,7 @@ class Translator:
 	# 翻訳する
 	#
 	def translate(self, token):
-		url = Const.TRANS_URL + '?from=%s&to=%s&text=%s' % (self._from, self._to, self._text)
+		url = AccessInfo.TRANS_URL + '?from=%s&to=%s&text=%s' % (self._from, self._to, self._text)
 		request = urllib2.Request(url)
 		request.add_header('Authorization', 'Bearer %s' % (token))
 		response = urllib2.urlopen(request)

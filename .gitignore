@@ -1,14 +1,12 @@
 .DS_Store
 
-myScripts/CommandAssistant/cassfiles/CommandResult.cass
-myScripts/CommandAssistant/cassfiles/CommandListHistory.cass
-myScripts/CommandAssistant/cassfiles/CommandResultHistory.cass
+myScripts/FlexibleFrank/WorkingText/*.frank
 
-myScripts/Translator/Const.vim
-myScripts/Translator/LocalToken
-myScripts/Translator/TrsFiles/en.trs
-myScripts/Translator/TrsFiles/ja.trs
+myScripts/CommandAssistant/cassfiles/*.cass
 
-myScripts/VMail/Const.vim
-myScripts/VMail/WorkingTexts/main.vmail
-myScripts/VMail/WorkingTexts/titles.vmail
+myScripts/Translator/AccessInfo.vim
+myScripts/Translator/LocalToken.txt
+myScripts/Translator/TrsFiles/*.trs
+
+myScripts/VMail/AcountInfo.vim
+myScripts/VMail/WorkingTexts/*.vmail
