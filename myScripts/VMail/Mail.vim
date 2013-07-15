@@ -7,6 +7,7 @@ import email
 import email.Header
 import email.utils
 import time
+from email.Utils import parseaddr
 
 class Mail:
 
@@ -18,9 +19,9 @@ class Mail:
 	def __init__(self, mailData):
 		mailData = email.message_from_string(mailData)
 
-		self.title = self.analysis(mailData.get('Subject'))
-		self.sender = self.analysis(mailData.get('From'))
-		self.date = self.dateFormat(mailData.get('Date'))
+		self.analysisTitle(mailData.get('Subject'))
+		self.analysisSender(mailData.get('From'))
+		self.analysisDate(mailData.get('Date'))
 
 		self.simpleInfo = self.createSimpleInfo()
 
@@ -33,21 +34,43 @@ class Mail:
 	#
 	# 解析
 	#
-	def analysis(self, dec_target):
+	def analysisTitle(self, string):
 		try:
-			decodefrag = email.Header.decode_header(dec_target)
-			title = ''
+			decodefrag = email.Header.decode_header(string)
 			
 			for string, encoding in decodefrag:
 				if encoding is None:
-					title += unicode(string)
+					title = unicode(string)
 				else:
-					title += unicode(string, encoding)
+					title = unicode(string, encoding)
 		
-			return String.convert(title, None, 'vim')
+			self.title = String.convert(title, None, 'vim')
 
 		except:
-			return Mail.ANALYSIS_FAILURE
+			self.title = Mail.ANALYSIS_FAILURE
+	
+	#
+	# 解析
+	#
+	def analysisSender(self, string):
+		try:
+			decodefrag = email.Header.decode_header(string)
+			
+			sender = ''
+			for string, encoding in decodefrag:
+				if encoding is None:
+					sender += unicode(string)
+				else:
+					sender += unicode(string, encoding)
+		
+			sender = String.convert(sender, None, 'vim')
+
+			self.senderName = parseaddr(sender)[0]
+			self.senderAddr = parseaddr(sender)[1]
+
+		except:
+			self.senderName = Mail.ANALYSIS_FAILURE
+			self.senderAddr = Mail.ANALYSIS_FAILURE
 	
 	#
 	# 解析
@@ -70,7 +93,7 @@ class Mail:
 	#
 	# 日付フォーマット
 	#
-	def dateFormat(self, date):
+	def analysisDate(self, date):
 		try:
 			parsed = email.utils.parsedate_tz(date)
 
@@ -85,47 +108,41 @@ class Mail:
 			jst = datetime.timedelta(seconds = 32400)
 			_offset = jst - datetime.timedelta(seconds = parsed[9])
 
-			_datetime = (gmt + _offset)
-
-			_date = _datetime.strftime('%Y/%m/%d')
-			_time = _datetime.strftime('%H:%M:%S')
+			_d = (gmt + _offset)
 
 			weeks = {'0' : u'日', '1' : u'月', '2' : u'火', '3' : u'水', '4' : u'木', '5' : u'金', '6' : u'土'}
-			_week = String.convert(weeks[_datetime.strftime('%w')], None, 'vim')
+			_week = String.convert(weeks[_d.strftime('%w')], None, 'vim')
 
-			return '%s(%s) %s' % (_date, _week, _time)
+			self.simpleDate     = _d.strftime('%m/%d')
+			self.simpleTime     = _d.strftime('%H:%M')
+			self.detailDatetime = '%s(%s) %s' % (_d.strftime('%Y/%m/%d'), _week, _d.strftime('%H:%M:%S'))
 
 		except:
-			return Mail.ANALYSIS_FAILURE
+			self.simpleDate     = Mail.ANALYSIS_FAILURE
+			self.simpleTime     = Mail.ANALYSIS_FAILURE
+			self.detailDatetime = Mail.ANALYSIS_FAILURE
 
 	#
 	# 簡易情報を作成する
 	#
 	def createSimpleInfo(self):
-		senderWidth = 30
+		senderNameWidth = 10
+		senderAddrWidth = 30
 		titleWidth = 30
 
-		if senderWidth < len(self.sender):
-			_sender = self.sender[:senderWidth]
-		else:
-			_sender = self.sender + ' ' * (senderWidth - len(self.sender))
+		_senderName = self.stringFormat(self.senderName, 10)
+		_senderAddr = self.stringFormat(self.senderAddr, 30)
+		_title      = self.stringFormat(self.title,      30)
 
-		if titleWidth < len(self.title):
-			_title = self.title[:titleWidth]
-		else:
-			_title = self.title + ' ' * (titleWidth - len(self.title))
-
-		return '%s    %s    %s' % (_sender, _title, self.date)
+		return '%s  %s    %s    %s %s' % (_senderName, _senderAddr, _title, self.simpleDate, self.simpleTime)
 
 	#
-	# メールダンプ
+	# 文字列フォーマット
 	#
-	def dump(self):
-		print String.convert('タイトル : ', 'utf-8', 'vim') + self.title
-		print String.convert('送信者　 : ', 'utf-8', 'vim') + self.sender
-		print String.convert('送信日時 : ', 'utf-8', 'vim') + self.date
-		print String.convert('本文...', 'utf-8', 'vim')
-		for line in self.main:
-			print line
+	def stringFormat(self, string, limit):
+		if limit < len(string):
+			return string[:limit]
+		else:
+			return string + ' ' * (limit - len(string))
 
 EOM
