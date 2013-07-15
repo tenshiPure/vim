@@ -9,4 +9,6 @@ myScripts/Translator/LocalToken
 myScripts/Translator/TrsFiles/en.trs
 myScripts/Translator/TrsFiles/ja.trs
 
-myScripts/vMail/Const.vim
+myScripts/VMail/Const.vim
+myScripts/VMail/WorkingTexts/main.vmail
+myScripts/VMail/WorkingTexts/titles.vmail

@@ -16,7 +16,7 @@ class MailManager:
 
 		self.mails = {}
 		num = 1
-		for index in indices:
+		for index in indices[::-1]:
 			_, mailData = gmail.fetch(index, '(RFC822)')
 			self.mails[num] = Mail(mailData[0][1])
 			num += 1
