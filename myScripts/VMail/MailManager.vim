@@ -24,14 +24,14 @@ class MailManager:
 		self._tearDown(gmail)
 
 	#
-	# タイトルリストを出力する
+	# メールリストを出力する
 	#
-	def outputTitleList(self):
+	def outputMailList(self):
 		titles = []
 		for mail in self.mails.itervalues():
-			titles.append(mail.title)
+			titles.append(mail.simpleInfo)
 
-		Tab.switchTab(titlesPath, 2)
+		Tab.switchTab(simpleInfoPath, 2)
 		_Buffer().clear()
 
 		buf = _Buffer()
@@ -47,14 +47,14 @@ class MailManager:
 		buf = _Buffer()
 		buf.writeWithList(1, self.mails[index].main)
 
-		Tab.switchTab(titlesPath, 2)
+		Tab.switchTab(simpleInfoPath, 2)
 
 	#
 	# 起動
 	#
 	def _setUp(self):
 		gmail = imaplib.IMAP4_SSL("imap.gmail.com")
-		gmail.login(Const.USER, Const.PASS)
+		gmail.login(AccountInfo.USER, AccountInfo.PASS)
 
 		gmail.list()
 		gmail.select('Inbox')

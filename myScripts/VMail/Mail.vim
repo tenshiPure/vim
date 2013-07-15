@@ -22,6 +22,8 @@ class Mail:
 		self.sender = self.analysis(mailData.get('From'))
 		self.date = self.dateFormat(mailData.get('Date'))
 
+		self.simpleInfo = self.createSimpleInfo()
+
 		for data in mailData.walk():
 			if data.get_content_type() != 'text/plain':
 				continue
@@ -95,6 +97,25 @@ class Mail:
 
 		except:
 			return Mail.ANALYSIS_FAILURE
+
+	#
+	# 簡易情報を作成する
+	#
+	def createSimpleInfo(self):
+		senderWidth = 30
+		titleWidth = 30
+
+		if senderWidth < len(self.sender):
+			_sender = self.sender[:senderWidth]
+		else:
+			_sender = self.sender + ' ' * (senderWidth - len(self.sender))
+
+		if titleWidth < len(self.title):
+			_title = self.title[:titleWidth]
+		else:
+			_title = self.title + ' ' * (titleWidth - len(self.title))
+
+		return '%s    %s    %s' % (_sender, _title, self.date)
 
 	#
 	# メールダンプ

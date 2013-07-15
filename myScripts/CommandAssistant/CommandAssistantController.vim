@@ -33,16 +33,10 @@ CommandListHistory   = os.path.abspath(workingDir + 'ommandListHistory.cass')
 CommandResultHistory = os.path.abspath(workingDir + 'CommandResultHistory.cass')
 
 if arg == 'new':
-
-	vim.command('tabedit ' + CommandResult)
-	vim.command('set splitbelow')
-	vim.command('split ' + CommandList)
+	Tab.expandTwoHorizontally(CommandList, None, CommandResult, None, CommandList)
 
 elif arg == 'history':
-
-	vim.command('tabedit ' + CommandResultHistory)
-	vim.command('set splitbelow')
-	vim.command('split ' + CommandListHistory)
+	Tab.expandTwoHorizontally(CommandListHistory, None, CommandResultHistory, None, CommandListHistory)
 
 elif arg == 'execute':
 	cursorLine = String.getLineFromCurrentBuffer()

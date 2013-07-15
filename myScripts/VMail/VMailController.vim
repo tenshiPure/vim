@@ -9,23 +9,23 @@ augroup autoCmdVMail
 augroup END
 
 autocmd autoCmdVMail BufRead,BufNewFile *.vmail set filetype=vmail
-autocmd autoCmdVMail BufEnter titles.vmail call BufMap_Titles()
+autocmd autoCmdVMail BufEnter simpleInfo.vmail call BufMap_Titles()
 
 function! VMailController(mode)
 
 python <<EOM
 # -*- coding:utf-8 -*-
 
-head = vim.eval('$myScripts') + '/VMail/WorkingTexts/'
-titlesPath = os.path.abspath(head + 'titles.vmail')
-mainPath = os.path.abspath(head + 'main.vmail')
+workingDir = vim.eval('$myScripts') + '/VMail/WorkingTexts/'
+simpleInfoPath = os.path.abspath(workingDir + 'simpleInfo.vmail')
+mainPath       = os.path.abspath(workingDir + 'main.vmail')
 
 mode = vim.eval('a:mode')
 
 if mode == 'new':
 	mailManager = MailManager(141, 143)
-	Tab.expandTwoHorizontally(titlesPath, Tab.CLEAR, mainPath, Tab.CLEAR, titlesPath)
-	mailManager.outputTitleList()
+	Tab.expandTwoHorizontally(simpleInfoPath, Tab.CLEAR, mainPath, Tab.CLEAR, simpleInfoPath)
+	mailManager.outputMailList()
 
 elif mode == 'reed':
 	mailManager.outputMain(Cursor.getCursorLineNum())
