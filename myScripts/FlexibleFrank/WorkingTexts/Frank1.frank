@@ -1,0 +1,54 @@
+
+---------------------------------------------------------
+C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank
+---------------------------------------------------------
+
+FlexibleFrank 
+	Command 
+		ChangeDir.vim
+		ChangeDirBefore.vim
+		ChangeDirUpper.vim
+		CommandBase.vim
+		Copy.vim
+		Edit.vim
+		Fix.vim
+		GetModeSwitch.vim
+		Grep.vim
+		Mkdir.vim
+		Move.vim
+		OpenByApp.vim
+		OpenDir.vim
+		PointOff.vim
+		PointOn.vim
+		Prev.vim
+		Reed.vim
+		Remove.vim
+		Rename.vim
+	CommandDispatcher.vim
+	CommandFactory.vim
+	Documents 
+		class.asta
+		class.asta.bak
+	Entry 
+		BaseEntry.vim
+		BaseManager.vim
+		GrepEntry.vim
+		GrepManager.vim
+		NormalEntry.vim
+		NormalManager.vim
+	Exception 
+		DestinationNotDirException.vim
+		NoMoreBeforeDirException.vim
+		NotExecutedBeforeFixCommandException.vim
+		NotExecutedFrankNException.vim
+		NotMatchEntryNumbersException.vim
+		NotPoiontedException.vim
+		TargetNotDirException.vim
+		TargetNotFileException.vim
+		TargetNotFileOnlyException.vim
+	FlexibleFrankController.vim
+	syntax
+	WorkingTexts 
+		Frank1.frank
+		Frank2.frank
+		Frank3.frank

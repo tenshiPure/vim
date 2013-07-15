@@ -20,13 +20,12 @@ import vim
 
 mode = vim.eval('a:mode')
 
-head = vim.eval('$myScripts')
-ja_trs = os.path.abspath(head + '/Translator/TrsFiles/ja.trs')
-en_trs = os.path.abspath(head + '/Translator/TrsFiles/en.trs')
+workingDir = vim.eval('$myScripts') + '/Translator/WorkingTexts/'
+ja_trs = os.path.abspath(workingDir + 'ja.trs')
+en_trs = os.path.abspath(workingDir + 'en.trs')
 
 if mode == 'buffer':
-	pass
-#	Tab.expandTwoHorizontally(ja_trs, en_trs, ja_trs)
+	Tab.expandTwoHorizontally(ja_trs, Tab.CLEAR, en_trs, Tab.CLEAR, ja_trs)
 
 elif mode == 'execute':
 	translator = Translator(ParamAnalysis.getFrom(), ParamAnalysis.getTo(), ParamAnalysis.getTextFromBuffer())

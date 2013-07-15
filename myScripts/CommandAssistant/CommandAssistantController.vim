@@ -26,11 +26,11 @@ if argLen == '0':
 else:
 	arg = vim.eval('a:1')
 
-head = vim.eval('$myScripts')
-CommandList = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandList.cass')
-CommandResult = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResult.cass')
-CommandListHistory = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandListHistory.cass')
-CommandResultHistory = os.path.abspath(head + '/CommandAssistant/CassFiles/CommandResultHistory.cass')
+workingDir = vim.eval('$myScripts') + '/CommandAssistant/WorkingTexts/'
+CommandList          = os.path.abspath(workingDir + 'CommandList.cass')
+CommandResult        = os.path.abspath(workingDir + 'CommandResult.cass')
+CommandListHistory   = os.path.abspath(workingDir + 'ommandListHistory.cass')
+CommandResultHistory = os.path.abspath(workingDir + 'CommandResultHistory.cass')
 
 if arg == 'new':
 

@@ -59,10 +59,10 @@ import os
 
 targetDir = os.path.abspath(vim.eval('a:targetDir'))
 
-head = vim.eval('$myScripts') + '/FlexibleFrank/WorkingTexts/'
-pathFrank1 = os.path.abspath(head + 'Frank1.frank')
-pathFrank2 = os.path.abspath(head + 'Frank2.frank')
-pathFrank3 = os.path.abspath(head + 'Frank3.frank')
+workingDir = vim.eval('$myScripts') + '/FlexibleFrank/WorkingTexts/'
+pathFrank1 = os.path.abspath(workingDir + 'Frank1.frank')
+pathFrank2 = os.path.abspath(workingDir + 'Frank2.frank')
+pathFrank3 = os.path.abspath(workingDir + 'Frank3.frank')
 
 Tab.expandReverseT(pathFrank1, pathFrank2, pathFrank3, 9)
 

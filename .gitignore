@@ -1,12 +1,12 @@
 .DS_Store
 
-myScripts/FlexibleFrank/WorkingText/*.frank
+myScripts/FlexibleFrank/WorkingTexts/*.frank
 
-myScripts/CommandAssistant/cassfiles/*.cass
+myScripts/CommandAssistant/WorkingTexts/*.cass
 
 myScripts/Translator/AccessInfo.vim
 myScripts/Translator/LocalToken.txt
-myScripts/Translator/TrsFiles/*.trs
+myScripts/Translator/WorkingTexts/*.trs
 
-myScripts/VMail/AcountInfo.vim
+myScripts/VMail/AccountInfo.vim
 myScripts/VMail/WorkingTexts/*.vmail

@@ -62,6 +62,7 @@ let $gitvim = $vim . '/gitvim' --win
 let $gitvim = '/Users/ryo/Documents/gitvim' --mac
 
 "vim
+let $ignore      = $gitvim . '/.gitignore'
 let $rc          = $gitvim . '/rc/vimrc_non_replace.vim'
 let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 let $myScripts   = $gitvim . '/myScripts'

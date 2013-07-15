@@ -8,7 +8,7 @@ import re
 
 class Translator:
 
-	LocalToken = vim.eval('$myScripts') + '/Translator/LocalToken'
+	LocalToken = vim.eval('$myScripts') + '/Translator/LocalToken.txt'
 
 	#
 	# コンストラクタ

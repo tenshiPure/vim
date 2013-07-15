@@ -71,6 +71,7 @@ if os == 'mac'
 endif
 
 "vim
+let $ignore      = $gitvim . '/.gitignore'
 let $rc          = $gitvim . '/rc/vimrc_non_replace.vim'
 let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
 let $myScripts   = $gitvim . '/myScripts'

@@ -1,0 +1,471 @@
+2013/06/17 - 15:21:49 - 0809     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../CommandAssistant/CommandAssistant.vim
+#	modified:   ../CommandAssistant/cassfiles/CommandList.cass
+#	modified:   command/Grep.vim
+#	modified:   ../myLib/myString.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/17 - 15:21:51 - 0321     !git branch
+* master
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:13:25 - 0449     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/CommandAssistant/CommandAssistant.vim
+#	modified:   myScripts/CommandAssistant/CommandAssistantController.vim
+#	modified:   myScripts/CommandAssistant/cassfiles/CommandList.cass
+#	modified:   myScripts/FlexibleFrank/FlexibleFrankController.vim
+#	modified:   myScripts/FlexibleFrank/command/Grep.vim
+#	modified:   myScripts/myLib/myString.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:13:46 - 0081     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:13:47 - 0101     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   myScripts/CommandAssistant/CommandAssistant.vim
+#	modified:   myScripts/CommandAssistant/CommandAssistantController.vim
+#	modified:   myScripts/CommandAssistant/cassfiles/CommandList.cass
+#	modified:   myScripts/FlexibleFrank/FlexibleFrankController.vim
+#	modified:   myScripts/FlexibleFrank/command/Grep.vim
+#	modified:   myScripts/myLib/myString.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:13:59 - 0573     !git commit -m 閉じるやウィンドウ切り替えのちょいリファクタ。
+[master aa1bdd8] 閉じるやウィンドウ切り替えのちょいリファクタ。
+ 8 files changed, 35 insertions(+), 34 deletions(-)
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:14:03 - 0904     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+nothing to commit, working directory clean
+--------------------------------------------------------------------------------
+
+2013/06/17 - 17:14:19 - 0665     !git push origin master
+To git@github.com:tenshiPure/vim.git
+   3a4cb1e..aa1bdd8  master -> master
+--------------------------------------------------------------------------------
+
+2013/06/17 - 20:07:23 - 0899     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/TabCloser/TabCloser.vim
+#	modified:   myScripts/myLib/myString.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/17 - 20:07:28 - 0579     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/17 - 20:07:29 - 0362     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   myScripts/TabCloser/TabCloser.vim
+#	modified:   myScripts/myLib/myString.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/17 - 20:08:26 - 0292     !git commit -m TabCloserのリファクタ。
+[master c12f191] TabCloserのリファクタ。
+ 2 files changed, 90 insertions(+), 72 deletions(-)
+ rewrite myScripts/TabCloser/TabCloser.vim (79%)
+--------------------------------------------------------------------------------
+
+2013/06/17 - 20:08:42 - 0451     !git push origin master
+To git@github.com:tenshiPure/vim.git
+   aa1bdd8..c12f191  master -> master
+--------------------------------------------------------------------------------
+
+2013/06/22 - 19:51:46 - 0428     !git status
+# On branch master
+nothing to commit, working directory clean
+--------------------------------------------------------------------------------
+
+2013/06/22 - 19:52:57 - 0778     !git push origin master
+To git@github.com:tenshiPure/vim.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:tenshiPure/vim.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:00:52 - 0392     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../../rc/vimrc_non_replace.vim
+#	modified:   ../../rc/vimrc_replaced.vim
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	./
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:00:58 - 0033     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	myScripts/Surrounder/
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:01:11 - 0815     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:01:12 - 0885     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   myScripts/Surrounder/Surrounder.vim
+#	new file:   myScripts/Surrounder/SurrounderController.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:01:36 - 0550     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   myScripts/Surrounder/Surrounder.vim
+#	new file:   myScripts/Surrounder/SurrounderController.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:01:51 - 0714     !git commit -m 勢いでSurrounderの作成。
+[master db8c510] 勢いでSurrounderの作成。
+ 4 files changed, 91 insertions(+), 4 deletions(-)
+ create mode 100644 myScripts/Surrounder/Surrounder.vim
+ create mode 100644 myScripts/Surrounder/SurrounderController.vim
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:01:55 - 0504     !git push origin master
+To git@github.com:tenshiPure/vim.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:tenshiPure/vim.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:02:15 - 0001     !git pull origin master
+From github.com:tenshiPure/vim
+ * branch            master     -> FETCH_HEAD
+Auto-merging rc/vimrc_replaced.vim
+CONFLICT (content): Merge conflict in rc/vimrc_replaced.vim
+Auto-merging rc/vimrc_non_replace.vim
+CONFLICT (content): Merge conflict in rc/vimrc_non_replace.vim
+Automatic merge failed; fix conflicts and then commit the result.
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:13 - 0907     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#	both modified:      rc/vimrc_non_replace.vim
+#	both modified:      rc/vimrc_replaced.vim
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/CommandAssistant/cassfiles/CommandList.cass
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:16 - 0797     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:17 - 0397     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   myScripts/CommandAssistant/cassfiles/CommandList.cass
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:25 - 0177     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:25 - 0697     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   myScripts/CommandAssistant/cassfiles/CommandList.cass
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:47 - 0662     !git commit -m 手動マージ。
+[master 994b71d] 手動マージ。
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:03:49 - 0162     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 4 commits.
+#
+nothing to commit, working directory clean
+--------------------------------------------------------------------------------
+
+2013/06/22 - 21:04:01 - 0824     !git push origin master
+To git@github.com:tenshiPure/vim.git
+   690411a..994b71d  master -> master
+--------------------------------------------------------------------------------
+
+2013/06/22 - 22:14:17 - 0777     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/Surrounder/Surrounder.vim
+#	modified:   myScripts/Surrounder/SurrounderController.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/22 - 22:14:19 - 0617     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/22 - 22:14:20 - 0847     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   myScripts/Surrounder/Surrounder.vim
+#	modified:   myScripts/Surrounder/SurrounderController.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/22 - 22:14:35 - 0990     !git commit -m ノーマルモードの実装。
+[master e5dd892] ノーマルモードの実装。
+ 2 files changed, 8 insertions(+), 16 deletions(-)
+--------------------------------------------------------------------------------
+
+2013/06/23 - 13:11:15 - 0407     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   Card.py
+#	modified:   Card.pyc
+#	modified:   Main.py
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/23 - 13:11:18 - 0507     !git add .
+
+--------------------------------------------------------------------------------
+
+2013/06/23 - 13:11:19 - 0347     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   Card.py
+#	modified:   Card.pyc
+#	modified:   Main.py
+#
+--------------------------------------------------------------------------------
+
+2013/06/23 - 13:11:41 - 0659     !git commit -m カード生成ロジックの変更。重複無しランダムで生成。
+[master 7f374fd] カード生成ロジックの変更。重複無しランダムで生成。
+ 3 files changed, 53 insertions(+), 26 deletions(-)
+ rewrite Main.py (87%)
+--------------------------------------------------------------------------------
+
+2013/06/23 - 23:15:32 - 0236     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 2 commits.
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   Main.py
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/23 - 23:15:43 - 0087     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 2 commits.
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   Main.py
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/24 - 20:35:39 - 0029     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/FlexibleFrank/command/Grep.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	myScripts/NotCareExtension/
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/24 - 20:35:42 - 0699     !git add myScripts/ rc/
+
+--------------------------------------------------------------------------------
+
+2013/06/24 - 20:35:43 - 0339     !git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   myScripts/FlexibleFrank/command/Grep.vim
+#	new file:   myScripts/NotCareExtension/CommentStyle.vim
+#	new file:   myScripts/NotCareExtension/ExtensionObjects/Vim.vim
+#	new file:   myScripts/NotCareExtension/NotCareExtension.vim
+#	new file:   myScripts/NotCareExtension/NotCareExtensionController.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+--------------------------------------------------------------------------------
+
+2013/06/24 - 20:36:20 - 0042     !git commit -m また勢いでNotCareExtensionを作成。コメント操作実装。
+[master 837a549] また勢いでNotCareExtensionを作成。コメント操作実装。
+ 7 files changed, 272 insertions(+), 2 deletions(-)
+ create mode 100644 myScripts/NotCareExtension/CommentStyle.vim
+ create mode 100644 myScripts/NotCareExtension/ExtensionObjects/Vim.vim
+ create mode 100644 myScripts/NotCareExtension/NotCareExtension.vim
+ create mode 100644 myScripts/NotCareExtension/NotCareExtensionController.vim
+--------------------------------------------------------------------------------
+
+2013/06/24 - 21:28:16 - 0966     !git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   myScripts/NotCareExtension/ExtensionObjects/Vim.vim
+#	modified:   rc/vimrc_non_replace.vim
+#	modified:   rc/vimrc_replaced.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+
+2013/06/26 - 21:42:07 - 0855     !git status
+# On branch master
+nothing to commit, working directory clean
+--------------------------------------------------------------------------------
+
+2013/06/26 - 21:42:10 - 0066     !git branch
+* master
+--------------------------------------------------------------------------------
+
+2013/06/27 - 20:33:48 - 0573     !git status
+# On branch master
+nothing to commit, working directory clean
+--------------------------------------------------------------------------------
+
+2013/06/27 - 20:33:50 - 0794     !git branch
+* master
+--------------------------------------------------------------------------------
+
+2013/06/27 - 21:04:19 - 0833     !git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../CommandAssistant/CommandAssistant.vim
+#	modified:   MyString.vim
+#	modified:   ../NotCareExtension/NotCareExtensionController.vim
+#	modified:   ../TabCloser/TabCloser.vim
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+--------------------------------------------------------------------------------
+

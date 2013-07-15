@@ -20,6 +20,7 @@ class ResultOutputer:
 		text = String.convert(text, 'utf-8', 'vim')
 
 		Tab.switchTab(toBuf, 2)
+		buf.clear()
 		buf.write(1, text)
 		Tab.switchTab(fromBuf, 2)
 
