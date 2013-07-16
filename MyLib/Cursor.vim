@@ -3,7 +3,7 @@ python <<EOM
 class Cursor:
 
 	#
-	# カーソル位置を記憶
+	# カーソル位置を取得
 	#
 	@staticmethod
 	def getPos():
@@ -24,5 +24,13 @@ class Cursor:
 	def getCursorLineNum():
 		pos = Cursor.getPos()
 		return int(pos[1])
+
+	#
+	# カーソルが何列目にあるか取得
+	#
+	@staticmethod
+	def getCursorColumnNum():
+		pos = Cursor.getPos()
+		return int(pos[2])
 
 EOM

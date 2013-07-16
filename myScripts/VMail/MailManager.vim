@@ -56,6 +56,27 @@ class MailManager:
 		Tab.switchTab(simpleInfoPath, 2)
 
 	#
+	# 詳細情報を出力する
+	#
+	def outputDetail(self, index, target):
+		mail = self.mails[index]
+
+		if target == 'sender':
+			print mail.sender.detail
+
+		elif target == 'title':
+			print mail.title.detail
+
+		elif target == 'date':
+			print mail.date.detail
+
+	#
+	# 詳細情報を作成する
+	#
+	def createDetailInfo(self, mail):
+		return '%s    %s    %s' % (mail.sender.detail, mail.title.detail, mail.date.detail)
+
+	#
 	# 起動
 	#
 	def _setUp(self):
