@@ -3,6 +3,8 @@ python <<EOM
 
 class Sender:
 
+	WIDTH_LIMIT = 30
+
 	#
 	# コンストラクタ
 	#
@@ -19,24 +21,23 @@ class Sender:
 		
 			_sender = String.convert(_sender, None, 'vim')
 
-			self.name = parseaddr(_sender)[0]
-			self.addr = parseaddr(_sender)[1]
-			_name = String.lenAdjust(self.name, 10, ' ')
-			_addr = String.lenAdjust(self.addr, 30, ' ')
-			self.forIndex = _name + ' ' + _addr
+			_name = String.lenAdjust(parseaddr(_sender)[0], Sender.WIDTH_LIMIT, ' ')
+			_addr = String.lenAdjust(parseaddr(_sender)[1], Sender.WIDTH_LIMIT, ' ')
+
+			self.simple = _name if parseaddr(_sender)[0] != '' else _addr
+			self.detail = '%s %s' % (parseaddr(_sender)[0], parseaddr(_sender)[1])
 
 		except:
-			self.name     = AnalysisException.ANALYSIS_FAILURE
-			self.addr     = AnalysisException.ANALYSIS_FAILURE
-			self.forIndex = AnalysisException.ANALYSIS_FAILURE
+			self.simple = String.lenAdjust(AnalysisException.ANALYSIS_FAILURE, Sender.WIDTH_LIMIT, ' ')
+			self.detail = AnalysisException.ANALYSIS_FAILURE
 
 	#
 	# ダンプ
 	#
 	def dump(self):
 		print '-sender-'
-		print self.name
-		print self.addr
+		print self.simple
+		print self.detail
 		print ' '
 
 EOM

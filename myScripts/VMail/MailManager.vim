@@ -41,7 +41,7 @@ class MailManager:
 	# 簡易情報を作成する
 	#
 	def createSimpleInfo(self, mail):
-		return '%s    %s    %s' % (mail.sender.forIndex, mail.title.forIndex, mail.date.forIndex)
+		return '%s    %s    %s' % (mail.sender.simple, mail.title.simple, mail.date.simple)
 
 	#
 	# 本文を出力する
@@ -51,7 +51,7 @@ class MailManager:
 		_Buffer().clear()
 
 		buf = _Buffer()
-		buf.writeWithList(1, self.mails[index].main.main)
+		buf.writeWithList(1, self.mails[index].main.detail)
 
 		Tab.switchTab(simpleInfoPath, 2)
 

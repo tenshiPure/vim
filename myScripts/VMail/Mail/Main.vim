@@ -16,17 +16,17 @@ class Main:
 				
 			oneLineMain = String.convert(oneLineMain, None, 'vim')
 
-			self.main = oneLineMain.split('\r\n')[:-1]
+			self.detail = oneLineMain.split('\r\n')[:-1]
 
 		except:
-			self.main = Mail.ANALYSIS_FAILURE
+			self.detail = Mail.ANALYSIS_FAILURE
 
 	#
 	# ダンプ
 	#
 	def dump(self):
 		print '-main-'
-		for line in self.main:
+		for line in self.detail:
 			print line
 		print ' '
 

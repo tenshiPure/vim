@@ -30,7 +30,8 @@ mainPath       = os.path.abspath(workingDir + 'main.vmail')
 mode = vim.eval('a:mode')
 
 if mode == 'new':
-	mailManager = MailManager(1, 143)
+#	mailManager = MailManager(22, 24)
+	mailManager = MailManager(1, 145)
 	Tab.expandTwoHorizontally(simpleInfoPath, Tab.CLEAR, mainPath, Tab.CLEAR, simpleInfoPath)
 	mailManager.outputMailList()
 

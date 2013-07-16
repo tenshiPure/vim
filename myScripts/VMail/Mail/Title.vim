@@ -3,6 +3,9 @@ python <<EOM
 
 class Title:
 
+	WIDTH_LIMIT = 50
+	NO_TITLE = '---'
+
 	#
 	# コンストラクタ
 	#
@@ -11,24 +14,30 @@ class Title:
 			decodefrag = email.Header.decode_header(originData)
 			
 			for string, encoding in decodefrag:
-				if encoding is None:
+				if string in ['', 'None']:
+					_title = Title.NO_TITLE
+
+				elif encoding is None:
 					_title = unicode(string)
 				else:
 					_title = unicode(string, encoding)
 		
-			self.title = String.convert(_title, None, 'vim')
-			self.forIndex = String.lenAdjust(self.title, 30, ' ')
+			_title = String.convert(_title, None, 'vim').rstrip()
+
+			self.simple = String.lenAdjust(_title, Title.WIDTH_LIMIT, ' ')
+			self.detail = _title
 
 		except:
-			self.title    = AnalysisException.ANALYSIS_FAILURE
-			self.forIndex = AnalysisException.ANALYSIS_FAILURE
+			self.simple = String.lenAdjust(AnalysisException.ANALYSIS_FAILURE, Title.WIDTH_LIMIT, ' ')
+			self.detail = AnalysisException.ANALYSIS_FAILURE
 
 	#
 	# ダンプ
 	#
 	def dump(self):
 		print '-title-'
-		print self.title
+		print self.simple
+		print self.detail
 		print ' '
 
 EOM
