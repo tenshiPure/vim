@@ -27,15 +27,21 @@ class MailManager:
 	# メールリストを出力する
 	#
 	def outputMailList(self):
-		titles = []
+		simpleInfo = []
 		for mail in self.mails.itervalues():
-			titles.append(mail.simpleInfo)
+			simpleInfo.append(self.createSimpleInfo(mail))
 
 		Tab.switchTab(simpleInfoPath, 2)
 		_Buffer().clear()
 
 		buf = _Buffer()
-		buf.writeWithList(1, titles)
+		buf.writeWithList(1, simpleInfo)
+
+	#
+	# 簡易情報を作成する
+	#
+	def createSimpleInfo(self, mail):
+		return '%s    %s    %s' % (mail.sender.forIndex, mail.title.forIndex, mail.date.forIndex)
 
 	#
 	# 本文を出力する
@@ -45,7 +51,7 @@ class MailManager:
 		_Buffer().clear()
 
 		buf = _Buffer()
-		buf.writeWithList(1, self.mails[index].main)
+		buf.writeWithList(1, self.mails[index].main.main)
 
 		Tab.switchTab(simpleInfoPath, 2)
 

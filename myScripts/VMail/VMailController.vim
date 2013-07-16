@@ -1,7 +1,14 @@
 "VMailController.vim
 
 source $myScripts/VMail/MailManager.vim
-source $myScripts/VMail/Mail.vim
+
+source $myScripts/VMail/Mail/Mail.vim
+source $myScripts/VMail/Mail/Title.vim
+source $myScripts/VMail/Mail/Sender.vim
+source $myScripts/VMail/Mail/Date.vim
+source $myScripts/VMail/Mail/Main.vim
+source $myScripts/VMail/Mail/AnalysisException.vim
+
 source $myScripts/VMail/AccountInfo.vim
 
 augroup autoCmdVMail

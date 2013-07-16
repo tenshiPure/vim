@@ -86,4 +86,15 @@ class String:
 			result = result.encode(_to)
 
 		return result
+
+	#
+	# 指定の文字数に文字を調整する
+	#
+	@staticmethod
+	def lenAdjust(string, limit, fill):
+		if limit < len(string):
+			return string[:limit]
+		else:
+			return string + fill * (limit - len(string))
+
 EOM
