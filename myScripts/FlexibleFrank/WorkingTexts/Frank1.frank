@@ -1,19 +1,28 @@
 
--------------------------------------------------
-C:\Program Files (x86)\vim\gitvim\myScripts\vMail
--------------------------------------------------
+----------------------------------
+/Users/ryo/Documents/projects/some
+----------------------------------
 
-vMail 
-	AccountInfo.vim
-	Mail 
-		AnalysisException.vim
-		Date.vim
-		Mail.vim
-		Main.vim
-		Sender.vim
-		Title.vim
-	MailManager.vim
-	VMailController.vim
-	WorkingTexts 
-		main.vmail
-		simpleInfo.vmail
+some 
+	.DS_Store
+	script1 
+		in 
+			file1.csv
+			file2.csv
+		log 
+		module 
+			merge.py
+		out 
+			2013-07-29_17-17-42.csv
+			2013-07-29_17-20-36.csv
+	script2 
+		in 
+			file1.csv
+		log 
+		module 
+			nonDuplicate.py
+		out 
+	util 
+		csvUtil.py
+		csvUtil.pyc
+		logUtil.py

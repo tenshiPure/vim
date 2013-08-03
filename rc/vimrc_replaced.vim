@@ -138,9 +138,6 @@ if os == 'mac'
 	let $models       = $application . '/models'           
 endif
 if os == 'mac'
-	let $presentation = $application . '/presentation'     
-endif
-if os == 'mac'
 	let $transfer     = $application . '/transfer'         
 endif
 if os == 'mac'
@@ -459,3 +456,5 @@ command! -range   Vts call TranslatorController('visual')
 
 source $myScripts/VMail/VMailController.vim
 command! Vmail call VMailController('new')
+
+command! Tabrep %s/\t/    /g

@@ -4,11 +4,11 @@
 "
 " ----------------------------------------------------------------------------------------------------
 if has('win32')
-	let os = 'win'
+    let os = 'win'
 endif
 
 if has('mac')
-	let os = 'mac'
+    let os = 'mac'
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -102,7 +102,6 @@ let $application  = $slf . '/application'              --mac
 let $controllers  = $application . '/controllers'      --mac
 let $domain       = $application . '/domain'           --mac
 let $models       = $application . '/models'           --mac
-let $presentation = $application . '/presentation'     --mac
 let $transfer     = $application . '/transfer'         --mac
 let $scripts      = $application . '/views/pc/scripts' --mac
 let $css          = $slf . '/htdocs/css'               --mac
@@ -342,3 +341,5 @@ command! -range   Vts call TranslatorController('visual')
 
 source $myScripts/VMail/VMailController.vim
 command! Vmail call VMailController('new')
+
+command! Tabrep %s/\t/    /g
