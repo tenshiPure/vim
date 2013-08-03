@@ -172,6 +172,12 @@ if os == 'mac'
 	let $apilog = '/var/log/ap/slmctl' 
 endif
 
+"TaskBoard
+let $task = "D:/MyDocument/Program/TaskBoard"
+
+"HiredGirl
+let $hired = "D:/MyDocument/Program/HiredGirl"
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマン�~I

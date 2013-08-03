@@ -114,7 +114,6 @@ class MailManager:
 	# 指定範囲のメールのインデックスを得る
 	#
 	def _getMailIndexWithinRange(self, gmail, first, last):
-		indices = self._getAllMailIndex(gmail)
 		newestIndex = int(self._getNewestMailIndex(gmail)[0])
 
 		if first < 1:

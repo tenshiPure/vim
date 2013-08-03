@@ -117,6 +117,12 @@ let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
 let $uilog  = $slf . '/data/logs/application' --mac
 let $apilog = '/var/log/ap/slmctl' --mac
 
+"TaskBoard
+let $task = "D:/MyDocument/Program/TaskBoard"
+
+"HiredGirl
+let $hired = "D:/MyDocument/Program/HiredGirl"
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマンド
@@ -336,4 +342,3 @@ command! -range   Vts call TranslatorController('visual')
 
 source $myScripts/VMail/VMailController.vim
 command! Vmail call VMailController('new')
-
