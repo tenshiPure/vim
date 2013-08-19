@@ -10,3 +10,4 @@ myScripts/Translator/WorkingTexts/*.trs
 
 myScripts/VMail/AccountInfo.vim
 myScripts/VMail/WorkingTexts/*.vmail
+myScripts/VMail/tmp.py

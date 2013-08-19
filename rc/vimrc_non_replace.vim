@@ -4,11 +4,11 @@
 "
 " ----------------------------------------------------------------------------------------------------
 if has('win32')
-	let os = 'win'
+    let os = 'win'
 endif
 
 if has('mac')
-	let os = 'mac'
+    let os = 'mac'
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -115,6 +115,12 @@ let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
 "slf-log
 let $uilog  = $slf . '/data/logs/application' --mac
 let $apilog = '/var/log/ap/slmctl' --mac
+
+"TaskBoard
+let $task = "D:/MyDocument/Program/TaskBoard"
+
+"HiredGirl
+let $hired = "D:/MyDocument/Program/HiredGirl"
 
 " ----------------------------------------------------------------------------------------------------
 " 

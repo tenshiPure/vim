@@ -1,0 +1,8 @@
+  1
+  39    1.282    0.033    1.282    0.033 {built-in method read}
+
+  25
+  476    6.621    0.014    6.621    0.014 {built-in method read}
+
+  145
+  7814   32.621    0.004   32.621    0.004 {built-in method read}
