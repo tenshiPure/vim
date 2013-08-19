@@ -5,11 +5,11 @@
 "
 " ----------------------------------------------------------------------------------------------------
 if has('win32')
-	let os = 'win'
+    let os = 'win'
 endif
 
 if has('mac')
-	let os = 'mac'
+    let os = 'mac'
 endif
 
 " ----------------------------------------------------------------------------------------------------
@@ -174,6 +174,9 @@ let $task = "D:/MyDocument/Program/TaskBoard"
 
 "HiredGirl
 let $hired = "D:/MyDocument/Program/HiredGirl"
+
+"Pycel
+let $pycel = "D:/MyDocument/Program/Pycel"
 
 " ----------------------------------------------------------------------------------------------------
 " 
@@ -458,3 +461,9 @@ source $myScripts/VMail/VMailController.vim
 command! Vmail call VMailController('new')
 
 command! Tabrep %s/\t/    /g
+
+
+
+let $khconf = "C:/Users/Administrator/AppData/Roaming/keyhac"
+
+command! Pyhead :normal i!-*- coding: utf-8 -*-

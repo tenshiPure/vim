@@ -122,6 +122,9 @@ let $task = "D:/MyDocument/Program/TaskBoard"
 "HiredGirl
 let $hired = "D:/MyDocument/Program/HiredGirl"
 
+"Pycel
+let $pycel = "D:/MyDocument/Program/Pycel"
+
 " ----------------------------------------------------------------------------------------------------
 " 
 " 自動コマンド
@@ -343,3 +346,9 @@ source $myScripts/VMail/VMailController.vim
 command! Vmail call VMailController('new')
 
 command! Tabrep %s/\t/    /g
+
+
+
+let $khconf = "C:/Users/Administrator/AppData/Roaming/keyhac"
+
+command! Pyhead :normal i!-*- coding: utf-8 -*-
