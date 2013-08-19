@@ -1,28 +1,68 @@
 
-----------------------------------
-/Users/ryo/Documents/projects/some
-----------------------------------
+-------------------------------------------------
+/Users/ryo/Documents/projects/slf/devscript/soms1
+-------------------------------------------------
 
-some 
+soms1 
 	.DS_Store
-	script1 
-		in 
-			file1.csv
-			file2.csv
-		log 
-		module 
-			merge.py
-		out 
-			2013-07-29_17-17-42.csv
-			2013-07-29_17-20-36.csv
-	script2 
-		in 
-			file1.csv
-		log 
-		module 
-			nonDuplicate.py
-		out 
-	util 
-		csvUtil.py
-		csvUtil.pyc
-		logUtil.py
+	data 
+		input 
+			.empty
+			contactBlockInfo.csv
+			contactDefC.csv
+			contactDefS.csv
+			contactFormDef.csv
+			contactInfoRel.csv
+			db_pms_dump.sql.gz
+			getContactBlockInfo.sql
+			getContactDefC.sql
+			getContactDefS.sql
+			getContactFormDef.sql
+			getContactInfoRel.sql
+			redir.memo
+		output 
+			.DS_Store
+			.empty
+			slfContactGroupInfo.csv
+			slfContactGroupMng.csv
+			slfOutsiderMemberInfo.csv
+	src 
+		.DS_Store
+		AutoLoader.php
+		ContactMigrator.php
+		InputEntity 
+			.DS_Store
+			SomsContactEntity.php
+			SomsContactGroupEntity.php
+			SomsContactGroupRelationEntity.php
+		Migrator.php
+		OutputEntity 
+			SlfContactEntity.php
+			SlfContactGroupInfoEntity.php
+			SlfContactGroupMngEntity.php
+		Util 
+			.DS_Store
+			FileUtil.php
+			LogUtil.php
+			StringUtil.php
+	test 
+		.DS_Store
+		bootstrap.php
+		InputData 
+			.DS_Store
+			PmsDocumentTest.php
+			SlfDocumentTest.php
+		phpunit.xml
+		testdata 
+			.DS_Store
+			FileUtil 
+				read.csv
+				read.sql
+			PmsDocument.tsv
+			SlfDocument.csv
+		TestUtil.php
+		TitleMigratorTest.php
+		Util 
+			.DS_Store
+			FileUtilTest.php
+			StringUtilTest.php
