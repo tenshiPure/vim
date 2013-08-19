@@ -25,7 +25,7 @@ class py(Base):
 	# テストを実行する
 	#
 	def test(self):
-		testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Nose'
+		testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\Test'
 
 		command = r'!C:\Python27\Scripts\nosetests "%s"' % (testsDir)
 
