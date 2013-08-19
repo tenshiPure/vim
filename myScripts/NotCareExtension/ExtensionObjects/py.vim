@@ -25,7 +25,11 @@ class py(Base):
 	# テストを実行する
 	#
 	def test(self):
-		pass
+		testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Nose'
+
+		command = r'!C:\Python27\Scripts\nosetests "%s"' % (testsDir)
+
+		vim.command(command)
 
 	#
 	# ログ文を得る
