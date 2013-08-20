@@ -4,6 +4,8 @@ import os
 import os.path
 import shutil
 
+from nose.tools import eq_
+
 class Base:
 
 	currentFile = __file__
@@ -14,18 +16,45 @@ class Base:
 
 	testDir = os.path.join(rootDir, 'TestDir')
 
-	from Mkdir import Mkdir
+	originDirs = []
+	originDirs.append(os.path.join(testDir, 'OriginA/OriginB'))
+	originDirs.append(os.path.join(testDir, 'OriginX/OriginY'))
+
+	originFiles = []
+	originFiles.append(os.path.join(testDir, 'OriginA.txt'))
+	originFiles.append(os.path.join(testDir, 'OriginA/OriginB.txt'))
+	originFiles.append(os.path.join(testDir, 'OriginX.txt'))
+	originFiles.append(os.path.join(testDir, 'OriginX/OriginY.txt'))
 
 	@staticmethod
 	def dirClean():
+
 		if os.path.isdir(Base.testDir):
 			shutil.rmtree(Base.testDir)
 
-		os.makedirs(Base.testDir)
-		os.makedirs(os.path.join(Base.testDir, 'OriginA/OriginB'))
+		for originDir in Base.originDirs:
+			os.makedirs(originDir)
+
+		for originFile in Base.originFiles:
+			f = open(originFile, 'w')
+			f.write('')
+			f.close()
 
 	@staticmethod
 	def log(message):
 		f = open(os.path.join(Base.currentDir, 'log.txt'), 'a')
 		f.write(message + '\n')
 		f.close()
+
+	@staticmethod
+	def isFilesExists(files, expect):
+		for file in files:
+			file = os.path.join(Base.testDir, file)
+			eq_(expect, os.path.isfile(file))
+
+	@staticmethod
+	def isDirsExists(dirs, expect):
+		for dir in dirs:
+			dir = os.path.join(Base.testDir, dir)
+			eq_(expect, os.path.isdir(dir))
+

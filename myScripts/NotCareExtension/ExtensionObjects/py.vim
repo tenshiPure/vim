@@ -26,8 +26,10 @@ class py(Base):
 	#
 	def test(self):
 		testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\Test'
-
-		command = r'!C:\Python27\Scripts\nosetests "%s"' % (testsDir)
+		if self.option is None:
+			command = r'!C:\Python27\Scripts\nosetests "%s"' % (testsDir)
+		else:
+			command = r'!C:\Python27\Scripts\nosetests -a %s "%s"' % (self.option, testsDir)
 
 		vim.command(command)
 

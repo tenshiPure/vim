@@ -1,6 +1,9 @@
 #-*- coding: utf-8 -*-
 import os.path
-from nose.tools import *
+
+from nose.tools import eq_
+from nose.tools import with_setup
+from nose.plugins.attrib import attr
 
 from Base import Base
 from Mkdir import Mkdir
@@ -9,11 +12,6 @@ class Mkdir_test(Base):
 
 	def setup(self):
 		Base.dirClean()
-
-		self.originDirs = []
-
-		self.originDirs.append(Base.testDir)
-		self.originDirs.append(os.path.join(Base.testDir, 'OriginA/OriginB'))
 
 		self.targetDirs = []
 
@@ -31,29 +29,28 @@ class Mkdir_test(Base):
 	def teardown(self):
 		Base.dirClean()
 
-	def isDirsExists(self, dirs, expect):
-		for targetDir in dirs:
-			dir = os.path.join(Base.testDir, targetDir)
-			eq_(expect, os.path.isdir(dir))
-
 	@with_setup(setup, teardown)
 	def testExecute(self):
-		self.isDirsExists(self.originDirs, True)
-		self.isDirsExists(self.targetDirs, False)
+		Base.isFilesExists(self.originFiles, True)
+		Base.isDirsExists(self.originDirs, True)
+		Base.isDirsExists(self.targetDirs, False)
 
 		self.sut.execute()
 
-		self.isDirsExists(self.originDirs, True)
-		self.isDirsExists(self.targetDirs, True)
+		Base.isFilesExists(self.originFiles, True)
+		Base.isDirsExists(self.originDirs, True)
+		Base.isDirsExists(self.targetDirs, True)
 
 	@with_setup(setup, teardown)
 	def testUnexecute(self):
 		self.sut.execute()
 
-		self.isDirsExists(self.originDirs, True)
-		self.isDirsExists(self.targetDirs, True)
+		Base.isFilesExists(self.originFiles, True)
+		Base.isDirsExists(self.originDirs, True)
+		Base.isDirsExists(self.targetDirs, True)
 
 		self.sut.unexecute()
 
-		self.isDirsExists(self.originDirs, True)
-		self.isDirsExists(self.targetDirs, False)
+		Base.isFilesExists(self.originFiles, True)
+		Base.isDirsExists(self.originDirs, True)
+		Base.isDirsExists(self.targetDirs, False)
