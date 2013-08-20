@@ -16,20 +16,20 @@ class Copy_test(Base):
 
 		self.pairPaths = []
 
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy.txt'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
-		self.pairPaths.append(PairPath(src, dst))
-
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA'))
 		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY'))
 		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy'))
+		self.pairPaths.append(PairPath(src, dst))
+
+		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy.txt'))
+		self.pairPaths.append(PairPath(src, dst))
+
+		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		self.sut = Copy(self.pairPaths)

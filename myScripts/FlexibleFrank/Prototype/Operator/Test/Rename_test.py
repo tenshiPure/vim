@@ -6,10 +6,10 @@ from nose.tools import with_setup
 from nose.plugins.attrib import attr
 
 from Base import Base
-from Copy import Copy
+from Rename import Rename
 from PairPath import PairPath
 
-class Copy_test(Base):
+class Rename_test(Base):
 
 	def setup(self):
 		Base.dirClean()
@@ -17,32 +17,30 @@ class Copy_test(Base):
 		self.pairPaths = []
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy.txt'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_renamed.txt'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_renamed'))
+		self.pairPaths.append(PairPath(src, dst))
+
+		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_renamed.txt'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_renamed'))
 		self.pairPaths.append(PairPath(src, dst))
 
-		self.sut = Copy(self.pairPaths)
+		self.sut = Rename(self.pairPaths)
 
 		self.expectedFiles = []
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copy.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copy/OriginB.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
+		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_renamed.txt'))
+		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginX/OriginY_renamed.txt'))
 
 		self.expectedDirs = []
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copy'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copy/OriginB'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginX/OriginY_copy'))
+		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_renamed'))
+		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginX/OriginY_renamed'))
 
 	def teardown(self):
 		Base.dirClean()
@@ -56,8 +54,6 @@ class Copy_test(Base):
 
 		self.sut.execute()
 
-		Base.isFilesExists(self.originFiles, True)
-		Base.isDirsExists(self.originDirs, True)
 		Base.isFilesExists(self.expectedFiles, True)
 		Base.isDirsExists(self.expectedDirs, True)
 
@@ -65,8 +61,6 @@ class Copy_test(Base):
 	def testUnexecute(self):
 		self.sut.execute()
 
-		Base.isFilesExists(self.originFiles, True)
-		Base.isDirsExists(self.originDirs, True)
 		Base.isFilesExists(self.expectedFiles, True)
 		Base.isDirsExists(self.expectedDirs, True)
 
