@@ -58,19 +58,3 @@ class Mkdir:
 
 			if fullPath not in self.originDirs:
 				os.rmdir(fullPath)
-
-
-if __name__ == '__main__':
-	dirs = []
-	dirs.append('MadeIt')
-	dirs.append('SubA/SubB/SubC')
-	dirs.append('SubX/SubY')
-	dirs.append('SubX/SubZ')
-	dirs.append('OriginA/MadeIt')
-	dirs.append('OriginA/SubA/SubB/SubC')
-	dirs.append('OriginA/SubX/SubY')
-	dirs.append('OriginA/SubX/SubZ')
-
-	sut = Mkdir('TestDir', dirs)
-	sut.execute()
-	sut.unexecute()

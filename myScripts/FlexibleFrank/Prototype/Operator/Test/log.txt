@@ -1,12 +1,4 @@
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\MadeIt
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubA\SubB\SubC
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubX\SubY
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubX\SubZ
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\MadeIt
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubA\SubB\SubC
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubX\SubY
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\SubX\SubZ
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\TestDir\MadeIt
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\TestDir\SubA\SubB\SubC
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\TestDir\SubX\SubY
-C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\TestDir\SubX\SubZ
+setup
+teardown
+setup
+teardown
