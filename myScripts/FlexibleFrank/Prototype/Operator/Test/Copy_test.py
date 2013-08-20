@@ -17,32 +17,32 @@ class Copy_test(Base):
 		self.pairPaths = []
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copied.txt'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copied.txt'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copy'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_copied'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copy'))
+		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_copied'))
 		self.pairPaths.append(PairPath(src, dst))
 
 		self.sut = Copy(self.pairPaths)
 
 		self.expectedFiles = []
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copy.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copy/OriginB.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginX/OriginY_copy.txt'))
+		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copied.txt'))
+		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_copied/OriginB.txt'))
+		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginX/OriginY_copied.txt'))
 
 		self.expectedDirs = []
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copy'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copy/OriginB'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginX/OriginY_copy'))
+		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copied'))
+		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_copied/OriginB'))
+		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginX/OriginY_copied'))
 
 	def teardown(self):
 		Base.dirClean()
