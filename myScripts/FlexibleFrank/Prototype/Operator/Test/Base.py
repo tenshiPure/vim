@@ -9,10 +9,10 @@ class Base:
 	currentFile = __file__
 	currentDir = os.path.dirname(currentFile)
 	rootDir = currentDir + '/..'
-	operateDir = os.path.abspath(rootDir + '/Operate')
+	operateDir = os.path.join(rootDir, 'Operate')
 	sys.path.append(operateDir)
 
-	testDir = os.path.abspath(rootDir + '/TestDir')
+	testDir = os.path.join(rootDir, 'TestDir')
 
 	from Mkdir import Mkdir
 
@@ -22,3 +22,10 @@ class Base:
 			shutil.rmtree(Base.testDir)
 
 		os.makedirs(Base.testDir)
+		os.makedirs(os.path.join(Base.testDir, 'OriginA/OriginB'))
+
+	@staticmethod
+	def log(message):
+		f = open(os.path.join(Base.currentDir, 'log.txt'), 'a')
+		f.write(message + '\n')
+		f.close()

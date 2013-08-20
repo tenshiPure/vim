@@ -9,10 +9,26 @@ class Mkdir_test(Base):
 
 	def testExecute(self):
 		Base.dirClean()
-		targetDir = os.path.abspath(Base.testDir + '/MadeIt')
+		targetDirs = []
 
-		eq_(False, os.path.isdir(targetDir))
+		targetDirs.append('MadeIt')
+		targetDirs.append('SubA/SubB/SubC')
+		targetDirs.append('SubX/SubY')
+		targetDirs.append('SubX/SubZ')
+		targetDirs.append('OriginA/MadeIt')
+		targetDirs.append('OriginA/SubA/SubB/SubC')
+		targetDirs.append('OriginA/SubX/SubY')
+		targetDirs.append('OriginA/SubX/SubZ')
 
-		Mkdir().execute()
+		for targetDir in targetDirs:
+			dir = os.path.join(Base.testDir, targetDir)
+			eq_(False, os.path.isdir(dir), dir)
 
-		eq_(True, os.path.isdir(targetDir))
+		sut = Mkdir(Base.testDir, targetDirs)
+		sut.execute()
+
+		for targetDir in targetDirs:
+			dir = os.path.join(Base.testDir, targetDir)
+			eq_(True, os.path.isdir(dir), dir)
+
+		Base.dirClean()
