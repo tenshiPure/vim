@@ -8,8 +8,8 @@ import os.path
 class Mkdir:
 	
 	#
-	# String rootDir    : 作成するディレクトリの親となるルートディレクトリ
-	# List   targetDirs : 作成するディレクトリ名
+	# String   rootDir    : 作成するディレクトリの親となるルートディレクトリ
+	# [String] targetDirs : 作成するディレクトリ名
 	#
 	# note
 	# 	os.sep区切りで文字列を渡せば再帰的に作成する
@@ -24,6 +24,7 @@ class Mkdir:
 	# 実行
 	#
 	def execute(self):
+		self.originDirs = []
 		self.getOriginDirs(self.rootDir)
 
 		for targetDir in self.targetDirs:
