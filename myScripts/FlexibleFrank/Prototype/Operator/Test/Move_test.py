@@ -58,7 +58,6 @@ class Move_test(Base):
 		Base.isFilesExists(self.expectedFiles, True)
 		Base.isDirsExists(self.expectedDirs, True)
 
-	@attr(wip=True)
 	@with_setup(setup, teardown)
 	def testUnexecute(self):
 		self.sut.execute()

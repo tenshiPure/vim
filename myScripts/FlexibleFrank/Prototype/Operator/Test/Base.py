@@ -15,6 +15,7 @@ class Base:
 	sys.path.append(operateDir)
 
 	testDir = os.path.join(rootDir, 'TestDir')
+	trashPath = os.path.join(operateDir, 'TrashBox')
 
 	originDirs = []
 	originDirs.append(os.path.join(testDir, 'OriginA/OriginB'))
@@ -39,6 +40,11 @@ class Base:
 			f = open(originFile, 'w')
 			f.write('')
 			f.close()
+
+		if os.path.isdir(Base.trashPath):
+			shutil.rmtree(Base.trashPath)
+
+		os.makedirs(Base.trashPath)
 
 	@staticmethod
 	def log(message):
