@@ -56,6 +56,10 @@ class Copy_test(Base):
 		eq_(Base.isExists(dst1), True)
 		eq_(Base.isExists(src2), True)
 		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
 
 		sut2.execute()
 
@@ -63,9 +67,17 @@ class Copy_test(Base):
 		eq_(Base.isExists(dst3), True)
 		eq_(Base.isExists(src4), True)
 		eq_(Base.isExists(dst4), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), True)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), True)
 
 		sut2.unexecute()
 
+		eq_(Base.isExists(src1), True)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), True)
+		eq_(Base.isExists(dst2), True)
 		eq_(Base.isExists(src3), True)
 		eq_(Base.isExists(dst3), False)
 		eq_(Base.isExists(src4), True)
@@ -77,3 +89,7 @@ class Copy_test(Base):
 		eq_(Base.isExists(dst1), False)
 		eq_(Base.isExists(src2), True)
 		eq_(Base.isExists(dst2), False)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)

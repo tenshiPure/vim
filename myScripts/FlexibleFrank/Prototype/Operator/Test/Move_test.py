@@ -14,58 +14,82 @@ class Move_test(Base):
 	def setup(self):
 		Base.dirClean()
 
-		self.pairPaths = []
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_moved'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_moved'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginA_moved.txt'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		src = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY.txt'))
-		dst = os.path.abspath(os.path.join(Base.testDir, 'OriginX/OriginY_moved.txt'))
-		self.pairPaths.append(PairPath(src, dst))
-
-		self.sut = Move(self.pairPaths)
-
-		self.expectedFiles = []
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_moved.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginA_moved/OriginB.txt'))
-		self.expectedFiles.append(os.path.join(Base.testDir, 'OriginX/OriginY_moved.txt'))
-
-		self.expectedDirs = []
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_moved'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginA_moved/OriginB'))
-		self.expectedDirs.append(os.path.join(Base.testDir, 'OriginX/OriginY_moved'))
-
 	def teardown(self):
-		return
 		Base.dirClean()
 
-	@with_setup(setup, teardown)
-	def testExecute(self):
-		Base.isFilesExists(self.expectedFiles, False)
-		Base.isDirsExists(self.expectedDirs, False)
+	@with_setup(Base.dirClean, Base.dirClean)
+	def test(self):
+		pairPaths1 = []
+		pairPaths2 = []
 
-		self.sut.execute()
+		src1 = Base.joinRootPath('originA.txt')
+		dst1 = Base.joinRootPath('originA_moved.txt')
+		pairPaths1.append(PairPath(src1, dst1))
 
-		Base.isFilesExists(self.expectedFiles, True)
-		Base.isDirsExists(self.expectedDirs, True)
+		src2 = Base.joinRootPath('originA')
+		dst2 = Base.joinRootPath('OriginA_moved')
+		pairPaths1.append(PairPath(src2, dst2))
 
-	@with_setup(setup, teardown)
-	def testUnexecute(self):
-		self.sut.execute()
+		src3 = Base.joinRootPath('OriginX/OriginY.txt')
+		dst3 = Base.joinRootPath('OriginX/OriginY_moved.txt')
+		pairPaths2.append(PairPath(src3, dst3))
 
-		Base.isFilesExists(self.expectedFiles, True)
-		Base.isDirsExists(self.expectedDirs, True)
+		src4 = Base.joinRootPath('OriginX/OriginY')
+		dst4 = Base.joinRootPath('OriginX/OriginY_moved')
+		pairPaths2.append(PairPath(src4, dst4))
 
-		self.sut.unexecute()
+		sut1 = Move(pairPaths1)
+		sut2 = Move(pairPaths2)
 
-		Base.isFilesExists(self.expectedFiles, False)
-		Base.isDirsExists(self.expectedDirs, False)
+		eq_(Base.isExists(src1), True)
+		eq_(Base.isExists(dst1), False)
+		eq_(Base.isExists(src2), True)
+		eq_(Base.isExists(dst2), False)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
+
+		sut1.execute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
+
+		sut2.execute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), False)
+		eq_(Base.isExists(dst3), True)
+		eq_(Base.isExists(src4), False)
+		eq_(Base.isExists(dst4), True)
+
+		sut2.unexecute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
+
+		sut1.unexecute()
+
+		eq_(Base.isExists(src1), True)
+		eq_(Base.isExists(dst1), False)
+		eq_(Base.isExists(src2), True)
+		eq_(Base.isExists(dst2), False)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
