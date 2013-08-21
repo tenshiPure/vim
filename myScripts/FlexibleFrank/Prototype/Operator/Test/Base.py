@@ -74,3 +74,7 @@ class Base:
 	@staticmethod
 	def joinRootPath(tailPath):
 		return os.path.abspath(os.path.join(Base.testDir, tailPath))
+
+	@staticmethod
+	def joinTrashPath(tailPath):
+		return os.path.abspath(os.path.join(Base.trashPath, tailPath))

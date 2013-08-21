@@ -7,56 +7,82 @@ from nose.plugins.attrib import attr
 
 from Base import Base
 from Remove import Remove
-from PairPath import PairPath
 
-class Remove_test(Base):
+class Move_test(Base):
 
 	def setup(self):
 		Base.dirClean()
 
-		self.targetFiles = []
-		self.targetFiles.append(os.path.abspath(os.path.join(Base.testDir, 'OriginA.txt')))
-
-		self.targetDirs = []
-		self.targetDirs.append(os.path.abspath(os.path.join(Base.testDir, 'OriginA')))
-
-		self.trashedFiles = []
-		self.trashedFiles.append(os.path.abspath(os.path.join(Base.trashPath, 'OriginA.txt')))
-
-		self.trashedDirs = []
-		self.trashedDirs.append(os.path.abspath(os.path.join(Base.trashPath, 'OriginA')))
-
-		self.sut = Remove(self.targetFiles + self.targetDirs)
-
 	def teardown(self):
+		return
 		Base.dirClean()
 
-	@with_setup(setup, teardown)
-	def testExecute(self):
-		Base.isFilesExists(self.targetFiles, True)
-		Base.isDirsExists(self.targetDirs, True)
-		Base.isFilesExists(self.trashedFiles, False)
-		Base.isDirsExists(self.trashedDirs, False)
+	@with_setup(Base.dirClean, Base.dirClean)
+	def test(self):
+		src1 = Base.joinRootPath('OriginA.txt')
+		dst1 = Base.joinTrashPath('OriginA.txt')
 
-		self.sut.execute()
+		src2 = Base.joinRootPath('OriginA')
+		dst2 = Base.joinTrashPath('OriginA')
 
-		Base.isFilesExists(self.targetFiles, False)
-		Base.isDirsExists(self.targetDirs, False)
-		Base.isFilesExists(self.trashedFiles, True)
-		Base.isDirsExists(self.trashedDirs, True)
+		src3 = Base.joinRootPath('OriginX/OriginY.txt')
+		dst3 = Base.joinTrashPath('OriginY.txt')
 
-	@with_setup(setup, teardown)
-	def testUnexecute(self):
-		self.sut.execute()
+		src4 = Base.joinRootPath('OriginX/OriginY')
+		dst4 = Base.joinTrashPath('OriginY')
 
-		Base.isFilesExists(self.targetFiles, False)
-		Base.isDirsExists(self.targetDirs, False)
-		Base.isFilesExists(self.trashedFiles, True)
-		Base.isDirsExists(self.trashedDirs, True)
+		sut1 = Remove([src1, src2])
+		sut2 = Remove([src3, src4])
 
-		self.sut.unexecute()
+		eq_(Base.isExists(src1), True)
+		eq_(Base.isExists(dst1), False)
+		eq_(Base.isExists(src2), True)
+		eq_(Base.isExists(dst2), False)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
 
-		Base.isFilesExists(self.targetFiles, True)
-		Base.isDirsExists(self.targetDirs, True)
-		Base.isFilesExists(self.trashedFiles, False)
-		Base.isDirsExists(self.trashedDirs, False)
+		sut1.execute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
+
+		sut2.execute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), False)
+		eq_(Base.isExists(dst3), True)
+		eq_(Base.isExists(src4), False)
+		eq_(Base.isExists(dst4), True)
+
+		sut2.unexecute()
+
+		eq_(Base.isExists(src1), False)
+		eq_(Base.isExists(dst1), True)
+		eq_(Base.isExists(src2), False)
+		eq_(Base.isExists(dst2), True)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)
+
+		sut1.unexecute()
+
+		eq_(Base.isExists(src1), True)
+		eq_(Base.isExists(dst1), False)
+		eq_(Base.isExists(src2), True)
+		eq_(Base.isExists(dst2), False)
+		eq_(Base.isExists(src3), True)
+		eq_(Base.isExists(dst3), False)
+		eq_(Base.isExists(src4), True)
+		eq_(Base.isExists(dst4), False)

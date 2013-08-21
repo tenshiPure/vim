@@ -22,11 +22,11 @@ class Move_test(Base):
 		pairPaths1 = []
 		pairPaths2 = []
 
-		src1 = Base.joinRootPath('originA.txt')
-		dst1 = Base.joinRootPath('originA_moved.txt')
+		src1 = Base.joinRootPath('OriginA.txt')
+		dst1 = Base.joinRootPath('OriginA_moved.txt')
 		pairPaths1.append(PairPath(src1, dst1))
 
-		src2 = Base.joinRootPath('originA')
+		src2 = Base.joinRootPath('OriginA')
 		dst2 = Base.joinRootPath('OriginA_moved')
 		pairPaths1.append(PairPath(src2, dst2))
 

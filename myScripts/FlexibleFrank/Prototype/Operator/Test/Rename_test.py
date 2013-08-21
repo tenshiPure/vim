@@ -22,11 +22,11 @@ class Rename_test(Base):
 		pairPaths1 = []
 		pairPaths2 = []
 
-		src1 = Base.joinRootPath('originA.txt')
-		dst1 = Base.joinRootPath('originA_renamed.txt')
+		src1 = Base.joinRootPath('OriginA.txt')
+		dst1 = Base.joinRootPath('OriginA_renamed.txt')
 		pairPaths1.append(PairPath(src1, dst1))
 
-		src2 = Base.joinRootPath('originA')
+		src2 = Base.joinRootPath('OriginA')
 		dst2 = Base.joinRootPath('OriginA_renamed')
 		pairPaths1.append(PairPath(src2, dst2))
 
