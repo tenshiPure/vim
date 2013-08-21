@@ -14,7 +14,6 @@ class Move_test(Base):
 		Base.dirClean()
 
 	def teardown(self):
-		return
 		Base.dirClean()
 
 	@with_setup(Base.dirClean, Base.dirClean)
