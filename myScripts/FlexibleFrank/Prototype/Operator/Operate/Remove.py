@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 import os
 import os.path
-import shutil
 
 from PairPath import PairPath
 from Move import Move
@@ -34,6 +33,7 @@ class Remove:
 
 		self.move = Move(pairPaths)
 		self.move.execute()
+
 	#
 	# 実行取り消し
 	#

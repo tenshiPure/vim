@@ -64,3 +64,13 @@ class Base:
 			dir = os.path.join(Base.testDir, dir)
 			eq_(expect, os.path.isdir(dir))
 
+	@staticmethod
+	def isExists(entry):
+		if os.path.isfile(entry) or os.path.isdir(entry):
+			return True
+		else:
+			return False
+
+	@staticmethod
+	def joinRootPath(tailPath):
+		return os.path.abspath(os.path.join(Base.testDir, tailPath))
