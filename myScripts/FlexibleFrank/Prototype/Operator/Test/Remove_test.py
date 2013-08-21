@@ -31,7 +31,6 @@ class Remove_test(Base):
 	def teardown(self):
 		Base.dirClean()
 
-	@attr(wip=True)
 	@with_setup(setup, teardown)
 	def testExecute(self):
 		Base.isFilesExists(self.targetFiles, True)
@@ -50,10 +49,14 @@ class Remove_test(Base):
 	def testUnexecute(self):
 		self.sut.execute()
 
-		Base.isFilesExists(self.expectedFiles, True)
-		Base.isDirsExists(self.expectedDirs, True)
+		Base.isFilesExists(self.targetFiles, False)
+		Base.isDirsExists(self.targetDirs, False)
+		Base.isFilesExists(self.trashedFiles, True)
+		Base.isDirsExists(self.trashedDirs, True)
 
 		self.sut.unexecute()
 
-		Base.isFilesExists(self.expectedFiles, False)
-		Base.isDirsExists(self.expectedDirs, False)
+		Base.isFilesExists(self.targetFiles, True)
+		Base.isDirsExists(self.targetDirs, True)
+		Base.isFilesExists(self.trashedFiles, False)
+		Base.isDirsExists(self.trashedDirs, False)
