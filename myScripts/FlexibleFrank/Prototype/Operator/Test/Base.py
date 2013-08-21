@@ -29,7 +29,6 @@ class Base:
 
 	@staticmethod
 	def dirClean():
-
 		if os.path.isdir(Base.testDir):
 			shutil.rmtree(Base.testDir)
 
@@ -51,18 +50,6 @@ class Base:
 		f = open(os.path.join(Base.currentDir, 'log.txt'), 'a')
 		f.write(message + '\n')
 		f.close()
-
-	@staticmethod
-	def isFilesExists(files, expect):
-		for file in files:
-			file = os.path.join(Base.testDir, file)
-			eq_(expect, os.path.isfile(file))
-
-	@staticmethod
-	def isDirsExists(dirs, expect):
-		for dir in dirs:
-			dir = os.path.join(Base.testDir, dir)
-			eq_(expect, os.path.isdir(dir))
 
 	@staticmethod
 	def isExists(entry):
