@@ -25,11 +25,18 @@ class py(Base):
 	# テストを実行する
 	#
 	def test(self):
-		testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\Test'
-		if self.option is None:
-			command = r'!C:\Python27\Scripts\nosetests "%s"' % (testsDir)
+
+		if os.name == 'nt':
+			exe = r'!C:\Python27\Scripts\nosetests'
+			testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\Test'
 		else:
-			command = r'!C:\Python27\Scripts\nosetests -a %s "%s"' % (self.option, testsDir)
+			exe = '!nosetests'
+			testsDir = '/Users/ryo/Documents/gitvim/myScripts/FlexibleFrank/Prototype/Operator/Test'
+
+		if self.option is None:
+			command = '%s "%s"' % (exe, testsDir)
+		else:
+			command = '%s -a %s "%s"' % (exe, self.option, testsDir)
 
 		vim.command(command)
 
