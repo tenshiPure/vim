@@ -352,3 +352,6 @@ command! Tabrep %s/\t/    /g
 let $khconf = "C:/Users/Administrator/AppData/Roaming/keyhac"
 
 command! Pyhead :normal i#-*- coding: utf-8 -*-
+
+source $myScripts/OpenDirectory/OpenDirectoryController.vim
+command! -nargs=1 -complete=dir Dir call OpenDirectoryController(<f-args>)
