@@ -355,3 +355,9 @@ command! Pyhead :normal i#-*- coding: utf-8 -*-
 
 source $myScripts/OpenDirectory/OpenDirectoryController.vim
 command! -nargs=1 -complete=dir Dir call OpenDirectoryController(<f-args>)
+
+
+source $myScripts/Surround/SurroundController.vim
+command! -nargs=+         Surround call SurroundController('last', <f-args>)
+command! -nargs=+        Qsurround call SurroundController('quick', <f-args>)
+command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
