@@ -1,4 +1,5 @@
 python <<EOM
+import os
 
 class java(Base):
 
@@ -24,7 +25,7 @@ class java(Base):
 	# テストを実行する
 	#
 	def test(self):
-		pass
+		os.system('/Users/ryo/Documents/shell/slf/selenium.sh')
 
 	#
 	# ログ文を得る

@@ -24,10 +24,10 @@ class php(Base):
 	# テストを実行する
 	#
 	def test(self):
-		testsDir = '/Users/ryo/Documents/projects/slf/tests'
-		group = 'init' if self.option is None else self.option
-		command = '!phpunit --stderr -c %s/phpunit.xml --group=%s %s/application/' %(testsDir, group, testsDir)
-
+		group = 'wip' if self.option is None else self.option
+		scriptPath = '/Users/ryo/Documents/scripts/slf/phpunit.py'
+		command = '!python %s %s' % (scriptPath, group)
+		
 		vim.command(command)
 
 	#
