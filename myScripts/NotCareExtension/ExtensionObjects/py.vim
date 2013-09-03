@@ -25,7 +25,6 @@ class py(Base):
 	# テストを実行する
 	#
 	def test(self):
-
 		if os.name == 'nt':
 			exe = r'!C:\Python27\Scripts\nosetests'
 			testsDir = r'C:\Program Files (x86)\vim\gitvim\myScripts\FlexibleFrank\Prototype\Operator\Test'

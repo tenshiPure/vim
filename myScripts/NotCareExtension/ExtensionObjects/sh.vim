@@ -1,4 +1,5 @@
 python <<EOM
+import os
 
 class sh(Base):
 
@@ -18,7 +19,8 @@ class sh(Base):
 	# 実行動作を行う
 	#
 	def make(self):
-		pass
+		fileName = vim.eval('expand("%:p")').rsplit(os.sep, 1)[1]
+		vim.command('!./%s' % fileName)
 
 	#
 	# テストを実行する
