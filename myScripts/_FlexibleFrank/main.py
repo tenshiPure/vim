@@ -9,11 +9,10 @@ rootPath = os.path.abspath(os.path.dirname(__file__) + '/TestDir')
 
 Entry.Entry.setRootPath(rootPath)
 rootDir = Directory.Directory(rootPath)
-rootDir.dump(['id', 'entryName'])
-#rootDir.dump()
+#rootDir.dump(['id', 'entryName'])
 
 #for entry in rootDir.loop(lambda entry: 3 == entry.id):
-#	entry.dump()
+#	entry.dumpAll(['id', 'entryName'])
 
-#for e in rootDir.loop():
-#	print e.id
+subDir = rootDir.loop(lambda entry: entry.id == 3).next()
+subDir.dumpRec()

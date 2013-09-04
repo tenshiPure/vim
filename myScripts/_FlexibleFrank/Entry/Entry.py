@@ -107,10 +107,16 @@ class Entry:
 		return self.type == 'dir'
 
 	#
-	# 開発補助
+	# 開発補助：ダンプ
 	#
 	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
+		for field in fields:
+			print '%-20s : %s' % (field, eval('self.%s' % field))
+
+	#
+	# 開発補助：再帰ダンプ
+	#
+	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
 		for entry in self.loop():
-			for field in fields:
-				print '%-20s : %s' % (field, eval('entry.%s' % field))
+			entry.dump(fields)
 			print ' '
