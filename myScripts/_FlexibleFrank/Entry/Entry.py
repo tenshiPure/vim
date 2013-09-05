@@ -10,10 +10,11 @@ class Entry:
 	rootPath = ''
 
 	#
-	# 実行ディレクトリをセットする
+	# 初期化
 	#
 	@staticmethod
-	def setRootPath(rootPath):
+	def init(rootPath):
+		Entry.nextId = 0
 		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
 
 	#
@@ -26,8 +27,8 @@ class Entry:
 		self.depth = self.getDepth()
 		self.entryName = self.getEntryName()
 		self.pointed = False
-		self.formatedForOutput = self.getFormatedForOutput()
 		self.extention = self.getExtention()
+		self.formatedForOutput = self.getFormatedForOutput()
 
 	#
 	# IDの自動連番
@@ -110,15 +111,18 @@ class Entry:
 	#
 	# 開発補助：ダンプ
 	#
-	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
+	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
 		for field in fields:
-			print '%-20s : %s' % (field, eval('self.%s' % field))
+			if field == 'formatedForOutput':
+				print '%-20s\n%s' % (field, eval('self.%s' % field))
+			else:
+				print '%-20s : %s' % (field, eval('self.%s' % field))
 		print ' '
 
 	#
 	# 開発補助：再帰ダンプ
 	#
-	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
+	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
 		for entry in self.loop():
 			entry.dump(fields)
 
@@ -146,6 +150,6 @@ class Entry:
 		with open(self.fullPath) as file:
 			for lineNum, line in enumerate(file):
 				if re.search(pattern, line):
-					tuples.append((lineNum + 1, line))
+					tuples.append((lineNum + 1, line.rstrip('\r\n')))
 
 		return tuples

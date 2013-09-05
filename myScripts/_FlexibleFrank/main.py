@@ -1,13 +1,14 @@
 # -*- coding:utf-8 -*-
 from Entry import Directory
 from Entry import File
+from Entry import GrepFile
 from Entry import Entry
 
 import os.path
 
 rootPath = os.path.abspath(os.path.dirname(__file__) + '/TestDir')
 
-Entry.Entry.setRootPath(rootPath)
+Entry.Entry.init(rootPath)
 rootDir = Directory.Directory(rootPath)
 #rootDir.dump(['id', 'entryName'])
 
@@ -17,6 +18,10 @@ rootDir = Directory.Directory(rootPath)
 #subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 #subDir.dumpRec()
 
+Entry.Entry.init(rootPath)
 grepRootDir = Directory.Directory(rootPath, recursive = False)
 for entry in rootDir.loop():
-	print entry.grep('log', 'is')
+	grepResults = entry.grep('log', 'is')
+	if grepResults:
+		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
+		grepFile.dump()
