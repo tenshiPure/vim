@@ -18,5 +18,5 @@ rootDir = Directory.Directory(rootPath)
 #subDir.dumpRec()
 
 grepRootDir = Directory.Directory(rootPath, recursive = False)
-for entry in rootDir.loop(lambda entry: entry.grep('', 'depth is 1')):
-	entry.dump(['id', 'fullPath'])
+for entry in rootDir.loop():
+	print entry.grep('log', 'is')

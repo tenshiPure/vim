@@ -133,16 +133,19 @@ class Entry:
 
 
 	#
-	# ファイルの中身が条件に一致すれば真を返す
+	# ファイルを開き条件に一致した行と行番号をタプルリストで返す
 	#
 	def grep(self, fileName, pattern):
 		if self.isDirectory():
-			return
+			return []
 
 		if not self.find(fileName):
-			return
+			return []
 
+		tuples = []
 		with open(self.fullPath) as file:
-			for line in file:
+			for lineNum, line in enumerate(file):
 				if re.search(pattern, line):
-					return True
+					tuples.append((lineNum + 1, line))
+
+		return tuples
