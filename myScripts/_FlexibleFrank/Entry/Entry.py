@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import os
+import re
 
 import Directory
 
@@ -112,6 +113,7 @@ class Entry:
 	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
 		for field in fields:
 			print '%-20s : %s' % (field, eval('self.%s' % field))
+		print ' '
 
 	#
 	# 開発補助：再帰ダンプ
@@ -119,4 +121,27 @@ class Entry:
 	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'formatedForOutput', 'extention']):
 		for entry in self.loop():
 			entry.dump(fields)
-			print ' '
+
+
+
+
+	#
+	# エントリ名でfindする
+	# note
+	# 	In  String pattern       : 検索結果に含みたいエントリ名の正規表現　省略可能
+	# 	In  String ignorePattern : 検索結果に含まないエントリ名の正規表現　省略可能
+	# 	Out Boolean              : pattern and not ignorePattern 　　　　　両引数省略時は真
+	#
+	def isFind(self, pattern = None, ignorePattern = None):
+		if pattern is None:
+			patternMatch = True
+		else:
+			patternMatch = re.search(pattern, self.entryName)
+
+		if ignorePattern is None:
+			ignorePatternMatch = False
+		else:
+			ignorePatternMatch = re.search(ignorePattern, self.entryName)
+
+		if patternMatch and not ignorePatternMatch:
+			return True

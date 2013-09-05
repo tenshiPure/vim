@@ -10,9 +10,12 @@ class Directory(Entry):
 	#
 	# コンストラクタ
 	#
-	def __init__(self, fullPath):
+	def __init__(self, fullPath, recursive = True):
 		Entry.__init__(self, 'dir', fullPath)
-		self.entries = self.getEntries(fullPath)
+		if recursive:
+			self.entries = self.getEntries(fullPath)
+		else:
+			self.entries = []
 
 	#
 	# 再帰的にエントリを作成

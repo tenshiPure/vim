@@ -12,7 +12,17 @@ rootDir = Directory.Directory(rootPath)
 #rootDir.dump(['id', 'entryName'])
 
 #for entry in rootDir.loop(lambda entry: 3 == entry.id):
-#	entry.dumpAll(['id', 'entryName'])
+#	entry.dumpRec(['id', 'entryName'])
 
-subDir = rootDir.loop(lambda entry: entry.id == 3).next()
-subDir.dumpRec()
+#subDir = rootDir.loop(lambda entry: entry.id == 3).next()
+#subDir.dumpRec()
+
+findRootDir = Directory.Directory(rootPath, recursive = False)
+for entry in rootDir.loop(lambda entry: entry.isFind(pattern = 'Sub', ignorePattern = '[A-C]')):
+	entry.dump(['id', 'fullPath'])
+
+#for entry in rootDir.loop(lambda entry: entry.isFind(pattern = 'Sub', ignorePattern = None)):
+#	entry.dump(['id', 'fullPath'])
+
+#for entry in rootDir.loop(lambda entry: entry.isFind(pattern = None, ignorePattern = '[A-C]')):
+#	entry.dump(['id', 'fullPath'])
