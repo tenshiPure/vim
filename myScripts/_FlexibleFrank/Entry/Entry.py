@@ -126,22 +126,23 @@ class Entry:
 
 
 	#
-	# エントリ名でfindする
-	# note
-	# 	In  String pattern       : 検索結果に含みたいエントリ名の正規表現　省略可能
-	# 	In  String ignorePattern : 検索結果に含まないエントリ名の正規表現　省略可能
-	# 	Out Boolean              : pattern and not ignorePattern 　　　　　両引数省略時は真
+	# ファイル名が条件に一致すれば真を返す
 	#
-	def isFind(self, pattern = None, ignorePattern = None):
-		if pattern is None:
-			patternMatch = True
-		else:
-			patternMatch = re.search(pattern, self.entryName)
+	def find(self, pattern):
+		return re.search(pattern, self.entryName)
 
-		if ignorePattern is None:
-			ignorePatternMatch = False
-		else:
-			ignorePatternMatch = re.search(ignorePattern, self.entryName)
 
-		if patternMatch and not ignorePatternMatch:
-			return True
+	#
+	# ファイルの中身が条件に一致すれば真を返す
+	#
+	def grep(self, fileName, pattern):
+		if self.isDirectory():
+			return
+
+		if not self.find(fileName):
+			return
+
+		with open(self.fullPath) as file:
+			for line in file:
+				if re.search(pattern, line):
+					return True
