@@ -7,10 +7,19 @@ from File import File
 
 class Directory(Entry):
 
-	def __init__(self, fullPath):
+	#
+	# コンストラクタ
+	#
+	def __init__(self, fullPath, recursive = True):
 		Entry.__init__(self, 'dir', fullPath)
-		self.entries = self.getEntries(fullPath)
+		if recursive:
+			self.entries = self.getEntries(fullPath)
+		else:
+			self.entries = []
 
+	#
+	# 再帰的にエントリを作成
+	#
 	def getEntries(self, currentRoot):
 		entries = []
 		for entryName in os.listdir(currentRoot):
@@ -23,3 +32,9 @@ class Directory(Entry):
 				entries.append(Directory(fullPath))
 
 		return entries
+
+	#
+	# ジェネレータ用イテレータ
+	#
+	def __iter__(self):
+		return iter(self.entries)

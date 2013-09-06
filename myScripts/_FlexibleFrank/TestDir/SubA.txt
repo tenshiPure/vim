@@ -1,0 +1,2 @@
+this is SubA.txt
+depth is 1

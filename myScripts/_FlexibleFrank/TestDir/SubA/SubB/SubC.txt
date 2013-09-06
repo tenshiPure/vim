@@ -1,0 +1,2 @@
+this is SubC.txt
+depth is 3

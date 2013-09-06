@@ -1,15 +1,27 @@
 # -*- coding:utf-8 -*-
 from Entry import Directory
 from Entry import File
+from Entry import GrepFile
 from Entry import Entry
 
 import os.path
 
-rootPath = os.path.abspath(os.path.dirname(__file__) + '/subA')
+rootPath = os.path.abspath(os.path.dirname(__file__) + '/TestDir')
 
-Entry.Entry.setRootPath(rootPath)
+Entry.Entry.init(rootPath)
 rootDir = Directory.Directory(rootPath)
-#rootDir.dump()
+#rootDir.dump(['id', 'entryName'])
 
-subDir = rootDir.getById(3)
-subDir.dump()
+#for entry in rootDir.loop(lambda entry: 3 == entry.id):
+#	entry.dumpRec(['id', 'entryName'])
+
+#subDir = rootDir.loop(lambda entry: entry.id == 3).next()
+#subDir.dumpRec()
+
+Entry.Entry.init(rootPath)
+grepRootDir = Directory.Directory(rootPath, recursive = False)
+for entry in rootDir.loop():
+	grepResults = entry.grep('log', 'is')
+	if grepResults:
+		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
+		grepFile.dump()

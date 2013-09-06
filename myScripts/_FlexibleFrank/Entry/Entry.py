@@ -1,85 +1,155 @@
 # -*- coding:utf-8 -*-
 import os
+import re
+
+import Directory
 
 class Entry:
 
 	nextId = 0
 	rootPath = ''
 
+	#
+	# 初期化
+	#
 	@staticmethod
-	def setRootPath(rootPath):
+	def init(rootPath):
+		Entry.nextId = 0
 		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
 
+	#
+	# コンストラクタ
+	#
 	def __init__(self, type, fullPath):
 		self.id = self.getNextId()
 		self.type = type
 		self.fullPath = fullPath
 		self.depth = self.getDepth()
-		self.underRootPath = self.getUnderRootPath()
 		self.entryName = self.getEntryName()
 		self.pointed = False
-		self.formatedForOutput = self.getFormatedForOutput()
 		self.extention = self.getExtention()
+		self.formatedForOutput = self.getFormatedForOutput()
 
+	#
+	# IDの自動連番
+	#
 	def getNextId(self):
 		Entry.nextId += 1
 		return Entry.nextId
 
+	#
+	# 実行ディレクトリからの深度
+	#
 	def getDepth(self):
 		rootDepth = Entry.rootPath.count(os.sep)
 		currentDepth = self.fullPath.count(os.sep)
 		return currentDepth - rootDepth - 1
 
-	def getUnderRootPath(self):
-		return self.fullPath.replace(Entry.rootPath + os.sep, '')
-
+	#
+	# エントリ名
+	#
 	def getEntryName(self):
 		return self.fullPath.rsplit(os.sep, 1)[1]
 
+	#
+	# 出力用文字列
+	#
 	def getFormatedForOutput(self):
 		point = '*' if self.pointed else ''
-		tab = '\t' * self.depth
+		tab = '.' * self.depth
 		space = ' ' if self.isDirectory() else ''
 		return point + tab + self.entryName + space
 
+	#
+	# 拡張子
+	#
 	def getExtention(self):
 		if self.isDirectory():
 			return None
+
 		try:
 			return self.entryName.rsplit('.', 1)[1]
 		except:
 			return ''
 
-	def getById(self, id):
-		if id == self.id:
-			return self
+	#
+	# 再帰ループ時のフィルタメソッド
+	#
+	filterFunction = None
 
-		if self.isDirectory():
-			for entry in self.entries:
-				result = entry.getById(id)
-				if result is not None:
-					return result
+	#
+	# ループ
+	#
+	def loop(self, filterFunction = lambda entry: True):
+		Entry.filterFunction = filterFunction
+		return self.generator(self)
 
-		else:
-			return None
+	#
+	# ジェネレータ
+	#
+	def generator(self, entry):
+		if Entry.filterFunction(entry):
+			yield entry
 
+		if entry.isDirectory():
+			for subDirectory in entry:
+				for subEntry in self.generator(subDirectory):
+					yield subEntry 
+
+	#
+	# ファイルか判定
+	#
 	def isFile(self):
 		return self.type == 'file'
 
+	#
+	# ディレクトリか判定
+	#
 	def isDirectory(self):
 		return self.type == 'dir'
 
-	def dump(self):
-		print '%-20s : %d' % ('id', self.id)
-		print '%-20s : %s' % ('type', self.type)
-		print '%-20s : %s' % ('depth', self.depth)
-		print '%-20s : %s' % ('underRootPath ?', self.underRootPath)
-		print '%-20s : %s' % ('fullPath', self.fullPath)
-		print '%-20s : %s' % ('entryName', self.entryName)
-		print '%-20s : %s' % ('extention', self.extention)
-		print '%-20s : %s' % ('formatedForOutput', self.formatedForOutput)
+	#
+	# 開発補助：ダンプ
+	#
+	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
+		for field in fields:
+			if field == 'formatedForOutput':
+				print '%-20s\n%s' % (field, eval('self.%s' % field))
+			else:
+				print '%-20s : %s' % (field, eval('self.%s' % field))
 		print ' '
 
+	#
+	# 開発補助：再帰ダンプ
+	#
+	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
+		for entry in self.loop():
+			entry.dump(fields)
+
+
+
+
+	#
+	# ファイル名が条件に一致すれば真を返す
+	#
+	def find(self, pattern):
+		return re.search(pattern, self.entryName)
+
+
+	#
+	# ファイルを開き条件に一致した行と行番号をタプルリストで返す
+	#
+	def grep(self, fileName, pattern):
 		if self.isDirectory():
-			for entry in self.entries:
-				entry.dump()
+			return []
+
+		if not self.find(fileName):
+			return []
+
+		tuples = []
+		with open(self.fullPath) as file:
+			for lineNum, line in enumerate(file):
+				if re.search(pattern, line):
+					tuples.append((lineNum + 1, line.rstrip('\r\n')))
+
+		return tuples
