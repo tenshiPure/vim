@@ -476,3 +476,13 @@ source $myScripts/Surround/SurroundController.vim
 command! -nargs=+         Surround call SurroundController('last', <f-args>)
 command! -nargs=+        Qsurround call SurroundController('quick', <f-args>)
 command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
+
+
+let $ryo = '/Users/ryo/Desktop/ryo_controller_tests/'
+
+nnoremap <S-F1> vibdi$testName, $role, $expectedController, $expectedAction, $redirectUrl = null<ESC>
+nnoremap <S-F2> ddOif (!is_null($role))<CR>$this->_logined($role);<ESC>
+nnoremap <S-F5> o$this->executeAsserting($expectedController, $expectedAction, $redirectUrl);<ESC>
+nnoremap <S-F6> ofunction Provider() {<CR>return array(<CR>array('事務局',     array(ActorRole::ORGANIZER),              '', ''),<CR>array('統制NW',     array(ActorRole::OPERATOR_REGULATION_NW), '', ''),<CR>array('全参照',     array(ActorRole::ALL_READ_SLF),           '', ''),<CR>array('アセッサー', array(ActorRole::RISK_ASSESSOR),          '', ''),<CR>array('担当者',     array(ActorRole::SERVICE_TANTO),          '', ''),<CR>array('権限なし',   array(null),                              '', ''),<CR>array('未ログイン', null,                                     '', ''),<CR>);<CR>}<ESC>
+
+
