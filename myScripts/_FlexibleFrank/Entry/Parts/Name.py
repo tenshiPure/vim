@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import os
+import re
 
 class Name:
 
@@ -8,6 +9,12 @@ class Name:
 	#
 	def __init__(self, fullPath):
 		self.value = fullPath.rsplit(os.sep, 1)[1]
+
+	#
+	# ファイル名でfind
+	#
+	def find(self, pattern):
+		return re.search(pattern, self.value)
 
 	#
 	# 出力整形用

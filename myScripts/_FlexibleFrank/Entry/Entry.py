@@ -63,20 +63,14 @@ class Entry:
 					yield subEntry 
 
 	#
-	# ファイル名が条件に一致すれば真を返す
-	#
-	def find(self, pattern):
-		return re.search(pattern, self.name.value)
-
-
-	#
 	# ファイルを開き条件に一致した行と行番号をタプルリストで返す
+	# こりゃあコマンドか
 	#
 	def grep(self, fileName, pattern):
 		if self.type.isDirectory():
 			return []
 
-		if not self.find(fileName):
+		if not self.name.find(fileName):
 			return []
 
 		tuples = []
@@ -89,9 +83,10 @@ class Entry:
 
 	#
 	# ポイント切り替え
+	# これもコマンドか
 	#
 	def pointsSwitch(self, range, findPattern = ''):
-		for entry in self.loop(lambda entry: range.inRange(entry.id) and entry.find(findPattern)):
+		for entry in self.loop(lambda entry: range.inRange(entry.id) and entry.name.find(findPattern)):
 			entry.point.switch()
 			entry.output = Output(entry.point, entry.depth, entry.name, entry.type)
 
