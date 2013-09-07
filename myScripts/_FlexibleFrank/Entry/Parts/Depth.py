@@ -12,6 +12,12 @@ class Depth:
 		self.value = fullDepth - rootDepth - 1
 
 	#
+	# 出力整形用
+	#
+	def getTab(self):
+		return '.' * self.value
+
+	#
 	# 文字列出力
 	#
 	def __str__(self):

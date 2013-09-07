@@ -53,6 +53,12 @@ class Point:
 			self.on()
 
 	#
+	# 出力整形用
+	#
+	def getMark(self):
+		return '*' if self.isOn() else ''
+
+	#
 	# 文字列出力
 	#
 	def __str__(self):

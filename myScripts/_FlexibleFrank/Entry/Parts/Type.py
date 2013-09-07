@@ -24,6 +24,12 @@ class Type:
 		return self.value == Type.FILE
 
 	#
+	# 出力整形用
+	#
+	def getSpace(self):
+		return '_' if self.isDirectory() else ''
+
+	#
 	# 文字列出力
 	#
 	def __str__(self):

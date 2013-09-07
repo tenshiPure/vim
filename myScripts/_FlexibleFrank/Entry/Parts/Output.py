@@ -5,11 +5,13 @@ class Output:
 	#
 	# コンストラクタ
 	#
-	def __init__(self, name, point, depth, type):
-		mark = '*' if point.isOn() else ''
-		tab = '.' * depth.value
-		space = '_' if type.isDirectory() else ''
-		self.value = mark + tab + name.value + space
+	def __init__(self, point, depth, name, type):
+		mark = point.getMark()
+		tab = depth.getTab()
+		name = name.getName()
+		space = type.getSpace()
+
+		self.value = mark + tab + name + space
 
 	#
 	# 文字列出力

@@ -10,6 +10,12 @@ class Name:
 		self.value = fullPath.rsplit(os.sep, 1)[1]
 
 	#
+	# 出力整形用
+	#
+	def getName(self):
+		return self.value
+
+	#
 	# 文字列出力
 	#
 	def __str__(self):

@@ -36,7 +36,7 @@ class Entry:
 		self.name = Name(fullPath)
 		self.point = Point()
 		self.extension = Extension(fullPath)
-		self.output = Output(self.name, self.point, self.depth, self.type)
+		self.output = Output(self.point, self.depth, self.name, self.type)
 
 	#
 	# 再帰ループ時のフィルタメソッド
@@ -93,3 +93,18 @@ class Entry:
 	def pointsSwitch(self, range, findPattern = ''):
 		for entry in self.loop(lambda entry: range.inRange(entry.id) and entry.find(findPattern)):
 			entry.point.switch()
+			entry.output = Output(entry.point, entry.depth, entry.name, entry.type)
+
+	#
+	# 文字列出力
+	#
+	def __str__(self):
+		print self.id
+		print self.type
+		print self.path
+		print self.name
+		print self.depth
+		print self.extension
+		print self.point
+		print self.output
+		return ''
