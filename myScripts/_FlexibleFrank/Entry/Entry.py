@@ -10,6 +10,7 @@ from Parts.Depth import Depth
 from Parts.Path import Path
 from Parts.Name import Name
 from Parts.Point import Point
+from Parts.Output import Output
 
 class Entry:
 
@@ -35,17 +36,7 @@ class Entry:
 		self.name = Name(fullPath)
 		self.point = Point()
 		self.extension = Extension(fullPath)
-		self.formatedForOutput = self.getFormatedForOutput()
-
-	#
-	# 出力用文字列
-	#
-	def getFormatedForOutput(self):
-		# point, depth, type
-		mark = '*' if self.point.isOn() else ''
-		tab = '.' * self.depth.value
-		space = '_' if self.type.isDirectory() else ''
-		return mark + tab + self.name.value + space
+		self.output = Output(self.name, self.point, self.depth, self.type)
 
 	#
 	# 再帰ループ時のフィルタメソッド

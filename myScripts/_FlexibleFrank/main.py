@@ -41,4 +41,5 @@ for e in rootDir.loop():
 	print e.depth
 	print e.extension
 	print e.point
+	print e.output
 	print ' '

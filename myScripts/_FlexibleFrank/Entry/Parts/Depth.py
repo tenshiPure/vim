@@ -11,7 +11,6 @@ class Depth:
 		fullDepth = fullPath.count(os.sep)
 		self.value = fullDepth - rootDepth - 1
 
-
 	#
 	# 文字列出力
 	#
