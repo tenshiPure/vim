@@ -138,27 +138,6 @@ class Entry:
 	#
 	# ポイント切り替え
 	#
-	def pointsSwitch(self, idRange, findPattern = ''):
-		for entry in self.loop(lambda entry: entry.id in idRange and entry.find(findPattern)):
+	def pointsSwitch(self, range, findPattern = ''):
+		for entry in self.loop(lambda entry: entry.id in range.createList() and entry.find(findPattern)):
 			entry.point.switch()
-
-	#
-	# 範囲選択のリストを作成
-	#
-	def range(self, start, end):
-		# 数字のみ、もしくは ^ か . のみ許可
-		if re.search(r'(^[0-9]+$|^[\^\.]$)', start):
-			if start == '^':
-				start = self.id
-			elif start == '.':
-				pass
-		
-		# 数字のみ、もしくは $ か . のみ許可
-		if re.search(r'(^[0-9]+$|^[\$\.]$)', end):
-			if end == '$':
-				for entry in self.loop():
-					end = entry.id
-			elif start == '.':
-				pass
-
-		return range(int(start), int(end) + 1)

@@ -3,6 +3,7 @@ from Entry import Directory
 from Entry import File
 from Entry import GrepFile
 from Entry import Entry
+from Entry.Range import Range
 
 import os.path
 
@@ -23,13 +24,16 @@ subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 #	if grepResults:
 #		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
 
-idRange = rootDir.range('^', '4')
-rootDir.pointsSwitch(idRange)
+#
+# 範囲
+#
+range = Range(rootDir, '^', '4')
+rootDir.pointsSwitch(range)
 
-##
-## ポイント
-##
-#for e in rootDir.loop():
-#	print 'id ' + str(e.id)
-#	print 'point ' + str(e.point.value)
-#	print ' '
+#
+# ポイント
+#
+for e in rootDir.loop():
+	print 'id ' + str(e.id)
+	print 'point ' + str(e.point.value)
+	print ' '
