@@ -3,21 +3,21 @@ import os
 import re
 
 import Directory
+from Parts.Point import Point
 
 class Entry:
 
 	nextId = None
 	rootPath = None
-	pointNum = None
 
 	#
 	# 初期化
 	#
 	@staticmethod
-	def init(rootPath):
+	def initialize(rootPath):
 		Entry.nextId = 0
 		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
-		Entry.pointNum = 0
+		Point.initialize()
 
 	#
 	# コンストラクタ
@@ -28,7 +28,7 @@ class Entry:
 		self.fullPath = fullPath
 		self.depth = self.getDepth()
 		self.entryName = self.getEntryName()
-		self.point = 0
+		self.point = Point()
 		self.extention = self.getExtention()
 		self.formatedForOutput = self.getFormatedForOutput()
 
@@ -57,10 +57,10 @@ class Entry:
 	# 出力用文字列
 	#
 	def getFormatedForOutput(self):
-		isPointed = '*' if self.isPointOn() else ''
+		mark = '*' if self.point.isOn() else ''
 		tab = '.' * self.depth
 		space = '_' if self.isDirectory() else ''
-		return isPointed + tab + self.entryName + space
+		return mark + tab + self.entryName + space
 
 	#
 	# 拡張子
@@ -111,24 +111,6 @@ class Entry:
 		return self.type == 'dir'
 
 	#
-	# 開発補助：ダンプ
-	#
-	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'point', 'extention', 'formatedForOutput']):
-		for field in fields:
-			if field == 'formatedForOutput':
-				print '%-20s\n%s' % (field, eval('self.%s' % field))
-			else:
-				print '%-20s : %s' % (field, eval('self.%s' % field))
-		print ' '
-
-	#
-	# 開発補助：再帰ダンプ
-	#
-	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'point', 'extention', 'formatedForOutput']):
-		for entry in self.loop():
-			entry.dump(fields)
-
-	#
 	# ファイル名が条件に一致すれば真を返す
 	#
 	def find(self, pattern):
@@ -154,35 +136,11 @@ class Entry:
 		return tuples
 
 	#
-	# ポイントオンか判定する
-	#
-	def isPointOn(self):
-		return self.point != 0
-
-	#
-	# ポイントオフか判定する
-	#
-	def isPointOff(self):
-		return self.point == 0
-
-	#
 	# ポイント切り替え
 	#
-	def pointToggle(self):
-		if self.isPointOn():
-			self.point = 0
-		else:
-			Entry.pointNum += 1
-			self.point = Entry.pointNum
-
-		self.formatedForOutput = self.getFormatedForOutput()
-
-	#
-	# 複数のポイントを切り替える
-	#
-	def pointsToggle(self, idRange, findPattern = ''):
+	def pointsSwitch(self, idRange, findPattern = ''):
 		for entry in self.loop(lambda entry: entry.id in idRange and entry.find(findPattern)):
-			entry.pointToggle()
+			entry.point.switch()
 
 	#
 	# 範囲選択のリストを作成

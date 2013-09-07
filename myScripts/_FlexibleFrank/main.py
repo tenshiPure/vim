@@ -8,25 +8,28 @@ import os.path
 
 rootPath = os.path.abspath(os.path.dirname(__file__) + '/TestDir')
 
-Entry.Entry.init(rootPath)
+Entry.Entry.initialize(rootPath)
 rootDir = Directory.Directory(rootPath)
-#rootDir.dump(['id', 'entryName'])
 
 #for entry in rootDir.loop(lambda entry: 3 == entry.id):
-#	entry.dumpRec(['id', 'entryName'])
+#	pass
 
 subDir = rootDir.loop(lambda entry: entry.id == 3).next()
-#subDir.dumpRec()
 
-#Entry.Entry.init(rootPath)
+#Entry.Entry.initialize(rootPath)
 #grepRootDir = Directory.Directory(rootPath, recursive = False)
 #for entry in rootDir.loop():
 #	grepResults = entry.grep('log', 'is')
 #	if grepResults:
 #		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
-#		grepFile.dump()
 
 idRange = rootDir.range('^', '4')
-rootDir.pointsToggle(idRange)
+rootDir.pointsSwitch(idRange)
 
-rootDir.dumpRec(['id', 'entryName', 'point'])
+##
+## ポイント
+##
+#for e in rootDir.loop():
+#	print 'id ' + str(e.id)
+#	print 'point ' + str(e.point.value)
+#	print ' '
