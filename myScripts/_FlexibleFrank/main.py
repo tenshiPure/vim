@@ -15,7 +15,7 @@ rootDir = Directory.Directory(rootPath)
 #for entry in rootDir.loop(lambda entry: 3 == entry.id):
 #	pass
 
-subDir = rootDir.loop(lambda entry: entry.id == 3).next()
+#subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 
 #Entry.Entry.initialize(rootPath)
 #grepRootDir = Directory.Directory(rootPath, recursive = False)
@@ -34,6 +34,6 @@ rootDir.pointsSwitch(range)
 # ポイント
 #
 for e in rootDir.loop():
-	print 'id ' + str(e.id)
-	print 'point ' + str(e.point.value)
+	print e.id
+	print e.point
 	print ' '

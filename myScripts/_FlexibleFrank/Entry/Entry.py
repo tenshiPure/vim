@@ -3,11 +3,11 @@ import os
 import re
 
 import Directory
+from Parts.Id import Id
 from Parts.Point import Point
 
 class Entry:
 
-	nextId = None
 	rootPath = None
 
 	#
@@ -15,15 +15,15 @@ class Entry:
 	#
 	@staticmethod
 	def initialize(rootPath):
-		Entry.nextId = 0
 		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
+		Id.initialize()
 		Point.initialize()
 
 	#
 	# コンストラクタ
 	#
 	def __init__(self, type, fullPath):
-		self.id = self.getNextId()
+		self.id = Id()
 		self.type = type
 		self.fullPath = fullPath
 		self.depth = self.getDepth()
@@ -31,13 +31,6 @@ class Entry:
 		self.point = Point()
 		self.extention = self.getExtention()
 		self.formatedForOutput = self.getFormatedForOutput()
-
-	#
-	# IDの自動連番
-	#
-	def getNextId(self):
-		Entry.nextId += 1
-		return Entry.nextId
 
 	#
 	# 実行ディレクトリからの深度
@@ -139,5 +132,5 @@ class Entry:
 	# ポイント切り替え
 	#
 	def pointsSwitch(self, range, findPattern = ''):
-		for entry in self.loop(lambda entry: entry.id in range.createList() and entry.find(findPattern)):
+		for entry in self.loop(lambda entry: range.inRange(entry.id) and entry.find(findPattern)):
 			entry.point.switch()
