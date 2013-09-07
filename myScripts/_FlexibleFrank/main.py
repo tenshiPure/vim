@@ -15,13 +15,18 @@ rootDir = Directory.Directory(rootPath)
 #for entry in rootDir.loop(lambda entry: 3 == entry.id):
 #	entry.dumpRec(['id', 'entryName'])
 
-#subDir = rootDir.loop(lambda entry: entry.id == 3).next()
+subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 #subDir.dumpRec()
 
-Entry.Entry.init(rootPath)
-grepRootDir = Directory.Directory(rootPath, recursive = False)
-for entry in rootDir.loop():
-	grepResults = entry.grep('log', 'is')
-	if grepResults:
-		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
-		grepFile.dump()
+#Entry.Entry.init(rootPath)
+#grepRootDir = Directory.Directory(rootPath, recursive = False)
+#for entry in rootDir.loop():
+#	grepResults = entry.grep('log', 'is')
+#	if grepResults:
+#		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
+#		grepFile.dump()
+
+idRange = rootDir.range('^', '4')
+rootDir.pointsToggle(idRange)
+
+rootDir.dumpRec()

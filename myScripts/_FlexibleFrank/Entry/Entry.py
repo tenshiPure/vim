@@ -57,7 +57,7 @@ class Entry:
 	def getFormatedForOutput(self):
 		point = '*' if self.pointed else ''
 		tab = '.' * self.depth
-		space = ' ' if self.isDirectory() else ''
+		space = '_' if self.isDirectory() else ''
 		return point + tab + self.entryName + space
 
 	#
@@ -153,3 +153,42 @@ class Entry:
 					tuples.append((lineNum + 1, line.rstrip('\r\n')))
 
 		return tuples
+
+	#
+	# ポイント切り替え
+	#
+	def pointToggle(self):
+		if self.pointed:
+			self.pointed = False
+		else:
+			self.pointed = True
+
+		self.formatedForOutput = self.getFormatedForOutput()
+
+	#
+	# 複数のポイントを切り替える
+	#
+	def pointsToggle(self, idRange, findPattern = ''):
+		for entry in self.loop(lambda entry: entry.id in idRange and entry.find(findPattern)):
+			entry.pointToggle()
+
+	#
+	# 範囲選択のリストを作成
+	#
+	def range(self, start, end):
+		# 数字のみ、もしくは ^ か . のみ許可
+		if re.search(r'(^[0-9]+$|^[\^\.]$)', start):
+			if start == '^':
+				start = self.id
+			elif start == '.':
+				pass
+		
+		# 数字のみ、もしくは $ か . のみ許可
+		if re.search(r'(^[0-9]+$|^[\$\.]$)', end):
+			if end == '$':
+				for entry in self.loop():
+					end = entry.id
+			elif start == '.':
+				pass
+
+		return range(int(start), int(end) + 1)
