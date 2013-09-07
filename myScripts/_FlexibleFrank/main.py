@@ -36,6 +36,7 @@ rootDir.pointsSwitch(range)
 for e in rootDir.loop():
 	print e.id
 	print e.type
+	print e.path
 	print e.name
 	print e.depth
 	print e.extension

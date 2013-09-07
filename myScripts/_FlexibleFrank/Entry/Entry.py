@@ -7,6 +7,7 @@ from Parts.Id import Id
 from Parts.Type import Type
 from Parts.Extension import Extension
 from Parts.Depth import Depth
+from Parts.Path import Path
 from Parts.Name import Name
 from Parts.Point import Point
 
@@ -29,7 +30,7 @@ class Entry:
 	def __init__(self, type, fullPath):
 		self.id = Id()
 		self.type = Type(type)
-		self.fullPath = fullPath
+		self.path = Path(fullPath)
 		self.depth = Depth(Entry.rootPath, fullPath)
 		self.name = Name(fullPath)
 		self.point = Point()
@@ -88,7 +89,7 @@ class Entry:
 			return []
 
 		tuples = []
-		with open(self.fullPath) as file:
+		with open(self.path.value) as file:
 			for lineNum, line in enumerate(file):
 				if re.search(pattern, line):
 					tuples.append((lineNum + 1, line.rstrip('\r\n')))
