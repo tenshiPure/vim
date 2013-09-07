@@ -4,6 +4,7 @@ import os.path
 
 from Entry import Entry
 from File import File
+from Parts.Type import Type
 
 class Directory(Entry):
 
@@ -11,7 +12,7 @@ class Directory(Entry):
 	# コンストラクタ
 	#
 	def __init__(self, fullPath, recursive = True):
-		Entry.__init__(self, 'dir', fullPath)
+		Entry.__init__(self, Type.DIRECTORY, fullPath)
 		if recursive:
 			self.entries = self.getEntries(fullPath)
 		else:

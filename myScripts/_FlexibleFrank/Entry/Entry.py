@@ -4,6 +4,7 @@ import re
 
 import Directory
 from Parts.Id import Id
+from Parts.Type import Type
 from Parts.Point import Point
 
 class Entry:
@@ -24,7 +25,7 @@ class Entry:
 	#
 	def __init__(self, type, fullPath):
 		self.id = Id()
-		self.type = type
+		self.type = Type(type)
 		self.fullPath = fullPath
 		self.depth = self.getDepth()
 		self.entryName = self.getEntryName()
@@ -52,14 +53,14 @@ class Entry:
 	def getFormatedForOutput(self):
 		mark = '*' if self.point.isOn() else ''
 		tab = '.' * self.depth
-		space = '_' if self.isDirectory() else ''
+		space = '_' if self.type.isDirectory() else ''
 		return mark + tab + self.entryName + space
 
 	#
 	# 拡張子
 	#
 	def getExtention(self):
-		if self.isDirectory():
+		if self.type.isDirectory():
 			return None
 
 		try:
@@ -86,22 +87,10 @@ class Entry:
 		if Entry.filterFunction(entry):
 			yield entry
 
-		if entry.isDirectory():
+		if entry.type.isDirectory():
 			for subDirectory in entry:
 				for subEntry in self.generator(subDirectory):
 					yield subEntry 
-
-	#
-	# ファイルか判定
-	#
-	def isFile(self):
-		return self.type == 'file'
-
-	#
-	# ディレクトリか判定
-	#
-	def isDirectory(self):
-		return self.type == 'dir'
 
 	#
 	# ファイル名が条件に一致すれば真を返す
@@ -114,7 +103,7 @@ class Entry:
 	# ファイルを開き条件に一致した行と行番号をタプルリストで返す
 	#
 	def grep(self, fileName, pattern):
-		if self.isDirectory():
+		if self.type.isDirectory():
 			return []
 
 		if not self.find(fileName):
