@@ -5,8 +5,9 @@ import re
 import Directory
 from Parts.Id import Id
 from Parts.Type import Type
-from Parts.Extension import Extension 
-from Parts.Depth import Depth 
+from Parts.Extension import Extension
+from Parts.Depth import Depth
+from Parts.Name import Name
 from Parts.Point import Point
 
 class Entry:
@@ -30,16 +31,10 @@ class Entry:
 		self.type = Type(type)
 		self.fullPath = fullPath
 		self.depth = Depth(Entry.rootPath, fullPath)
-		self.entryName = self.getEntryName()
+		self.name = Name(fullPath)
 		self.point = Point()
 		self.extension = Extension(fullPath)
 		self.formatedForOutput = self.getFormatedForOutput()
-
-	#
-	# エントリ名
-	#
-	def getEntryName(self):
-		return self.fullPath.rsplit(os.sep, 1)[1]
 
 	#
 	# 出力用文字列
@@ -49,7 +44,7 @@ class Entry:
 		mark = '*' if self.point.isOn() else ''
 		tab = '.' * self.depth.value
 		space = '_' if self.type.isDirectory() else ''
-		return mark + tab + self.entryName + space
+		return mark + tab + self.name.value + space
 
 	#
 	# 再帰ループ時のフィルタメソッド
@@ -79,7 +74,7 @@ class Entry:
 	# ファイル名が条件に一致すれば真を返す
 	#
 	def find(self, pattern):
-		return re.search(pattern, self.entryName)
+		return re.search(pattern, self.name.value)
 
 
 	#
