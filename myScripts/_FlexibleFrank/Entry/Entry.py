@@ -5,6 +5,7 @@ import re
 import Directory
 from Parts.Id import Id
 from Parts.Type import Type
+from Parts.Extension import Extension 
 from Parts.Point import Point
 
 class Entry:
@@ -30,7 +31,7 @@ class Entry:
 		self.depth = self.getDepth()
 		self.entryName = self.getEntryName()
 		self.point = Point()
-		self.extention = self.getExtention()
+		self.extension = Extension(fullPath)
 		self.formatedForOutput = self.getFormatedForOutput()
 
 	#
@@ -55,18 +56,6 @@ class Entry:
 		tab = '.' * self.depth
 		space = '_' if self.type.isDirectory() else ''
 		return mark + tab + self.entryName + space
-
-	#
-	# 拡張子
-	#
-	def getExtention(self):
-		if self.type.isDirectory():
-			return None
-
-		try:
-			return self.entryName.rsplit('.', 1)[1]
-		except:
-			return ''
 
 	#
 	# 再帰ループ時のフィルタメソッド
