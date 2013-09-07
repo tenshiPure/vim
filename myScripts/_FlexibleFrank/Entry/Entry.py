@@ -6,6 +6,7 @@ import Directory
 from Parts.Id import Id
 from Parts.Type import Type
 from Parts.Extension import Extension 
+from Parts.Depth import Depth 
 from Parts.Point import Point
 
 class Entry:
@@ -28,19 +29,11 @@ class Entry:
 		self.id = Id()
 		self.type = Type(type)
 		self.fullPath = fullPath
-		self.depth = self.getDepth()
+		self.depth = Depth(Entry.rootPath, fullPath)
 		self.entryName = self.getEntryName()
 		self.point = Point()
 		self.extension = Extension(fullPath)
 		self.formatedForOutput = self.getFormatedForOutput()
-
-	#
-	# 実行ディレクトリからの深度
-	#
-	def getDepth(self):
-		rootDepth = Entry.rootPath.count(os.sep)
-		currentDepth = self.fullPath.count(os.sep)
-		return currentDepth - rootDepth - 1
 
 	#
 	# エントリ名
@@ -52,8 +45,9 @@ class Entry:
 	# 出力用文字列
 	#
 	def getFormatedForOutput(self):
+		# point, depth, type
 		mark = '*' if self.point.isOn() else ''
-		tab = '.' * self.depth
+		tab = '.' * self.depth.value
 		space = '_' if self.type.isDirectory() else ''
 		return mark + tab + self.entryName + space
 
