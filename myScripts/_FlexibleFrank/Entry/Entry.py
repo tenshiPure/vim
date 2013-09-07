@@ -6,8 +6,9 @@ import Directory
 
 class Entry:
 
-	nextId = 0
-	rootPath = ''
+	nextId = None
+	rootPath = None
+	pointNum = None
 
 	#
 	# 初期化
@@ -16,6 +17,7 @@ class Entry:
 	def init(rootPath):
 		Entry.nextId = 0
 		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
+		Entry.pointNum = 0
 
 	#
 	# コンストラクタ
@@ -26,7 +28,7 @@ class Entry:
 		self.fullPath = fullPath
 		self.depth = self.getDepth()
 		self.entryName = self.getEntryName()
-		self.pointed = False
+		self.point = 0
 		self.extention = self.getExtention()
 		self.formatedForOutput = self.getFormatedForOutput()
 
@@ -55,10 +57,10 @@ class Entry:
 	# 出力用文字列
 	#
 	def getFormatedForOutput(self):
-		point = '*' if self.pointed else ''
+		isPointed = '*' if self.isPointOn() else ''
 		tab = '.' * self.depth
 		space = '_' if self.isDirectory() else ''
-		return point + tab + self.entryName + space
+		return isPointed + tab + self.entryName + space
 
 	#
 	# 拡張子
@@ -111,7 +113,7 @@ class Entry:
 	#
 	# 開発補助：ダンプ
 	#
-	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
+	def dump(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'point', 'extention', 'formatedForOutput']):
 		for field in fields:
 			if field == 'formatedForOutput':
 				print '%-20s\n%s' % (field, eval('self.%s' % field))
@@ -122,12 +124,9 @@ class Entry:
 	#
 	# 開発補助：再帰ダンプ
 	#
-	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'pointed', 'extention', 'formatedForOutput']):
+	def dumpRec(self, fields = ['id', 'type', 'fullPath', 'depth', 'entryName', 'point', 'extention', 'formatedForOutput']):
 		for entry in self.loop():
 			entry.dump(fields)
-
-
-
 
 	#
 	# ファイル名が条件に一致すれば真を返す
@@ -155,13 +154,26 @@ class Entry:
 		return tuples
 
 	#
+	# ポイントオンか判定する
+	#
+	def isPointOn(self):
+		return self.point != 0
+
+	#
+	# ポイントオフか判定する
+	#
+	def isPointOff(self):
+		return self.point == 0
+
+	#
 	# ポイント切り替え
 	#
 	def pointToggle(self):
-		if self.pointed:
-			self.pointed = False
+		if self.isPointOn():
+			self.point = 0
 		else:
-			self.pointed = True
+			Entry.pointNum += 1
+			self.point = Entry.pointNum
 
 		self.formatedForOutput = self.getFormatedForOutput()
 

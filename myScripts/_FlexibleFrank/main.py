@@ -29,4 +29,4 @@ subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 idRange = rootDir.range('^', '4')
 rootDir.pointsToggle(idRange)
 
-rootDir.dumpRec()
+rootDir.dumpRec(['id', 'entryName', 'point'])
