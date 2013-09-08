@@ -26,7 +26,7 @@ class Type:
 	#
 	# 出力整形用
 	#
-	def getSpace(self):
+	def createOutputParts(self):
 		return '_' if self.isDirectory() else ''
 
 	#

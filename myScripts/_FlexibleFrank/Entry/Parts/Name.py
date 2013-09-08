@@ -19,7 +19,7 @@ class Name:
 	#
 	# 出力整形用
 	#
-	def getName(self):
+	def createOutputParts(self):
 		return self.value
 
 	#

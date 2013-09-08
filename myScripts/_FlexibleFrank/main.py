@@ -21,7 +21,7 @@ Entry.Entry.initialize(rootPath)
 grepRootDir = Directory.Directory(rootPath, recursive = False)
 for entry in rootDir.loop():
 	grepResult = entry.grep('log', 'is')
-	if not grepResult.empty():
+	if not grepResult.isEmpty():
 		file = FileGrep.FileGrep(entry.path, grepResult)
 		print file
 

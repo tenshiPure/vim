@@ -55,7 +55,7 @@ class Point:
 	#
 	# 出力整形用
 	#
-	def getMark(self):
+	def createOutputParts(self):
 		return '*' if self.isOn() else ''
 
 	#

@@ -11,7 +11,7 @@ class Path:
 	#
 	# 出力整形用
 	#
-	def getPath(self):
+	def createOutputParts(self):
 		return self.value
 
 	#

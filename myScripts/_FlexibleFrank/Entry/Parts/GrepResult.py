@@ -20,13 +20,13 @@ class GrepResult:
 	#
 	# 結果が空か判定
 	#
-	def empty(self):
+	def isEmpty(self):
 		return self.value == []
 
 	#
 	# 出力整形用
 	#
-	def getGrep(self):
+	def createOutputParts(self):
 		grep = '\n'
 		for val in self.value:
 			grep += '%5d : %s\n' % (val[GrepResult.LINE_NUM], val[GrepResult.LINE])

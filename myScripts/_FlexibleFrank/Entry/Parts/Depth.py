@@ -14,7 +14,7 @@ class Depth:
 	#
 	# 出力整形用
 	#
-	def getTab(self):
+	def createOutputParts(self):
 		return '.' * self.value
 
 	#

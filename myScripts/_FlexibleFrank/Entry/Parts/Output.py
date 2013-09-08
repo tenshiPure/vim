@@ -6,10 +6,10 @@ class Output:
 	# コンストラクタ
 	#
 	def __init__(self, point, depth, name, type):
-		mark = point.getMark()
-		tab = depth.getTab()
-		name = name.getName()
-		space = type.getSpace()
+		mark = point.createOutputParts()
+		tab = depth.createOutputParts()
+		name = name.createOutputParts()
+		space = type.createOutputParts()
 
 		self.value = mark + tab + name + space
 
