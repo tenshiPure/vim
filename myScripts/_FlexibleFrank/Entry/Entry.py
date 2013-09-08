@@ -12,6 +12,8 @@ from Parts.Name import Name
 from Parts.Point import Point
 from Parts.Output import Output
 
+from Parts.GrepResult import GrepResult
+
 class Entry:
 
 	ROOT_PATH = None
@@ -63,19 +65,20 @@ class Entry:
 	# こりゃあコマンドか
 	#
 	def grep(self, fileName, pattern):
+		grepResult = GrepResult()
+
 		if self.type.isDirectory():
-			return []
+			return grepResult
 
 		if not self.name.find(fileName):
-			return []
+			return grepResult
 
-		tuples = []
 		with open(self.path.value) as file:
 			for lineNum, line in enumerate(file):
 				if re.search(pattern, line):
-					tuples.append((lineNum + 1, line.rstrip('\r\n')))
+					grepResult.add(lineNum, line)
 
-		return tuples
+		return grepResult
 
 	#
 	# ポイント切り替え

@@ -5,14 +5,10 @@ class OutputGrep:
 	#
 	# コンストラクタ
 	#
-	def __init__(self, point, grepResults, path):
+	def __init__(self, point, grepResult, path):
 		mark = point.getMark()
-
 		path = path.getPath()
-
-		grep = '\n'
-		for grepResult in grepResults:
-			grep += '%5d : %s\n' % (grepResult[0], grepResult[1])
+		grep = grepResult.getGrep()
 
 		self.value = mark + path + grep
 

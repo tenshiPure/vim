@@ -20,9 +20,9 @@ rootDir = Directory.Directory(rootPath)
 Entry.Entry.initialize(rootPath)
 grepRootDir = Directory.Directory(rootPath, recursive = False)
 for entry in rootDir.loop():
-	grepResults = entry.grep('log', 'is')
-	if grepResults:
-		file = FileGrep.FileGrep(entry.path.value, grepResults)
+	grepResult = entry.grep('log', 'is')
+	if not grepResult.empty():
+		file = FileGrep.FileGrep(entry.path, grepResult)
 		print file
 
 ##
