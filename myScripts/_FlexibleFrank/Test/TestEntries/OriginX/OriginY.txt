@@ -1,0 +1,2 @@
+this is OriginY.txt
+depth is 2
