@@ -9,6 +9,12 @@ class Path:
 		self.value = path
 
 	#
+	# 出力整形用
+	#
+	def getPath(self):
+		return self.value
+
+	#
 	# 文字列出力
 	#
 	def __str__(self):

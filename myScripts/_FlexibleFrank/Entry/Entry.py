@@ -14,14 +14,15 @@ from Parts.Output import Output
 
 class Entry:
 
-	rootPath = None
+	ROOT_PATH = None
+	FILTER_FUNCTION = None
 
 	#
 	# 初期化
 	#
 	@staticmethod
 	def initialize(rootPath):
-		Entry.rootPath = os.path.abspath(os.path.dirname(rootPath))
+		Entry.ROOT_PATH = os.path.abspath(os.path.dirname(rootPath))
 		Id.initialize()
 		Point.initialize()
 
@@ -32,29 +33,24 @@ class Entry:
 		self.id = Id()
 		self.type = Type(type)
 		self.path = Path(fullPath)
-		self.depth = Depth(Entry.rootPath, fullPath)
+		self.depth = Depth(Entry.ROOT_PATH, fullPath)
 		self.name = Name(fullPath)
 		self.point = Point()
 		self.extension = Extension(fullPath)
 		self.output = Output(self.point, self.depth, self.name, self.type)
 
 	#
-	# 再帰ループ時のフィルタメソッド
-	#
-	filterFunction = None
-
-	#
 	# ループ
 	#
 	def loop(self, filterFunction = lambda entry: True):
-		Entry.filterFunction = filterFunction
+		Entry.FILTER_FUNCTION = filterFunction
 		return self.generator(self)
 
 	#
 	# ジェネレータ
 	#
 	def generator(self, entry):
-		if Entry.filterFunction(entry):
+		if Entry.FILTER_FUNCTION(entry):
 			yield entry
 
 		if entry.type.isDirectory():

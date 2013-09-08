@@ -21,10 +21,10 @@ class Directory(Entry):
 	#
 	# 再帰的にエントリを作成
 	#
-	def getEntries(self, currentRoot):
+	def getEntries(self, path):
 		entries = []
-		for entryName in os.listdir(currentRoot):
-			fullPath = os.path.join(currentRoot, entryName)
+		for entryName in os.listdir(path):
+			fullPath = os.path.join(path, entryName)
 
 			if os.path.isfile(fullPath):
 				entries.append(File(fullPath))

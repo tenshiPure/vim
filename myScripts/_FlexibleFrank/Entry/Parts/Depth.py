@@ -21,4 +21,4 @@ class Depth:
 	# 文字列出力
 	#
 	def __str__(self):
-		return '%-20s : %s' % ('depth', self.value)
+		return '%-20s : %d' % ('depth', self.value)

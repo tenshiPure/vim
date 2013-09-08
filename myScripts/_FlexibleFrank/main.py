@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from Entry import Directory
 from Entry import File
-from Entry import GrepFile
+from Entry import FileGrep
 from Entry import Entry
 from Entry.Range import Range
 
@@ -17,21 +17,22 @@ rootDir = Directory.Directory(rootPath)
 
 #subDir = rootDir.loop(lambda entry: entry.id == 3).next()
 
-#Entry.Entry.initialize(rootPath)
-#grepRootDir = Directory.Directory(rootPath, recursive = False)
-#for entry in rootDir.loop():
-#	grepResults = entry.grep('log', 'is')
-#	if grepResults:
-#		grepFile = GrepFile.GrepFile(entry.fullPath, grepResults)
+Entry.Entry.initialize(rootPath)
+grepRootDir = Directory.Directory(rootPath, recursive = False)
+for entry in rootDir.loop():
+	grepResults = entry.grep('log', 'is')
+	if grepResults:
+		file = FileGrep.FileGrep(entry.path.value, grepResults)
+		print file
 
-#
-# 範囲
-#
-range = Range(rootDir, '^', '4')
-rootDir.pointsSwitch(range)
+##
+## 範囲
+##
+#range = Range(rootDir, '^', '4')
+#rootDir.pointsSwitch(range)
 
-#
-# ポイント
-#
-for e in rootDir.loop():
-	print e
+##
+## ポイント
+##
+#for e in rootDir.loop():
+#	print e
