@@ -1,50 +1,67 @@
+
 "----------------------------------------------------------------------------------------------------
 "
-"エディタの基本設定だよ
+"環境判定だ�~H
+"別ファイルでPC単位で分け�~K
+"
+"----------------------------------------------------------------------------------------------------
+if has('win32')
+    let os = 'win'
+endif
+
+if has('mac')
+    let os = 'mac'
+endif
+
+"----------------------------------------------------------------------------------------------------
+"
+"エディタの基本設定だ�~H
 "
 "----------------------------------------------------------------------------------------------------
 "行番号の表示
 set number
 
-"タブ幅の設定
+"タブ幅の設�~Z
 set tabstop=4
 
-"<<, >> でシフトする幅の設定
+"<<, >> でシフトする幅の設�~Z
 set shiftwidth=4
 
 "保存していなくても別のバッファに移れる
 set hidden
 
-"クリップボードを共有
+"クリップボードを共�~I
 set clipboard=unnamed
 
-"スワップファイルを作成しない
+"スワップファイルを作成しな�~D
 set noswapfile
 
-"バックアップファイルを作成しない
+"バックアップファイルを作成しな�~D
 set nobackup
 
-"インフォファイルを作成しない
+"インフォファイルを作成しな�~D
 set viminfo=
 
-"折り返さない
+"折り返さな�~D
 autocmd BufWinEnter * set nowrap
 
 "インクリメント・デクリメントを10進数で行う
 autocmd BufWinEnter * set nrformats=
 
-"自動で改行しない
+"自動で改行しな�~D
 autocmd BufWinEnter * set textwidth=0
 
 "マークをリセット
 autocmd BufWinEnter * delmarks!
 
-"文字コード設定 @win
-autocmd BufWinEnter * set fileencoding=utf8
+"文字コード設�~Z
+if os == 'win'
+	autocmd BufWinEnter * set fileencoding=utf8 
+endif
 
 "----------------------------------------------------------------------------------------------------
 "
-"エディタの表示設定だよ
+"エディタの表示設定だ�~H
 "
 "----------------------------------------------------------------------------------------------------
 "ツールバー非表示
@@ -53,17 +70,21 @@ set guioptions-=T
 "メニューバー非表示
 set guioptions-=m
 
-"日本語入力のときにカーソルを赤くする
+"日本語入力のときにカーソルを赤くす�~K
 hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
 "----------------------------------------------------------------------------------------------------
 "
-"諸パスだよ
+"諸パスだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"gitvim @win
-let $gitvim = $vim . '/gitvim'
-
+"gitvim
+if os == 'win'
+	let $gitvim = $vim . '/gitvim' 
+endif
+if os == 'mac'
+	let $gitvim = '/Users/ryo/Documents/gitvim' 
+endif
 
 "vim
 let $ignore      = $gitvim . '/.gitignore'
@@ -78,36 +99,107 @@ let $notcare     = $gitvim . '/myScripts/NotCareExtension'
 let $trans       = $gitvim . '/myScripts/Translator'
 let $vmail       = $gitvim . '/myScripts/vMail'
 
-"AutoHotkeys @win
-let $ahk     = "D:/MyDocument/AutoHotKeys"
-let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
+"AutoHotkeys
+if os == 'win'
+	let $ahk     = "D:/MyDocument/AutoHotKeys"
+endif
+if os == 'win'
+	let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
+endif
 
-"account @win
-let $account = "D:/MyDocument/account"
+"account
+if os == 'win'
+	let $account = "D:/MyDocument/account"
+endif
 
+"KeyRemap4MacBook
+if os == 'mac'
+	let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml"
+endif
 
-"tmp @win
-let $tmp = "D:/MyDocument/tmp"
+"tmp
+if os == 'win'
+	let $tmp = "D:/MyDocument/tmp"        
+endif
+if os == 'mac'
+	let $tmp = "/Users/ryo/Documents/tmp/"
+endif
 
+"share
+if os == 'win'
+	let $share = 'D:/Dropbox/share'         
+endif
+if os == 'mac'
+	let $share = '/Users/ryo/Dropbox/share' 
+endif
 
-"todo @win
-let $todo = 'D:/Dropbox/share/todo.txt'
+"todo
+let $todo = $share . '/todo.txt'
 
+"slf
+if os == 'mac'
+	let $slf = '/Users/ryo/Documents/projects/slf'         
+endif
 
+if os == 'mac'
+	let $application  = $slf . '/application'              
+endif
+if os == 'mac'
+	let $controllers  = $application . '/controllers'      
+endif
+if os == 'mac'
+	let $domain       = $application . '/domain'           
+endif
+if os == 'mac'
+	let $models       = $application . '/models'           
+endif
+if os == 'mac'
+	let $transfer     = $application . '/transfer'         
+endif
+if os == 'mac'
+	let $scripts      = $application . '/views/pc/scripts' 
+endif
+if os == 'mac'
+	let $css          = $slf . '/htdocs/css'               
+endif
+if os == 'mac'
+	let $js           = $slf . '/htdocs/js'                
+endif
+if os == 'mac'
+	let $testdata     = $slf . '/testdata'                 
+endif
+if os == 'mac'
+	let $tests        = $slf . '/tests'                    
+endif
 
+"slf2-api
+if os == 'mac'
+	let $api = '/Users/ryo/Documents/projects/slf2-api'    
+endif
 
-"HiredGirl @win
+"slf-log
+if os == 'mac'
+	let $uilog  = $slf . '/data/logs/application' 
+endif
+if os == 'mac'
+	let $apilog = '/var/log/ap/slmctl' 
+endif
+
+"TaskBoard
+let $task = "D:/MyDocument/Program/TaskBoard"
+
+"HiredGirl
 let $hired = "D:/MyDocument/Program/HiredGirl"
 
-"Pycel @win
+"Pycel
 let $pycel = "D:/MyDocument/Program/Pycel"
 
 "----------------------------------------------------------------------------------------------------
 "
-"移動操作のマッピングだよ
+"移動操作のマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"Shift 追加で小ジャンプ
+"Shift 追加で小ジャン�~W
 nnoremap <S-k> 10<UP>
 vnoremap <S-k> 10<UP>
 
@@ -120,43 +212,87 @@ vnoremap <S-h> 10<LEFT>
 nnoremap <S-l> 10<RIGHT>
 vnoremap <S-l> 10<RIGHT>
 
+"行の先頭へ移�~U
+if os == 'mac'
+	nmap <C-S-h> ^
+endif
+
 "----------------------------------------------------------------------------------------------------
 "
-"挿入モード時のマッピングだよ
+"挿入モード時のマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"Emacsコマンドで移動
-inoremap <C-p> <UP>
-inoremap <C-n> <DOWN>
-inoremap <C-b> <LEFT>
-inoremap <C-f> <RIGHT>
-inoremap <C-a> <HOME>
-inoremap <C-e> <END>
+"Emacsコマンドで移�~U
+if os == 'win'
+	inoremap <C-p> <UP>
+endif
+if os == 'win'
+	inoremap <C-n> <DOWN>
+endif
+if os == 'win'
+	inoremap <C-b> <LEFT>
+endif
+if os == 'win'
+	inoremap <C-f> <RIGHT>
+endif
+if os == 'win'
+	inoremap <C-a> <HOME>
+endif
+if os == 'win'
+	inoremap <C-e> <END>
+endif
 
 "Emacsコマンドで削除
-inoremap <C-h> <BS>
-inoremap <C-d> <Del>
-inoremap <C-w> <C-w>
-inoremap <C-k> <C-o><S-d>
-inoremap <C-u> <C-u>
+if os == 'win'
+	inoremap <C-h> <BS>
+endif
+if os == 'win'
+	inoremap <C-d> <Del>
+endif
+if os == 'win'
+	inoremap <C-w> <C-w>
+endif
+if os == 'win'
+	inoremap <C-k> <C-o><S-d>
+endif
+if os == 'win'
+	inoremap <C-u> <C-u>
+endif
 
 "インサートモードから戻るときに、日本語入力をオフにする
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
-"補完
-inoremap <M-CR>   <C-p>
-inoremap <S-M-CR> <C-n>
+"補�~L
+if os == 'win'
+	inoremap <M-CR>   <C-p>
+endif
+if os == 'win'
+	inoremap <S-M-CR> <C-n>
+endif
+if os == 'mac'
+	inoremap <C-CR>   <C-p>
+endif
+if os == 'mac'
+	inoremap <S-C-CR> <C-n>
+endif
+
+"挿入モードでノーマルモードにな�~K
+if os == 'win'
+	inoremap <C-o> <C-o>
+endif
 
 "----------------------------------------------------------------------------------------------------
 "
-"選択モードのマッピングだよ
+"選択モードのマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"全選択
+"全選�~^
 vnoremap , <ESC>ggVG
 
-"ビジュアル矩形のキーマップ
-nnoremap <M-S-v> <C-S-v>
+"ビジュアル矩形のキーマッ�~W
+if os == 'win'
+	nnoremap <M-S-v> <C-S-v> 
+endif
 vnoremap v <C-v>
 
 "選択範囲の文字列を * で検索
@@ -171,18 +307,28 @@ endfunction
 
 "----------------------------------------------------------------------------------------------------
 "
-"バッファ操作のマッピングだよ
+"バッファ操作のマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"左右のタブ移動
+"左右のタブ移�~U
 nnoremap <Space> gt
 nnoremap <S-Space> gT
 
 "新規タブを開く
-nnoremap <M-Space> :tabedit 
+if os == 'win'
+	nnoremap <M-Space> :tabedit 
+endif
+if os == 'mac'
+	nnoremap <C-Space> :tabedit 
+endif
 
 "バッファを閉じる
-nnoremap <C-Space> :call TabClose()<CR>
+if os == 'win'
+	nnoremap <C-Space> :call TabClose()<CR> 
+endif
+if os == 'mac'
+	nnoremap <D-Space> :call TabClose()<CR> 
+endif
 
 function! TabClose()
 python <<EOM
@@ -190,7 +336,7 @@ Tab.close()
 EOM
 endfunction
 
-"ウィンドウ切り替え
+"ウィンドウ切り替�~H
 nnoremap <Tab>   <C-w>w
 nnoremap <S-Tab> <C-w>W
 nnoremap gw      <C-w>w
@@ -198,30 +344,48 @@ nnoremap gW      <C-w>W
 
 "----------------------------------------------------------------------------------------------------
 "
-"コマンドラインに関するマッピングだよ
+"コマンドラインに関するマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
-"コマンドラインモードへ移行する
-nnoremap <sid>(command-line-enter) q:
-nmap <M-:>  <sid>(command-line-enter)
+"コマンドラインモードへ移行す�~K
+if os == 'win'
+	nnoremap <sid>(command-line-enter) q: 
+endif
+if os == 'mac'
+	nnoremap <sid>(command-line-enter) q: 
+endif
+if os == 'win'
+	nmap <M-:>  <sid>(command-line-enter) 
+endif
+if os == 'mac'
+	nmap '      <sid>(command-line-enter) 
+endif
 
 "直前のコマンド履歴を表示
-nnoremap <C-p> :<UP>
+if os == 'win'
+	nnoremap <C-p> :<UP>
+endif
 
-"<C-p/n>でも履歴のフィルタリングを可能に
-cnoremap <C-p> <UP>
-cnoremap <C-n> <DOWN>
+"<C-p/n>でも履歴のフィルタリング
+if os == 'win'
+	cnoremap <C-p> <UP>
+endif
+if os == 'win'
+	cnoremap <C-n> <DOWN>
+endif
 
 "%%で編集バッファの格納パスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-"##で文字列「normal 」を展開する
+"##で文字列「normal」を展開する
 cnoremap ## normal 
 
+"タブを４スペースに置�~[
+command! Tabrep %s/\t/    /g
 
 "----------------------------------------------------------------------------------------------------
 "
-"マーク関係のマッピングだよ
+"マーク関係のマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
 "識別子割り当て
@@ -243,7 +407,7 @@ nnoremap [mark]l ]'
 "マークリストの表示
 nnoremap [mark]s :marks<CR>
 
-"任意のマークへ移動
+"任意のマークへ移�~U
 nnoremap [mark]<space> '
 
 if !exists('g:markrement_char')
@@ -263,7 +427,7 @@ endfunction
 
 "----------------------------------------------------------------------------------------------------
 "
-"自作プラグインの読込とキーマップだよ
+"自作プラグインの読込とキーマップだ�~H
 "
 "----------------------------------------------------------------------------------------------------
 "--------------------------------------------------
@@ -293,7 +457,12 @@ command! -nargs=0 CAH call CommandAssistantController('history')
 "--------------------------------------------------
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
-nnoremap <S-M-CR> :FF ./<CR>
+if os == 'win'
+	nnoremap <S-M-CR> :FF ./<CR> 
+endif
+if os == 'mac'
+	nnoremap <S-C-CR> :FF ./<CR> 
+endif
 
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
@@ -302,12 +471,43 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
-nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
-vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
-nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
-vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
+if os == 'win'
+	nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
+endif
+if os == 'win'
+	vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    
+endif
+if os == 'win'
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
+endif
+if os == 'win'
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
+endif
+if os == 'win'
+	nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
+endif
+if os == 'win'
+	vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> 
+endif
+
+if os == 'mac'
+	nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
+endif
+if os == 'mac'
+	vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    
+endif
+if os == 'mac'
+	nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
+endif
+if os == 'mac'
+	vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> 
+endif
+if os == 'mac'
+	nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
+endif
+if os == 'mac'
+	vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> 
+endif
 
 command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
 command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
@@ -318,7 +518,7 @@ command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 "--------------------------------------------------
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
-"nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
+nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
 
 "--------------------------------------------------
 "WordYank
@@ -357,13 +557,14 @@ command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
 
 "----------------------------------------------------------------------------------------------------
 "
-"ワンアクションコマンドだよ
+"ワンアクションコマンドだ�~H
 "
 "----------------------------------------------------------------------------------------------------
 ":messagesの省略
 command! M messages
 
 "任意の文字列の出現回数を数える
+"範囲選択...
 command! -nargs=+ Count call <SID>Count(<f-args>)
 
 function! s:Count(...)
@@ -392,32 +593,36 @@ endfunction
 "pythonの文字コードコメントを挿入
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
-"ディレクトリパスを開く
+"ディレクトリパスを開�~O
 source $myScripts/OpenDirectory/OpenDirectoryController.vim
 command! -nargs=1 -complete=dir Dir call OpenDirectoryController(<f-args>)
 
 "----------------------------------------------------------------------------------------------------
 "
-"その他操作のマッピングだよ
+"その他操作のマッピングだ�~H
 "
 "----------------------------------------------------------------------------------------------------
 ", -> zz
 nnoremap , zz
 
-"* コマンドで移動しない
+"* コマンドで移動しな�~D
 nnoremap * *Nzz
 
 "redo
 nmap <S-u> <C-r>
 
-"ハイライトの無効化
+"ハイライトの無効�~V
 nmap <silent><ESC><ESC> :noh<CR>
 
-"インクリメント
-nnoremap <M-a> <C-a>
+"インクリメン�~H
+if os == 'win'
+	nnoremap <M-a> <C-a>
+endif
 
-"デクリメント
-nnoremap <M-x> <C-x>
+"デクリメン�~H
+if os == 'win'
+	nnoremap <M-x> <C-x>
+endif
 
 "ブラックホールレジスタで削除する
 nnoremap <M-d> "_d
@@ -425,7 +630,7 @@ vnoremap <M-d> "_d
 
 "----------------------------------------------------------------------------------------------------
 "
-"環境変数の追記
+"環境変数の追�~X
 "
 "----------------------------------------------------------------------------------------------------
 "python
@@ -433,21 +638,3 @@ let $path .= ';C:\Python27'
 
 "nose
 let $path .= 'C:\Python27\Scripts'
-
-
-
-
-nnoremap <F7> :call PythonBridge('RcLoader')<CR>
-
-function! PythonBridge(functionName)
-python << EOM
-import vim
-import os
-
-functionName = vim.eval('a:functionName')
-MyScripts = vim.eval('$myScripts')
-filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
-
-os.system('python "%s"' % (pythonPath, filePath))
-EOM
-endfunction

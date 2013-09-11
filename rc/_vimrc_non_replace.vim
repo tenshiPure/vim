@@ -1,5 +1,19 @@
 "----------------------------------------------------------------------------------------------------
 "
+"環境判定だよ
+"別ファイルでPC単位で分ける
+"
+"----------------------------------------------------------------------------------------------------
+if has('win32')
+    let os = 'win'
+endif
+
+if has('mac')
+    let os = 'mac'
+endif
+
+"----------------------------------------------------------------------------------------------------
+"
 "エディタの基本設定だよ
 "
 "----------------------------------------------------------------------------------------------------
@@ -39,8 +53,8 @@ autocmd BufWinEnter * set textwidth=0
 "マークをリセット
 autocmd BufWinEnter * delmarks!
 
-"文字コード設定 @win
-autocmd BufWinEnter * set fileencoding=utf8
+"文字コード設定
+autocmd BufWinEnter * set fileencoding=utf8 --win
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -61,9 +75,9 @@ hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=rev
 "諸パスだよ
 "
 "----------------------------------------------------------------------------------------------------
-"gitvim @win
-let $gitvim = $vim . '/gitvim'
-
+"gitvim
+let $gitvim = $vim . '/gitvim' --win
+let $gitvim = '/Users/ryo/Documents/gitvim' --mac
 
 "vim
 let $ignore      = $gitvim . '/.gitignore'
@@ -78,28 +92,55 @@ let $notcare     = $gitvim . '/myScripts/NotCareExtension'
 let $trans       = $gitvim . '/myScripts/Translator'
 let $vmail       = $gitvim . '/myScripts/vMail'
 
-"AutoHotkeys @win
-let $ahk     = "D:/MyDocument/AutoHotKeys"
-let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
+"AutoHotkeys
+let $ahk     = "D:/MyDocument/AutoHotKeys"--win
+let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"--win
 
-"account @win
-let $account = "D:/MyDocument/account"
+"account
+let $account = "D:/MyDocument/account"--win
 
+"KeyRemap4MacBook
+let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml"--mac
 
-"tmp @win
-let $tmp = "D:/MyDocument/tmp"
+"tmp
+let $tmp = "D:/MyDocument/tmp"        --win
+let $tmp = "/Users/ryo/Documents/tmp/"--mac
 
+"share
+let $share = 'D:/Dropbox/share'         --win
+let $share = '/Users/ryo/Dropbox/share' --mac
 
-"todo @win
-let $todo = 'D:/Dropbox/share/todo.txt'
+"todo
+let $todo = $share . '/todo.txt'
 
+"slf
+let $slf = '/Users/ryo/Documents/projects/slf'         --mac
 
+let $application  = $slf . '/application'              --mac
+let $controllers  = $application . '/controllers'      --mac
+let $domain       = $application . '/domain'           --mac
+let $models       = $application . '/models'           --mac
+let $transfer     = $application . '/transfer'         --mac
+let $scripts      = $application . '/views/pc/scripts' --mac
+let $css          = $slf . '/htdocs/css'               --mac
+let $js           = $slf . '/htdocs/js'                --mac
+let $testdata     = $slf . '/testdata'                 --mac
+let $tests        = $slf . '/tests'                    --mac
 
+"slf2-api
+let $api = '/Users/ryo/Documents/projects/slf2-api'    --mac
 
-"HiredGirl @win
+"slf-log
+let $uilog  = $slf . '/data/logs/application' --mac
+let $apilog = '/var/log/ap/slmctl' --mac
+
+"TaskBoard
+let $task = "D:/MyDocument/Program/TaskBoard"
+
+"HiredGirl
 let $hired = "D:/MyDocument/Program/HiredGirl"
 
-"Pycel @win
+"Pycel
 let $pycel = "D:/MyDocument/Program/Pycel"
 
 "----------------------------------------------------------------------------------------------------
@@ -120,32 +161,40 @@ vnoremap <S-h> 10<LEFT>
 nnoremap <S-l> 10<RIGHT>
 vnoremap <S-l> 10<RIGHT>
 
+"行の先頭へ移動
+nmap <C-S-h> ^--mac
+
 "----------------------------------------------------------------------------------------------------
 "
 "挿入モード時のマッピングだよ
 "
 "----------------------------------------------------------------------------------------------------
 "Emacsコマンドで移動
-inoremap <C-p> <UP>
-inoremap <C-n> <DOWN>
-inoremap <C-b> <LEFT>
-inoremap <C-f> <RIGHT>
-inoremap <C-a> <HOME>
-inoremap <C-e> <END>
+inoremap <C-p> <UP>--win
+inoremap <C-n> <DOWN>--win
+inoremap <C-b> <LEFT>--win
+inoremap <C-f> <RIGHT>--win
+inoremap <C-a> <HOME>--win
+inoremap <C-e> <END>--win
 
 "Emacsコマンドで削除
-inoremap <C-h> <BS>
-inoremap <C-d> <Del>
-inoremap <C-w> <C-w>
-inoremap <C-k> <C-o><S-d>
-inoremap <C-u> <C-u>
+inoremap <C-h> <BS>--win
+inoremap <C-d> <Del>--win
+inoremap <C-w> <C-w>--win
+inoremap <C-k> <C-o><S-d>--win
+inoremap <C-u> <C-u>--win
 
 "インサートモードから戻るときに、日本語入力をオフにする
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
 "補完
-inoremap <M-CR>   <C-p>
-inoremap <S-M-CR> <C-n>
+inoremap <M-CR>   <C-p>--win
+inoremap <S-M-CR> <C-n>--win
+inoremap <C-CR>   <C-p>--mac
+inoremap <S-C-CR> <C-n>--mac
+
+"挿入モードでノーマルモードになる
+inoremap <C-o> <C-o>--win
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -156,7 +205,7 @@ inoremap <S-M-CR> <C-n>
 vnoremap , <ESC>ggVG
 
 "ビジュアル矩形のキーマップ
-nnoremap <M-S-v> <C-S-v>
+nnoremap <M-S-v> <C-S-v> --win
 vnoremap v <C-v>
 
 "選択範囲の文字列を * で検索
@@ -179,10 +228,12 @@ nnoremap <Space> gt
 nnoremap <S-Space> gT
 
 "新規タブを開く
-nnoremap <M-Space> :tabedit 
+nnoremap <M-Space> :tabedit --win
+nnoremap <C-Space> :tabedit --mac
 
 "バッファを閉じる
-nnoremap <C-Space> :call TabClose()<CR>
+nnoremap <C-Space> :call TabClose()<CR> --win
+nnoremap <D-Space> :call TabClose()<CR> --mac
 
 function! TabClose()
 python <<EOM
@@ -202,22 +253,26 @@ nnoremap gW      <C-w>W
 "
 "----------------------------------------------------------------------------------------------------
 "コマンドラインモードへ移行する
-nnoremap <sid>(command-line-enter) q:
-nmap <M-:>  <sid>(command-line-enter)
+nnoremap <sid>(command-line-enter) q: --win
+nnoremap <sid>(command-line-enter) q: --mac
+nmap <M-:>  <sid>(command-line-enter) --win
+nmap '      <sid>(command-line-enter) --mac
 
 "直前のコマンド履歴を表示
-nnoremap <C-p> :<UP>
+nnoremap <C-p> :<UP>--win
 
-"<C-p/n>でも履歴のフィルタリングを可能に
-cnoremap <C-p> <UP>
-cnoremap <C-n> <DOWN>
+"<C-p/n>でも履歴のフィルタリング
+cnoremap <C-p> <UP>--win
+cnoremap <C-n> <DOWN>--win
 
 "%%で編集バッファの格納パスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-"##で文字列「normal 」を展開する
+"##で文字列「normal」を展開する
 cnoremap ## normal 
 
+"タブを４スペースに置換
+command! Tabrep %s/\t/    /g
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -293,7 +348,8 @@ command! -nargs=0 CAH call CommandAssistantController('history')
 "--------------------------------------------------
 source $myScripts/FlexibleFrank/FlexibleFrankController.vim
 
-nnoremap <S-M-CR> :FF ./<CR>
+nnoremap <S-M-CR> :FF ./<CR> --win
+nnoremap <S-C-CR> :FF ./<CR> --mac
 
 command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 
@@ -302,12 +358,19 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
-nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
-vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
-nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
-vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
+nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>    --win
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --win
+nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
+vnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR> --win
+
+nnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+vnoremap <C-F6> :call NotCareExtensionController('commentAdd')<CR>    --mac
+nnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+vnoremap ?      :call NotCareExtensionController('commentDelete')<CR> --mac
+nnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
+vnoremap <C-F7> :call NotCareExtensionController('commentSwitch')<CR> --mac
 
 command! -nargs=? -complete=file W wall | call NotCareExtensionController('make', <f-args>)
 command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
@@ -318,7 +381,7 @@ command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 "--------------------------------------------------
 source $myScripts/ReloadVimrc/ReloadVimrc.vim
 
-"nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
+nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
 
 "--------------------------------------------------
 "WordYank
@@ -364,6 +427,7 @@ command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
 command! M messages
 
 "任意の文字列の出現回数を数える
+"範囲選択...
 command! -nargs=+ Count call <SID>Count(<f-args>)
 
 function! s:Count(...)
@@ -414,10 +478,10 @@ nmap <S-u> <C-r>
 nmap <silent><ESC><ESC> :noh<CR>
 
 "インクリメント
-nnoremap <M-a> <C-a>
+nnoremap <M-a> <C-a>--win
 
 "デクリメント
-nnoremap <M-x> <C-x>
+nnoremap <M-x> <C-x>--win
 
 "ブラックホールレジスタで削除する
 nnoremap <M-d> "_d
@@ -433,21 +497,3 @@ let $path .= ';C:\Python27'
 
 "nose
 let $path .= 'C:\Python27\Scripts'
-
-
-
-
-nnoremap <F7> :call PythonBridge('RcLoader')<CR>
-
-function! PythonBridge(functionName)
-python << EOM
-import vim
-import os
-
-functionName = vim.eval('a:functionName')
-MyScripts = vim.eval('$myScripts')
-filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
-
-os.system('python "%s"' % (pythonPath, filePath))
-EOM
-endfunction
