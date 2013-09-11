@@ -28,6 +28,6 @@ class OpenDirectory:
 		if os.name == 'nt':
 			vim.command(r'silent !explorer "%s"' % (self.dirPath))
 		else:
-			vim.command('silent !open ' + self.dirPath)
+			vim.command('silent !open "%s"' % self.dirPath)
 
 EOM
