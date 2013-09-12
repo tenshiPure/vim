@@ -186,7 +186,7 @@ vnoremap , <ESC>ggVG
 nnoremap <S-M-v> <S-C-v>
 
 "ビジュアル矩形のキーマップ @mac
-nnoremap ◊ <S-C-v>
+nnoremap ? <S-C-v>
 
 "ビジュアル矩形のキーマップ
 vnoremap v <C-v>
@@ -240,7 +240,7 @@ nnoremap <sid>(command-line-enter) q:
 nmap <M-:> <sid>(command-line-enter)
 
 "コマンドラインモードへ移行する @mac
-nmap æ    <sid>(command-line-enter)
+nmap a    <sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -411,29 +411,6 @@ command! M messages
 "任意の文字列の出現回数を数える
 command! -nargs=+ Count call <SID>Count(<f-args>)
 
-function! s:Count(...)
-python <<EOM
-import vim
-argLen = int(vim.eval('a:0'))
-args = []
-for argNum in range(argLen):
-	args.append(vim.eval('a:%s' % str(argNum + 1)))
-
-results = []
-for arg in args:
-	results.append(0)
-
-for line in vim.current.buffer:
-	for argNum in range(argLen):
-		results[argNum] += line.count(args[argNum])
-
-for argNum in range(argLen):
-	print 'target : %s' % args[argNum]
-	print 'result : %d' % results[argNum]
-	print ' '
-EOM
-endfunction
-
 "pythonの文字コードコメントを挿入
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
@@ -462,13 +439,13 @@ nmap <silent><ESC><ESC> :noh<CR>
 nnoremap <M-a> <C-a>
 
 "インクリメント @mac
-nnoremap å     <C-a>
+nnoremap a     <C-a>
 
 "デクリメント @win
 nnoremap <M-x> <C-x>
 
 "デクリメント @mac
-nnoremap ≈    <C-x>
+nnoremap ?    <C-x>
 
 "ブラックホールレジスタで削除する @win
 nnoremap <M-d> "_d
@@ -492,26 +469,10 @@ let $path .= 'C:\Python27\Scripts'
 
 
 
-nnoremap <F7> :call PythonBridge('RcLoader')<CR>
+nnoremap <F7> :!python $MyScripts/RcLoader/Controller.py<CR>:so $rc_replaced<CR>
 
-function! PythonBridge(functionName)
-python << EOM
-import vim
-import os
+source $MyScripts/Base.vim
 
-functionName = vim.eval('a:functionName')
-MyScripts = vim.eval('$MyScripts')
-filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
-
-os.system('python "%s"' % filePath)
-EOM
-endfunction
-
-
-
-
-command! Git :call Git()
-
-function! Git()
-	echo 'git'
-endfunction
+source $MyScripts/WordCount/WordCountBridge.py
+nnoremap <F6> :call WordCountBridge(['let', 'map'])<CR>
+command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountBridge(args) | unlet args

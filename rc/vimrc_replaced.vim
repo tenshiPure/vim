@@ -39,6 +39,8 @@ autocmd BufWinEnter * set textwidth=0
 "マークをリセット
 autocmd BufWinEnter * delmarks!
 
+"文字コード設定 @win
+autocmd BufWinEnter * set fileencoding=utf8
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -54,18 +56,15 @@ set guioptions-=m
 "日本語入力のときにカーソルを赤くする
 hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
-"ウィンドウサイズ変更 @mac
-set lines=80
-set columns=250
 
 "----------------------------------------------------------------------------------------------------
 "
 "諸パスだよ
 "
 "----------------------------------------------------------------------------------------------------
+"gitvim @win
+let $gitvim = $vim . '/gitvim'
 
-"gitvim @mac
-let $gitvim = '/Users/ryo/Documents/gitvim'
 
 "vim
 let $ignore      = $gitvim    . '/.gitignore'
@@ -80,37 +79,29 @@ let $notcare     = $MyScripts . '/NotCareExtension'
 let $trans       = $MyScripts . '/Translator'
 let $vmail       = $MyScripts . '/vMail'
 
+"AutoHotkeys @win
+let $ahk     = "D:/MyDocument/AutoHotKeys"
+let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
+
+"account @win
+let $account = "D:/MyDocument/account"
 
 
-"KeyRemap4MacBook @mac
-let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml"
+"tmp @win
+let $tmp = "D:/MyDocument/tmp"
 
 
-"tmp @mac
-let $tmp = "/Users/ryo/Documents/tmp/"
+"todo @win
+let $todo = 'D:/Dropbox/share/todo.txt'
 
 
-"todo @mac
-let $todo = '/Users/ryo/Dropbox/share/todo.txt'
-
-"slf @mac
-let $slf          = '/Users/ryo/Documents/projects/slf'
-let $application  = $slf . '/application'
-let $controllers  = $application . '/controllers'
-let $domain       = $application . '/domain'
-let $models       = $application . '/models'
-let $transfer     = $application . '/transfer'
-let $scripts      = $application . '/views/pc/scripts'
-let $css          = $slf . '/htdocs/css'
-let $js           = $slf . '/htdocs/js'
-let $fixture      = $slf . '/testdata/fixture'
-let $tests        = $slf . '/tests'
-
-"log @mac
-let $uilog  = $slf . '/data/logs/application'
-let $apilog = '/var/log/ap/slmctl'
 
 
+"HiredGirl @win
+let $hired = "D:/MyDocument/Program/HiredGirl"
+
+"Pycel @win
+let $pycel = "D:/MyDocument/Program/Pycel"
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -165,9 +156,9 @@ inoremap <S-M-CR> <C-n>
 "全選択
 vnoremap , <ESC>ggVG
 
+"ビジュアル矩形のキーマップ @win
+nnoremap <S-M-v> <S-C-v>
 
-"ビジュアル矩形のキーマップ @mac
-nnoremap ◊ <S-C-v>
 
 "ビジュアル矩形のキーマップ
 vnoremap v <C-v>
@@ -217,9 +208,9 @@ nnoremap gW      <C-w>W
 "コマンドラインモード
 nnoremap <sid>(command-line-enter) q:
 
+"コマンドラインモードへ移行する @win
+nmap <M-:> <sid>(command-line-enter)
 
-"コマンドラインモードへ移行する @mac
-nmap æ    <sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -234,8 +225,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 "##で文字列「normal 」を展開する
 cnoremap ## normal 
 
-"タブを４スペースに置換 @mac
-command! Tabrep %s/\t/    /g
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -320,10 +309,10 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $MyScripts/NotCareExtension/NotCareExtensionController.vim
 
+"@win
+nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
+vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
 
-"@mac
-nnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
-vnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
 
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
@@ -387,29 +376,6 @@ command! M messages
 "任意の文字列の出現回数を数える
 command! -nargs=+ Count call <SID>Count(<f-args>)
 
-function! s:Count(...)
-python <<EOM
-import vim
-argLen = int(vim.eval('a:0'))
-args = []
-for argNum in range(argLen):
-	args.append(vim.eval('a:%s' % str(argNum + 1)))
-
-results = []
-for arg in args:
-	results.append(0)
-
-for line in vim.current.buffer:
-	for argNum in range(argLen):
-		results[argNum] += line.count(args[argNum])
-
-for argNum in range(argLen):
-	print 'target : %s' % args[argNum]
-	print 'result : %d' % results[argNum]
-	print ' '
-EOM
-endfunction
-
 "pythonの文字コードコメントを挿入
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
@@ -434,18 +400,18 @@ nmap <S-u> <C-r>
 "ハイライトの無効化
 nmap <silent><ESC><ESC> :noh<CR>
 
-
-"インクリメント @mac
-nnoremap å     <C-a>
-
-
-"デクリメント @mac
-nnoremap ≈    <C-x>
+"インクリメント @win
+nnoremap <M-a> <C-a>
 
 
-"ブラックホールレジスタで削除する @mac
-nnoremap ∂ "_d
-vnoremap ∂ "_d
+"デクリメント @win
+nnoremap <M-x> <C-x>
+
+
+"ブラックホールレジスタで削除する @win
+nnoremap <M-d> "_d
+vnoremap <M-d> "_d
+
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -461,26 +427,10 @@ let $path .= 'C:\Python27\Scripts'
 
 
 
-nnoremap <F7> :call PythonBridge('RcLoader')<CR>
+"nnoremap <F7> :!python $MyScripts/RcLoader/Controller.py<CR>:so $rc_replaced<CR>
 
-function! PythonBridge(functionName)
-python << EOM
-import vim
-import os
+source $MyScripts/Base.vim
 
-functionName = vim.eval('a:functionName')
-MyScripts = vim.eval('$MyScripts')
-filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
-
-os.system('python "%s"' % filePath)
-EOM
-endfunction
-
-
-
-
-command! Git :call Git()
-
-function! Git()
-	echo 'git'
-endfunction
+source $MyScripts/WordCount/WordCountBridge.py
+nnoremap <F6> :call WordCountBridge(['let', 'map'])<CR>
+command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountBridge(args) | unlet args
