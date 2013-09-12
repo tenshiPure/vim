@@ -1,6 +1,6 @@
 "WordYankController.vim
 
-source $myScripts/WordYank/WordYank.vim
+source $MyScripts/WordYank/WordYank.vim
 
 function! WordYankController(mode)
 

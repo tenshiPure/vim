@@ -186,7 +186,7 @@ vnoremap , <ESC>ggVG
 nnoremap <S-M-v> <S-C-v>
 
 "ビジュアル矩形のキーマップ @mac
-nnoremap ÷ <S-C-v>
+nnoremap ◊ <S-C-v>
 
 "ビジュアル矩形のキーマップ
 vnoremap v <C-v>
@@ -319,18 +319,18 @@ source $gitvim/MyLib/Tab.vim
 "--------------------------------------------------
 source $gitvim/MyFundamental/_Buffer.vim
 
-"--------------------------------------------------
-"CommandAssistant
-"--------------------------------------------------
-source $myScripts/CommandAssistant/CommandAssistantController.vim
+""--------------------------------------------------
+""CommandAssistant
+""--------------------------------------------------
+"source $MyScripts/CommandAssistant/CommandAssistantController.vim
 
-command! -nargs=? CA  call CommandAssistantController(<f-args>)
-command! -nargs=0 CAH call CommandAssistantController('history')
+"command! -nargs=? CA  call CommandAssistantController(<f-args>)
+"command! -nargs=0 CAH call CommandAssistantController('history')
 
 "--------------------------------------------------
 "FlexibleFrank
 "--------------------------------------------------
-source $myScripts/FlexibleFrank/FlexibleFrankController.vim
+source $MyScripts/FlexibleFrank/FlexibleFrankController.vim
 
 nnoremap <S-M-CR> :FF ./<CR>
 
@@ -339,7 +339,7 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 "NotCareExtension
 "--------------------------------------------------
-source $myScripts/NotCareExtension/NotCareExtensionController.vim
+source $MyScripts/NotCareExtension/NotCareExtensionController.vim
 
 "@win
 nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
@@ -358,17 +358,17 @@ command! -nargs=? -complete=file W wall | call NotCareExtensionController('make'
 command! -nargs=? T   call NotCareExtensionController('test', <f-args>)
 command! -nargs=? Log call NotCareExtensionController('log', <f-args>)
 
-"--------------------------------------------------
-"ReloadVimrc
-"--------------------------------------------------
-source $myScripts/ReloadVimrc/ReloadVimrc.vim
+""--------------------------------------------------
+""ReloadVimrc
+""--------------------------------------------------
+"source $MyScripts/ReloadVimrc/ReloadVimrc.vim
 
 "nnoremap <F7> :call ReloadVimrc()<CR>:source $rc_replaced<CR>
 
 "--------------------------------------------------
 "WordYank
 "--------------------------------------------------
-source $myScripts/WordYank/WordYankController.vim
+source $MyScripts/WordYank/WordYankController.vim
 
 nnoremap yy :call WordYankController('yank')<CR>
 nnoremap yp :call WordYankController('paste')<CR>
@@ -376,7 +376,7 @@ nnoremap yp :call WordYankController('paste')<CR>
 "--------------------------------------------------
 "Translator
 "--------------------------------------------------
-source $myScripts/Translator/TranslatorController.vim
+source $MyScripts/Translator/TranslatorController.vim
 
 command! -nargs=1 Jts call TranslatorController('arg_ja', <f-args>)
 command! -nargs=1 Ets call TranslatorController('arg_en', <f-args>)
@@ -384,21 +384,21 @@ command!          Bts call TranslatorController('buffer')
 command!          Qts call TranslatorController('quick')
 command! -range   Vts call TranslatorController('visual')
 
-"--------------------------------------------------
-"VMail
-"--------------------------------------------------
-source $myScripts/VMail/VMailController.vim
+""--------------------------------------------------
+""VMail
+""--------------------------------------------------
+"source $MyScripts/VMail/VMailController.vim
 
-command! Vmail call VMailController('new')
+"command! Vmail call VMailController('new')
 
-"--------------------------------------------------
-"Surround
-"--------------------------------------------------
-source $myScripts/Surround/SurroundController.vim
+""--------------------------------------------------
+""Surround
+""--------------------------------------------------
+"source $MyScripts/Surround/SurroundController.vim
 
-command! -nargs=+         Surround call SurroundController('last', <f-args>)
-command! -nargs=+        Qsurround call SurroundController('quick', <f-args>)
-command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
+"command! -nargs=+         Surround call SurroundController('last', <f-args>)
+"command! -nargs=+        Qsurround call SurroundController('quick', <f-args>)
+"command! -nargs=+ -range Vsurround call SurroundController('visual', <f-args>)
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -438,7 +438,7 @@ endfunction
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
 "ディレクトリパスを開く
-source $myScripts/OpenDirectory/OpenDirectoryController.vim
+source $MyScripts/OpenDirectory/OpenDirectoryController.vim
 command! -nargs=1 -complete=dir Dir call OpenDirectoryController(<f-args>)
 
 "----------------------------------------------------------------------------------------------------
@@ -500,9 +500,18 @@ import vim
 import os
 
 functionName = vim.eval('a:functionName')
-MyScripts = vim.eval('$myScripts')
+MyScripts = vim.eval('$MyScripts')
 filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
 
 os.system('python "%s"' % filePath)
 EOM
+endfunction
+
+
+
+
+command! Git :call Git()
+
+function! Git()
+	echo 'git'
 endfunction

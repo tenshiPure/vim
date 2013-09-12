@@ -1,15 +1,15 @@
 "VMailController.vim
 
-source $myScripts/VMail/MailManager.vim
+source $MyScripts/VMail/MailManager.vim
 
-source $myScripts/VMail/Mail/Mail.vim
-source $myScripts/VMail/Mail/Title.vim
-source $myScripts/VMail/Mail/Sender.vim
-source $myScripts/VMail/Mail/Date.vim
-source $myScripts/VMail/Mail/Main.vim
-source $myScripts/VMail/Mail/AnalysisException.vim
+source $MyScripts/VMail/Mail/Mail.vim
+source $MyScripts/VMail/Mail/Title.vim
+source $MyScripts/VMail/Mail/Sender.vim
+source $MyScripts/VMail/Mail/Date.vim
+source $MyScripts/VMail/Mail/Main.vim
+source $MyScripts/VMail/Mail/AnalysisException.vim
 
-source $myScripts/VMail/AccountInfo.vim
+source $MyScripts/VMail/AccountInfo.vim
 
 augroup autoCmdVMail
 	autocmd!
@@ -24,7 +24,7 @@ function! VMailController(mode)
 python <<EOM
 # -*- coding:utf-8 -*-
 
-workingDir = vim.eval('$myScripts') + '/VMail/WorkingTexts/'
+workingDir = vim.eval('$MyScripts') + '/VMail/WorkingTexts/'
 simpleInfoPath = os.path.abspath(workingDir + 'simpleInfo.vmail')
 mainPath       = os.path.abspath(workingDir + 'main.vmail')
 

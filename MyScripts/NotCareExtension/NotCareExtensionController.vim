@@ -1,16 +1,16 @@
 "NotCareExtension
 
-source $myScripts/NotCareExtension/ExtensionObjects/Base.vim
-source $myScripts/NotCareExtension/ExtensionObjects/ahk.vim
-source $myScripts/NotCareExtension/ExtensionObjects/css.vim
-source $myScripts/NotCareExtension/ExtensionObjects/html.vim
-source $myScripts/NotCareExtension/ExtensionObjects/java.vim
-source $myScripts/NotCareExtension/ExtensionObjects/js.vim
-source $myScripts/NotCareExtension/ExtensionObjects/php.vim
-source $myScripts/NotCareExtension/ExtensionObjects/py.vim
-source $myScripts/NotCareExtension/ExtensionObjects/sh.vim
-source $myScripts/NotCareExtension/ExtensionObjects/tpl.vim
-source $myScripts/NotCareExtension/ExtensionObjects/vim_eo.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/Base.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/ahk.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/css.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/html.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/java.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/js.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/php.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/py.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/sh.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/tpl.vim
+source $MyScripts/NotCareExtension/ExtensionObjects/vim_eo.vim
 
 function! NotCareExtensionController(behavior, ...) range
 

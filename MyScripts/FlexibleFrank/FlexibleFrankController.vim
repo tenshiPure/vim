@@ -1,44 +1,44 @@
 "FlexibleFrank.vim
 
-source $myScripts/FlexibleFrank/CommandDispatcher.vim
-source $myScripts/FlexibleFrank/CommandFactory.vim
+source $MyScripts/FlexibleFrank/CommandDispatcher.vim
+source $MyScripts/FlexibleFrank/CommandFactory.vim
 
-source $myScripts/FlexibleFrank/Entry/BaseEntry.vim
-source $myScripts/FlexibleFrank/Entry/BaseManager.vim
-source $myScripts/FlexibleFrank/Entry/GrepEntry.vim
-source $myScripts/FlexibleFrank/Entry/GrepManager.vim
-source $myScripts/FlexibleFrank/Entry/NormalEntry.vim
-source $myScripts/FlexibleFrank/Entry/NormalManager.vim
+source $MyScripts/FlexibleFrank/Entry/BaseEntry.vim
+source $MyScripts/FlexibleFrank/Entry/BaseManager.vim
+source $MyScripts/FlexibleFrank/Entry/GrepEntry.vim
+source $MyScripts/FlexibleFrank/Entry/GrepManager.vim
+source $MyScripts/FlexibleFrank/Entry/NormalEntry.vim
+source $MyScripts/FlexibleFrank/Entry/NormalManager.vim
 
-source $myScripts/FlexibleFrank/Command/CommandBase.vim
-source $myScripts/FlexibleFrank/Command/Prev.vim
-source $myScripts/FlexibleFrank/Command/Edit.vim
-source $myScripts/FlexibleFrank/Command/ChangeDir.vim
-source $myScripts/FlexibleFrank/Command/ChangeDirUpper.vim
-source $myScripts/FlexibleFrank/Command/ChangeDirBefore.vim
-source $myScripts/FlexibleFrank/Command/OpenByApp.vim
-source $myScripts/FlexibleFrank/Command/OpenDir.vim
-source $myScripts/FlexibleFrank/Command/Copy.vim
-source $myScripts/FlexibleFrank/Command/Move.vim
-source $myScripts/FlexibleFrank/Command/Remove.vim
-source $myScripts/FlexibleFrank/Command/Mkdir.vim
-source $myScripts/FlexibleFrank/Command/Reed.vim
-source $myScripts/FlexibleFrank/Command/Rename.vim
-source $myScripts/FlexibleFrank/Command/PointOn.vim
-source $myScripts/FlexibleFrank/Command/PointOff.vim
-source $myScripts/FlexibleFrank/Command/Fix.vim
-source $myScripts/FlexibleFrank/Command/GetModeSwitch.vim
-source $myScripts/FlexibleFrank/Command/Grep.vim
+source $MyScripts/FlexibleFrank/Command/CommandBase.vim
+source $MyScripts/FlexibleFrank/Command/Prev.vim
+source $MyScripts/FlexibleFrank/Command/Edit.vim
+source $MyScripts/FlexibleFrank/Command/ChangeDir.vim
+source $MyScripts/FlexibleFrank/Command/ChangeDirUpper.vim
+source $MyScripts/FlexibleFrank/Command/ChangeDirBefore.vim
+source $MyScripts/FlexibleFrank/Command/OpenByApp.vim
+source $MyScripts/FlexibleFrank/Command/OpenDir.vim
+source $MyScripts/FlexibleFrank/Command/Copy.vim
+source $MyScripts/FlexibleFrank/Command/Move.vim
+source $MyScripts/FlexibleFrank/Command/Remove.vim
+source $MyScripts/FlexibleFrank/Command/Mkdir.vim
+source $MyScripts/FlexibleFrank/Command/Reed.vim
+source $MyScripts/FlexibleFrank/Command/Rename.vim
+source $MyScripts/FlexibleFrank/Command/PointOn.vim
+source $MyScripts/FlexibleFrank/Command/PointOff.vim
+source $MyScripts/FlexibleFrank/Command/Fix.vim
+source $MyScripts/FlexibleFrank/Command/GetModeSwitch.vim
+source $MyScripts/FlexibleFrank/Command/Grep.vim
 
-source $myScripts/FlexibleFrank/Exception/TargetNotFileOnlyException.vim
-source $myScripts/FlexibleFrank/Exception/TargetNotDirException.vim
-source $myScripts/FlexibleFrank/Exception/TargetNotFileException.vim
-source $myScripts/FlexibleFrank/Exception/DestinationNotDirException.vim
-source $myScripts/FlexibleFrank/Exception/NotPoiontedException.vim
-source $myScripts/FlexibleFrank/Exception/NotMatchEntryNumbersException.vim
-source $myScripts/FlexibleFrank/Exception/NotExecutedFrankNException.vim
-source $myScripts/FlexibleFrank/Exception/NotExecutedBeforeFixCommandException.vim
-source $myScripts/FlexibleFrank/Exception/NoMoreBeforeDirException.vim
+source $MyScripts/FlexibleFrank/Exception/TargetNotFileOnlyException.vim
+source $MyScripts/FlexibleFrank/Exception/TargetNotDirException.vim
+source $MyScripts/FlexibleFrank/Exception/TargetNotFileException.vim
+source $MyScripts/FlexibleFrank/Exception/DestinationNotDirException.vim
+source $MyScripts/FlexibleFrank/Exception/NotPoiontedException.vim
+source $MyScripts/FlexibleFrank/Exception/NotMatchEntryNumbersException.vim
+source $MyScripts/FlexibleFrank/Exception/NotExecutedFrankNException.vim
+source $MyScripts/FlexibleFrank/Exception/NotExecutedBeforeFixCommandException.vim
+source $MyScripts/FlexibleFrank/Exception/NoMoreBeforeDirException.vim
 
 augroup autoCmdFrank
 	autocmd!
@@ -59,7 +59,7 @@ import os
 
 targetDir = os.path.abspath(vim.eval('a:targetDir'))
 
-workingDir = vim.eval('$myScripts') + '/FlexibleFrank/WorkingTexts/'
+workingDir = vim.eval('$MyScripts') + '/FlexibleFrank/WorkingTexts/'
 pathFrank1 = os.path.abspath(workingDir + 'Frank1.frank')
 pathFrank2 = os.path.abspath(workingDir + 'Frank2.frank')
 pathFrank3 = os.path.abspath(workingDir + 'Frank3.frank')

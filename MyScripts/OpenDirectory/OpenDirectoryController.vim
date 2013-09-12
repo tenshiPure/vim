@@ -1,6 +1,6 @@
 "WordYankController.vim
 
-source $myScripts/OpenDirectory/OpenDirectory.vim
+source $MyScripts/OpenDirectory/OpenDirectory.vim
 
 function! OpenDirectoryController(path)
 

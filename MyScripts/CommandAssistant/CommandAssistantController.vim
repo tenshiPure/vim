@@ -1,7 +1,7 @@
 "CommandAssistant
 
-source $myScripts/CommandAssistant/CommandAssistant.vim
-source $myScripts/CommandAssistant/CommandAssistantHistory.vim
+source $MyScripts/CommandAssistant/CommandAssistant.vim
+source $MyScripts/CommandAssistant/CommandAssistantHistory.vim
 
 augroup autoCmdGitAssit
 	autocmd!
@@ -26,7 +26,7 @@ if argLen == '0':
 else:
 	arg = vim.eval('a:1')
 
-workingDir = vim.eval('$myScripts') + '/CommandAssistant/WorkingTexts/'
+workingDir = vim.eval('$MyScripts') + '/CommandAssistant/WorkingTexts/'
 CommandList          = os.path.abspath(workingDir + 'CommandList.cass')
 CommandResult        = os.path.abspath(workingDir + 'CommandResult.cass')
 CommandListHistory   = os.path.abspath(workingDir + 'ommandListHistory.cass')

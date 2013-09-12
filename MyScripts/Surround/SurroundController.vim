@@ -1,4 +1,4 @@
-source $myScripts/Surround/Surround.vim
+source $MyScripts/Surround/Surround.vim
 
 function! SurroundController(mode, ...)
 

@@ -1,7 +1,7 @@
-source $myScripts/Translator/Translator.vim
-source $myScripts/Translator/ParamAnalysis.vim
-source $myScripts/Translator/ResultOutputer.vim
-source $myScripts/Translator/AccessInfo.vim
+source $MyScripts/Translator/Translator.vim
+source $MyScripts/Translator/ParamAnalysis.vim
+source $MyScripts/Translator/ResultOutputer.vim
+source $MyScripts/Translator/AccessInfo.vim
 
 augroup autoCmdTranslator
 	autocmd!
@@ -20,7 +20,7 @@ import vim
 
 mode = vim.eval('a:mode')
 
-workingDir = vim.eval('$myScripts') + '/Translator/WorkingTexts/'
+workingDir = vim.eval('$MyScripts') + '/Translator/WorkingTexts/'
 ja_trs = os.path.abspath(workingDir + 'ja.trs')
 en_trs = os.path.abspath(workingDir + 'en.trs')
 
