@@ -107,7 +107,7 @@ class Base:
 	# ブラウザをリロードする
 	#
 	def browserReload(self, browser = 'chrome'):
-		headDir = vim.eval('$myScripts') + '/NotCareExtension/Scripts/Reload'
+		headDir = vim.eval('$MyScripts') + '/NotCareExtension/Scripts/Reload'
 
 		if os.name == 'nt':
 			scriptPath = '"' + os.path.abspath('%s/win/%s.exe' % (headDir, browser)) + '"'

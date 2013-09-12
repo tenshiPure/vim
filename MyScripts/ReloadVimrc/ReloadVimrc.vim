@@ -4,7 +4,7 @@
 "vimrc の環境判定の可視性を上げる
 
 "関連ファイルの読み込み
-source $myScripts/ReloadVimrc/EnvMarkReplace.vim
+source $MyScripts/ReloadVimrc/EnvMarkReplace.vim
 
 function! ReloadVimrc()
 	
