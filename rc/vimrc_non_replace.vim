@@ -56,6 +56,10 @@ set guioptions-=m
 "日本語入力のときにカーソルを赤くする
 hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
+"ウィンドウサイズ変更 @mac
+set lines=80
+set columns=250
+
 "----------------------------------------------------------------------------------------------------
 "
 "諸パスだよ
@@ -178,8 +182,13 @@ inoremap <S-M-CR> <C-n>
 "全選択
 vnoremap , <ESC>ggVG
 
+"ビジュアル矩形のキーマップ @win
+nnoremap <S-M-v> <S-C-v>
+
+"ビジュアル矩形のキーマップ @mac
+nnoremap ÷ <S-C-v>
+
 "ビジュアル矩形のキーマップ
-nnoremap <M-S-v> <C-S-v>
 vnoremap v <C-v>
 
 "選択範囲の文字列を * で検索
@@ -224,9 +233,14 @@ nnoremap gW      <C-w>W
 "コマンドラインに関するマッピングだよ
 "
 "----------------------------------------------------------------------------------------------------
-"コマンドラインモードへ移行する
+"コマンドラインモード
 nnoremap <sid>(command-line-enter) q:
-nmap <M-:>  <sid>(command-line-enter)
+
+"コマンドラインモードへ移行する @win
+nmap <M-:> <sid>(command-line-enter)
+
+"コマンドラインモードへ移行する @mac
+nmap æ    <sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -327,8 +341,14 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
+"@win
 nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
 vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
+
+"@mac
+nnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
+vnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
+
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
@@ -438,15 +458,25 @@ nmap <S-u> <C-r>
 "ハイライトの無効化
 nmap <silent><ESC><ESC> :noh<CR>
 
-"インクリメント
+"インクリメント @win
 nnoremap <M-a> <C-a>
 
-"デクリメント
+"インクリメント @mac
+nnoremap å     <C-a>
+
+"デクリメント @win
 nnoremap <M-x> <C-x>
 
-"ブラックホールレジスタで削除する
+"デクリメント @mac
+nnoremap ≈    <C-x>
+
+"ブラックホールレジスタで削除する @win
 nnoremap <M-d> "_d
 vnoremap <M-d> "_d
+
+"ブラックホールレジスタで削除する @mac
+nnoremap ∂ "_d
+vnoremap ∂ "_d
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -473,6 +503,6 @@ functionName = vim.eval('a:functionName')
 MyScripts = vim.eval('$myScripts')
 filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
 
-os.system('python "%s"' % (pythonPath, filePath))
+os.system('python "%s"' % filePath)
 EOM
 endfunction

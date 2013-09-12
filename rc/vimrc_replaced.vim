@@ -39,8 +39,6 @@ autocmd BufWinEnter * set textwidth=0
 "マークをリセット
 autocmd BufWinEnter * delmarks!
 
-"文字コード設定 @win
-autocmd BufWinEnter * set fileencoding=utf8
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -56,14 +54,18 @@ set guioptions-=m
 "日本語入力のときにカーソルを赤くする
 hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
+"ウィンドウサイズ変更 @mac
+set lines=80
+set columns=250
+
 "----------------------------------------------------------------------------------------------------
 "
 "諸パスだよ
 "
 "----------------------------------------------------------------------------------------------------
-"gitvim @win
-let $gitvim = $vim . '/gitvim'
 
+"gitvim @mac
+let $gitvim = '/Users/ryo/Documents/gitvim'
 
 "vim
 let $ignore      = $gitvim . '/.gitignore'
@@ -78,29 +80,37 @@ let $notcare     = $gitvim . '/myScripts/NotCareExtension'
 let $trans       = $gitvim . '/myScripts/Translator'
 let $vmail       = $gitvim . '/myScripts/vMail'
 
-"AutoHotkeys @win
-let $ahk     = "D:/MyDocument/AutoHotKeys"
-let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
-
-"account @win
-let $account = "D:/MyDocument/account"
 
 
-"tmp @win
-let $tmp = "D:/MyDocument/tmp"
+"KeyRemap4MacBook @mac
+let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml"
 
 
-"todo @win
-let $todo = 'D:/Dropbox/share/todo.txt'
+"tmp @mac
+let $tmp = "/Users/ryo/Documents/tmp/"
 
 
+"todo @mac
+let $todo = '/Users/ryo/Dropbox/share/todo.txt'
+
+"slf @mac
+let $slf          = '/Users/ryo/Documents/projects/slf'
+let $application  = $slf . '/application'
+let $controllers  = $application . '/controllers'
+let $domain       = $application . '/domain'
+let $models       = $application . '/models'
+let $transfer     = $application . '/transfer'
+let $scripts      = $application . '/views/pc/scripts'
+let $css          = $slf . '/htdocs/css'
+let $js           = $slf . '/htdocs/js'
+let $fixture      = $slf . '/testdata/fixture'
+let $tests        = $slf . '/tests'
+
+"log @mac
+let $uilog  = $slf . '/data/logs/application'
+let $apilog = '/var/log/ap/slmctl'
 
 
-"HiredGirl @win
-let $hired = "D:/MyDocument/Program/HiredGirl"
-
-"Pycel @win
-let $pycel = "D:/MyDocument/Program/Pycel"
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -155,8 +165,11 @@ inoremap <S-M-CR> <C-n>
 "全選択
 vnoremap , <ESC>ggVG
 
+
+"ビジュアル矩形のキーマップ @mac
+nnoremap ÷ <S-C-v>
+
 "ビジュアル矩形のキーマップ
-nnoremap <M-S-v> <C-S-v>
 vnoremap v <C-v>
 
 "選択範囲の文字列を * で検索
@@ -201,9 +214,12 @@ nnoremap gW      <C-w>W
 "コマンドラインに関するマッピングだよ
 "
 "----------------------------------------------------------------------------------------------------
-"コマンドラインモードへ移行する
+"コマンドラインモード
 nnoremap <sid>(command-line-enter) q:
-nmap <M-:>  <sid>(command-line-enter)
+
+
+"コマンドラインモードへ移行する @mac
+nmap æ    <sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -218,6 +234,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 "##で文字列「normal 」を展開する
 cnoremap ## normal 
 
+"タブを４スペースに置換 @mac
+command! Tabrep %s/\t/    /g
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -302,8 +320,11 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $myScripts/NotCareExtension/NotCareExtensionController.vim
 
-nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
+
+"@mac
+nnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
+vnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
+
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 nnoremap <M-?>  :call NotCareExtensionController('commentSwitch')<CR>
@@ -413,15 +434,18 @@ nmap <S-u> <C-r>
 "ハイライトの無効化
 nmap <silent><ESC><ESC> :noh<CR>
 
-"インクリメント
-nnoremap <M-a> <C-a>
 
-"デクリメント
-nnoremap <M-x> <C-x>
+"インクリメント @mac
+nnoremap å     <C-a>
 
-"ブラックホールレジスタで削除する
-nnoremap <M-d> "_d
-vnoremap <M-d> "_d
+
+"デクリメント @mac
+nnoremap ≈    <C-x>
+
+
+"ブラックホールレジスタで削除する @mac
+nnoremap ∂ "_d
+vnoremap ∂ "_d
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -448,6 +472,6 @@ functionName = vim.eval('a:functionName')
 MyScripts = vim.eval('$myScripts')
 filePath = os.path.abspath('%s/%s/%s.py' % (MyScripts, functionName, 'Controller'))
 
-os.system('python "%s"' % (pythonPath, filePath))
+os.system('python "%s"' % filePath)
 EOM
 endfunction
