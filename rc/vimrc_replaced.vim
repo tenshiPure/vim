@@ -68,17 +68,17 @@ set columns=250
 let $gitvim = '/Users/ryo/Documents/gitvim'
 
 "vim
-let $ignore      = $gitvim . '/.gitignore'
-let $rc          = $gitvim . '/rc/vimrc_non_replace.vim'
-let $rc_replaced = $gitvim . '/rc/vimrc_replaced.vim'
-let $myScripts   = $gitvim . '/myScripts'
-let $lib         = $gitvim . '/MyLib'
-let $fundamental = $gitvim . '/MyFundamental'
-let $frank       = $gitvim . '/myScripts/FlexibleFrank'
-let $cass        = $gitvim . '/myScripts/CommandAssistant'
-let $notcare     = $gitvim . '/myScripts/NotCareExtension'
-let $trans       = $gitvim . '/myScripts/Translator'
-let $vmail       = $gitvim . '/myScripts/vMail'
+let $ignore      = $gitvim    . '/.gitignore'
+let $rc          = $gitvim    . '/rc/vimrc_non_replace.vim'
+let $rc_replaced = $gitvim    . '/rc/vimrc_replaced.vim'
+let $MyScripts   = $gitvim    . '/MyScripts'
+let $lib         = $gitvim    . '/MyLib'
+let $fundamental = $gitvim    . '/MyFundamental'
+let $frank       = $MyScripts . '/FlexibleFrank'
+let $cass        = $MyScripts . '/CommandAssistant'
+let $notcare     = $MyScripts . '/NotCareExtension'
+let $trans       = $MyScripts . '/Translator'
+let $vmail       = $MyScripts . '/vMail'
 
 
 
