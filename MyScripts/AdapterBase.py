@@ -32,3 +32,27 @@ def sysPathAppendUnderMyScriptsPath(path):
 def sysPathAppend(path):
 	sys.path.append(path)
 	sys.path = list(set(sys.path))
+
+#
+# win判定
+#
+def isWin():
+	return os.name == 'nt'
+
+#
+# mac判定
+#
+def isMac():
+	return os.name == 'posix'
+
+#
+# python判定
+#
+def isPython():
+	return True
+
+#
+# vim判定
+#
+def isVim():
+	return False
