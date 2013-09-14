@@ -427,10 +427,8 @@ let $path .= 'C:\Python27\Scripts'
 
 
 
-"nnoremap <F7> :!python $MyScripts/RcLoader/Controller.py<CR>:so $rc_replaced<CR>
+source $MyScripts/AdapterBase.vim
 
-source $MyScripts/Base.vim
-
-source $MyScripts/WordCount/WordCountBridge.py
-nnoremap <F6> :call WordCountBridge(['let', 'map'])<CR>
-command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountBridge(args) | unlet args
+source $MyScripts/WordCount/WordCountAdapter.vim
+nnoremap <F6> :call WordCountAdapter(['let', 'map'])<CR>
+command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountAdapter(args) | unlet args
