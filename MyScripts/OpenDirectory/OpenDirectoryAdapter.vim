@@ -1,9 +1,8 @@
 python <<EOM
 
-import os
 import sys
-
 import vim
+
 sys.path.append(vim.eval('$MyScripts'))
 import Util
 

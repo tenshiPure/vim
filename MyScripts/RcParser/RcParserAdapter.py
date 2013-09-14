@@ -4,15 +4,13 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
-import AdapterBase
+import Util
 
 #
 # python用アダプタ
 #
 def RcParserAdapter():
-	AdapterBase.defMyScripts()
-
-	AdapterBase.sysPathAppendUnderMyScriptsPath('RcParser')
+	Util.sysPathAppendUnderMyScriptsPath('RcParser')
 	import Parser
 
 	env = Parser.getEnv()
