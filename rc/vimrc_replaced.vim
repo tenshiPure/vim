@@ -226,11 +226,14 @@ nnoremap <C-p> :<UP>
 cnoremap <C-p> <UP>
 cnoremap <C-n> <DOWN>
 
-"%%で編集バッファの格納パスを展開する
+"：モード時のみ、%%で編集バッファの格納パスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
-"##で文字列「normal 」を展開する
-cnoremap ## normal 
+"：モード時のみ、##で文字列「normal 」を展開する
+cnoremap <expr> ## getcmdtype() == ':' ? 'normal ' : '##'
+
+"：モード時のみ、&&でカーソル下の文字列を展開する
+cnoremap <expr> && getcmdtype() == ':' ? expand('<cword>') : '&&'
 
 
 "----------------------------------------------------------------------------------------------------
