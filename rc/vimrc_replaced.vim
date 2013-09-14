@@ -432,3 +432,6 @@ source $MyScripts/AdapterBase.vim
 source $MyScripts/WordCount/WordCountAdapter.vim
 nnoremap <F6> :call WordCountAdapter(['let', 'map'])<CR>
 command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountAdapter(args) | unlet args
+
+source $MyScripts/RcParser/RcParserAdapter.vim
+nnoremap <F7> :call RcParserAdapter()<CR>:source $rc_replaced<CR>

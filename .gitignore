@@ -1,13 +1,15 @@
 .DS_Store
 
-myScripts/FlexibleFrank/WorkingTexts/*.frank
+rc/env
 
-myScripts/CommandAssistant/WorkingTexts/*.cass
+MyScripts/FlexibleFrank/WorkingTexts/*.frank
 
-myScripts/Translator/AccessInfo.vim
-myScripts/Translator/LocalToken.txt
-myScripts/Translator/WorkingTexts/*.trs
+MyScripts/CommandAssistant/WorkingTexts/*.cass
 
-myScripts/VMail/AccountInfo.vim
-myScripts/VMail/WorkingTexts/*.vmail
-myScripts/VMail/tmp.py
+MyScripts/Translator/AccessInfo.vim
+MyScripts/Translator/LocalToken.txt
+MyScripts/Translator/WorkingTexts/*.trs
+
+MyScripts/VMail/AccountInfo.vim
+MyScripts/VMail/WorkingTexts/*.vmail
+MyScripts/VMail/tmp.py
