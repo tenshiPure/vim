@@ -69,3 +69,5 @@ def isVim():
 		return True
 	except:
 		return False
+
+defMyScripts()

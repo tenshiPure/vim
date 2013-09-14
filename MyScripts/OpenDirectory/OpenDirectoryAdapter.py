@@ -10,8 +10,6 @@ import Util
 # python用アダプタ
 #
 def OpenDirectoryAdapter(path):
-	Util.defMyScripts()
-
 	Util.sysPathAppendUnderMyScriptsPath('OpenDirectory')
 	from Opener import Opener
 

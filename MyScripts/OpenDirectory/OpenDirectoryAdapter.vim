@@ -14,8 +14,6 @@ from vim_bridge import bridged
 #
 @bridged
 def OpenDirectoryAdapter(path):
-	Util.defMyScripts()
-
 	Util.sysPathAppendUnderMyScriptsPath('OpenDirectory')
 	from Opener import Opener
 

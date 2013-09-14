@@ -421,10 +421,6 @@ command! -nargs=+ Count call <SID>Count(<f-args>)
 "pythonの文字コードコメントを挿入
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
-"ディレクトリパスを開く
-source $MyScripts/OpenDirectory/OpenDirectoryAdapter.vim
-command! -nargs=1 -complete=dir Dir call OpenDirectoryAdapter(<f-args>)
-
 "----------------------------------------------------------------------------------------------------
 "
 "その他操作のマッピングだよ
@@ -484,3 +480,7 @@ command! -nargs=+ Count let args = ConvertArgs(<f-args>) | call WordCountAdapter
 
 source $MyScripts/RcParser/RcParserAdapter.vim
 nnoremap <F7> :call RcParserAdapter()<CR>:source $rc_replaced<CR>
+
+"ディレクトリパスを開く
+source $MyScripts/OpenDirectory/OpenDirectoryAdapter.vim
+command! -nargs=1 -complete=dir Dir call OpenDirectoryAdapter(<f-args>)

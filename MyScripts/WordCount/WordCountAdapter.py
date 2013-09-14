@@ -4,17 +4,15 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
-import AdapterBase
+import Util
 
 #
 # python用アダプタ
 #
 def WordCountAdapter(args):
-	AdapterBase.defMyScripts()
+	Util.sysPathAppendUnderMyScriptsPath('../MyFundamental')
 
-	AdapterBase.sysPathAppendUnderMyScriptsPath('../MyFundamental')
-
-	AdapterBase.sysPathAppendUnderMyScriptsPath('WordCount')
+	Util.sysPathAppendUnderMyScriptsPath('WordCount')
 	from Counter import Counter 
 
 	counter = Counter(args)
