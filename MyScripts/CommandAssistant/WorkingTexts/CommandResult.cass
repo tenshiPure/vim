@@ -1,7 +1,0 @@
-From github.com:tenshiPure/vim
- * branch            master     -> FETCH_HEAD
-Auto-merging rc/vimrc_replaced.vim
-CONFLICT (content): Merge conflict in rc/vimrc_replaced.vim
-Auto-merging rc/vimrc_non_replace.vim
-CONFLICT (content): Merge conflict in rc/vimrc_non_replace.vim
-Automatic merge failed; fix conflicts and then commit the result.
