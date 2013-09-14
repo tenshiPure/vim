@@ -73,4 +73,11 @@ class Tab:
 		else:
 			vim.command('bdelete')
 
+	#
+	# タブを閉じる
+	#
+	@staticmethod
+	def closeForce():
+		vim.command('bdelete!')
+
 EOM

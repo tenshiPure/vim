@@ -186,11 +186,18 @@ nnoremap <S-Space> gT
 nnoremap <M-Space> :tabedit 
 
 "バッファを閉じる
-nnoremap <C-Space> :call TabClose()<CR>
+nnoremap <C-Space>   :call TabClose()<CR>
+nnoremap <S-C-Space> :call TabCloseForce()<CR>
 
 function! TabClose()
 python <<EOM
 Tab.close()
+EOM
+endfunction
+
+function! TabCloseForce()
+python <<EOM
+Tab.closeForce()
 EOM
 endfunction
 
