@@ -422,8 +422,8 @@ command! -nargs=+ Count call <SID>Count(<f-args>)
 command! Pyhead :normal i#-*- coding: utf-8 -*-
 
 "ディレクトリパスを開く
-source $MyScripts/OpenDirectory/OpenDirectoryController.vim
-command! -nargs=1 -complete=dir Dir call OpenDirectoryController(<f-args>)
+source $MyScripts/OpenDirectory/OpenDirectoryAdapter.vim
+command! -nargs=1 -complete=dir Dir call OpenDirectoryAdapter(<f-args>)
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -476,7 +476,7 @@ let $path .= 'C:\Python27\Scripts'
 
 
 
-source $MyScripts/AdapterBase.vim
+source $MyScripts/Adapter.vim
 
 source $MyScripts/WordCount/WordCountAdapter.vim
 nnoremap <F6> :call WordCountAdapter(['let', 'map'])<CR>

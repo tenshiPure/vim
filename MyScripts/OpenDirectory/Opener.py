@@ -3,7 +3,7 @@
 import os
 import os.path
 
-import AdapterBase
+import Util
 
 class Opener:
 
@@ -27,14 +27,16 @@ class Opener:
 	# 実行
 	#
 	def execute(self):
-		if AdapterBase.isWin():
-			if AdapterBase.isVim():
+		if Util.isWin():
+			if Util.isVim():
+				import vim
 				vim.command(r'silent !explorer "%s"' % (self.dirPath))
-			if AdapterBase.isPython():
+			if Util.isPython():
 				os.system('explorer "%s"' % (self.dirPath))
 
-		if AdapterBase.isMac():
-			if AdapterBase.isVim():
+		if Util.isMac():
+			if Util.isVim():
+				import vim
 				vim.command(r'silent !open "%s"' % self.dirPath)
-			if AdapterBase.isPython():
+			if Util.isPython():
 				os.system('open "%s"' % self.dirPath)

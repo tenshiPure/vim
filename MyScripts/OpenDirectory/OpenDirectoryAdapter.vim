@@ -1,19 +1,25 @@
 python <<EOM
 
+import os
+import sys
+
+import vim
+sys.path.append(vim.eval('$MyScripts'))
+import Util
+
+from vim_bridge import bridged
+
 #
 # vim用アダプタ
 #
 @bridged
-def RcParserAdapter():
-	sysPathAppendUnderMyScriptsPath('RcParser')
-	import Parser
+def OpenDirectoryAdapter(path):
+	Util.defMyScripts()
 
-	env = Parser.getEnv()
+	Util.sysPathAppendUnderMyScriptsPath('OpenDirectory')
+	from Opener import Opener
 
-	list = Parser.getList()
-
-	result = Parser.parse(list, env)
-
-	Parser.writeList(result)
+	opener = Opener(path)
+	opener.execute()
 
 EOM

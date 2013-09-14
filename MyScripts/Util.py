@@ -2,6 +2,7 @@
 
 import os
 import sys
+import platform
 
 PATH_MY_SCRIPTS = 'not definition'
 
@@ -10,7 +11,11 @@ PATH_MY_SCRIPTS = 'not definition'
 #
 def defMyScripts():
 	global PATH_MY_SCRIPTS
-	PATH_MY_SCRIPTS = os.path.dirname(__file__)
+	if isPython():
+		PATH_MY_SCRIPTS = os.path.dirname(__file__)
+	if isVim():
+		import vim
+		PATH_MY_SCRIPTS = vim.eval('$MyScripts')
 
 #
 # MyScriptsの取得
@@ -37,22 +42,30 @@ def sysPathAppend(path):
 # win判定
 #
 def isWin():
-	return os.name == 'nt'
+	return platform.system() == 'Windows'
 
 #
 # mac判定
 #
 def isMac():
-	return os.name == 'posix'
+	return platform.system() == 'Darwin'
 
 #
 # python判定
 #
 def isPython():
-	return True
+	try:
+		import vim
+		return False
+	except:
+		return True
 
 #
 # vim判定
 #
 def isVim():
-	return False
+	try:
+		import vim
+		return True
+	except:
+		return False
