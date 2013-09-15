@@ -1,9 +1,6 @@
 python <<EOM
 
-import sys
-import vim
-
-sys.path.append(vim.eval('$MyScripts'))
+import AutoLoader
 import Util
 
 from vim_bridge import bridged
@@ -13,7 +10,6 @@ from vim_bridge import bridged
 #
 @bridged
 def RcParserAdapter():
-	Util.sysPathAppendUnderMyScriptsPath('RcParser')
 	import Parser
 
 	env = Parser.getEnv()

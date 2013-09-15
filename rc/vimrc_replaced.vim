@@ -431,6 +431,8 @@ let $path .= ';C:\Python27'
 let $path .= 'C:\Python27\Scripts'
 
 
+nnoremap <F1> <Nop>
+vnoremap <F1> <Nop>
 
 
 function! ConvertArgs(...)
