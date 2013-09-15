@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-from Buffer import Buffer
+from Buf import Buf
 
 class Counter:
 
@@ -10,7 +10,7 @@ class Counter:
 	def __init__(self, args):
 		self.args = args
 		self.results = []
-		self.buf = Buffer()
+		self.buf = Buf()
 
 	#
 	# 実行
@@ -26,7 +26,7 @@ class Counter:
 	#
 	def count(self, arg):
 		result = 0
-		for line in self.buf.getLines():
+		for line in self.buf.loop():
 			result += line.count(arg)
 
 		return result

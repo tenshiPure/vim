@@ -18,4 +18,4 @@ def WordCountAdapter(args):
 	counter = Counter(args)
 	counter.execute()
 
-WordCountAdapter(['map', 'let'])
+WordCountAdapter(['mock', 'let'])

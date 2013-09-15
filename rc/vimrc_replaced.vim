@@ -445,3 +445,12 @@ nnoremap <F7> :call RcParserAdapter()<CR>:source $rc_replaced<CR>
 "ディレクトリパスを開く
 source $MyScripts/OpenDirectory/OpenDirectoryAdapter.vim
 command! -nargs=1 -complete=dir Dir call OpenDirectoryAdapter(<f-args>)
+
+python <<EOM
+import os
+import sys
+sys.path.append(os.path.abspath(r"C:\Program Files (x86)\vim\gitvim\MyFundamental"))
+from Buf import Buf 
+#buf = Buf()
+#buf.setLines(['ppp', 'hhh'])
+EOM
