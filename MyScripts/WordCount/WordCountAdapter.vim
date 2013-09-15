@@ -1,9 +1,6 @@
 python <<EOM
 
-import sys
-import vim
-
-sys.path.append(vim.eval('$MyScripts'))
+import AutoLoader
 import Util
 
 from vim_bridge import bridged
@@ -13,9 +10,6 @@ from vim_bridge import bridged
 #
 @bridged
 def WordCountAdapter(args):
-	Util.sysPathAppendUnderMyScriptsPath('../MyFundamental')
-
-	Util.sysPathAppendUnderMyScriptsPath('WordCount')
 	from Counter import Counter 
 
 	counter = Counter(args)

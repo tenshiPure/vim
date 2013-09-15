@@ -433,7 +433,10 @@ let $path .= 'C:\Python27\Scripts'
 
 
 
-source $MyScripts/Adapter.vim
+function! ConvertArgs(...)
+	return a:000
+endfunction
+source $gitvim/AutoLoader.vim
 
 source $MyScripts/WordCount/WordCountAdapter.vim
 nnoremap <F6> :call WordCountAdapter(['let', 'map'])<CR>
@@ -447,10 +450,9 @@ source $MyScripts/OpenDirectory/OpenDirectoryAdapter.vim
 command! -nargs=1 -complete=dir Dir call OpenDirectoryAdapter(<f-args>)
 
 python <<EOM
-import os
-import sys
-sys.path.append(os.path.abspath(r"C:\Program Files (x86)\vim\gitvim\MyFundamental"))
-from Buf import Buf 
+#import os
+#import sys
+#sys.path.append(os.path.abspath(r"C:\Program Files (x86)\vim\gitvim\MyFundamental"))
+#from Buf import Buf 
 #buf = Buf()
-#buf.setLines(['ppp', 'hhh'])
 EOM

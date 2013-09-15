@@ -1,9 +1,5 @@
 #-*- coding: utf-8 -*-
 
-import os
-import os.path
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../MyScripts'))
 import Util
 
 #
