@@ -500,3 +500,18 @@ python <<EOM
 #from Buf import Buf 
 #buf = Buf()
 EOM
+
+
+"@win
+filetype off
+if has('vim_starting')
+	set runtimepath+="C:/Program Files (x86)/vim/vim73/autoload/neobundle"
+	call neobundle#rc("C:/Program Files (x86)/vim/bundle")
+endif
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'git://github.com/Shougo/vimproc.git'
+filetype plugin on
+filetype indent on
+

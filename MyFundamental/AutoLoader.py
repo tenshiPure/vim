@@ -4,11 +4,11 @@ import os
 import os.path
 import sys
 
-root = os.path.dirname(__file__) + '/..'
-MyScripts = os.path.abspath(root + '/MyScripts')
-MyFundamental = os.path.abspath(root + '/MyFundamental')
+Gitvim = os.path.dirname(__file__) + '/..'
+MyScripts = os.path.abspath(Gitvim + '/MyScripts')
+MyFundamental = os.path.abspath(Gitvim + '/MyFundamental')
 
-sys.path.append(root)
+sys.path.append(Gitvim)
 sys.path.append(MyFundamental)
 
 for path in os.listdir(MyScripts):
