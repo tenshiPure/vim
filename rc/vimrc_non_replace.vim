@@ -480,6 +480,7 @@ vnoremap <F1> <Nop>
 function! ConvertArgs(...)
 	return a:000
 endfunction
+
 source $gitvim/AutoLoader.vim
 
 source $MyScripts/WordCount/WordCountAdapter.vim

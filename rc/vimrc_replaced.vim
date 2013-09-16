@@ -39,8 +39,6 @@ autocmd BufWinEnter * set textwidth=0
 "マークをリセット
 autocmd BufWinEnter * delmarks!
 
-"文字コード設定 @win
-autocmd BufWinEnter * set fileencoding=utf8
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -56,15 +54,18 @@ set guioptions-=m
 "日本語入力のときにカーソルを赤くする
 hi CursorIM guifg=black guibg=red gui=NONE ctermfg=black ctermbg=white cterm=reverse
 
+"ウィンドウサイズ変更 @mac
+set lines=80
+set columns=250
 
 "----------------------------------------------------------------------------------------------------
 "
 "諸パスだよ
 "
 "----------------------------------------------------------------------------------------------------
-"gitvim @win
-let $gitvim = $vim . '/gitvim'
 
+"gitvim @mac
+let $gitvim = '/Users/ryo/Documents/gitvim'
 
 "vim
 let $ignore      = $gitvim    . '/.gitignore'
@@ -79,29 +80,37 @@ let $notcare     = $MyScripts . '/NotCareExtension'
 let $trans       = $MyScripts . '/Translator'
 let $vmail       = $MyScripts . '/vMail'
 
-"AutoHotkeys @win
-let $ahk     = "D:/MyDocument/AutoHotKeys"
-let $ahkini  = "C:/Program Files/AutoHotkey/AutoHotkeyU64.ahk"
-
-"account @win
-let $account = "D:/MyDocument/account"
 
 
-"tmp @win
-let $tmp = "D:/MyDocument/tmp"
+"KeyRemap4MacBook @mac
+let $private = "/Users/ryo/Library/Application Support/KeyRemap4MacBook/private.xml"
 
 
-"todo @win
-let $todo = 'D:/Dropbox/share/todo.txt'
+"tmp @mac
+let $tmp = "/Users/ryo/Documents/tmp/"
 
 
+"todo @mac
+let $todo = '/Users/ryo/Dropbox/share/todo.txt'
+
+"slf @mac
+let $slf          = '/Users/ryo/Documents/projects/slf'
+let $application  = $slf . '/application'
+let $controllers  = $application . '/controllers'
+let $domain       = $application . '/domain'
+let $models       = $application . '/models'
+let $transfer     = $application . '/transfer'
+let $scripts      = $application . '/views/pc/scripts'
+let $css          = $slf . '/htdocs/css'
+let $js           = $slf . '/htdocs/js'
+let $fixture      = $slf . '/testdata/fixture'
+let $tests        = $slf . '/tests'
+
+"log @mac
+let $uilog  = $slf . '/data/logs/application'
+let $apilog = '/var/log/ap/slmctl'
 
 
-"HiredGirl @win
-let $hired = "D:/MyDocument/Program/HiredGirl"
-
-"Pycel @win
-let $pycel = "D:/MyDocument/Program/Pycel"
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -156,9 +165,9 @@ inoremap <S-M-CR> <C-n>
 "全選択
 vnoremap , <ESC>ggVG
 
-"ビジュアル矩形のキーマップ @win
-nnoremap <S-M-v> <S-C-v>
 
+"ビジュアル矩形のキーマップ @mac
+nnoremap ? <S-C-v>
 
 "ビジュアル矩形のキーマップ
 vnoremap v <C-v>
@@ -215,9 +224,9 @@ nnoremap gW      <C-w>W
 "コマンドラインモード
 nnoremap <sid>(command-line-enter) q:
 
-"コマンドラインモードへ移行する @win
-nmap <M-:> <sid>(command-line-enter)
 
+"コマンドラインモードへ移行する @mac
+nmap a    <sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -235,6 +244,8 @@ cnoremap <expr> ## getcmdtype() == ':' ? 'normal ' : '##'
 "：モード時のみ、&&でカーソル下の文字列を展開する
 cnoremap <expr> && getcmdtype() == ':' ? expand('<cword>') : '&&'
 
+"タブを４スペースに置換 @mac
+command! Tabrep %s/\t/    /g
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -319,10 +330,10 @@ command! -nargs=1 -complete=dir FF call FlexibleFrankController(<f-args>)
 "--------------------------------------------------
 source $MyScripts/NotCareExtension/NotCareExtensionController.vim
 
-"@win
-nnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
-vnoremap <M-/>  :call NotCareExtensionController('commentAdd')<CR>
 
+"@mac
+nnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
+vnoremap ÷     :call NotCareExtensionController('commentAdd')<CR>
 
 nnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
 vnoremap ?      :call NotCareExtensionController('commentDelete')<CR>
@@ -406,18 +417,18 @@ nmap <S-u> <C-r>
 "ハイライトの無効化
 nmap <silent><ESC><ESC> :noh<CR>
 
-"インクリメント @win
-nnoremap <M-a> <C-a>
+
+"インクリメント @mac
+nnoremap a     <C-a>
 
 
-"デクリメント @win
-nnoremap <M-x> <C-x>
+"デクリメント @mac
+nnoremap ?    <C-x>
 
 
-"ブラックホールレジスタで削除する @win
-nnoremap <M-d> "_d
-vnoremap <M-d> "_d
-
+"ブラックホールレジスタで削除する @mac
+nnoremap ∂ "_d
+vnoremap ∂ "_d
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -438,6 +449,7 @@ vnoremap <F1> <Nop>
 function! ConvertArgs(...)
 	return a:000
 endfunction
+
 source $gitvim/AutoLoader.vim
 
 source $MyScripts/WordCount/WordCountAdapter.vim
@@ -460,16 +472,4 @@ python <<EOM
 EOM
 
 
-"@win
-filetype off
-if has('vim_starting')
-	set runtimepath+="C:/Program Files (x86)/vim/vim73/autoload/neobundle"
-	call neobundle#rc("C:/Program Files (x86)/vim/bundle")
-endif
-NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-NeoBundle 'git://github.com/Shougo/vimshell.git'
-NeoBundle 'git://github.com/Shougo/vimproc.git'
-filetype plugin on
-filetype indent on
 

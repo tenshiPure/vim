@@ -10,7 +10,7 @@ Gitvim = vim.eval('$gitvim')
 MyScripts = os.path.abspath(Gitvim + '/MyScripts')
 MyFundamental = os.path.abspath(Gitvim + '/MyFundamental')
 VimBridgeWin = r'C:\Python27\Lib\site-packages\vim_bridge-0.5-py2.7.egg'
-VimBridgeMac = '/Library/Python/2.7/site-packages'
+VimBridgeMac = '/Library/Python/2.7/site-packages/vim_bridge-0.5-py2.7.egg'
 
 sys.path.append(Gitvim)
 sys.path.append(MyFundamental)
