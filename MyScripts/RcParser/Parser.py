@@ -22,8 +22,8 @@ def getList():
 	return result
 
 def parse(list, env):
-	winPattern = r'^".*@win'
-	macPattern = r'^".*@mac'
+	winPattern = r'.*@win.*'
+	macPattern = r'.*@mac.*'
 	blankPattern = r'^[\s\t]*$'
 
 	winModifiers = {'Mod1' : 'M', }

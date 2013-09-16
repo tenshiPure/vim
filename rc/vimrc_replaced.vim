@@ -472,4 +472,19 @@ python <<EOM
 EOM
 
 
+filetype off
+
+if has('vim_starting')
+	"@mac
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'git://github.com/Shougo/vimproc.git'
+
+filetype plugin on
+filetype indent on
 
