@@ -247,7 +247,7 @@ nnoremap <sid>(command-line-enter) q:
 nmap <M-:> <sid>(command-line-enter)
 
 "コマンドラインモードへ移行する @mac
-nmap a    <sid>(command-line-enter)
+nmap æ<sid>(command-line-enter)
 
 "直前のコマンド履歴を表示
 nnoremap <C-p> :<UP>
@@ -445,7 +445,7 @@ nmap <silent><ESC><ESC> :noh<CR>
 nnoremap <M-a> <C-a>
 
 "インクリメント @mac
-nnoremap a     <C-a>
+nnoremap å     <C-a>
 
 "デクリメント @win
 nnoremap <M-x> <C-x>
@@ -476,6 +476,9 @@ let $path .= 'C:\Python27\Scripts'
 nnoremap <F1> <Nop>
 vnoremap <F1> <Nop>
 
+nnoremap <F10> <C-o>
+inoremap <F10> <C-o>
+vnoremap <F10> <C-o>
 
 function! ConvertArgs(...)
 	return a:000
