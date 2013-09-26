@@ -142,10 +142,16 @@ inoremap <C-b> <LEFT>
 inoremap <C-f> <RIGHT>
 inoremap <C-a> <HOME>
 inoremap <C-e> <END>
+cnoremap <C-b> <LEFT>
+cnoremap <C-f> <RIGHT>
+cnoremap <C-a> <HOME>
+cnoremap <C-e> <END>
 
 "Emacsコマンドで削除
 inoremap <C-h> <BS>
 inoremap <C-d> <Del>
+cnoremap <C-h> <BS>
+cnoremap <C-d> <Del>
 inoremap <C-w> <C-w>
 inoremap <C-k> <C-o><S-d>
 inoremap <C-u> <C-u>
@@ -491,3 +497,31 @@ NeoBundle 'git://github.com/Shougo/vimproc.git'
 filetype plugin on
 filetype indent on
 
+
+"----------------------------------------------------------------------------------------------------
+"
+"VimShellの設定だよ
+"
+"----------------------------------------------------------------------------------------------------
+nnoremap ß :VimShellTab<CR>
+nnoremap ∂ :VimShellPop<CR>
+
+let g:vimshell_prompt = "> "
+let g:vimshell_user_prompt = 'getcwd()'
+let g:vimshell_right_prompt = 'GetBranch()'
+"let g:vimshell_enable_auto_slash = 0
+
+nnoremap <F11> :call GetBranch()<CR>
+
+function! GetBranch()
+	let branchs = system('git branch')
+	let branchList = split(branchs, '\n')
+
+	for branch in branchList 
+		if match(branch, '^*') != -1
+			return branch[2:]
+		endif
+	endfor
+
+	return '...'
+endfunction
