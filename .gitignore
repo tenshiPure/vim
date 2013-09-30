@@ -13,3 +13,5 @@ MyScripts/Translator/WorkingTexts/*.trs
 MyScripts/VMail/AccountInfo.vim
 MyScripts/VMail/WorkingTexts/*.vmail
 MyScripts/VMail/tmp.py
+
+MyScripts/GitFrank/
