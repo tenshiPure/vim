@@ -1,2 +1,0 @@
-this is OriginA.txt
-depth is 1
