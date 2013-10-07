@@ -19,7 +19,7 @@ class py(Base):
 	#
 	def make(self):
 		fileName = vim.current.buffer.name if self.option is None else self.option
-		vim.command('!python \"%s\"' % fileName)
+		vim.command('!python -B \"%s\"' % fileName)
 
 	#
 	# テストを実行する

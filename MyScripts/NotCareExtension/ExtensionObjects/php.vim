@@ -25,7 +25,7 @@ class php(Base):
 	#
 	def test(self):
 		group = 'wip' if self.option is None else self.option
-		scriptPath = '/Users/ryo/Documents/scripts/slf/phpunit.py'
+		scriptPath = '/Users/ryo/Documents/Scripts/slf/bin/phpunit.py'
 		command = '!python %s %s' % (scriptPath, group)
 		
 		vim.command(command)

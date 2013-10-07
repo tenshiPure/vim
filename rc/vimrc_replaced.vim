@@ -79,6 +79,7 @@ let $cass        = $MyScripts . '/CommandAssistant'
 let $notcare     = $MyScripts . '/NotCareExtension'
 let $trans       = $MyScripts . '/Translator'
 let $vmail       = $MyScripts . '/vMail'
+let $gfrank       = $MyScripts . '/GitFrank'
 
 
 
@@ -100,7 +101,7 @@ let $controllers  = $application . '/controllers'
 let $domain       = $application . '/domain'
 let $models       = $application . '/models'
 let $transfer     = $application . '/transfer'
-let $scripts      = $application . '/views/pc/scripts'
+let $view      = $application . '/views/pc'
 let $css          = $slf . '/htdocs/css'
 let $js           = $slf . '/htdocs/js'
 let $fixture      = $slf . '/testdata/fixture'
@@ -111,6 +112,9 @@ let $uilog  = $slf . '/data/logs/application'
 let $apilog = '/var/log/ap/slmctl'
 
 
+
+"Scripts @mac
+let $scripts = "/Users/ryo/Documents/Scripts"
 
 "----------------------------------------------------------------------------------------------------
 "
@@ -525,3 +529,5 @@ function! GetBranch()
 
 	return '...'
 endfunction
+
+command! Todo tabedit $todo
