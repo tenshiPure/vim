@@ -67,7 +67,7 @@ class Base:
 	def commentAdd(self, lineNum, line, commentStyleHead, commentStyleTail):
 		line = commentStyleHead + line + commentStyleTail
 
-		self.buf.write(lineNum, line)
+		vim.current.buffer[lineNum - 1] = line
 
 	#
 	# コメント状態を解除する
@@ -76,7 +76,7 @@ class Base:
 		line = line.replace(commentStyleHead, '', 1)
 		line = line.replace(commentStyleTail, '', 1)
 
-		self.buf.write(lineNum, line)
+		vim.current.buffer[lineNum - 1] = line
 
 	#
 	# コメント状態を入れ替える
