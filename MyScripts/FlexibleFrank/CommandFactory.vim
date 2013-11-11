@@ -57,5 +57,8 @@ class CommandFactory:
 		elif command == 'Rename':
 			command = Rename(firstLine, lastLine)
 
+		elif command == 'QuickLook':
+			command = QuickLook()
+
 		return command
 EOM

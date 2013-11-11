@@ -1,68 +1,21 @@
 
--------------------------------------------------
-/Users/ryo/Documents/projects/slf/devscript/soms1
--------------------------------------------------
+-----------------------------------------------------------
+/Users/ryo/Documents/gitvim/MyScripts/GitFrank/Source/Entry
+-----------------------------------------------------------
 
-soms1 
-	.DS_Store
-	data 
-		input 
-			.empty
-			contactBlockInfo.csv
-			contactDefC.csv
-			contactDefS.csv
-			contactFormDef.csv
-			contactInfoRel.csv
-			db_pms_dump.sql.gz
-			getContactBlockInfo.sql
-			getContactDefC.sql
-			getContactDefS.sql
-			getContactFormDef.sql
-			getContactInfoRel.sql
-			redir.memo
-		output 
-			.DS_Store
-			.empty
-			slfContactGroupInfo.csv
-			slfContactGroupMng.csv
-			slfOutsiderMemberInfo.csv
-	src 
-		.DS_Store
-		AutoLoader.php
-		ContactMigrator.php
-		InputEntity 
-			.DS_Store
-			SomsContactEntity.php
-			SomsContactGroupEntity.php
-			SomsContactGroupRelationEntity.php
-		Migrator.php
-		OutputEntity 
-			SlfContactEntity.php
-			SlfContactGroupInfoEntity.php
-			SlfContactGroupMngEntity.php
-		Util 
-			.DS_Store
-			FileUtil.php
-			LogUtil.php
-			StringUtil.php
-	test 
-		.DS_Store
-		bootstrap.php
-		InputData 
-			.DS_Store
-			PmsDocumentTest.php
-			SlfDocumentTest.php
-		phpunit.xml
-		testdata 
-			.DS_Store
-			FileUtil 
-				read.csv
-				read.sql
-			PmsDocument.tsv
-			SlfDocument.csv
-		TestUtil.php
-		TitleMigratorTest.php
-		Util 
-			.DS_Store
-			FileUtilTest.php
-			StringUtilTest.php
+Entry 
+	__init__.py
+	Directory.py
+	Entry.py
+	File.py
+	FileGrep.py
+	Parts 
+		__init__.py
+		Depth.py
+		Extension.py
+		Id.py
+		Name.py
+		Output.py
+		Path.py
+		Point.py
+		Type.py

@@ -29,6 +29,7 @@ source $MyScripts/FlexibleFrank/Command/PointOff.vim
 source $MyScripts/FlexibleFrank/Command/Fix.vim
 source $MyScripts/FlexibleFrank/Command/GetModeSwitch.vim
 source $MyScripts/FlexibleFrank/Command/Grep.vim
+source $MyScripts/FlexibleFrank/Command/QuickLook.vim
 
 source $MyScripts/FlexibleFrank/Exception/TargetNotFileOnlyException.vim
 source $MyScripts/FlexibleFrank/Exception/TargetNotDirException.vim
@@ -100,4 +101,5 @@ function! BufMap_Frank()
 	nnoremap <buffer> fix   :call CommandDispatcher('Fix')<CR>
 	nnoremap <buffer> sw    :call CommandDispatcher('Switch')<CR>
 	nnoremap <buffer> gr    :call CommandDispatcher('Grep')<CR>
+	nnoremap <buffer> q     :call CommandDispatcher('QuickLook')<CR>
 endfunction

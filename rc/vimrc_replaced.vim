@@ -508,14 +508,11 @@ filetype indent on
 "
 "----------------------------------------------------------------------------------------------------
 nnoremap ß :VimShellTab<CR>
-nnoremap ∂ :VimShellPop<CR>
 
 let g:vimshell_prompt = "> "
 let g:vimshell_user_prompt = 'getcwd()'
 let g:vimshell_right_prompt = 'GetBranch()'
 "let g:vimshell_enable_auto_slash = 0
-
-nnoremap <F11> :call GetBranch()<CR>
 
 function! GetBranch()
 	let branchs = system('git branch')
